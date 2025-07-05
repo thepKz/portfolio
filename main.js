@@ -1035,22 +1035,24 @@ class TerminalController {
   }
   
   scrollToBottom() {
-    this.output.scrollTop = this.output.scrollHeight;
+    if (this.output) {
+      this.output.scrollTop = this.output.scrollHeight;
+    }
   }
   
   showHelp() {
     this.addLine(`
-      <span class="output" style="color: #00ffff;">📋 Available Commands:</span><br><br>
-      <span style="color: #00ff41;">1.</span> <span class="command">help</span> - Show this help message<br>
-      <span style="color: #00ff41;">2.</span> <span class="command">about</span> - About Minthep<br>
-      <span style="color: #00ff41;">3.</span> <span class="command">projects</span> - List projects<br>
-      <span style="color: #00ff41;">4.</span> <span class="command">skills</span> - Display skill matrix<br>
-      <span style="color: #00ff41;">5.</span> <span class="command">contact</span> - Contact information<br>
-      <span style="color: #00ff41;">6.</span> <span class="command">clear</span> - Clear terminal<br>
-      <span style="color: #00ff41;">7.</span> <span class="command">neofetch</span> - System information<br>
-      <span style="color: #00ff41;">8.</span> <span class="command">matrix</span> - Enter the Matrix<br>
-      <span style="color: #00ff41;">9.</span> <span class="command">hack</span> - Activate hacker mode<br>
-      <span style="color: #00ff41;">10.</span> <span class="command">status</span> - System status<br><br>
+      <span class="output" style="color: #00ffff;">📋 Available Commands:</span><br>
+      <span class="command">help</span> - Show this help message<br>
+      <span class="command">about</span> - About Minthep<br>
+      <span class="command">projects</span> - List projects<br>
+      <span class="command">skills</span> - Display skill matrix<br>
+      <span class="command">contact</span> - Contact information<br>
+      <span class="command">clear</span> - Clear terminal<br>
+      <span class="command">neofetch</span> - System information<br>
+      <span class="command">matrix</span> - Enter the Matrix<br>
+      <span class="command">hack</span> - Activate hacker mode<br>
+      <span class="command">status</span> - System status<br>
       <span style="color: #ff0080;">💡 Tip: Type any command to get started!</span>
     `, 'output');
   }

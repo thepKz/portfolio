@@ -345,15 +345,13 @@ body {
 }
 
 .window-content {
-  padding: var(--space-4);
-  height: auto;
+  padding: 24px 20px 20px 20px;
   overflow-y: auto;
 }
 
 /* Terminal Window */
 .terminal-window {
   width: 95%;
-  height: 90%;
   top: 5%;
   left: 5%;
   max-width: 1200px;
@@ -543,8 +541,8 @@ body {
 
 /* Projects Window */
 .projects-window {
-  width: 800px;
-  height: 600px;
+  width: 90%;
+height: auto;
   top: 80px;
   left: 200px;
 }
@@ -644,9 +642,9 @@ body {
 
 /* About Window */
 .about-window {
-  width: 900px;
-  height: 700px;
-  top: 100px;
+  height: 80%;
+  overflow-y: auto;
+  top: 100px; 
   left: 200px;
 }
 
@@ -953,7 +951,7 @@ body {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid var(--os-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-6);
+  padding: var(--space-10);
 }
 
 .experience-timeline {
@@ -3356,4 +3354,46 @@ body.light-theme .terminal {
   to {
     width: var(--progress-width, 85%);
   }
+}
+
+/* Sửa các window để không tràn viền */
+.window, .terminal-window, .about-window, .projects-window, .contact-window {
+  max-width: 100vw;
+  max-height: 95vh;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive fix cho window */
+@media (min-width: 1025px) {
+  .window, .terminal-window, .about-window, .projects-window, .contact-window {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Đảm bảo nội dung không dính sát viền */
+.window-content {
+  padding: 24px 20px 20px 20px;
+}
+
+
+#about-app::-webkit-scrollbar {
+  width: 10px;
+}
+#about-app::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+#about-app::-webkit-scrollbar-thumb {
+  background: var(--color-neon-cyan);
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--color-neon-cyan);
+  transition: background 0.2s;
+}
+#about-app::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-pink);
+  box-shadow: 0 0 15px var(--color-neon-pink);
 }
