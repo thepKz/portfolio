@@ -473,16 +473,16 @@ class BackgroundEffects {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
-    const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const fontSize = 14;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
     
     const animate = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      ctx.fillStyle = '#00ffff';
+      ctx.fillStyle = '#00ff41';
       ctx.font = `${fontSize}px monospace`;
       
       for (let i = 0; i < drops.length; i++) {
@@ -492,7 +492,7 @@ class BackgroundEffects {
         
         ctx.fillText(text, x, y);
         
-        if (y > canvas.height && Math.random() > 0.98) {
+        if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
@@ -500,7 +500,7 @@ class BackgroundEffects {
       
       setTimeout(() => {
         this.animationFrames.set('matrix', requestAnimationFrame(animate));
-      }, 100);
+      }, 50);
     };
     
     animate();
@@ -874,7 +874,7 @@ class TerminalController {
 
 <span style="color: #00ffff;">Entering the Matrix... Reality.exe has stopped working.</span>
         </pre>
-      }
+      </span>
     `, 'output');
   }
   
@@ -1405,10 +1405,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new FormController();
   new LabEffects();
   
-  // Initialize contact matrix
-  const contactMatrix = new ContactMatrix();
-  contactMatrix.initContactMatrix();
-  
   // Console easter egg
   console.log(`
 %c🚀 MINTHEP.OS - CYBERPUNK PORTFOLIO 🚀
@@ -1424,58 +1420,6 @@ Type 'help' in the terminal for available commands.
 'color: #8000ff; font-size: 12px; font-family: monospace;'
   );
 });
-
-// Contact Matrix Class
-class ContactMatrix {
-  initContactMatrix() {
-    const canvas = document.getElementById('contact-matrix');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const fontSize = 12;
-    
-    // Set canvas size
-    const resizeCanvas = () => {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = Array(columns).fill(1);
-    
-    const animate = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      ctx.fillStyle = '#00ffff';
-      ctx.font = `${fontSize}px monospace`;
-      
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-        
-        ctx.fillText(text, x, y);
-        
-        if (y > canvas.height && Math.random() > 0.98) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-      
-      setTimeout(() => {
-        requestAnimationFrame(animate);
-      }, 100);
-    };
-    
-    animate();
-  }
-}
 
 // Handle page visibility for performance
 document.addEventListener('visibilitychange', () => {
