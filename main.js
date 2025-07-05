@@ -1111,12 +1111,17 @@ class TerminalController {
   clearTerminal() {
     // Keep only the input line
     const inputLine = this.output.querySelector('.input-line');
-    this.output.innerHTML = '';
-    if (inputLine) {
-      this.output.appendChild(inputLine);
-    } else {
+    
+    // Remove all lines except input line
+    const allLines = this.output.querySelectorAll('.terminal-line:not(.input-line)');
+    allLines.forEach(line => line.remove());
+    
+    // Ensure we have an input line
+    if (!inputLine) {
       this.addInputLine();
     }
+    
+    this.scrollToBottom();
   }
   
   whoami() {

@@ -3149,8 +3149,13 @@ body.light-theme .terminal {
   }
   
   .terminal {
-    height: calc(100vh - 140px);
+    height: 100%;
     font-size: 0.85rem;
+    padding: var(--space-2);
+  }
+  
+  .terminal-output {
+    max-height: calc(100% - 80px);
   }
   
   .terminal-header-info {
