@@ -429,6 +429,10 @@ body {
   padding: var(--space-2) 0;
   border-top: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: nowrap;
 }
 
 .prompt {
@@ -2268,11 +2272,28 @@ body {
   left: 250px;
 }
 
+.contact-matrix-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.matrix-canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
   height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-terminal {
@@ -2280,6 +2301,8 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--space-4);
   font-family: var(--font-mono);
+  position: relative;
+  z-index: 2;
 }
 
 .terminal-header {
@@ -2673,6 +2696,7 @@ body.light-theme .terminal {
   font-family: var(--font-mono);
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   box-shadow: 
     inset 0 0 50px rgba(0, 255, 255, 0.05),
@@ -2774,6 +2798,8 @@ body.light-theme .terminal {
   flex: 1;
   caret-color: var(--color-neon-cyan);
   text-shadow: 0 0 5px var(--color-neon-cyan);
+  width: 100%;
+  min-width: 0;
 }
 
 .terminal-input::placeholder {

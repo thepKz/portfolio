@@ -909,16 +909,14 @@ class TerminalController {
     
     // Easter eggs for fun commands
     if (commandLine.toLowerCase().includes('sudo')) {
-      this.input.disabled = true;
+      this.input.value = '';
       this.addLine(`<span class="output" style="color: #ff0080;">Nice try! But you're not getting root access that easily 😏</span>`, 'output');
-      this.addInputLine();
       return;
     }
     
     if (commandLine.toLowerCase().includes('rm -rf')) {
-      this.input.disabled = true;
+      this.input.value = '';
       this.addLine(`<span class="output" style="color: #ff0080;">⚠️ DANGER: That command could delete everything! Blocked for safety.</span>`, 'output');
-      this.addInputLine();
       return;
     }
     
@@ -926,8 +924,14 @@ class TerminalController {
     this.commandHistory.push(commandLine);
     this.historyIndex = -1;
     
-    // Disable current input
-    this.input.disabled = true;
+    // Show command in output
+    this.addLine(`
+      <span class="prompt">minthep@creative-dev:~$</span>
+      <span class="command">${commandLine}</span>
+    `);
+    
+    // Clear input
+    this.input.value = '';
     
     // Parse command and arguments
     const parts = commandLine.split(' ');
@@ -940,9 +944,6 @@ class TerminalController {
     } else {
       this.addLine(`<span class="output">Command not found: ${command}. Type 'help' for available commands.</span>`, 'output');
     }
-    
-    // Add new input line
-    this.addInputLine();
   }
   
   matrixMode() {
@@ -1029,14 +1030,7 @@ class TerminalController {
     line.className = `terminal-line ${className}`;
     line.innerHTML = content;
     
-    // Insert before the input line
-    const inputLine = this.output.querySelector('.input-line');
-    if (inputLine) {
-      this.output.insertBefore(line, inputLine);
-    } else {
-      this.output.appendChild(line);
-    }
-    
+    this.output.appendChild(line);
     this.scrollToBottom();
   }
   
@@ -1115,8 +1109,14 @@ class TerminalController {
   }
   
   clearTerminal() {
+    // Keep only the input line
+    const inputLine = this.output.querySelector('.input-line');
     this.output.innerHTML = '';
-    this.addInputLine();
+    if (inputLine) {
+      this.output.appendChild(inputLine);
+    } else {
+      this.addInputLine();
+    }
   }
   
   whoami() {
