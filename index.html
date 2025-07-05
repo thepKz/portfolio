@@ -3,426 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Chen - Designer & Developer</title>
+    <title>Minthep.OS - Creative Developer Interface</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    
-    <!-- Background Grid -->
-    <div class="bg-grid"></div>
-    
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">AC</span>
-                <div class="logo-glow"></div>
-            </div>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link" data-text="Home">Home</a>
-                <a href="#about" class="nav-link" data-text="About">About</a>
-                <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
-                <a href="#lab" class="nav-link" data-text="Lab">Lab</a>
-                <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <canvas id="particle-bg" class="bg-canvas"></canvas>
+        <canvas id="matrix-bg" class="bg-canvas"></canvas>
+        <canvas id="neural-bg" class="bg-canvas"></canvas>
+        <canvas id="wave-bg" class="bg-canvas"></canvas>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg">
-            <div class="floating-elements">
-                <div class="float-element">{ }</div>
-                <div class="float-element">&lt;/&gt;</div>
-                <div class="float-element">◆</div>
-                <div class="float-element">▲</div>
-                <div class="float-element">●</div>
-            </div>
-        </div>
-        
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-greeting">
-                        <span class="greeting-text">Hello, I'm</span>
-                    </div>
-                    <h1 class="hero-title">
-                        <span class="title-name glitch" data-text="Alex Chen">Alex Chen</span>
-                        <span class="title-role typing-text" data-text="I'm a designer & developer">I'm a designer & developer</span>
-                    </h1>
-                    <p class="hero-description">
-                        Crafting digital experiences where creativity meets technology. 
-                        I design beautiful interfaces and bring them to life with code.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <span>View My Work</span>
-                            <div class="btn-glow"></div>
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <span>Get In Touch</span>
-                            <div class="btn-glow"></div>
-                        </a>
+    <!-- OS Interface -->
+    <div class="os-interface">
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <div class="start-menu">
+                    <div class="logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">Minthep.OS</span>
                     </div>
                 </div>
-                
-                <div class="hero-visual">
-                    <div class="avatar-container">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Alex Chen">
-                            </div>
-                            <div class="avatar-glow"></div>
-                            <div class="avatar-border"></div>
-                        </div>
-                        <div class="floating-icons">
-                            <div class="icon-orbit">
-                                <span class="tech-icon">⚛️</span>
-                                <span class="tech-icon">🎨</span>
-                                <span class="tech-icon">⚡</span>
-                                <span class="tech-icon">🚀</span>
-                            </div>
-                        </div>
+                <div class="running-apps">
+                    <div class="app-icon active" data-app="terminal">
+                        <span>⚡</span>
+                        <span class="app-name">Terminal</span>
+                    </div>
+                    <div class="app-icon" data-app="projects">
+                        <span>📁</span>
+                        <span class="app-name">Projects</span>
+                    </div>
+                    <div class="app-icon" data-app="about">
+                        <span>👤</span>
+                        <span class="app-name">About</span>
+                    </div>
+                    <div class="app-icon" data-app="lab">
+                        <span>🧪</span>
+                        <span class="app-name">Lab</span>
+                    </div>
+                    <div class="app-icon" data-app="contact">
+                        <span>📧</span>
+                        <span class="app-name">Contact</span>
+                    </div>
+                </div>
+            </div>
+            <div class="taskbar-right">
+                <div class="system-tray">
+                    <div class="tray-item" id="theme-toggle">
+                        <span class="theme-icon">🌙</span>
+                    </div>
+                    <div class="tray-item" id="audio-toggle">
+                        <span class="audio-icon">🔊</span>
+                    </div>
+                    <div class="tray-item">
+                        <span class="time" id="current-time">00:00</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 class="about-subtitle">Designer & Developer</h3>
-                    <p class="about-description">
-                        I'm a passionate creative technologist with 5+ years of experience in both design and development. 
-                        I believe in the power of combining aesthetic beauty with functional excellence to create 
-                        digital experiences that not only look amazing but also solve real problems.
-                    </p>
-                    
-                    <div class="skills-tags">
-                        <div class="skill-tag" data-skill="html">HTML</div>
-                        <div class="skill-tag" data-skill="css">CSS</div>
-                        <div class="skill-tag" data-skill="js">JavaScript</div>
-                        <div class="skill-tag" data-skill="react">React</div>
-                        <div class="skill-tag" data-skill="vue">Vue.js</div>
-                        <div class="skill-tag" data-skill="figma">Figma</div>
-                        <div class="skill-tag" data-skill="sketch">Sketch</div>
-                        <div class="skill-tag" data-skill="ai">Adobe AI</div>
-                        <div class="skill-tag" data-skill="ps">Photoshop</div>
-                        <div class="skill-tag" data-skill="node">Node.js</div>
-                        <div class="skill-tag" data-skill="python">Python</div>
-                        <div class="skill-tag" data-skill="ts">TypeScript</div>
+        <!-- Desktop -->
+        <div class="desktop">
+            <!-- Terminal Window -->
+            <div class="window terminal-window active" id="terminal-app">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="window-title">
+                        <span class="title-icon">⚡</span>
+                        <span>Terminal - Minthep@creative-dev</span>
                     </div>
                 </div>
-                
-                <div class="skills-chart">
-                    <div class="chart-container">
-                        <div class="skill-bar-group">
-                            <div class="skill-bar-item">
-                                <span class="skill-label">Frontend Development</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95"></div>
-                                </div>
-                                <span class="skill-percent">95%</span>
+                <div class="window-content">
+                    <div class="terminal">
+                        <div class="terminal-output" id="terminal-output">
+                            <div class="terminal-line">
+                                <span class="prompt">minthep@creative-dev:~$</span>
+                                <span class="command">whoami</span>
                             </div>
-                            <div class="skill-bar-item">
-                                <span class="skill-label">UI/UX Design</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                                <span class="skill-percent">90%</span>
+                            <div class="terminal-line output">
+                                <span class="typing-text" data-text="I'm Minthep - Creative Developer & Designer">I'm Minthep - Creative Developer & Designer</span>
                             </div>
-                            <div class="skill-bar-item">
-                                <span class="skill-label">Backend Development</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                                <span class="skill-percent">80%</span>
+                            <div class="terminal-line">
+                                <span class="prompt">minthep@creative-dev:~$</span>
+                                <span class="command">cat skills.json</span>
                             </div>
-                            <div class="skill-bar-item">
-                                <span class="skill-label">Motion Design</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
-                                </div>
-                                <span class="skill-percent">75%</span>
+                            <div class="terminal-line output">
+                                <pre class="json-output">{
+  "frontend": ["React", "Vue.js", "TypeScript", "Next.js"],
+  "design": ["Figma", "Adobe Creative Suite", "Blender"],
+  "backend": ["Node.js", "Python", "PostgreSQL"],
+  "tools": ["Git", "Docker", "AWS", "Vercel"]
+}</pre>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">minthep@creative-dev:~$</span>
+                                <span class="cursor">_</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="projects-grid">
-                <div class="project-card large">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="E-commerce Platform">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">NeuroCommerce</h3>
-                                <p class="project-desc">AI-powered e-commerce platform with neural design patterns</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Live Demo</a>
-                                    <a href="#" class="project-link">View Code</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-glow"></div>
+            <!-- Projects Window -->
+            <div class="window projects-window" id="projects-app">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">AI/ML</span>
+                    <div class="window-title">
+                        <span class="title-icon">📁</span>
+                        <span>Projects.exe - Portfolio Showcase</span>
                     </div>
                 </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Task Management">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">CyberTask</h3>
-                                <p class="project-desc">Futuristic task management with holographic UI</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Live Demo</a>
-                                    <a href="#" class="project-link">View Code</a>
+                <div class="window-content">
+                    <div class="projects-grid">
+                        <div class="project-card" data-project="ecommerce">
+                            <div class="project-preview">
+                                <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="E-commerce Platform">
+                                <div class="project-overlay">
+                                    <div class="project-info">
+                                        <h3>NeuroCommerce</h3>
+                                        <p>AI-powered e-commerce platform</p>
+                                        <div class="tech-stack">
+                                            <span class="tech">React</span>
+                                            <span class="tech">Node.js</span>
+                                            <span class="tech">AI/ML</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-glow"></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">Firebase</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Data Visualization">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">DataViz Pro</h3>
-                                <p class="project-desc">Interactive data visualization dashboard</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Live Demo</a>
-                                    <a href="#" class="project-link">View Code</a>
+                        
+                        <div class="project-card" data-project="dashboard">
+                            <div class="project-preview">
+                                <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Analytics Dashboard">
+                                <div class="project-overlay">
+                                    <div class="project-info">
+                                        <h3>CyberDash</h3>
+                                        <p>Real-time analytics dashboard</p>
+                                        <div class="tech-stack">
+                                            <span class="tech">Vue.js</span>
+                                            <span class="tech">D3.js</span>
+                                            <span class="tech">WebSocket</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-glow"></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </div>
-                
-                <div class="project-card wide">
-                    <div class="project-image">
-                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile App Design">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">NeonWallet</h3>
-                                <p class="project-desc">Cryptocurrency wallet with neon-punk aesthetics</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">Live Demo</a>
-                                    <a href="#" class="project-link">View Code</a>
+                        
+                        <div class="project-card" data-project="mobile">
+                            <div class="project-preview">
+                                <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile App">
+                                <div class="project-overlay">
+                                    <div class="project-info">
+                                        <h3>NeonWallet</h3>
+                                        <p>Cryptocurrency mobile wallet</p>
+                                        <div class="tech-stack">
+                                            <span class="tech">React Native</span>
+                                            <span class="tech">Blockchain</span>
+                                            <span class="tech">Web3</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-glow"></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Blockchain</span>
-                        <span class="tech-tag">Web3</span>
+                        
+                        <div class="project-card" data-project="ai">
+                            <div class="project-preview">
+                                <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI Platform">
+                                <div class="project-overlay">
+                                    <div class="project-info">
+                                        <h3>MindForge AI</h3>
+                                        <p>Creative AI assistant platform</p>
+                                        <div class="tech-stack">
+                                            <span class="tech">Python</span>
+                                            <span class="tech">TensorFlow</span>
+                                            <span class="tech">FastAPI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Lab Section -->
-    <section id="lab" class="lab">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Creative Lab</h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">Experimental projects and creative explorations</p>
+            <!-- About Window -->
+            <div class="window about-window" id="about-app">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="window-title">
+                        <span class="title-icon">👤</span>
+                        <span>About.exe - Personal Profile</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="about-content">
+                        <div class="profile-section">
+                            <div class="avatar-container">
+                                <div class="avatar-frame">
+                                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Minthep">
+                                    <div class="avatar-glow"></div>
+                                </div>
+                                <div class="status-indicator">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Available for work</span>
+                                </div>
+                            </div>
+                            <div class="profile-info">
+                                <h2 class="name glitch" data-text="Minthep">Minthep</h2>
+                                <p class="title">Creative Developer & Designer</p>
+                                <p class="bio">
+                                    Passionate about creating digital experiences that blend creativity with technology. 
+                                    I specialize in building beautiful, functional interfaces and bringing ideas to life through code.
+                                </p>
+                                <div class="stats">
+                                    <div class="stat">
+                                        <span class="stat-number">5+</span>
+                                        <span class="stat-label">Years Experience</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">50+</span>
+                                        <span class="stat-label">Projects Completed</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">100%</span>
+                                        <span class="stat-label">Client Satisfaction</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skills-section">
+                            <h3>Skills & Technologies</h3>
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <h4>Frontend</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">React</span>
+                                        <span class="skill-tag">Vue.js</span>
+                                        <span class="skill-tag">TypeScript</span>
+                                        <span class="skill-tag">Next.js</span>
+                                        <span class="skill-tag">Tailwind CSS</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Design</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Figma</span>
+                                        <span class="skill-tag">Adobe XD</span>
+                                        <span class="skill-tag">Photoshop</span>
+                                        <span class="skill-tag">Illustrator</span>
+                                        <span class="skill-tag">Blender</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Backend</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Node.js</span>
+                                        <span class="skill-tag">Python</span>
+                                        <span class="skill-tag">PostgreSQL</span>
+                                        <span class="skill-tag">MongoDB</span>
+                                        <span class="skill-tag">AWS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="lab-grid">
-                <div class="lab-item">
-                    <div class="lab-canvas" id="particle-canvas">
-                        <canvas></canvas>
-                        <div class="lab-overlay">
-                            <h3>Particle System</h3>
-                            <p>Interactive particle physics simulation</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lab-item">
-                    <div class="lab-canvas" id="wave-canvas">
-                        <canvas></canvas>
-                        <div class="lab-overlay">
-                            <h3>Audio Visualizer</h3>
-                            <p>Real-time audio wave visualization</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lab-item">
-                    <div class="lab-canvas" id="matrix-canvas">
-                        <canvas></canvas>
-                        <div class="lab-overlay">
-                            <h3>Matrix Rain</h3>
-                            <p>Classic cyberpunk matrix effect</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lab-item">
-                    <div class="lab-canvas" id="neural-canvas">
-                        <canvas></canvas>
-                        <div class="lab-overlay">
-                            <h3>Neural Network</h3>
-                            <p>Animated neural network visualization</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="section-line"></div>
+            <!-- Lab Window -->
+            <div class="window lab-window" id="lab-app">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="window-title">
+                        <span class="title-icon">🧪</span>
+                        <span>Lab.exe - Creative Experiments</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="lab-grid">
+                        <div class="lab-item" data-experiment="particles">
+                            <canvas class="lab-canvas" id="lab-particles"></canvas>
+                            <div class="lab-info">
+                                <h4>Particle Physics</h4>
+                                <p>Interactive particle system</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-item" data-experiment="shader">
+                            <canvas class="lab-canvas" id="lab-shader"></canvas>
+                            <div class="lab-info">
+                                <h4>Shader Art</h4>
+                                <p>WebGL fragment shaders</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-item" data-experiment="3d">
+                            <canvas class="lab-canvas" id="lab-3d"></canvas>
+                            <div class="lab-info">
+                                <h4>3D Scene</h4>
+                                <p>Three.js experiments</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-item" data-experiment="audio">
+                            <canvas class="lab-canvas" id="lab-audio"></canvas>
+                            <div class="lab-info">
+                                <h4>Audio Reactive</h4>
+                                <p>Sound visualization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3 class="contact-subtitle">Let's create something amazing together</h3>
-                    <p class="contact-description">
-                        I'm always excited to work on new projects and collaborate with creative minds. 
-                        Whether you need design, development, or both - let's make it happen.
-                    </p>
-                    
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
+
+            <!-- Contact Window -->
+            <div class="window contact-window" id="contact-app">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="window-title">
+                        <span class="title-icon">📧</span>
+                        <span>Contact.cmd - Send Message</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="contact-content">
+                        <div class="contact-terminal">
+                            <div class="terminal-header">
+                                <span class="prompt">minthep@creative-dev:~$</span>
+                                <span class="command">sendmail --interactive</span>
+                            </div>
+                            <form class="contact-form" id="contact-form">
+                                <div class="form-group">
+                                    <label class="form-label">From:</label>
+                                    <input type="email" class="form-input" placeholder="your.email@domain.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Subject:</label>
+                                    <input type="text" class="form-input" placeholder="Project Collaboration" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Message:</label>
+                                    <textarea class="form-input form-textarea" placeholder="Hi Minthep, I'd like to discuss..." rows="6" required></textarea>
+                                </div>
+                                <button type="submit" class="send-button">
+                                    <span class="button-text">Send Message</span>
+                                    <span class="button-icon">📤</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h3>Connect with me</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link" data-platform="github">
+                                    <span class="social-icon">🐙</span>
+                                    <span class="social-text">GitHub</span>
+                                </a>
+                                <a href="#" class="social-link" data-platform="linkedin">
+                                    <span class="social-icon">💼</span>
+                                    <span class="social-text">LinkedIn</span>
+                                </a>
+                                <a href="#" class="social-link" data-platform="behance">
+                                    <span class="social-icon">🎨</span>
+                                    <span class="social-text">Behance</span>
+                                </a>
+                                <a href="#" class="social-link" data-platform="dribbble">
+                                    <span class="social-icon">🏀</span>
+                                    <span class="social-text">Dribbble</span>
+                                </a>
+                            </div>
+                            
                             <div class="contact-details">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">alex@alexchen.dev</span>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-details">
-                                <span class="contact-label">Phone</span>
-                                <span class="contact-value">+1 (555) 123-4567</span>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-details">
-                                <span class="contact-label">Location</span>
-                                <span class="contact-value">San Francisco, CA</span>
+                                <div class="contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <span class="contact-text">minthep@creative-dev.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">📍</span>
+                                    <span class="contact-text">Available Worldwide</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">⏰</span>
+                                    <span class="contact-text">GMT+7 Timezone</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" data-platform="linkedin">
-                            <span class="social-icon">💼</span>
-                            <span class="social-text">LinkedIn</span>
-                        </a>
-                        <a href="#" class="social-link" data-platform="github">
-                            <span class="social-icon">🐙</span>
-                            <span class="social-text">GitHub</span>
-                        </a>
-                        <a href="#" class="social-link" data-platform="behance">
-                            <span class="social-icon">🎨</span>
-                            <span class="social-text">Behance</span>
-                        </a>
-                        <a href="#" class="social-link" data-platform="dribbble">
-                            <span class="social-icon">🏀</span>
-                            <span class="social-text">Dribbble</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                        <div class="input-glow"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Your Email" required>
-                        <div class="input-glow"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Project Type" required>
-                        <div class="input-glow"></div>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-input form-textarea" placeholder="Tell me about your project..." rows="5" required></textarea>
-                        <div class="input-glow"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <span>Send Message</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <p>&copy; 2024 Alex Chen. Designed & Developed with ⚡ in San Francisco</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy</a>
-                    <a href="#" class="footer-link">Terms</a>
-                    <a href="#" class="footer-link">Sitemap</a>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 
     <script type="module" src="/main.js"></script>
 </body>
