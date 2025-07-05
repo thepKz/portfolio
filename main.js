@@ -5,7 +5,7 @@ class OSInterface {
     this.windows = new Map();
     this.backgroundEffects = new BackgroundEffects();
     this.contextMenu = document.getElementById('context-menu');
-    this.backgroundMode = 'particle'; // particle, matrix, neural, wave
+    this.backgroundMode = 'particle';
     
     this.init();
   }
@@ -352,6 +352,7 @@ class BackgroundEffects {
   init() {
     this.setupCanvases();
     this.startEffects();
+    this.initContactMatrix();
   }
   
   setupCanvases() {
@@ -377,7 +378,6 @@ class BackgroundEffects {
     this.matrixRain();
     this.neuralNetwork();
     this.audioVisualizer();
-    this.initContactMatrix();
   }
   
   particleSystem() {
@@ -707,6 +707,7 @@ class TerminalController {
     this.input = document.getElementById('terminal-input');
     this.commandHistory = [];
     this.historyIndex = -1;
+    this.currentLine = '';
     this.commands = {
       'help': this.showHelp.bind(this),
       'about': this.showAbout.bind(this),
@@ -730,14 +731,47 @@ class TerminalController {
     this.bindEvents();
     this.startTypingEffect();
     this.focusInput();
+    this.setupPrompt();
+  }
+  
+  setupPrompt() {
+    // Remove any existing input lines
+    const existingInputLines = this.output.querySelectorAll('.input-line');
+    existingInputLines.forEach(line => line.remove());
+    
+    // Add fresh input line
+    this.addInputLine();
+  }
+  
+  addInputLine() {
+    const inputLine = document.createElement('div');
+    inputLine.className = 'terminal-line input-line';
+    inputLine.innerHTML = `
+      <span class="prompt">minthep@creative-dev:~$</span>
+      <input type="text" class="terminal-input" placeholder="Type 'help' for commands..." autocomplete="off">
+    `;
+    
+    this.output.appendChild(inputLine);
+    
+    // Get the new input element
+    this.input = inputLine.querySelector('.terminal-input');
+    this.bindInputEvents();
+    this.focusInput();
+    this.scrollToBottom();
   }
   
   bindEvents() {
+    // Auto-focus input when clicking on terminal
+    document.querySelector('.terminal')?.addEventListener('click', () => {
+      this.focusInput();
+    });
+  }
+  
+  bindInputEvents() {
     if (this.input) {
       this.input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           this.handleCommand(this.input.value.trim());
-          this.input.value = '';
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
           this.navigateHistory(-1);
@@ -745,11 +779,6 @@ class TerminalController {
           e.preventDefault();
           this.navigateHistory(1);
         }
-      });
-      
-      // Auto-focus input when clicking on terminal
-      document.querySelector('.terminal')?.addEventListener('click', () => {
-        this.focusInput();
       });
     }
   }
@@ -778,16 +807,23 @@ class TerminalController {
   }
   
   handleCommand(commandLine) {
-    if (!commandLine) return;
+    if (!commandLine) {
+      this.addInputLine();
+      return;
+    }
     
     // Easter eggs for fun commands
     if (commandLine.toLowerCase().includes('sudo')) {
+      this.input.disabled = true;
       this.addLine(`<span class="output" style="color: #ff0080;">Nice try! But you're not getting root access that easily 😏</span>`, 'output');
+      this.addInputLine();
       return;
     }
     
     if (commandLine.toLowerCase().includes('rm -rf')) {
+      this.input.disabled = true;
       this.addLine(`<span class="output" style="color: #ff0080;">⚠️ DANGER: That command could delete everything! Blocked for safety.</span>`, 'output');
+      this.addInputLine();
       return;
     }
     
@@ -795,11 +831,8 @@ class TerminalController {
     this.commandHistory.push(commandLine);
     this.historyIndex = -1;
     
-    // Show command in output
-    this.addLine(`
-      <span class="prompt">minthep@creative-dev:~$</span>
-      <span class="command">${commandLine}</span>
-    `);
+    // Disable current input
+    this.input.disabled = true;
     
     // Parse command and arguments
     const parts = commandLine.split(' ');
@@ -813,7 +846,8 @@ class TerminalController {
       this.addLine(`<span class="output">Command not found: ${command}. Type 'help' for available commands.</span>`, 'output');
     }
     
-    this.scrollToBottom();
+    // Add new input line
+    this.addInputLine();
   }
   
   matrixMode() {
@@ -899,7 +933,15 @@ class TerminalController {
     const line = document.createElement('div');
     line.className = `terminal-line ${className}`;
     line.innerHTML = content;
-    this.output.appendChild(line);
+    
+    // Insert before the input line
+    const inputLine = this.output.querySelector('.input-line');
+    if (inputLine) {
+      this.output.insertBefore(line, inputLine);
+    } else {
+      this.output.appendChild(line);
+    }
+    
     this.scrollToBottom();
   }
   
@@ -978,7 +1020,7 @@ class TerminalController {
   
   clearTerminal() {
     this.output.innerHTML = '';
-    this.focusInput();
+    this.addInputLine();
   }
   
   whoami() {
