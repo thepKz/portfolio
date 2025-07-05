@@ -736,7 +736,7 @@ class TerminalController {
   
   setupPrompt() {
     // Remove any existing input lines
-    const existingInputLines = this.output.querySelectorAll('.input-line');
+    const existingInputLines = this.output.querySelectorAll('.input-line, #terminal-input');
     existingInputLines.forEach(line => line.remove());
     
     // Add fresh input line
@@ -744,6 +744,10 @@ class TerminalController {
   }
   
   addInputLine() {
+    // Remove any existing input lines first
+    const existingInputLines = this.output.querySelectorAll('.input-line');
+    existingInputLines.forEach(line => line.remove());
+    
     const inputLine = document.createElement('div');
     inputLine.className = 'terminal-line input-line';
     inputLine.innerHTML = `

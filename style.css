@@ -409,8 +409,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  margin-bottom: var(--space-3);
-  min-height: calc(100% - 60px);
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--space-2);
 }
 
 .terminal-line {
@@ -423,12 +424,11 @@ body {
 }
 
 .input-line {
-  position: sticky;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  margin-top: auto;
+  background: rgba(0, 0, 0, 0.9);
   padding: var(--space-2) 0;
   border-top: 1px solid rgba(0, 255, 255, 0.2);
-  margin-top: auto;
+  border-radius: var(--radius-sm);
 }
 
 .prompt {
@@ -436,7 +436,7 @@ body {
   font-weight: 600;
   text-shadow: 0 0 10px var(--color-neon-green);
   animation: pulse-text 3s ease-in-out infinite;
-  min-width: 200px;
+  min-width: 220px;
   flex-shrink: 0;
 }
 
@@ -486,6 +486,7 @@ body {
 .terminal-input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: rgba(255, 0, 0, 0.1);
 }
 
 .cursor {
@@ -657,7 +658,7 @@ body {
 
 /* About Terminal Section */
 .about-terminal-section {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .about-terminal {
@@ -665,6 +666,7 @@ body {
   border: 1px solid var(--color-neon-cyan);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  min-height: 400px;
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.3),
     inset 0 0 50px rgba(0, 255, 255, 0.05);
@@ -712,7 +714,7 @@ body {
 .terminal-body {
   padding: var(--space-4);
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
@@ -733,8 +735,9 @@ body {
   padding: var(--space-3);
   border-radius: var(--radius-md);
   border-left: 3px solid var(--color-neon-purple);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.8;
+  box-shadow: 0 0 20px rgba(128, 0, 255, 0.2);
 }
 
 .skill-list {
@@ -745,24 +748,31 @@ body {
 
 .skill-item {
   color: var(--color-neon-green);
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: var(--space-1) 0;
+  transition: var(--transition-fast);
+}
+
+.skill-item:hover {
+  color: var(--color-neon-cyan);
+  transform: translateX(10px);
 }
 
 /* Career Timeline */
 .career-timeline {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .career-timeline h3 {
   color: var(--os-text);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: var(--space-4);
   text-align: center;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 700;
 }
 
 .timeline {
@@ -884,18 +894,19 @@ body {
 
 /* Stats Section */
 .stats-section {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .stats-section h3 {
   color: var(--os-text);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: var(--space-4);
   text-align: center;
   background: var(--gradient-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 700;
 }
 
 .stats-grid {
@@ -1086,19 +1097,19 @@ body {
   }
   
   .terminal {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   
   .prompt {
-    min-width: 150px;
+    min-width: 180px;
   }
   
   .output {
-    margin-left: 160px;
+    margin-left: 190px;
   }
   
   .json-output {
-    margin-left: 160px;
+    margin-left: 190px;
   }
   
   .about-window {
@@ -1131,7 +1142,7 @@ body {
 
 @media (max-width: 768px) {
   .terminal {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding: var(--space-2);
   }
   
@@ -1143,7 +1154,7 @@ body {
   
   .prompt {
     min-width: auto;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
   
   .output {
@@ -1153,7 +1164,7 @@ body {
   
   .json-output {
     margin-left: 0;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   
   .about-terminal {
@@ -1161,12 +1172,12 @@ body {
   }
   
   .terminal-body {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding: var(--space-2);
   }
   
   .profile-json {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     padding: var(--space-2);
   }
   
@@ -1197,7 +1208,7 @@ body {
 
 @media (max-width: 480px) {
   .terminal {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     padding: var(--space-1);
   }
   
@@ -1212,7 +1223,7 @@ body {
   }
   
   .prompt {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 }
 
