@@ -4,6 +4,8 @@ class OSInterface {
     this.activeWindow = 'terminal';
     this.windows = new Map();
     this.backgroundEffects = new BackgroundEffects();
+    this.contextMenu = document.getElementById('context-menu');
+    this.backgroundMode = 'particle'; // particle, matrix, neural, wave
     
     this.init();
   }
@@ -13,6 +15,7 @@ class OSInterface {
     this.bindEvents();
     this.startClock();
     this.showWindow('terminal');
+    this.initContextMenu();
   }
   
   initializeWindows() {
@@ -62,6 +65,116 @@ class OSInterface {
     // Audio toggle
     const audioToggle = document.getElementById('audio-toggle');
     audioToggle?.addEventListener('click', () => this.toggleAudio());
+    
+    // Prevent default context menu on desktop
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target.closest('.desktop') && !e.target.closest('.window')) {
+        e.preventDefault();
+      }
+    });
+  }
+  
+  initContextMenu() {
+    const desktop = document.querySelector('.desktop');
+    
+    // Show context menu on right click
+    desktop.addEventListener('contextmenu', (e) => {
+      if (!e.target.closest('.window')) {
+        e.preventDefault();
+        this.showContextMenu(e.clientX, e.clientY);
+      }
+    });
+    
+    // Hide context menu on left click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.context-menu')) {
+        this.hideContextMenu();
+      }
+    });
+    
+    // Handle context menu item clicks
+    this.contextMenu.addEventListener('click', (e) => {
+      const item = e.target.closest('.context-item');
+      if (item) {
+        const action = item.getAttribute('data-action');
+        this.handleContextAction(action);
+        this.hideContextMenu();
+      }
+    });
+  }
+  
+  showContextMenu(x, y) {
+    this.contextMenu.style.left = `${x}px`;
+    this.contextMenu.style.top = `${y}px`;
+    this.contextMenu.classList.add('show');
+    
+    // Adjust position if menu goes off screen
+    const rect = this.contextMenu.getBoundingClientRect();
+    if (rect.right > window.innerWidth) {
+      this.contextMenu.style.left = `${x - rect.width}px`;
+    }
+    if (rect.bottom > window.innerHeight) {
+      this.contextMenu.style.top = `${y - rect.height}px`;
+    }
+  }
+  
+  hideContextMenu() {
+    this.contextMenu.classList.remove('show');
+  }
+  
+  handleContextAction(action) {
+    switch (action) {
+      case 'terminal':
+        this.showWindow('terminal');
+        break;
+      case 'projects':
+        this.showWindow('projects');
+        break;
+      case 'about':
+        this.showWindow('about');
+        break;
+      case 'background':
+        this.cycleBackground();
+        break;
+      case 'theme':
+        this.toggleTheme();
+        break;
+      case 'refresh':
+        this.refreshDesktop();
+        break;
+    }
+  }
+  
+  cycleBackground() {
+    const modes = ['particle', 'matrix', 'neural', 'wave'];
+    const currentIndex = modes.indexOf(this.backgroundMode);
+    const nextIndex = (currentIndex + 1) % modes.length;
+    this.backgroundMode = modes[nextIndex];
+    
+    // Hide all background canvases
+    Object.values(this.backgroundEffects.canvases).forEach(canvas => {
+      if (canvas) canvas.style.opacity = '0';
+    });
+    
+    // Show selected background
+    const activeCanvas = this.backgroundEffects.canvases[this.backgroundMode];
+    if (activeCanvas) {
+      activeCanvas.style.opacity = this.backgroundMode === 'particle' ? '0.3' : 
+                                   this.backgroundMode === 'matrix' ? '0.1' :
+                                   this.backgroundMode === 'neural' ? '0.2' : '0.15';
+    }
+    
+    // Show notification
+    this.showNotification(`Background changed to ${this.backgroundMode}`);
+  }
+  
+  refreshDesktop() {
+    // Add refresh animation
+    document.body.style.opacity = '0.5';
+    setTimeout(() => {
+      document.body.style.opacity = '1';
+      this.showNotification('Desktop refreshed');
+    }, 300);
   }
   
   showWindow(windowId) {
@@ -161,6 +274,14 @@ class OSInterface {
     if (themeIcon) {
       themeIcon.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
     }
+    
+    // Update context menu theme icon
+    const contextThemeIcon = document.querySelector('[data-action="theme"] .context-icon');
+    if (contextThemeIcon) {
+      contextThemeIcon.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+    }
+    
+    this.showNotification(`Switched to ${document.body.classList.contains('light-theme') ? 'light' : 'dark'} theme`);
   }
   
   toggleAudio() {
@@ -169,6 +290,46 @@ class OSInterface {
     if (audioIcon) {
       audioIcon.textContent = this.backgroundEffects.audioEnabled ? '🔊' : '🔇';
     }
+    
+    this.showNotification(`Audio ${this.backgroundEffects.audioEnabled ? 'enabled' : 'disabled'}`);
+  }
+  
+  showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    
+    Object.assign(notification.style, {
+      position: 'fixed',
+      top: '20px',
+      right: '20px',
+      background: 'rgba(0, 255, 255, 0.9)',
+      color: '#000',
+      padding: '12px 20px',
+      borderRadius: '8px',
+      fontFamily: 'var(--font-mono)',
+      fontSize: '0.85rem',
+      fontWeight: '600',
+      zIndex: '10000',
+      transform: 'translateX(100%)',
+      transition: 'transform 0.3s ease',
+      boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+    });
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    setTimeout(() => {
+      notification.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          document.body.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
   }
 }
 
@@ -493,6 +654,9 @@ class BackgroundEffects {
 class TerminalController {
   constructor() {
     this.output = document.getElementById('terminal-output');
+    this.input = document.getElementById('terminal-input');
+    this.commandHistory = [];
+    this.historyIndex = -1;
     this.commands = {
       'help': this.showHelp.bind(this),
       'about': this.showAbout.bind(this),
@@ -503,7 +667,10 @@ class TerminalController {
       'whoami': this.whoami.bind(this),
       'ls': this.listFiles.bind(this),
       'cat': this.catFile.bind(this),
-      'neofetch': this.neofetch.bind(this)
+      'neofetch': this.neofetch.bind(this),
+      'matrix': this.matrixMode.bind(this),
+      'hack': this.hackMode.bind(this),
+      'status': this.systemStatus.bind(this)
     };
     
     this.init();
@@ -512,14 +679,128 @@ class TerminalController {
   init() {
     this.bindEvents();
     this.startTypingEffect();
+    this.focusInput();
   }
   
   bindEvents() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && e.target.closest('.terminal')) {
-        this.handleCommand();
+    if (this.input) {
+      this.input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          this.handleCommand(this.input.value.trim());
+          this.input.value = '';
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          this.navigateHistory(-1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          this.navigateHistory(1);
+        }
+      });
+      
+      // Auto-focus input when clicking on terminal
+      document.querySelector('.terminal')?.addEventListener('click', () => {
+        this.focusInput();
+      });
+    }
+  }
+  
+  focusInput() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+  
+  navigateHistory(direction) {
+    if (this.commandHistory.length === 0) return;
+    
+    this.historyIndex += direction;
+    
+    if (this.historyIndex < 0) {
+      this.historyIndex = -1;
+      this.input.value = '';
+    } else if (this.historyIndex >= this.commandHistory.length) {
+      this.historyIndex = this.commandHistory.length - 1;
+    }
+    
+    if (this.historyIndex >= 0) {
+      this.input.value = this.commandHistory[this.historyIndex];
+    }
+  }
+  
+  handleCommand(commandLine) {
+    if (!commandLine) return;
+    
+    // Add to history
+    this.commandHistory.push(commandLine);
+    this.historyIndex = -1;
+    
+    // Show command in output
+    this.addLine(`
+      <span class="prompt">minthep@creative-dev:~$</span>
+      <span class="command">${commandLine}</span>
+    `);
+    
+    // Parse command and arguments
+    const parts = commandLine.split(' ');
+    const command = parts[0].toLowerCase();
+    const args = parts.slice(1);
+    
+    // Execute command
+    if (this.commands[command]) {
+      this.commands[command](args);
+    } else {
+      this.addLine(`<span class="output">Command not found: ${command}. Type 'help' for available commands.</span>`, 'output');
+    }
+    
+    this.scrollToBottom();
+  }
+  
+  matrixMode() {
+    this.addLine(`
+      <span class="output" style="color: #00ff41;">
+        <pre>
+╔══════════════════════════════════════╗
+║           MATRIX MODE ACTIVATED      ║
+║                                      ║
+║  Wake up, Neo...                     ║
+║  The Matrix has you...               ║
+║  Follow the white rabbit.            ║
+║                                      ║
+║  Reality is an illusion.             ║
+║  Code is the only truth.             ║
+╚══════════════════════════════════════╝
+        </pre>
       }
-    });
+    `, 'output');
+  }
+  
+  hackMode() {
+    this.addLine(`
+      <span class="output" style="color: #ff0080;">
+        <pre>
+[HACKING MODE INITIATED]
+> Scanning network...
+> Found 127.0.0.1
+> Attempting to breach firewall...
+> Access granted!
+> Welcome to the mainframe, hacker.
+        </pre>
+      </span>
+    `, 'output');
+  }
+  
+  systemStatus() {
+    this.addLine(`
+      <span class="output">
+        <span style="color: #00ffff;">System Status:</span><br>
+        CPU: 99.9% (Overclocked)<br>
+        RAM: 32GB DDR5 (Quantum Enhanced)<br>
+        GPU: RTX 4090 (Neural Accelerated)<br>
+        Network: 10Gbps (Encrypted)<br>
+        Security: MAXIMUM (Unhackable)<br>
+        <span style="color: #00ff41;">Status: ONLINE AND READY</span>
+      </span>
+    `, 'output');
   }
   
   startTypingEffect() {
@@ -567,7 +848,10 @@ class TerminalController {
       <span class="command">skills</span> - Show skills<br>
       <span class="command">contact</span> - Contact information<br>
       <span class="command">clear</span> - Clear terminal<br>
-      <span class="command">neofetch</span> - System information
+      <span class="command">neofetch</span> - System information<br>
+      <span class="command">matrix</span> - Enter the Matrix<br>
+      <span class="command">hack</span> - Activate hacker mode<br>
+      <span class="command">status</span> - System status
     `, 'output');
   }
   
@@ -618,6 +902,7 @@ class TerminalController {
   
   clearTerminal() {
     this.output.innerHTML = '';
+    this.focusInput();
   }
   
   whoami() {
@@ -673,10 +958,6 @@ class TerminalController {
     `, 'output');
   }
   
-  handleCommand() {
-    // This would be implemented to handle real command input
-    // For now, it's just for demonstration
-  }
 }
 
 // Form Controller

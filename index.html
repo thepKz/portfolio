@@ -69,6 +69,36 @@
 
         <!-- Desktop -->
         <div class="desktop">
+            <!-- Context Menu -->
+            <div class="context-menu" id="context-menu">
+                <div class="context-item" data-action="terminal">
+                    <span class="context-icon">⚡</span>
+                    <span class="context-text">Open Terminal</span>
+                </div>
+                <div class="context-item" data-action="projects">
+                    <span class="context-icon">📁</span>
+                    <span class="context-text">View Projects</span>
+                </div>
+                <div class="context-item" data-action="about">
+                    <span class="context-icon">👤</span>
+                    <span class="context-text">About Me</span>
+                </div>
+                <div class="context-divider"></div>
+                <div class="context-item" data-action="background">
+                    <span class="context-icon">🎨</span>
+                    <span class="context-text">Change Background</span>
+                </div>
+                <div class="context-item" data-action="theme">
+                    <span class="context-icon">🌙</span>
+                    <span class="context-text">Toggle Theme</span>
+                </div>
+                <div class="context-divider"></div>
+                <div class="context-item" data-action="refresh">
+                    <span class="context-icon">🔄</span>
+                    <span class="context-text">Refresh Desktop</span>
+                </div>
+            </div>
+
             <!-- Terminal Window -->
             <div class="window terminal-window active" id="terminal-app">
                 <div class="window-header">
@@ -107,6 +137,10 @@
                             <div class="terminal-line">
                                 <span class="prompt">minthep@creative-dev:~$</span>
                                 <span class="cursor">_</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">minthep@creative-dev:~$</span>
+                                <input type="text" class="terminal-input" id="terminal-input" placeholder="Type 'help' for commands..." autocomplete="off">
                             </div>
                         </div>
                     </div>
