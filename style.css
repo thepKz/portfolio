@@ -352,6 +352,7 @@ body {
 /* Terminal Window */
 .terminal-window {
   width: 95%;
+  height: 70%;
   top: 5%;
   left: 5%;
   max-width: 1200px;
@@ -3404,5 +3405,16 @@ body.light-theme .terminal {
   border-radius: 8px;
 }
 #contact-app::-webkit-scrollbar-thumb {
+  background: var(--color-neon-cyan);
+}
+
+#terminal-app::-webkit-scrollbar {
+  width: 10px;
+}
+#terminal-app::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+#terminal-app::-webkit-scrollbar-thumb {
   background: var(--color-neon-cyan);
 }

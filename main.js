@@ -1046,19 +1046,23 @@ class TerminalController {
   
   showHelp() {
     this.addLine(`
-      <span class="output" style="color: #00ffff;">📋 Available Commands:</span><br>
-      <span class="command">help</span> - Show this help message<br>
-      <span class="command">about</span> - About Minthep<br>
-      <span class="command">projects</span> - List projects<br>
-      <span class="command">skills</span> - Display skill matrix<br>
-      <span class="command">contact</span> - Contact information<br>
-      <span class="command">clear</span> - Clear terminal<br>
-      <span class="command">neofetch</span> - System information<br>
-      <span class="command">matrix</span> - Enter the Matrix<br>
-      <span class="command">hack</span> - Activate hacker mode<br>
-      <span class="command">status</span> - System status<br>
-      <span style="color: #ff0080;">💡 Tip: Type any command to get started!</span>
-    `, 'output');
+      <pre class="output" style="white-space: pre;">
+📋 Available Commands:
+
+help      - Show this help message
+about     - About Minthep
+projects  - List projects
+skills    - Display skill matrix
+contact   - Contact information
+clear     - Clear terminal
+neofetch  - System information
+matrix    - Enter the Matrix
+hack      - Activate hacker mode
+status    - System status
+
+💡 Tip: Type any command to get started!
+      </pre>
+    `);
   }
   
   showAbout() {
