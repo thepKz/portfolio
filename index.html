@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Thiết Kế Contrast Đỉnh Cao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <span class="logo-text">PORTFOLIO</span>
+          </div>
+          <div class="nav-menu" id="nav-menu">
+            <a href="#home" class="nav-link">Trang chủ</a>
+            <a href="#about" class="nav-link">Giới thiệu</a>
+            <a href="#projects" class="nav-link">Dự án</a>
+            <a href="#skills" class="nav-link">Kỹ năng</a>
+            <a href="#contact" class="nav-link">Liên hệ</a>
+          </div>
+          <div class="nav-toggle" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                <span class="title-line">CREATIVE</span>
+                <span class="title-line highlight">DEVELOPER</span>
+                <span class="title-line">PORTFOLIO</span>
+              </h1>
+              <p class="hero-description">
+                Chuyên gia phát triển web với đam mê tạo ra những trải nghiệm số độc đáo và ấn tượng
+              </p>
+              <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Xem dự án</a>
+                <a href="#contact" class="btn btn-secondary">Liên hệ</a>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="visual-element"></div>
+              <div class="visual-grid">
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">GIỚI THIỆU</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="about-content">
+            <div class="about-text">
+              <h3 class="about-subtitle">Tôi là một Developer đam mê</h3>
+              <p class="about-description">
+                Với hơn 5 năm kinh nghiệm trong lĩnh vực phát triển web, tôi chuyên tạo ra những ứng dụng web hiện đại, 
+                tối ưu hiệu suất và trải nghiệm người dùng. Tôi luôn theo đuổi sự hoàn hảo trong từng dòng code.
+              </p>
+              <div class="about-stats">
+                <div class="stat-item">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Dự án hoàn thành</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Năm kinh nghiệm</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">Khách hàng hài lòng</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-image">
+              <div class="image-container">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Developer workspace" />
+                <div class="image-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">KỸ NĂNG</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3 class="category-title">Frontend</h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <span class="skill-name">React</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="95"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">Vue.js</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">TypeScript</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="88"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3 class="category-title">Backend</h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <span class="skill-name">Node.js</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="92"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">Python</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">MongoDB</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="80"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3 class="category-title">Tools</h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <span class="skill-name">Git</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="95"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">Docker</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="78"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-name">AWS</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="82"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">DỰ ÁN NỔI BẬT</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="E-commerce Platform" />
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="#" class="project-link">Demo</a>
+                    <a href="#" class="project-link">Code</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">E-commerce Platform</h3>
+                <p class="project-description">
+                  Nền tảng thương mại điện tử hiện đại với React, Node.js và MongoDB
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">MongoDB</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Task Management App" />
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="#" class="project-link">Demo</a>
+                    <a href="#" class="project-link">Code</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Task Management App</h3>
+                <p class="project-description">
+                  Ứng dụng quản lý công việc với giao diện trực quan và tính năng real-time
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">PWA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Data Visualization Dashboard" />
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="#" class="project-link">Demo</a>
+                    <a href="#" class="project-link">Code</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Data Visualization Dashboard</h3>
+                <p class="project-description">
+                  Dashboard phân tích dữ liệu với biểu đồ tương tác và báo cáo real-time
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">D3.js</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">LIÊN HỆ</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="contact-content">
+            <div class="contact-info">
+              <h3 class="contact-subtitle">Hãy cùng tạo nên điều tuyệt vời</h3>
+              <p class="contact-description">
+                Tôi luôn sẵn sàng thảo luận về các dự án mới và cơ hội hợp tác thú vị.
+              </p>
+              <div class="contact-items">
+                <div class="contact-item">
+                  <div class="contact-icon">📧</div>
+                  <div class="contact-details">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">hello@portfolio.dev</span>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">📱</div>
+                  <div class="contact-details">
+                    <span class="contact-label">Điện thoại</span>
+                    <span class="contact-value">+84 123 456 789</span>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">📍</div>
+                  <div class="contact-details">
+                    <span class="contact-label">Địa chỉ</span>
+                    <span class="contact-value">Hồ Chí Minh, Việt Nam</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form class="contact-form">
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Tên của bạn" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Email của bạn" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Chủ đề" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-input form-textarea" placeholder="Tin nhắn của bạn" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Gửi tin nhắn</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-text">
+              <p>&copy; 2024 Portfolio. Thiết kế với ❤️ bởi Creative Developer</p>
+            </div>
+            <div class="footer-social">
+              <a href="#" class="social-link">GitHub</a>
+              <a href="#" class="social-link">LinkedIn</a>
+              <a href="#" class="social-link">Twitter</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
