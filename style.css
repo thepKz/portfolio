@@ -352,7 +352,7 @@ body {
 
 /* Terminal Window */
 .terminal-window {
-  width: 95%;
+  width: 100%;
   height: 90%;
   top: 5%;
   left: 5%;
