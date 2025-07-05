@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMON CODER - Portfolio Ma Quỷ</title>
+    <title>Alex Chen - Designer & Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Creepster&family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cursor Effect -->
+    <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
     
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
-    
-    <!-- Glitch Overlay -->
-    <div class="glitch-overlay"></div>
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
     
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text glitch" data-text="DEMON CODER">DEMON CODER</span>
+                <span class="logo-text">AC</span>
+                <div class="logo-glow"></div>
             </div>
             <div class="nav-menu">
-                <a href="#home" class="nav-link">HOME</a>
-                <a href="#about" class="nav-link">SOUL</a>
-                <a href="#skills" class="nav-link">POWERS</a>
-                <a href="#projects" class="nav-link">CREATIONS</a>
-                <a href="#contact" class="nav-link">SUMMON</a>
+                <a href="#home" class="nav-link" data-text="Home">Home</a>
+                <a href="#about" class="nav-link" data-text="About">About</a>
+                <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
+                <a href="#lab" class="nav-link" data-text="Lab">Lab</a>
+                <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -43,56 +41,59 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg">
-            <div class="floating-skulls">
-                <div class="skull">💀</div>
-                <div class="skull">👹</div>
-                <div class="skull">🔥</div>
-                <div class="skull">⚡</div>
-                <div class="skull">💀</div>
+            <div class="floating-elements">
+                <div class="float-element">{ }</div>
+                <div class="float-element">&lt;/&gt;</div>
+                <div class="float-element">◆</div>
+                <div class="float-element">▲</div>
+                <div class="float-element">●</div>
             </div>
         </div>
         
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="title-line glitch" data-text="WELCOME TO">WELCOME TO</span>
-                    <span class="title-line main-title glitch" data-text="THE ABYSS">THE ABYSS</span>
-                    <span class="title-line sub-title">OF CODE</span>
-                </h1>
-                
-                <p class="hero-description">
-                    Tôi là một Developer từ địa ngục, chuyên tạo ra những ứng dụng web đen tối và mạnh mẽ
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>ENTER HELL</span>
-                        <div class="btn-glow"></div>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>CONTACT DEMON</span>
-                        <div class="btn-glow"></div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="demon-circle">
-                    <div class="pentagram">
-                        <div class="pentagram-inner"></div>
+                <div class="hero-text">
+                    <div class="hero-greeting">
+                        <span class="greeting-text">Hello, I'm</span>
                     </div>
-                    <div class="runes">
-                        <span class="rune">ᚱ</span>
-                        <span class="rune">ᚢ</span>
-                        <span class="rune">ᚾ</span>
-                        <span class="rune">ᛖ</span>
-                        <span class="rune">ᛋ</span>
+                    <h1 class="hero-title">
+                        <span class="title-name glitch" data-text="Alex Chen">Alex Chen</span>
+                        <span class="title-role typing-text" data-text="I'm a designer & developer">I'm a designer & developer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Crafting digital experiences where creativity meets technology. 
+                        I design beautiful interfaces and bring them to life with code.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View My Work</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Get In Touch</span>
+                            <div class="btn-glow"></div>
+                        </a>
                     </div>
                 </div>
-                <div class="energy-orbs">
-                    <div class="orb orb-1"></div>
-                    <div class="orb orb-2"></div>
-                    <div class="orb orb-3"></div>
+                
+                <div class="hero-visual">
+                    <div class="avatar-container">
+                        <div class="avatar-frame">
+                            <div class="avatar-image">
+                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Alex Chen">
+                            </div>
+                            <div class="avatar-glow"></div>
+                            <div class="avatar-border"></div>
+                        </div>
+                        <div class="floating-icons">
+                            <div class="icon-orbit">
+                                <span class="tech-icon">⚛️</span>
+                                <span class="tech-icon">🎨</span>
+                                <span class="tech-icon">⚡</span>
+                                <span class="tech-icon">🚀</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,141 +103,65 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title glitch" data-text="MY DARK SOUL">MY DARK SOUL</h2>
+                <h2 class="section-title">About Me</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="about-content">
                 <div class="about-text">
-                    <h3 class="about-subtitle">Demon Developer từ Địa Ngục</h3>
+                    <h3 class="about-subtitle">Designer & Developer</h3>
                     <p class="about-description">
-                        Với sức mạnh từ 7 tầng địa ngục và 666 năm kinh nghiệm trong việc tạo ra những ứng dụng web đen tối, 
-                        tôi chuyên biến những ý tưởng thành hiện thực với code ma quỷ và hiệu ứng siêu nhiên.
+                        I'm a passionate creative technologist with 5+ years of experience in both design and development. 
+                        I believe in the power of combining aesthetic beauty with functional excellence to create 
+                        digital experiences that not only look amazing but also solve real problems.
                     </p>
                     
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">666</span>
-                            <span class="stat-label">Souls Collected</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">∞</span>
-                            <span class="stat-label">Dark Powers</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Evil Success</span>
-                        </div>
+                    <div class="skills-tags">
+                        <div class="skill-tag" data-skill="html">HTML</div>
+                        <div class="skill-tag" data-skill="css">CSS</div>
+                        <div class="skill-tag" data-skill="js">JavaScript</div>
+                        <div class="skill-tag" data-skill="react">React</div>
+                        <div class="skill-tag" data-skill="vue">Vue.js</div>
+                        <div class="skill-tag" data-skill="figma">Figma</div>
+                        <div class="skill-tag" data-skill="sketch">Sketch</div>
+                        <div class="skill-tag" data-skill="ai">Adobe AI</div>
+                        <div class="skill-tag" data-skill="ps">Photoshop</div>
+                        <div class="skill-tag" data-skill="node">Node.js</div>
+                        <div class="skill-tag" data-skill="python">Python</div>
+                        <div class="skill-tag" data-skill="ts">TypeScript</div>
                     </div>
                 </div>
                 
-                <div class="about-visual">
-                    <div class="demon-avatar">
-                        <div class="avatar-glow"></div>
-                        <div class="avatar-image">
-                            <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Demon Coder">
-                            <div class="avatar-overlay"></div>
-                        </div>
-                        <div class="floating-symbols">
-                            <span>⚡</span>
-                            <span>🔥</span>
-                            <span>💀</span>
-                            <span>👹</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title glitch" data-text="DARK POWERS">DARK POWERS</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="category-icon">👹</div>
-                    <h3 class="category-title">Frontend Sorcery</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">React Dark Arts</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95"></div>
-                                <div class="skill-glow"></div>
+                <div class="skills-chart">
+                    <div class="chart-container">
+                        <div class="skill-bar-group">
+                            <div class="skill-bar-item">
+                                <span class="skill-label">Frontend Development</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                                <span class="skill-percent">95%</span>
                             </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Vue.js Necromancy</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                                <div class="skill-glow"></div>
+                            <div class="skill-bar-item">
+                                <span class="skill-label">UI/UX Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                                <span class="skill-percent">90%</span>
                             </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">TypeScript Demons</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88"></div>
-                                <div class="skill-glow"></div>
+                            <div class="skill-bar-item">
+                                <span class="skill-label">Backend Development</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80"></div>
+                                </div>
+                                <span class="skill-percent">80%</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="category-icon">🔥</div>
-                    <h3 class="category-title">Backend Witchcraft</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js Hell</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="92"></div>
-                                <div class="skill-glow"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python Serpent</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                                <div class="skill-glow"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">MongoDB Abyss</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                                <div class="skill-glow"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="category-icon">⚡</div>
-                    <h3 class="category-title">Infernal Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Git Underworld</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95"></div>
-                                <div class="skill-glow"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker Containers</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="78"></div>
-                                <div class="skill-glow"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">AWS Cloud Hell</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="82"></div>
-                                <div class="skill-glow"></div>
+                            <div class="skill-bar-item">
+                                <span class="skill-label">Motion Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                                <span class="skill-percent">75%</span>
                             </div>
                         </div>
                     </div>
@@ -249,79 +174,146 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title glitch" data-text="EVIL CREATIONS">EVIL CREATIONS</h2>
+                <h2 class="section-title">Featured Projects</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card large">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dark E-commerce">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="E-commerce Platform">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">ENTER</a>
-                                <a href="#" class="project-link">CODE</a>
+                            <div class="project-info">
+                                <h3 class="project-title">NeuroCommerce</h3>
+                                <p class="project-desc">AI-powered e-commerce platform with neural design patterns</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Live Demo</a>
+                                    <a href="#" class="project-link">View Code</a>
+                                </div>
                             </div>
                         </div>
                         <div class="project-glow"></div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dark Commerce Portal</h3>
-                        <p class="project-description">
-                            Cổng thương mại điện tử từ địa ngục với React ma quỷ và Node.js đen tối
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React Hell</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">AI/ML</span>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Demon Task Manager">
+                        <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Task Management">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">ENTER</a>
-                                <a href="#" class="project-link">CODE</a>
+                            <div class="project-info">
+                                <h3 class="project-title">CyberTask</h3>
+                                <p class="project-desc">Futuristic task management with holographic UI</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Live Demo</a>
+                                    <a href="#" class="project-link">View Code</a>
+                                </div>
                             </div>
                         </div>
                         <div class="project-glow"></div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Demon Task Manager</h3>
-                        <p class="project-description">
-                            Ứng dụng quản lý công việc với sức mạnh siêu nhiên và real-time ma thuật
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">PWA</span>
-                        </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Firebase</span>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hell Analytics">
+                        <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Data Visualization">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">ENTER</a>
-                                <a href="#" class="project-link">CODE</a>
+                            <div class="project-info">
+                                <h3 class="project-title">DataViz Pro</h3>
+                                <p class="project-desc">Interactive data visualization dashboard</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Live Demo</a>
+                                    <a href="#" class="project-link">View Code</a>
+                                </div>
                             </div>
                         </div>
                         <div class="project-glow"></div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Hell Analytics Dashboard</h3>
-                        <p class="project-description">
-                            Dashboard phân tích dữ liệu với biểu đồ ma quỷ và báo cáo từ địa ngục
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PostgreSQL</span>
+                    <div class="project-tech">
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="project-card wide">
+                    <div class="project-image">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile App Design">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">NeonWallet</h3>
+                                <p class="project-desc">Cryptocurrency wallet with neon-punk aesthetics</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">Live Demo</a>
+                                    <a href="#" class="project-link">View Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Blockchain</span>
+                        <span class="tech-tag">Web3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Section -->
+    <section id="lab" class="lab">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Creative Lab</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Experimental projects and creative explorations</p>
+            </div>
+            
+            <div class="lab-grid">
+                <div class="lab-item">
+                    <div class="lab-canvas" id="particle-canvas">
+                        <canvas></canvas>
+                        <div class="lab-overlay">
+                            <h3>Particle System</h3>
+                            <p>Interactive particle physics simulation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-item">
+                    <div class="lab-canvas" id="wave-canvas">
+                        <canvas></canvas>
+                        <div class="lab-overlay">
+                            <h3>Audio Visualizer</h3>
+                            <p>Real-time audio wave visualization</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-item">
+                    <div class="lab-canvas" id="matrix-canvas">
+                        <canvas></canvas>
+                        <div class="lab-overlay">
+                            <h3>Matrix Rain</h3>
+                            <p>Classic cyberpunk matrix effect</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-item">
+                    <div class="lab-canvas" id="neural-canvas">
+                        <canvas></canvas>
+                        <div class="lab-overlay">
+                            <h3>Neural Network</h3>
+                            <p>Animated neural network visualization</p>
                         </div>
                     </div>
                 </div>
@@ -333,61 +325,81 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title glitch" data-text="SUMMON THE DEMON">SUMMON THE DEMON</h2>
+                <h2 class="section-title">Get In Touch</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3 class="contact-subtitle">Triệu hồi tôi từ địa ngục</h3>
+                    <h3 class="contact-subtitle">Let's create something amazing together</h3>
                     <p class="contact-description">
-                        Sẵn sàng bàn về các dự án đen tối và cơ hội hợp tác ma quỷ. Hãy cẩn thận khi triệu hồi...
+                        I'm always excited to work on new projects and collaborate with creative minds. 
+                        Whether you need design, development, or both - let's make it happen.
                     </p>
                     
                     <div class="contact-items">
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div class="contact-details">
-                                <span class="contact-label">Hell Mail</span>
-                                <span class="contact-value">demon@hellcode.dev</span>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">alex@alexchen.dev</span>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div class="contact-details">
-                                <span class="contact-label">Dark Phone</span>
-                                <span class="contact-value">+666 666 666</span>
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">+1 (555) 123-4567</span>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">🔥</div>
+                            <div class="contact-icon">📍</div>
                             <div class="contact-details">
                                 <span class="contact-label">Location</span>
-                                <span class="contact-value">7th Circle of Hell</span>
+                                <span class="contact-value">San Francisco, CA</span>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" data-platform="linkedin">
+                            <span class="social-icon">💼</span>
+                            <span class="social-text">LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-link" data-platform="github">
+                            <span class="social-icon">🐙</span>
+                            <span class="social-text">GitHub</span>
+                        </a>
+                        <a href="#" class="social-link" data-platform="behance">
+                            <span class="social-icon">🎨</span>
+                            <span class="social-text">Behance</span>
+                        </a>
+                        <a href="#" class="social-link" data-platform="dribbble">
+                            <span class="social-icon">🏀</span>
+                            <span class="social-text">Dribbble</span>
+                        </a>
                     </div>
                 </div>
                 
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Soul Name" required>
+                        <input type="text" class="form-input" placeholder="Your Name" required>
                         <div class="input-glow"></div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Your Dark Email" required>
+                        <input type="email" class="form-input" placeholder="Your Email" required>
                         <div class="input-glow"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Ritual Subject" required>
+                        <input type="text" class="form-input" placeholder="Project Type" required>
                         <div class="input-glow"></div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-input form-textarea" placeholder="Your Dark Message..." rows="5" required></textarea>
+                        <textarea class="form-input form-textarea" placeholder="Tell me about your project..." rows="5" required></textarea>
                         <div class="input-glow"></div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
-                        <span>CAST SPELL</span>
+                        <span>Send Message</span>
                         <div class="btn-glow"></div>
                     </button>
                 </form>
@@ -400,12 +412,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; 2024 Demon Coder. Forged in the fires of Hell 🔥</p>
+                    <p>&copy; 2024 Alex Chen. Designed & Developed with ⚡ in San Francisco</p>
                 </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link">GitHub Hell</a>
-                    <a href="#" class="social-link">LinkedIn Dark</a>
-                    <a href="#" class="social-link">Twitter Abyss</a>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Sitemap</a>
                 </div>
             </div>
         </div>
