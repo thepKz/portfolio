@@ -248,347 +248,259 @@
                 </div>
                 <div class="window-content">
                     <div class="about-content">
-                        <!-- About Terminal Section -->
-                        <div class="about-terminal-section">
-                            <div class="about-terminal">
-                                <div class="terminal-header">
-                                    <div class="terminal-controls">
-                                        <div class="terminal-dot red"></div>
-                                        <div class="terminal-dot yellow"></div>
-                                        <div class="terminal-dot green"></div>
-                                    </div>
-                                    <div class="terminal-title">minthep@creative-dev: ~</div>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">minthep@creative-dev:~$</span>
-                                        <span class="command">cat profile.json</span>
-                                    </div>
-                                    <div class="terminal-output">
-                                        <pre class="profile-json">{
-  "name": "Minthep",
-  "role": "Creative Developer & Designer",
-  "experience": "5+ years",
-  "location": "Remote Worldwide",
-  "passion": "Creating digital experiences that blend creativity with technology",
-  "specialties": [
-    "Frontend Development",
-    "UI/UX Design", 
-    "Creative Coding",
-    "AI Integration"
-  ],
-  "status": "Available for exciting projects"
-}</pre>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">minthep@creative-dev:~$</span>
-                                        <span class="command">ls -la skills/</span>
-                                    </div>
-                                    <div class="terminal-output">
-                                        <div class="skill-list">
-                                            <div class="skill-item">drwxr-xr-x  frontend/     [React, Vue.js, TypeScript, Next.js]</div>
-                                            <div class="skill-item">drwxr-xr-x  design/       [Figma, Adobe Suite, Blender, After Effects]</div>
-                                            <div class="skill-item">drwxr-xr-x  backend/      [Node.js, Python, PostgreSQL, GraphQL]</div>
-                                            <div class="skill-item">drwxr-xr-x  devops/       [Docker, AWS, Kubernetes, CI/CD]</div>
-                                            <div class="skill-item">drwxr-xr-x  creative/     [WebGL, Three.js, GSAP, Canvas API]</div>
+                        <!-- Hero Section -->
+                        <div class="about-hero">
+                            <div class="hero-background">
+                                <canvas id="hero-particles" class="hero-canvas"></canvas>
+                            </div>
+                            <div class="hero-content">
+                                <div class="avatar-section">
+                                    <div class="avatar-container">
+                                        <div class="avatar-frame">
+                                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Minthep">
+                                            <div class="avatar-glow"></div>
+                                        </div>
+                                        <div class="status-indicator">
+                                            <div class="status-dot"></div>
+                                            <span class="status-text">Available for work</span>
                                         </div>
                                     </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">minthep@creative-dev:~$</span>
-                                        <span class="cursor">_</span>
+                                </div>
+                                <div class="hero-info">
+                                    <h1 class="hero-name glitch-text" data-text="MINTHEP">MINTHEP</h1>
+                                    <p class="hero-title">Creative Developer & Digital Artist</p>
+                                    <p class="hero-description">
+                                        Passionate about creating digital experiences that blend creativity with technology. 
+                                        With over 5 years of experience, I specialize in building beautiful, functional interfaces 
+                                        and bringing innovative ideas to life through code.
+                                    </p>
+                                    <div class="hero-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-number">5+</span>
+                                            <span class="stat-label">Years</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">50+</span>
+                                            <span class="stat-label">Projects</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">100%</span>
+                                            <span class="stat-label">Success</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Career Timeline -->
-                        <div class="career-timeline">
-                            <div class="career-header">
-                                <h3 class="career-title">
-                                    <span class="career-icon">🚀</span>
-                                    <span class="career-text">Career Journey</span>
-                                    <span class="career-subtitle">From Code to Innovation</span>
-                                </h3>
-                            </div>
-                            
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="timeline-year">2024</div>
-                                        <div class="timeline-status current">CURRENT</div>
+                        <!-- Skills Matrix -->
+                        <div class="skills-matrix">
+                            <h2 class="section-title">
+                                <span class="title-icon">⚡</span>
+                                <span class="title-text">Skills Matrix</span>
+                            </h2>
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <div class="category-header">
+                                        <h3 class="category-title">Frontend</h3>
+                                        <div class="category-level">Expert</div>
                                     </div>
-                                    <div class="timeline-content">
-                                        <div class="position-header">
-                                            <h4 class="position-title">Senior Creative Developer</h4>
-                                            <div class="company-info">
-                                                <span class="company-name">Tech Innovation Labs</span>
-                                                <span class="duration">2024 - Present</span>
-                                            </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" data-skill="95">
+                                            <div class="progress-fill"></div>
+                                            <span class="progress-text">95%</span>
                                         </div>
-                                        
-                                        <p class="description">Leading cutting-edge web development projects, specializing in AI-powered interfaces and immersive digital experiences. Managing a team of 8 developers and driving innovation in creative technology.</p>
-                                        
-                                        <div class="responsibilities">
-                                            <h5>Key Responsibilities:</h5>
-                                            <ul class="responsibility-list">
-                                                <li>Lead development of AI-powered design tools</li>
-                                                <li>Manage cross-functional team of 8 developers</li>
-                                                <li>Drive innovation in creative technology solutions</li>
-                                                <li>Architect scalable frontend systems</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="tech-highlights">
-                                            <span class="tech-label">Technologies:</span>
-                                            <span class="tech-tag">React 18</span>
-                                            <span class="tech-tag">Next.js 14</span>
-                                            <span class="tech-tag">AI/ML</span>
-                                            <span class="tech-tag">WebGL</span>
-                                            <span class="tech-tag">Three.js</span>
-                                        </div>
-                                        
-                                        <div class="achievement-list">
-                                            <h5>Major Achievements:</h5>
-                                            <div class="achievements-grid">
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">🏆</span>
-                                                    <span class="achievement-text">Led award-winning AI design tool</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">📈</span>
-                                                    <span class="achievement-text">40% productivity increase</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">👥</span>
-                                                    <span class="achievement-text">Mentored 5 developers</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">React</span>
+                                        <span class="skill-tag">Vue.js</span>
+                                        <span class="skill-tag">TypeScript</span>
+                                        <span class="skill-tag">Next.js</span>
+                                        <span class="skill-tag">Tailwind CSS</span>
+                                        <span class="skill-tag">WebGL</span>
                                     </div>
                                 </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="timeline-year">2022</div>
-                                        <div class="timeline-status">2 YEARS</div>
+
+                                <div class="skill-category">
+                                    <div class="category-header">
+                                        <h3 class="category-title">Design</h3>
+                                        <div class="category-level">Advanced</div>
                                     </div>
-                                    <div class="timeline-content">
-                                        <div class="position-header">
-                                            <h4 class="position-title">Full Stack Developer</h4>
-                                            <div class="company-info">
-                                                <span class="company-name">Digital Creative Agency</span>
-                                                <span class="duration">2022 - 2024</span>
-                                            </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" data-skill="90">
+                                            <div class="progress-fill"></div>
+                                            <span class="progress-text">90%</span>
                                         </div>
-                                        
-                                        <p class="description">Developed high-performance web applications for Fortune 500 companies. Specialized in creating interactive experiences and real-time data visualizations.</p>
-                                        
-                                        <div class="responsibilities">
-                                            <h5>Key Responsibilities:</h5>
-                                            <ul class="responsibility-list">
-                                                <li>Build scalable web applications for enterprise clients</li>
-                                                <li>Create interactive data visualization dashboards</li>
-                                                <li>Optimize application performance and user experience</li>
-                                                <li>Collaborate with design and product teams</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="tech-highlights">
-                                            <span class="tech-label">Technologies:</span>
-                                            <span class="tech-tag">Vue.js</span>
-                                            <span class="tech-tag">Node.js</span>
-                                            <span class="tech-tag">PostgreSQL</span>
-                                            <span class="tech-tag">Docker</span>
-                                            <span class="tech-tag">AWS</span>
-                                        </div>
-                                        
-                                        <div class="achievement-list">
-                                            <h5>Major Achievements:</h5>
-                                            <div class="achievements-grid">
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">👥</span>
-                                                    <span class="achievement-text">1M+ users platform</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">⚡</span>
-                                                    <span class="achievement-text">60% faster load times</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">📊</span>
-                                                    <span class="achievement-text">Real-time analytics</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Figma</span>
+                                        <span class="skill-tag">Adobe XD</span>
+                                        <span class="skill-tag">Photoshop</span>
+                                        <span class="skill-tag">Illustrator</span>
+                                        <span class="skill-tag">Blender</span>
+                                        <span class="skill-tag">After Effects</span>
                                     </div>
                                 </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="timeline-year">2020</div>
-                                        <div class="timeline-status">2 YEARS</div>
+
+                                <div class="skill-category">
+                                    <div class="category-header">
+                                        <h3 class="category-title">Backend</h3>
+                                        <div class="category-level">Proficient</div>
                                     </div>
-                                    <div class="timeline-content">
-                                        <div class="position-header">
-                                            <h4 class="position-title">Frontend Developer</h4>
-                                            <div class="company-info">
-                                                <span class="company-name">StartupTech Solutions</span>
-                                                <span class="duration">2020 - 2022</span>
-                                            </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" data-skill="85">
+                                            <div class="progress-fill"></div>
+                                            <span class="progress-text">85%</span>
                                         </div>
-                                        
-                                        <p class="description">Built responsive web applications and mobile-first designs. Collaborated with UX/UI designers to create pixel-perfect implementations.</p>
-                                        
-                                        <div class="responsibilities">
-                                            <h5>Key Responsibilities:</h5>
-                                            <ul class="responsibility-list">
-                                                <li>Develop responsive web applications</li>
-                                                <li>Implement mobile-first design principles</li>
-                                                <li>Collaborate with UX/UI design teams</li>
-                                                <li>Ensure cross-browser compatibility</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="tech-highlights">
-                                            <span class="tech-label">Technologies:</span>
-                                            <span class="tech-tag">JavaScript</span>
-                                            <span class="tech-tag">CSS3</span>
-                                            <span class="tech-tag">Sass</span>
-                                            <span class="tech-tag">Git</span>
-                                            <span class="tech-tag">Webpack</span>
-                                        </div>
-                                        
-                                        <div class="achievement-list">
-                                            <h5>Major Achievements:</h5>
-                                            <div class="achievements-grid">
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">⭐</span>
-                                                    <span class="achievement-text">4.8★ mobile app</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">🧩</span>
-                                                    <span class="achievement-text">Component library</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">♿</span>
-                                                    <span class="achievement-text">WCAG 2.1 AA</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Node.js</span>
+                                        <span class="skill-tag">Python</span>
+                                        <span class="skill-tag">PostgreSQL</span>
+                                        <span class="skill-tag">MongoDB</span>
+                                        <span class="skill-tag">GraphQL</span>
+                                        <span class="skill-tag">AWS</span>
                                     </div>
                                 </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="timeline-year">2019</div>
-                                        <div class="timeline-status">1 YEAR</div>
+
+                                <div class="skill-category">
+                                    <div class="category-header">
+                                        <h3 class="category-title">Creative Tech</h3>
+                                        <div class="category-level">Expert</div>
                                     </div>
-                                    <div class="timeline-content">
-                                        <div class="position-header">
-                                            <h4 class="position-title">Junior Web Developer</h4>
-                                            <div class="company-info">
-                                                <span class="company-name">Creative Web Studio</span>
-                                                <span class="duration">2019 - 2020</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <p class="description">Started my journey in web development, learning modern frameworks and best practices. Built foundational skills while contributing to client projects.</p>
-                                        
-                                        <div class="responsibilities">
-                                            <h5>Key Responsibilities:</h5>
-                                            <ul class="responsibility-list">
-                                                <li>Learn modern web development frameworks</li>
-                                                <li>Contribute to client website projects</li>
-                                                <li>Develop internal tools and utilities</li>
-                                                <li>Follow coding best practices and standards</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="tech-highlights">
-                                            <span class="tech-label">Technologies:</span>
-                                            <span class="tech-tag">HTML5</span>
-                                            <span class="tech-tag">CSS3</span>
-                                            <span class="tech-tag">jQuery</span>
-                                            <span class="tech-tag">PHP</span>
-                                            <span class="tech-tag">MySQL</span>
-                                        </div>
-                                        
-                                        <div class="achievement-list">
-                                            <h5>Major Achievements:</h5>
-                                            <div class="achievements-grid">
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">🌐</span>
-                                                    <span class="achievement-text">20+ client websites</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">📚</span>
-                                                    <span class="achievement-text">5 languages learned</span>
-                                                </div>
-                                                <div class="achievement-item">
-                                                    <span class="achievement-icon">🌟</span>
-                                                    <span class="achievement-text">"Rising Star" award</span>
-                                                </div>
-                                            </div>
+                                    <div class="skill-progress">
+                                        <div class="progress-bar" data-skill="92">
+                                            <div class="progress-fill"></div>
+                                            <span class="progress-text">92%</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="career-summary">
-                                <div class="summary-stats">
-                                    <div class="summary-item">
-                                        <span class="summary-number">5+</span>
-                                        <span class="summary-label">Years Experience</span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="summary-number">4</span>
-                                        <span class="summary-label">Companies</span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="summary-number">50+</span>
-                                        <span class="summary-label">Projects</span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="summary-number">15+</span>
-                                        <span class="summary-label">Technologies</span>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Three.js</span>
+                                        <span class="skill-tag">GSAP</span>
+                                        <span class="skill-tag">Canvas API</span>
+                                        <span class="skill-tag">WebGL</span>
+                                        <span class="skill-tag">Shaders</span>
+                                        <span class="skill-tag">AI/ML</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Stats Section -->
-                        <div class="stats-section">
-                            <h3>📊 Professional Statistics</h3>
-                            <div class="stats-grid">
-                                <div class="stat-card">
-                                    <div class="stat-number">5+</div>
-                                    <div class="stat-label">Years Experience</div>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 100%"></div>
+                        <!-- Experience Timeline -->
+                        <div class="experience-section">
+                            <h2 class="section-title">
+                                <span class="title-icon">🚀</span>
+                                <span class="title-text">Experience Journey</span>
+                            </h2>
+                            <div class="experience-timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <div class="marker-dot"></div>
+                                        <div class="marker-year">2024</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="job-header">
+                                            <h3 class="job-title">Senior Creative Developer</h3>
+                                            <span class="company">Tech Innovation Labs</span>
+                                            <span class="duration">Present</span>
+                                        </div>
+                                        <p class="job-description">
+                                            Leading cutting-edge web development projects, specializing in AI-powered interfaces 
+                                            and immersive digital experiences. Managing a team of 8 developers.
+                                        </p>
+                                        <div class="job-achievements">
+                                            <div class="achievement">🏆 Led award-winning AI design tool</div>
+                                            <div class="achievement">📈 40% productivity increase</div>
+                                            <div class="achievement">👥 Mentored 5 developers</div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div class="stat-card">
-                                    <div class="stat-number">50+</div>
-                                    <div class="stat-label">Projects Completed</div>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 95%"></div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <div class="marker-dot"></div>
+                                        <div class="marker-year">2022</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="job-header">
+                                            <h3 class="job-title">Full Stack Developer</h3>
+                                            <span class="company">Digital Creative Agency</span>
+                                            <span class="duration">2 years</span>
+                                        </div>
+                                        <p class="job-description">
+                                            Developed high-performance web applications for Fortune 500 companies. 
+                                            Specialized in creating interactive experiences and real-time data visualizations.
+                                        </p>
+                                        <div class="job-achievements">
+                                            <div class="achievement">👥 1M+ users platform</div>
+                                            <div class="achievement">⚡ 60% faster load times</div>
+                                            <div class="achievement">📊 Real-time analytics</div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div class="stat-card">
-                                    <div class="stat-number">100%</div>
-                                    <div class="stat-label">Client Satisfaction</div>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 100%"></div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <div class="marker-dot"></div>
+                                        <div class="marker-year">2020</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="job-header">
+                                            <h3 class="job-title">Frontend Developer</h3>
+                                            <span class="company">StartupTech Solutions</span>
+                                            <span class="duration">2 years</span>
+                                        </div>
+                                        <p class="job-description">
+                                            Built responsive web applications and mobile-first designs. 
+                                            Collaborated with UX/UI designers to create pixel-perfect implementations.
+                                        </p>
+                                        <div class="job-achievements">
+                                            <div class="achievement">⭐ 4.8★ mobile app</div>
+                                            <div class="achievement">🧩 Component library</div>
+                                            <div class="achievement">♿ WCAG 2.1 AA</div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div class="stat-card">
-                                    <div class="stat-number">15+</div>
-                                    <div class="stat-label">Technologies Mastered</div>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 90%"></div>
-                                    </div>
+                            </div>
+                        </div>
+
+                        <!-- Philosophy Section -->
+                        <div class="philosophy-section">
+                            <h2 class="section-title">
+                                <span class="title-icon">💭</span>
+                                <span class="title-text">Development Philosophy</span>
+                            </h2>
+                            <div class="philosophy-grid">
+                                <div class="philosophy-card">
+                                    <div class="card-icon">🎨</div>
+                                    <h3 class="card-title">Code as Art</h3>
+                                    <p class="card-description">
+                                        I believe that clean, elegant code is a form of digital art. 
+                                        Every line should serve a purpose and contribute to the overall beauty of the solution.
+                                    </p>
+                                </div>
+                                <div class="philosophy-card">
+                                    <div class="card-icon">👤</div>
+                                    <h3 class="card-title">User-Centric Design</h3>
+                                    <p class="card-description">
+                                        Technology should enhance human experience, not complicate it. 
+                                        I design with empathy and focus on creating intuitive, accessible interfaces.
+                                    </p>
+                                </div>
+                                <div class="philosophy-card">
+                                    <div class="card-icon">📚</div>
+                                    <h3 class="card-title">Continuous Learning</h3>
+                                    <p class="card-description">
+                                        The tech landscape evolves rapidly. I stay ahead by constantly learning 
+                                        new technologies and experimenting with emerging trends.
+                                    </p>
+                                </div>
+                                <div class="philosophy-card">
+                                    <div class="card-icon">⚡</div>
+                                    <h3 class="card-title">Performance First</h3>
+                                    <p class="card-description">
+                                        Beautiful designs mean nothing if they don't perform. 
+                                        I optimize for speed, accessibility, and scalability from day one.
+                                    </p>
                                 </div>
                             </div>
                         </div>
