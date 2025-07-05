@@ -346,7 +346,7 @@ body {
 
 .window-content {
   padding: var(--space-4);
-  height: calc(100% - 40px);
+  height: calc(100% - 20px);
   overflow-y: auto;
 }
 
