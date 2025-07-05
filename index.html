@@ -100,7 +100,7 @@
             </div>
 
             <!-- Terminal Window -->
-            <div class="window terminal-window active" id="terminal-app">
+            <div class="window terminal-window active fullscreen-terminal" id="terminal-app">
                 <div class="window-header">
                     <div class="window-controls">
                         <span class="control close"></span>
@@ -109,11 +109,19 @@
                     </div>
                     <div class="window-title">
                         <span class="title-icon">⚡</span>
-                        <span>Terminal - Minthep@creative-dev</span>
+                        <span>CYBER TERMINAL v2.0 - Minthep@creative-dev</span>
                     </div>
                 </div>
                 <div class="window-content">
                     <div class="terminal">
+                        <div class="terminal-header-info">
+                            <div class="system-info">
+                                <span class="info-item">CPU: 99.9%</span>
+                                <span class="info-item">RAM: 32GB</span>
+                                <span class="info-item">NET: 10Gbps</span>
+                                <span class="info-item">STATUS: <span class="status-online">ONLINE</span></span>
+                            </div>
+                        </div>
                         <div class="terminal-output" id="terminal-output">
                             <div class="terminal-line">
                                 <span class="prompt">minthep@creative-dev:~$</span>
@@ -140,7 +148,7 @@
                             </div>
                             <div class="terminal-line">
                                 <span class="prompt">minthep@creative-dev:~$</span>
-                                <input type="text" class="terminal-input" id="terminal-input" placeholder="Type 'help' for commands..." autocomplete="off">
+                                <input type="text" class="terminal-input" id="terminal-input" placeholder="Type 'help' for commands or 'matrix' for fun..." autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -176,6 +184,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="project-stats">
+                                    <span class="stat-badge">⭐ 4.9/5</span>
+                                    <span class="stat-badge">👥 10K+ Users</span>
+                                    <span class="stat-badge">🚀 Live</span>
+                                </div>
+                                <div class="project-glow"></div>
                             </div>
                         </div>
                         
@@ -193,6 +207,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="project-stats">
+                                    <span class="stat-badge">📊 Real-time</span>
+                                    <span class="stat-badge">⚡ Fast</span>
+                                    <span class="stat-badge">🔥 Popular</span>
+                                </div>
+                                <div class="project-glow"></div>
                             </div>
                         </div>
                         
@@ -210,6 +230,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="project-stats">
+                                    <span class="stat-badge">🔐 Secure</span>
+                                    <span class="stat-badge">💎 Premium</span>
+                                    <span class="stat-badge">🌟 Featured</span>
+                                </div>
+                                <div class="project-glow"></div>
                             </div>
                         </div>
                         
@@ -227,6 +253,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="project-stats">
+                                    <span class="stat-badge">🤖 AI-Powered</span>
+                                    <span class="stat-badge">🧠 Smart</span>
+                                    <span class="stat-badge">🎯 Accurate</span>
+                                </div>
+                                <div class="project-glow"></div>
                             </div>
                         </div>
                     </div>
@@ -248,6 +280,15 @@
                 </div>
                 <div class="window-content">
                     <div class="about-content">
+                        <div class="about-hero">
+                            <div class="hero-background">
+                                <canvas id="hero-particles" class="hero-canvas"></canvas>
+                            </div>
+                            <div class="hero-text">
+                                <h1 class="hero-title glitch-text" data-text="MINTHEP">MINTHEP</h1>
+                                <p class="hero-subtitle">Creative Developer & Digital Artist</p>
+                            </div>
+                        </div>
                         <div class="profile-section">
                             <div class="avatar-container">
                                 <div class="avatar-frame">
@@ -255,6 +296,10 @@
                                     <div class="avatar-glow"></div>
                                 </div>
                                 <div class="status-indicator">
+                                    <div class="status-rings">
+                                        <div class="ring ring-1"></div>
+                                        <div class="ring ring-2"></div>
+                                    </div>
                                     <span class="status-dot"></span>
                                     <span class="status-text">Available for work</span>
                                 </div>
@@ -262,7 +307,7 @@
                             <div class="profile-info">
                                 <h2 class="name glitch" data-text="Minthep">Minthep</h2>
                                 <p class="title">Creative Developer & Designer</p>
-                                <p class="bio">
+                                <p class="bio animated-text">
                                     Passionate about creating digital experiences that blend creativity with technology. 
                                     I specialize in building beautiful, functional interfaces and bringing ideas to life through code.
                                 </p>
@@ -283,12 +328,42 @@
                             </div>
                         </div>
                         
+                        <div class="achievements-section">
+                            <h3>Achievements & Recognition</h3>
+                            <div class="achievements-grid">
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">🏆</div>
+                                    <div class="achievement-text">
+                                        <h4>Best Portfolio 2024</h4>
+                                        <p>Awwwards Site of the Day</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">🚀</div>
+                                    <div class="achievement-text">
+                                        <h4>Innovation Award</h4>
+                                        <p>Creative Developer of the Year</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">💎</div>
+                                    <div class="achievement-text">
+                                        <h4>Premium Quality</h4>
+                                        <p>100% Client Satisfaction</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="skills-section">
                             <h3>Skills & Technologies</h3>
                             <div class="skills-grid">
                                 <div class="skill-category">
                                     <h4>Frontend</h4>
                                     <div class="skill-tags">
+                                        <div class="skill-progress">
+                                            <div class="progress-bar" data-skill="95"></div>
+                                        </div>
                                         <span class="skill-tag">React</span>
                                         <span class="skill-tag">Vue.js</span>
                                         <span class="skill-tag">TypeScript</span>
@@ -299,6 +374,9 @@
                                 <div class="skill-category">
                                     <h4>Design</h4>
                                     <div class="skill-tags">
+                                        <div class="skill-progress">
+                                            <div class="progress-bar" data-skill="90"></div>
+                                        </div>
                                         <span class="skill-tag">Figma</span>
                                         <span class="skill-tag">Adobe XD</span>
                                         <span class="skill-tag">Photoshop</span>
@@ -309,6 +387,9 @@
                                 <div class="skill-category">
                                     <h4>Backend</h4>
                                     <div class="skill-tags">
+                                        <div class="skill-progress">
+                                            <div class="progress-bar" data-skill="85"></div>
+                                        </div>
                                         <span class="skill-tag">Node.js</span>
                                         <span class="skill-tag">Python</span>
                                         <span class="skill-tag">PostgreSQL</span>

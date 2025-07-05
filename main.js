@@ -352,6 +352,7 @@ class BackgroundEffects {
   init() {
     this.setupCanvases();
     this.startEffects();
+    this.initHeroParticles();
   }
   
   setupCanvases() {
@@ -730,6 +731,17 @@ class TerminalController {
   handleCommand(commandLine) {
     if (!commandLine) return;
     
+    // Easter eggs for fun commands
+    if (commandLine.toLowerCase().includes('sudo')) {
+      this.addLine(`<span class="output" style="color: #ff0080;">Nice try! But you're not getting root access that easily 😏</span>`, 'output');
+      return;
+    }
+    
+    if (commandLine.toLowerCase().includes('rm -rf')) {
+      this.addLine(`<span class="output" style="color: #ff0080;">⚠️ DANGER: That command could delete everything! Blocked for safety.</span>`, 'output');
+      return;
+    }
+    
     // Add to history
     this.commandHistory.push(commandLine);
     this.historyIndex = -1;
@@ -758,7 +770,7 @@ class TerminalController {
   matrixMode() {
     this.addLine(`
       <span class="output" style="color: #00ff41;">
-        <pre>
+        <pre style="font-size: 0.8rem; line-height: 1.2;">
 ╔══════════════════════════════════════╗
 ║           MATRIX MODE ACTIVATED      ║
 ║                                      ║
@@ -769,6 +781,8 @@ class TerminalController {
 ║  Reality is an illusion.             ║
 ║  Code is the only truth.             ║
 ╚══════════════════════════════════════╝
+
+<span style="color: #00ffff;">Entering the Matrix... Reality.exe has stopped working.</span>
         </pre>
       }
     `, 'output');
@@ -777,12 +791,14 @@ class TerminalController {
   hackMode() {
     this.addLine(`
       <span class="output" style="color: #ff0080;">
-        <pre>
+        <pre style="font-size: 0.8rem; line-height: 1.2;">
 [HACKING MODE INITIATED]
 > Scanning network...
+> Found 42 vulnerable systems
 > Found 127.0.0.1
 > Attempting to breach firewall...
-> Access granted!
+> Firewall bypassed successfully
+> Root access granted!
 > Welcome to the mainframe, hacker.
         </pre>
       </span>
@@ -792,12 +808,15 @@ class TerminalController {
   systemStatus() {
     this.addLine(`
       <span class="output">
-        <span style="color: #00ffff;">System Status:</span><br>
-        CPU: 99.9% (Overclocked)<br>
-        RAM: 32GB DDR5 (Quantum Enhanced)<br>
-        GPU: RTX 4090 (Neural Accelerated)<br>
-        Network: 10Gbps (Encrypted)<br>
-        Security: MAXIMUM (Unhackable)<br>
+        <span style="color: #00ffff;">🖥️ CYBER SYSTEM STATUS 🖥️</span><br><br>
+        <span style="color: #00ff41;">CPU:</span> 99.9% (Quantum Overclocked)<br>
+        <span style="color: #00ff41;">RAM:</span> 32GB DDR5 (Neural Enhanced)<br>
+        <span style="color: #00ff41;">GPU:</span> RTX 4090 (AI Accelerated)<br>
+        <span style="color: #00ff41;">SSD:</span> 2TB NVMe (Encrypted)<br>
+        <span style="color: #00ff41;">Network:</span> 10Gbps (Quantum Tunnel)<br>
+        <span style="color: #00ff41;">Security:</span> MAXIMUM (Unhackable)<br>
+        <span style="color: #00ff41;">Firewall:</span> ACTIVE (Military Grade)<br><br>
+        <span style="color: #ff0080;">⚡ SYSTEM PERFORMANCE: LEGENDARY ⚡</span><br>
         <span style="color: #00ff41;">Status: ONLINE AND READY</span>
       </span>
     `, 'output');
@@ -845,7 +864,7 @@ class TerminalController {
       <span class="command">help</span> - Show this help message<br>
       <span class="command">about</span> - About Minthep<br>
       <span class="command">projects</span> - List projects<br>
-      <span class="command">skills</span> - Show skills<br>
+      <span class="command">skills</span> - Display skill matrix<br>
       <span class="command">contact</span> - Contact information<br>
       <span class="command">clear</span> - Clear terminal<br>
       <span class="command">neofetch</span> - System information<br>
@@ -858,7 +877,8 @@ class TerminalController {
   showAbout() {
     this.addLine(`
       <span class="output">
-        Name: Minthep<br>
+        <span style="color: #00ffff;">👨‍💻 DEVELOPER PROFILE 👨‍💻</span><br><br>
+        <span style="color: #00ff41;">Name:</span> Minthep<br>
         Role: Creative Developer & Designer<br>
         Experience: 5+ years<br>
         Location: Available Worldwide<br>
@@ -870,10 +890,12 @@ class TerminalController {
   showProjects() {
     this.addLine(`
       <span class="output">
-        📁 NeuroCommerce - AI-powered e-commerce platform<br>
-        📁 CyberDash - Real-time analytics dashboard<br>
-        📁 NeonWallet - Cryptocurrency mobile wallet<br>
-        📁 MindForge AI - Creative AI assistant platform
+        <span style="color: #00ffff;">🚀 PROJECT PORTFOLIO 🚀</span><br><br>
+        <span style="color: #ff0080;">📁 NeuroCommerce</span> - AI-powered e-commerce platform<br>
+        <span style="color: #8000ff;">📁 CyberDash</span> - Real-time analytics dashboard<br>
+        <span style="color: #00ff41;">📁 NeonWallet</span> - Cryptocurrency mobile wallet<br>
+        <span style="color: #ff8000;">📁 MindForge AI</span> - Creative AI assistant platform<br><br>
+        <span style="color: #00ffff;">Total Projects: 50+ | Success Rate: 100%</span>
       </span>
     `, 'output');
   }
@@ -881,10 +903,13 @@ class TerminalController {
   showSkills() {
     this.addLine(`
       <span class="output">
-        Frontend: React, Vue.js, TypeScript, Next.js<br>
-        Design: Figma, Adobe Creative Suite, Blender<br>
-        Backend: Node.js, Python, PostgreSQL<br>
-        Tools: Git, Docker, AWS, Vercel
+        <span style="color: #00ffff;">⚡ SKILL MATRIX ⚡</span><br><br>
+        <span style="color: #00ff41;">Frontend [95%]:</span> React, Vue.js, TypeScript, Next.js<br>
+        <span style="color: #ff0080;">Design [90%]:</span> Figma, Adobe Creative Suite, Blender<br>
+        <span style="color: #8000ff;">Backend [85%]:</span> Node.js, Python, PostgreSQL<br>
+        <span style="color: #ff8000;">DevOps [80%]:</span> Docker, AWS, Kubernetes<br>
+        <span style="color: #00ffff;">Tools [95%]:</span> Git, Docker, AWS, Vercel<br><br>
+        <span style="color: #00ff41;">🏆 EXPERTISE LEVEL: LEGENDARY 🏆</span>
       </span>
     `, 'output');
   }
@@ -892,9 +917,11 @@ class TerminalController {
   showContact() {
     this.addLine(`
       <span class="output">
-        📧 Email: minthep@creative-dev.com<br>
-        🐙 GitHub: github.com/minthep<br>
-        💼 LinkedIn: linkedin.com/in/minthep<br>
+        <span style="color: #00ffff;">📞 CONTACT INFORMATION 📞</span><br><br>
+        <span style="color: #00ff41;">📧 Email:</span> minthep@creative-dev.com<br>
+        <span style="color: #ff0080;">🐙 GitHub:</span> github.com/minthep<br>
+        <span style="color: #8000ff;">💼 LinkedIn:</span> linkedin.com/in/minthep<br>
+        <span style="color: #ff8000;">🌐 Website:</span> minthep.dev<br><br>
         🎨 Portfolio: minthep.dev
       </span>
     `, 'output');
@@ -912,7 +939,8 @@ class TerminalController {
   listFiles() {
     this.addLine(`
       <span class="output">
-        drwxr-xr-x  projects/<br>
+        <span style="color: #00ffff;">📂 DIRECTORY LISTING 📂</span><br><br>
+        <span style="color: #00ff41;">drwxr-xr-x</span>  projects/<br>
         drwxr-xr-x  skills/<br>
         -rw-r--r--  about.txt<br>
         -rw-r--r--  contact.json<br>
@@ -937,6 +965,9 @@ class TerminalController {
 }</pre>
         `, 'output');
         break;
+      case 'resume.pdf':
+        this.addLine(`<span class="output" style="color: #00ff41;">📄 Opening resume.pdf... Download started!</span>`, 'output');
+        break;
       default:
         this.addLine(`<span class="output">cat: ${filename}: No such file or directory</span>`, 'output');
     }
@@ -953,12 +984,39 @@ class TerminalController {
         <span style="color: #00ffff;">█   ▀     ▀  ▀     ▀  ▀     ▀█</span><span style="color: #8000ff;">Packages:</span> React, Vue, Node.js<br>
         <span style="color: #00ffff;">▀▄                          ▄▀</span><span style="color: #8000ff;">Shell:</span> Creative Terminal<br>
         <span style="color: #00ffff;">  ▀▄                      ▄▀</span>  <span style="color: #8000ff;">Theme:</span> Cyberpunk Neon<br>
-        <span style="color: #00ffff;">    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀</span>
+        <span style="color: #00ffff;">    ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀</span>    <span style="color: #8000ff;">Memory:</span> 32GB DDR5<br>
+                                        <span style="color: #8000ff;">GPU:</span> RTX 4090<br>
+                                        <span style="color: #8000ff;">Status:</span> <span style="color: #00ff41;">LEGENDARY</span>
       </span>
     `, 'output');
   }
   
 }
+
+// Initialize skill progress bars
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBars = document.querySelectorAll('.progress-bar');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressBar = entry.target;
+        const skill = progressBar.getAttribute('data-skill');
+        progressBar.style.setProperty('--progress-width', `${skill}%`);
+        progressBar.style.animationPlayState = 'running';
+      }
+    });
+  });
+  
+  progressBars.forEach(bar => {
+    observer.observe(bar);
+  });
+  
+  // Add mobile touch support
+  if ('ontouchstart' in window) {
+    document.body.classList.add('touch-device');
+  }
+});
 
 // Form Controller
 class FormController {
@@ -1243,6 +1301,96 @@ class LabEffects {
       }
       
       time++;
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+  }
+  
+  initHeroParticles() {
+    const canvas = document.getElementById('hero-particles');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    
+    // Set canvas size
+    const resizeCanvas = () => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    class HeroParticle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+        this.hue = Math.random() * 60 + 180; // Cyan to blue range
+        this.opacity = Math.random() * 0.5 + 0.3;
+      }
+      
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.fill();
+        
+        // Glow effect
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    // Create particles
+    for (let i = 0; i < 30; i++) {
+      particles.push(new HeroParticle());
+    }
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      
+      // Draw connections
+      ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+      ctx.lineWidth = 1;
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 80) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      
       requestAnimationFrame(animate);
     };
     

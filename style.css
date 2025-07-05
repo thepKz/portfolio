@@ -352,10 +352,19 @@ body {
 
 /* Terminal Window */
 .terminal-window {
-  width: 600px;
-  height: 400px;
-  top: 50px;
-  left: 50px;
+  width: 90%;
+  height: 85%;
+  top: 5%;
+  left: 5%;
+  max-width: 1200px;
+  max-height: 800px;
+}
+
+.fullscreen-terminal {
+  width: 95% !important;
+  height: 90% !important;
+  top: 2.5% !important;
+  left: 2.5% !important;
 }
 
 .terminal {
@@ -1162,6 +1171,30 @@ body.light-theme .terminal {
     0 0 30px rgba(0, 0, 0, 0.5);
 }
 
+.terminal-header-info {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.system-info {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.info-item {
+  color: var(--color-neon-cyan);
+}
+
+.status-online {
+  color: var(--color-neon-green);
+  animation: pulse-text 2s infinite;
+}
+
 .terminal::before {
   content: '';
   position: absolute;
@@ -1268,6 +1301,249 @@ body.light-theme .terminal {
   box-shadow: 0 0 15px var(--color-neon-pink);
 }
 
+/* Enhanced Project Cards */
+.project-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--os-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: var(--transition-normal);
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.project-stats {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  z-index: 2;
+}
+
+.stat-badge {
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-neon-cyan);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.project-glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--color-neon-cyan), var(--color-neon-pink), var(--color-neon-purple));
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  z-index: -1;
+  filter: blur(10px);
+  transition: var(--transition-normal);
+}
+
+.project-card:hover .project-glow {
+  opacity: 0.3;
+  animation: rotate-glow 3s linear infinite;
+}
+
+/* About Page Enhancements */
+.about-hero {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: var(--space-2);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--os-text-secondary);
+  font-weight: 300;
+}
+
+.glitch-text {
+  position: relative;
+  animation: glitch-title 2s infinite;
+}
+
+.status-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid var(--color-neon-green);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.ring-1 {
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  animation: ring-pulse 2s ease-in-out infinite;
+}
+
+.ring-2 {
+  width: 60px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  animation: ring-pulse 2s ease-in-out infinite 0.5s;
+}
+
+.animated-text {
+  animation: text-glow 3s ease-in-out infinite alternate;
+}
+
+.achievements-section {
+  margin: var(--space-6) 0;
+}
+
+.achievements-section h3 {
+  color: var(--os-text);
+  margin-bottom: var(--space-4);
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-3);
+}
+
+.achievement-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--os-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: var(--transition-slow);
+}
+
+.achievement-card:hover::before {
+  left: 100%;
+}
+
+.achievement-card:hover {
+  border-color: var(--color-neon-cyan);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.achievement-text h4 {
+  color: var(--color-neon-cyan);
+  margin-bottom: var(--space-1);
+  font-size: 1.1rem;
+}
+
+.achievement-text p {
+  color: var(--os-text-secondary);
+  font-size: 0.9rem;
+}
+
+.skill-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-2);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  width: 0;
+  animation: progress-fill 2s ease-out forwards;
+  box-shadow: 0 0 10px var(--color-neon-cyan);
+}
+
 /* Enhanced Time Display */
 .time {
   font-family: var(--font-mono);
@@ -1278,6 +1554,139 @@ body.light-theme .terminal {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .os-interface {
+    flex-direction: column-reverse;
+  }
+  
+  .taskbar {
+    order: 2;
+    height: 60px;
+    padding: 0 var(--space-2);
+  }
+  
+  .desktop {
+    order: 1;
+    flex: 1;
+    padding: var(--space-2);
+  }
+  
+  .window {
+    width: 100% !important;
+    height: calc(100vh - 80px) !important;
+    top: 0 !important;
+    left: 0 !important;
+    border-radius: 0;
+  }
+  
+  .terminal-window {
+    width: 100% !important;
+    height: calc(100vh - 80px) !important;
+  }
+  
+  .terminal {
+    height: calc(100vh - 140px);
+    font-size: 0.85rem;
+  }
+  
+  .terminal-header-info {
+    padding: var(--space-1);
+  }
+  
+  .system-info {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: 0.7rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .profile-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-3);
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .lab-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: center;
+  }
+  
+  .running-apps {
+    display: none;
+  }
+  
+  .app-name {
+    display: none;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    font-size: 0.75rem;
+    padding: var(--space-2);
+  }
+  
+  .terminal-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  
+  .prompt {
+    font-size: 0.7rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .about-hero {
+    height: 150px;
+  }
 }
 
 /* Enhanced Animations */
@@ -1320,3 +1729,64 @@ body.light-theme .terminal {
     text-shadow: none;
   }
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glitch-title {
+  0%, 90%, 100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes ring-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+@keyframes text-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+  }
+}
+
+@keyframes progress-fill {
+  to {
+    width: var(--progress-width, 85%);
+  }
