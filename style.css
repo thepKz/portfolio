@@ -2690,17 +2690,19 @@ body.light-theme .terminal {
 /* Enhanced Terminal Styles */
 .terminal {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: var(--radius-lg);
-  padding: var(--space-4);
+  padding: var(--space-3);
   font-family: var(--font-mono);
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   position: relative;
   box-shadow: 
     inset 0 0 50px rgba(0, 255, 255, 0.05),
     0 0 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .terminal-header-info {
@@ -2743,10 +2745,15 @@ body.light-theme .terminal {
 }
 
 .terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: var(--space-1);
+  margin-bottom: var(--space-2);
+  max-height: calc(100% - 120px);
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  margin-bottom: var(--space-3);
 }
 
 .terminal-line {
@@ -2756,6 +2763,19 @@ body.light-theme .terminal {
   margin-bottom: var(--space-1);
   font-size: 0.9rem;
   line-height: 1.4;
+  flex-shrink: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.terminal-line.input-line {
+  position: sticky;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  padding: var(--space-2) 0;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .prompt {
@@ -2763,6 +2783,7 @@ body.light-theme .terminal {
   font-weight: 700;
   text-shadow: 0 0 10px var(--color-neon-green);
   animation: pulse-text 3s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 .command {
@@ -2773,8 +2794,12 @@ body.light-theme .terminal {
 
 .output {
   color: var(--os-text-secondary);
-  margin-left: var(--space-6);
+  margin-left: var(--space-4);
   font-weight: 400;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
 }
 
 .json-output {
@@ -2798,6 +2823,8 @@ body.light-theme .terminal {
   flex: 1;
   caret-color: var(--color-neon-cyan);
   text-shadow: 0 0 5px var(--color-neon-cyan);
+  min-width: 0;
+  width: 100%;
   width: 100%;
   min-width: 0;
 }
