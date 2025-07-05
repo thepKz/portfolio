@@ -924,14 +924,15 @@ class TerminalController {
     this.commandHistory.push(commandLine);
     this.historyIndex = -1;
     
-    // Show command in output
-    this.addLine(`
-      <span class="prompt">minthep@creative-dev:~$</span>
-      <span class="command">${commandLine}</span>
-    `);
-    
-    // Clear input
-    this.input.value = '';
+    // Transform current input line into a static command line
+    const currentInputLine = this.input.closest('.input-line');
+    if (currentInputLine) {
+      currentInputLine.classList.remove('input-line');
+      currentInputLine.innerHTML = `
+        <span class="prompt">minthep@creative-dev:~$</span>
+        <span class="command">${commandLine}</span>
+      `;
+    }
     
     // Parse command and arguments
     const parts = commandLine.split(' ');
@@ -944,6 +945,9 @@ class TerminalController {
     } else {
       this.addLine(`<span class="output">Command not found: ${command}. Type 'help' for available commands.</span>`, 'output');
     }
+
+    // Create a new prompt for the next command
+    this.addInputLine();
   }
   
   matrixMode() {
@@ -1132,15 +1136,16 @@ class TerminalController {
   
   listFiles() {
     this.addLine(`
-      <span class="output">
-        <span style="color: #00ffff;">📂 DIRECTORY LISTING 📂</span><br><br>
-        <span style="color: #00ff41;">drwxr-xr-x</span>  projects/<br>
-        drwxr-xr-x  skills/<br>
-        -rw-r--r--  about.txt<br>
-        -rw-r--r--  contact.json<br>
-        -rw-r--r--  resume.pdf
-      </span>
-    `, 'output');
+      <pre class="output" style="white-space: pre;">
+📂 DIRECTORY LISTING 📂
+
+drwxr-xr-x  projects/
+drwxr-xr-x  skills/
+-rw-r--r--  about.txt
+-rw-r--r--  contact.json
+-rw-r--r--  resume.pdf
+      </pre>
+    `);
   }
   
   catFile(args) {
