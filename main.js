@@ -352,7 +352,6 @@ class BackgroundEffects {
   init() {
     this.setupCanvases();
     this.startEffects();
-    this.initHeroParticles();
   }
   
   setupCanvases() {
@@ -378,6 +377,7 @@ class BackgroundEffects {
     this.matrixRain();
     this.neuralNetwork();
     this.audioVisualizer();
+    this.initContactMatrix();
   }
   
   particleSystem() {
@@ -639,12 +639,13 @@ class BackgroundEffects {
     animate();
   }
   
-  initHeroParticles() {
-    const canvas = document.getElementById('hero-particles');
+  initContactMatrix() {
+    const canvas = document.getElementById('contact-matrix');
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
-    const particles = [];
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const fontSize = 12;
     
     // Set canvas size
     const resizeCanvas = () => {
@@ -656,74 +657,32 @@ class BackgroundEffects {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    class HeroParticle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 1;
-        this.hue = Math.random() * 60 + 180; // Cyan to blue range
-        this.opacity = Math.random() * 0.5 + 0.3;
-      }
-      
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.opacity;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
-        ctx.fill();
-        
-        // Glow effect
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = `hsl(${this.hue}, 100%, 50%)`;
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-    
-    // Create particles
-    for (let i = 0; i < 30; i++) {
-      particles.push(new HeroParticle());
-    }
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
     
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
+      ctx.fillStyle = '#00ff41';
+      ctx.font = `${fontSize}px monospace`;
       
-      // Draw connections
-      ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
-      ctx.lineWidth = 1;
-      
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 80) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        
+        ctx.fillText(text, x, y);
+        
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
         }
+        drops[i]++;
       }
       
-      requestAnimationFrame(animate);
+      setTimeout(() => {
+        requestAnimationFrame(animate);
+      }, 100);
     };
     
     animate();
@@ -1080,33 +1039,7 @@ class TerminalController {
       </span>
     `, 'output');
   }
-  
 }
-
-// Initialize skill progress bars
-document.addEventListener('DOMContentLoaded', () => {
-  const progressBars = document.querySelectorAll('.progress-bar');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const progressBar = entry.target;
-        const skill = progressBar.getAttribute('data-skill');
-        progressBar.style.setProperty('--progress-width', `${skill}%`);
-        progressBar.style.animationPlayState = 'running';
-      }
-    });
-  });
-  
-  progressBars.forEach(bar => {
-    observer.observe(bar);
-  });
-  
-  // Add mobile touch support
-  if ('ontouchstart' in window) {
-    document.body.classList.add('touch-device');
-  }
-});
 
 // Form Controller
 class FormController {
@@ -1169,241 +1102,11 @@ class FormController {
   }
 }
 
-// Lab Effects Controller
-class LabEffects {
-  constructor() {
-    this.canvases = {
-      particles: document.getElementById('lab-particles'),
-      shader: document.getElementById('lab-shader'),
-      '3d': document.getElementById('lab-3d'),
-      audio: document.getElementById('lab-audio')
-    };
-    
-    this.init();
-  }
-  
-  init() {
-    this.setupCanvases();
-    this.startLabEffects();
-  }
-  
-  setupCanvases() {
-    Object.values(this.canvases).forEach(canvas => {
-      if (canvas) {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-      }
-    });
-  }
-  
-  startLabEffects() {
-    this.labParticles();
-    this.labShader();
-    this.lab3D();
-    this.labAudio();
-  }
-  
-  labParticles() {
-    const canvas = this.canvases.particles;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    const particles = [];
-    
-    class LabParticle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 2;
-        this.vy = (Math.random() - 0.5) * 2;
-        this.size = Math.random() * 3 + 1;
-        this.hue = Math.random() * 360;
-        this.life = 1;
-        this.decay = Math.random() * 0.02 + 0.005;
-      }
-      
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life -= this.decay;
-        this.hue += 1;
-        
-        if (this.life <= 0) {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.life = 1;
-        }
-      }
-      
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.life;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-    
-    for (let i = 0; i < 50; i++) {
-      particles.push(new LabParticle());
-    }
-    
-    const animate = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
-      
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-  }
-  
-  labShader() {
-    const canvas = this.canvases.shader;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let time = 0;
-    
-    const animate = () => {
-      const imageData = ctx.createImageData(canvas.width, canvas.height);
-      const data = imageData.data;
-      
-      for (let x = 0; x < canvas.width; x++) {
-        for (let y = 0; y < canvas.height; y++) {
-          const index = (y * canvas.width + x) * 4;
-          
-          const u = x / canvas.width;
-          const v = y / canvas.height;
-          
-          const r = Math.sin(u * 10 + time * 0.01) * 127 + 128;
-          const g = Math.sin(v * 10 + time * 0.02) * 127 + 128;
-          const b = Math.sin((u + v) * 5 + time * 0.03) * 127 + 128;
-          
-          data[index] = r;
-          data[index + 1] = g;
-          data[index + 2] = b;
-          data[index + 3] = 255;
-        }
-      }
-      
-      ctx.putImageData(imageData, 0, 0);
-      time++;
-      
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-  }
-  
-  lab3D() {
-    const canvas = this.canvases['3d'];
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let rotation = 0;
-    
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radius = 50;
-      
-      // Draw rotating cube wireframe
-      const points = [
-        [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-        [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]
-      ];
-      
-      const rotatedPoints = points.map(point => {
-        const [x, y, z] = point;
-        const rotX = x * Math.cos(rotation) - z * Math.sin(rotation);
-        const rotZ = x * Math.sin(rotation) + z * Math.cos(rotation);
-        const rotY = y * Math.cos(rotation * 0.7) - rotZ * Math.sin(rotation * 0.7);
-        const finalZ = y * Math.sin(rotation * 0.7) + rotZ * Math.cos(rotation * 0.7);
-        
-        const scale = 200 / (finalZ + 5);
-        return [
-          centerX + rotX * scale,
-          centerY + rotY * scale
-        ];
-      });
-      
-      // Draw edges
-      const edges = [
-        [0, 1], [1, 2], [2, 3], [3, 0],
-        [4, 5], [5, 6], [6, 7], [7, 4],
-        [0, 4], [1, 5], [2, 6], [3, 7]
-      ];
-      
-      ctx.strokeStyle = '#00ffff';
-      ctx.lineWidth = 2;
-      
-      edges.forEach(edge => {
-        const [start, end] = edge;
-        ctx.beginPath();
-        ctx.moveTo(rotatedPoints[start][0], rotatedPoints[start][1]);
-        ctx.lineTo(rotatedPoints[end][0], rotatedPoints[end][1]);
-        ctx.stroke();
-      });
-      
-      rotation += 0.02;
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-  }
-  
-  labAudio() {
-    const canvas = this.canvases.audio;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let time = 0;
-    
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const centerY = canvas.height / 2;
-      const bars = 32;
-      const barWidth = canvas.width / bars;
-      
-      for (let i = 0; i < bars; i++) {
-        const height = Math.sin(time * 0.1 + i * 0.5) * 50 + 60;
-        const x = i * barWidth;
-        
-        const gradient = ctx.createLinearGradient(0, centerY - height, 0, centerY + height);
-        gradient.addColorStop(0, '#ff0080');
-        gradient.addColorStop(0.5, '#8000ff');
-        gradient.addColorStop(1, '#00ffff');
-        
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, centerY - height / 2, barWidth - 2, height);
-      }
-      
-      time++;
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-  }
-}
-
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new OSInterface();
   new TerminalController();
   new FormController();
-  new LabEffects();
   
   // Console easter egg
   console.log(`
