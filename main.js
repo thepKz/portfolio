@@ -1256,6 +1256,13 @@ class FormController {
   }
 }
 
+// Stagewise Toolbar integration (only in development)
+import { initToolbar } from '@stagewise/toolbar';
+
+if (import.meta.env.MODE === 'development') {
+  initToolbar({ plugins: [] });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new OSInterface();
