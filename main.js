@@ -1,6 +1,6 @@
 // ============================================================
-// DIGITAL COSMOS — Min Thep Portfolio
-// Three.js Particle Universe · GSAP Animations · Interactions
+// DIGITAL ART GALLERY IN SPACE — Min Thep Portfolio
+// Full-Page Three.js Flow Field · GSAP Animations · Interactions
 // ============================================================
 
 import * as THREE from 'three';
@@ -10,15 +10,11 @@ const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ============================================================
-// 1. THREE.JS PARTICLE UNIVERSE
+// 1. FULL-PAGE PERLIN NOISE FLOW FIELD PARTICLES
 // ============================================================
-(function initParticleUniverse() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 8;
+(function initFlowField() {
+  const canvas = document.getElementById('bgCanvas');
+  if (!canvas || prefersReducedMotion) return;
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -27,77 +23,138 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     powerPreference: 'high-performance'
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-  // Particle count adaptive
-  const PARTICLE_COUNT = isMobile ? 600 : 1500;
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(
+    -window.innerWidth / 2, window.innerWidth / 2,
+    window.innerHeight / 2, -window.innerHeight / 2,
+    0.1, 100
+  );
+  camera.position.z = 10;
+
+  // --- Simplex-inspired noise (fast 2D/3D) ---
+  // Permutation table
+  const perm = new Uint8Array(512);
+  const grad3 = [
+    [1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0],
+    [1,0,1],[-1,0,1],[1,0,-1],[-1,0,-1],
+    [0,1,1],[0,-1,1],[0,1,-1],[0,-1,-1]
+  ];
+  (function initPerm() {
+    const p = [];
+    for (let i = 0; i < 256; i++) p[i] = i;
+    for (let i = 255; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [p[i], p[j]] = [p[j], p[i]];
+    }
+    for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
+  })();
+
+  function noise3D(x, y, z) {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    const Z = Math.floor(z) & 255;
+    x -= Math.floor(x);
+    y -= Math.floor(y);
+    z -= Math.floor(z);
+    const u = fade(x);
+    const v = fade(y);
+    const w = fade(z);
+    const A = perm[X] + Y;
+    const AA = perm[A] + Z;
+    const AB = perm[A + 1] + Z;
+    const B = perm[X + 1] + Y;
+    const BA = perm[B] + Z;
+    const BB = perm[B + 1] + Z;
+    return lerp(w,
+      lerp(v,
+        lerp(u, dot3(grad3[perm[AA] % 12], x, y, z), dot3(grad3[perm[BA] % 12], x - 1, y, z)),
+        lerp(u, dot3(grad3[perm[AB] % 12], x, y - 1, z), dot3(grad3[perm[BB] % 12], x - 1, y - 1, z))
+      ),
+      lerp(v,
+        lerp(u, dot3(grad3[perm[AA + 1] % 12], x, y, z - 1), dot3(grad3[perm[BA + 1] % 12], x - 1, y, z - 1)),
+        lerp(u, dot3(grad3[perm[AB + 1] % 12], x, y - 1, z - 1), dot3(grad3[perm[BB + 1] % 12], x - 1, y - 1, z - 1))
+      )
+    );
+  }
+
+  function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+  function lerp(t, a, b) { return a + t * (b - a); }
+  function dot3(g, x, y, z) { return g[0] * x + g[1] * y + g[2] * z; }
+
+  // --- Particle system ---
+  const PARTICLE_COUNT = isMobile ? 800 : 2000;
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+
   const positions = new Float32Array(PARTICLE_COUNT * 3);
-  const colors = new Float32Array(PARTICLE_COUNT * 3);
+  const velocities = new Float32Array(PARTICLE_COUNT * 2); // vx, vy
+  const lifetimes = new Float32Array(PARTICLE_COUNT);
   const sizes = new Float32Array(PARTICLE_COUNT);
-  const originalPositions = new Float32Array(PARTICLE_COUNT * 3);
-  const velocities = new Float32Array(PARTICLE_COUNT * 3);
+  const alphas = new Float32Array(PARTICLE_COUNT);
+  const colors = new Float32Array(PARTICLE_COUNT * 3);
 
-  // Color palette
   const colorPalette = [
-    new THREE.Color(0x4f8ffa), // primary
-    new THREE.Color(0x7bb5ff), // primary-bright
-    new THREE.Color(0xa78bfa), // accent
-    new THREE.Color(0x7dd3fc), // glow
-    new THREE.Color(0x3a6bc7), // dimmer blue
+    new THREE.Color(0x4f8ffa),
+    new THREE.Color(0x7bb5ff),
+    new THREE.Color(0xa78bfa),
+    new THREE.Color(0x7dd3fc),
+    new THREE.Color(0xc4b5fd),
+    new THREE.Color(0xffffff),
   ];
 
-  // Initialize particles in nebula shape — spread wider, keep center clear for text
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
+  function respawn(i) {
     const i3 = i * 3;
-    // Distribution that avoids center: min radius 2.5 so text area stays clear
-    const radius = 2.5 + Math.pow(Math.random(), 0.5) * 6;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = (Math.random() - 0.5) * Math.PI;
-    
-    positions[i3] = radius * Math.cos(theta) * Math.cos(phi);
-    positions[i3 + 1] = radius * Math.sin(phi) * 0.5;
-    positions[i3 + 2] = radius * Math.sin(theta) * Math.cos(phi) * 0.6 - 2;
-    
-    originalPositions[i3] = positions[i3];
-    originalPositions[i3 + 1] = positions[i3 + 1];
-    originalPositions[i3 + 2] = positions[i3 + 2];
+    const i2 = i * 2;
+    // Spawn across full viewport
+    positions[i3]     = (Math.random() - 0.5) * W;
+    positions[i3 + 1] = (Math.random() - 0.5) * H;
+    positions[i3 + 2] = 0;
+    velocities[i2]     = 0;
+    velocities[i2 + 1] = 0;
+    lifetimes[i] = Math.random();
+    sizes[i] = 1.0 + Math.random() * 2.0;
+    alphas[i] = 0;
+    const c = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+    colors[i3]     = c.r;
+    colors[i3 + 1] = c.g;
+    colors[i3 + 2] = c.b;
+  }
 
-    velocities[i3] = 0;
-    velocities[i3 + 1] = 0;
-    velocities[i3 + 2] = 0;
-
-    const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-    colors[i3] = color.r;
-    colors[i3 + 1] = color.g;
-    colors[i3 + 2] = color.b;
-
-    sizes[i] = Math.random() * 1.8 + 0.4;
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    respawn(i);
+    lifetimes[i] = Math.random() * 0.8 + 0.1; // Start at varied lifetimes
   }
 
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
+  geometry.setAttribute('aAlpha', new THREE.BufferAttribute(alphas, 1));
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-  // Custom shader for particles
   const vertexShader = `
-    attribute float size;
+    attribute float aSize;
+    attribute float aAlpha;
     varying vec3 vColor;
+    varying float vAlpha;
     void main() {
       vColor = color;
+      vAlpha = aAlpha;
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-      gl_PointSize = size * (300.0 / -mvPosition.z);
+      gl_PointSize = aSize * 2.0;
       gl_Position = projectionMatrix * mvPosition;
     }
   `;
 
   const fragmentShader = `
     varying vec3 vColor;
+    varying float vAlpha;
     void main() {
       float dist = length(gl_PointCoord - vec2(0.5));
       if (dist > 0.5) discard;
-      float alpha = 1.0 - smoothstep(0.0, 0.5, dist);
-      gl_FragColor = vec4(vColor, alpha * 0.25);
+      float a = 1.0 - smoothstep(0.0, 0.5, dist);
+      gl_FragColor = vec4(vColor, a * vAlpha);
     }
   `;
 
@@ -110,219 +167,130 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     blending: THREE.AdditiveBlending
   });
 
-  const particles = new THREE.Points(geometry, material);
-  scene.add(particles);
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
 
-  // Mouse interaction
-  const mouse = { x: 0, y: 0, worldX: 0, worldY: 0 };
-  let isExploding = false;
-  let explosionTime = 0;
-
+  // Mouse tracking (NDC -> world)
+  const mouse = { x: 99999, y: 99999, active: false };
   document.addEventListener('mousemove', (e) => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    mouse.worldX = mouse.x * 5;
-    mouse.worldY = mouse.y * 3;
+    mouse.x = e.clientX - W / 2;
+    mouse.y = -(e.clientY - H / 2);
+    mouse.active = true;
+  });
+  document.addEventListener('mouseleave', () => {
+    mouse.active = false;
   });
 
-  // Click = BLOOM explosion
-  canvas.addEventListener('click', () => {
-    if (isExploding) return;
-    isExploding = true;
-    explosionTime = 0;
-
-    const posAttr = geometry.attributes.position;
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const i3 = i * 3;
-      const dx = posAttr.array[i3] - mouse.worldX;
-      const dy = posAttr.array[i3 + 1] - mouse.worldY;
-      const dz = posAttr.array[i3 + 2];
-      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) + 0.1;
-      const force = 8 / dist;
-
-      velocities[i3] += (dx / dist) * force * (0.5 + Math.random());
-      velocities[i3 + 1] += (dy / dist) * force * (0.5 + Math.random());
-      velocities[i3 + 2] += (Math.random() - 0.5) * force;
-
-      // Color burst
-      const burstColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-      colors[i3] = burstColor.r;
-      colors[i3 + 1] = burstColor.g;
-      colors[i3 + 2] = burstColor.b;
-    }
-    geometry.attributes.color.needsUpdate = true;
-
-    setTimeout(() => { isExploding = false; }, 2000);
+  // Scroll tracking
+  let scrollProgress = 0;
+  window.addEventListener('scroll', () => {
+    scrollProgress = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
   });
 
-  // Shape targets for constellation morphing
-  const shapes = {
-    star: [],
-    diamond: [],
-    infinity: []
-  };
+  // Noise parameters
+  const NOISE_SCALE = 0.0015;
+  const FLOW_SPEED = 0.6;
+  const MOUSE_RADIUS = 150;
+  const MOUSE_FORCE = 3;
 
-  // Generate star shape — ensure particles stay away from center
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
-    const outerR = 5;
-    const innerR = 3;
-    const r = i % 2 === 0 ? outerR : innerR;
-    const a = angle * 5;
-    shapes.star.push(
-      Math.cos(a) * r * (0.85 + Math.random() * 0.3),
-      Math.sin(a) * r * (0.85 + Math.random() * 0.3),
-      (Math.random() - 0.5) * 0.8 - 3
-    );
-  }
-
-  // Generate diamond/ring shape
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    const t = (i / PARTICLE_COUNT) * Math.PI * 2;
-    const r = 3.5 + Math.random() * 1.5;
-    shapes.diamond.push(
-      Math.cos(t) * r * (0.85 + Math.random() * 0.3),
-      Math.sin(t) * r * (0.85 + Math.random() * 0.3) * 0.6,
-      (Math.random() - 0.5) * 0.6 - 3
-    );
-  }
-
-  // Generate infinity/lemniscate shape — wide spread, pushed behind text
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    const t = (i / PARTICLE_COUNT) * Math.PI * 2;
-    const scale = 5.5;
-    const x = scale * Math.cos(t) / (1 + Math.sin(t) * Math.sin(t));
-    const y = scale * Math.sin(t) * Math.cos(t) / (1 + Math.sin(t) * Math.sin(t));
-    shapes.infinity.push(
-      x * (0.9 + Math.random() * 0.2),
-      y * (0.9 + Math.random() * 0.2),
-      (Math.random() - 0.5) * 0.5 - 3
-    );
-  }
-
-  const shapeKeys = ['star', 'diamond', 'infinity'];
-  let currentShapeIndex = -1; // -1 = nebula
-  let shapeTransitionProgress = 0;
-  let targetShape = null;
-  let morphStartPositions = null;
-  let lastShapeChange = 0;
-  const SHAPE_INTERVAL = 10000; // 10s between morphs
-
-  function startMorph() {
-    currentShapeIndex = (currentShapeIndex + 1) % shapeKeys.length;
-    targetShape = shapes[shapeKeys[currentShapeIndex]];
-    morphStartPositions = new Float32Array(positions);
-    shapeTransitionProgress = 0;
-    lastShapeChange = Date.now();
-  }
-
-  // Animation loop
   let time = 0;
+  let currentW = W;
+  let currentH = H;
+
   function animate() {
     requestAnimationFrame(animate);
-    time += 0.002;
+    time += 0.003;
 
+    // Scroll affects flow angle
+    const scrollAngle = scrollProgress * Math.PI * 2;
     const posAttr = geometry.attributes.position;
-    const sizeAttr = geometry.attributes.size;
-
-    // Constellation morph timing
-    if (!isExploding && Date.now() - lastShapeChange > SHAPE_INTERVAL) {
-      startMorph();
-    }
+    const alphaAttr = geometry.attributes.aAlpha;
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const i3 = i * 3;
+      const i2 = i * 2;
 
-      if (isExploding) {
-        // Apply explosion velocities
-        posAttr.array[i3] += velocities[i3] * 0.02;
-        posAttr.array[i3 + 1] += velocities[i3 + 1] * 0.02;
-        posAttr.array[i3 + 2] += velocities[i3 + 2] * 0.02;
+      let px = positions[i3];
+      let py = positions[i3 + 1];
 
-        // Damping
-        velocities[i3] *= 0.96;
-        velocities[i3 + 1] *= 0.96;
-        velocities[i3 + 2] *= 0.96;
-      } else {
-        // Return to positions (original or target shape)
-        let targetX, targetY, targetZ;
+      // Perlin noise field
+      const nx = px * NOISE_SCALE;
+      const ny = py * NOISE_SCALE;
+      const nz = time + scrollAngle * 0.1;
+      const angle = noise3D(nx, ny, nz) * Math.PI * 4;
 
-        if (targetShape && shapeTransitionProgress < 1) {
-          shapeTransitionProgress += 0.003;
-          const t = Math.min(shapeTransitionProgress, 1);
-          const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-          
-          targetX = morphStartPositions[i3] + (targetShape[i3] - morphStartPositions[i3]) * eased;
-          targetY = morphStartPositions[i3 + 1] + (targetShape[i3 + 1] - morphStartPositions[i3 + 1]) * eased;
-          targetZ = morphStartPositions[i3 + 2] + (targetShape[i3 + 2] - morphStartPositions[i3 + 2]) * eased;
-        } else if (targetShape && shapeTransitionProgress >= 1) {
-          targetX = targetShape[i3];
-          targetY = targetShape[i3 + 1];
-          targetZ = targetShape[i3 + 2];
-        } else {
-          targetX = originalPositions[i3];
-          targetY = originalPositions[i3 + 1];
-          targetZ = originalPositions[i3 + 2];
-        }
+      // Flow velocity
+      const fx = Math.cos(angle) * FLOW_SPEED;
+      const fy = Math.sin(angle) * FLOW_SPEED;
 
-        // Gentle return + floating motion
-        posAttr.array[i3] += (targetX - posAttr.array[i3]) * 0.02;
-        posAttr.array[i3 + 1] += (targetY - posAttr.array[i3 + 1]) * 0.02;
-        posAttr.array[i3 + 2] += (targetZ - posAttr.array[i3 + 2]) * 0.02;
+      velocities[i2]     = velocities[i2] * 0.92 + fx * 0.08;
+      velocities[i2 + 1] = velocities[i2 + 1] * 0.92 + fy * 0.08;
 
-        // Add floating motion
-        posAttr.array[i3] += Math.sin(time + i * 0.01) * 0.001;
-        posAttr.array[i3 + 1] += Math.cos(time + i * 0.013) * 0.001;
-
-        // Damping velocity
-        velocities[i3] *= 0.95;
-        velocities[i3 + 1] *= 0.95;
-        velocities[i3 + 2] *= 0.95;
-      }
-
-      // Mouse repulsion (subtle)
-      if (!isMobile) {
-        const dx = posAttr.array[i3] - mouse.worldX;
-        const dy = posAttr.array[i3 + 1] - mouse.worldY;
+      // Mouse repulsion
+      if (mouse.active && !isMobile) {
+        const dx = px - mouse.x;
+        const dy = py - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 1.5) {
-          const force = (1.5 - dist) * 0.02;
-          posAttr.array[i3] += dx * force;
-          posAttr.array[i3 + 1] += dy * force;
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * MOUSE_FORCE;
+          velocities[i2]     += (dx / dist) * force;
+          velocities[i2 + 1] += (dy / dist) * force;
         }
       }
 
-      // Pulsing sizes
-      sizeAttr.array[i] = (Math.sin(time * 2 + i * 0.1) * 0.3 + 1.0) * (isMobile ? 1.2 : 1);
+      // Update position
+      px += velocities[i2];
+      py += velocities[i2 + 1];
+
+      // Lifetime
+      lifetimes[i] += 0.002;
+
+      // Fade in and out
+      const life = lifetimes[i];
+      if (life < 0.1) {
+        alphas[i] = life / 0.1 * 0.18;
+      } else if (life > 0.9) {
+        alphas[i] = (1.0 - life) / 0.1 * 0.18;
+      } else {
+        alphas[i] = 0.18;
+      }
+
+      // Respawn if out of bounds or lifetime ended
+      const margin = 100;
+      if (life >= 1.0 ||
+          px < -currentW / 2 - margin || px > currentW / 2 + margin ||
+          py < -currentH / 2 - margin || py > currentH / 2 + margin) {
+        respawn(i);
+      } else {
+        positions[i3] = px;
+        positions[i3 + 1] = py;
+      }
     }
 
     posAttr.needsUpdate = true;
-    sizeAttr.needsUpdate = true;
-
-    // Gentle scene rotation
-    particles.rotation.y = time * 0.3;
-    particles.rotation.x = Math.sin(time * 0.5) * 0.05;
+    alphaAttr.needsUpdate = true;
 
     renderer.render(scene, camera);
   }
 
-  if (!prefersReducedMotion) {
-    animate();
-  } else {
-    renderer.render(scene, camera);
-  }
+  animate();
 
   // Resize
   window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    currentW = window.innerWidth;
+    currentH = window.innerHeight;
+    camera.left = -currentW / 2;
+    camera.right = currentW / 2;
+    camera.top = currentH / 2;
+    camera.bottom = -currentH / 2;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(currentW, currentH);
   });
 })();
 
 
 // ============================================================
-// 2. CUSTOM CURSOR
+// 2. CUSTOM CURSOR (Fixed: starts hidden, shows on first move)
 // ============================================================
 (function initCursor() {
   if (isMobile) return;
@@ -334,19 +302,31 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   let cursorX = 0, cursorY = 0;
   let dotX = 0, dotY = 0;
   let glowX = 0, glowY = 0;
-
   let cursorVisible = false;
+
   document.addEventListener('mousemove', (e) => {
     cursorX = e.clientX;
     cursorY = e.clientY;
     if (!cursorVisible) {
       cursorVisible = true;
-      dot.style.opacity = '1';
-      glow.style.opacity = '1';
+      // Jump to position immediately on first move
+      dotX = cursorX;
+      dotY = cursorY;
+      glowX = cursorX;
+      glowY = cursorY;
+      dot.style.left = dotX + 'px';
+      dot.style.top = dotY + 'px';
+      glow.style.left = glowX + 'px';
+      glow.style.top = glowY + 'px';
+      // Then fade in
+      requestAnimationFrame(() => {
+        dot.style.opacity = '1';
+        glow.style.opacity = '1';
+      });
     }
   });
 
-  // Hover detection for interactive elements
+  // Hover detection
   const interactiveSelectors = 'a, button, .project-card, .social-btn, .hero-btn, .nav-link, .orbit-tag, .card-link, .easter-egg-btn, .contact-email';
   
   document.addEventListener('mouseover', (e) => {
@@ -394,13 +374,11 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     indicator.style.transform = `translateX(${rect.left - pillRect.left - 8}px)`;
   }
 
-  // Set initial indicator
   const firstActive = document.querySelector('.nav-link.active');
   if (firstActive) {
     setTimeout(() => updateIndicator(firstActive), 100);
   }
 
-  // Click handling
   links.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -411,7 +389,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     });
   });
 
-  // Scroll spy
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -431,7 +408,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     if (el) observer.observe(el);
   });
 
-  // Re-calc indicator on resize
   window.addEventListener('resize', () => {
     const active = document.querySelector('.nav-link.active');
     if (active) updateIndicator(active);
@@ -485,28 +461,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 5. GLITCH TEXT EFFECT
-// ============================================================
-(function initGlitchEffect() {
-  const glitchEl = document.querySelector('.glitch-text');
-  if (!glitchEl) return;
-
-  // Trigger on load
-  setTimeout(() => {
-    glitchEl.classList.add('active');
-    setTimeout(() => glitchEl.classList.remove('active'), 400);
-  }, 1200);
-
-  // Periodic glitch
-  setInterval(() => {
-    glitchEl.classList.add('active');
-    setTimeout(() => glitchEl.classList.remove('active'), 400);
-  }, 5000);
-})();
-
-
-// ============================================================
-// 6. STATS COUNTER ANIMATION
+// 5. STATS COUNTER ANIMATION
 // ============================================================
 (function initCounters() {
   const counters = document.querySelectorAll('.stat-number');
@@ -523,7 +478,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
         function update(now) {
           const elapsed = now - start;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease-out cubic
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = Math.floor(eased * target);
           el.textContent = current + suffix;
@@ -545,20 +499,19 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 7. ORBITAL SYSTEM ROTATION
+// 6. ORBITAL SYSTEM ROTATION
 // ============================================================
 (function initOrbitalRotation() {
   if (prefersReducedMotion) return;
 
   const orbits = document.querySelectorAll('.orbit');
   let time = 0;
-  const speeds = [0.08, -0.05, 0.03]; // Different speeds per orbit
+  const speeds = [0.08, -0.05, 0.03];
 
   function rotateOrbits() {
-    time += 0.016; // ~60fps
+    time += 0.016;
     orbits.forEach((orbit, index) => {
       const angle = time * speeds[index] * (180 / Math.PI);
-      // Only rotate the tags, not the ring
       const tags = orbit.querySelectorAll('.orbit-tag');
       tags.forEach(tag => {
         const baseAngle = parseFloat(getComputedStyle(tag).getPropertyValue('--angle'));
@@ -574,7 +527,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 8. PROJECT CARDS — 3D Tilt + Flip
+// 7. PROJECT CARDS — 3D Tilt + Flip
 // ============================================================
 (function initProjectCards() {
   const cards = document.querySelectorAll('.project-card');
@@ -582,16 +535,13 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   cards.forEach(card => {
     const inner = card.querySelector('.card-inner');
 
-    // Flip on click
     card.addEventListener('click', (e) => {
-      // Don't flip if clicking a link
       if (e.target.closest('a')) return;
       card.classList.toggle('flipped');
     });
 
     if (isMobile) return;
 
-    // 3D tilt on hover
     card.addEventListener('mousemove', (e) => {
       if (card.classList.contains('flipped')) return;
       const rect = card.getBoundingClientRect();
@@ -618,7 +568,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 9. MAGNETIC BUTTONS (Contact section)
+// 8. MAGNETIC BUTTONS (Contact section)
 // ============================================================
 (function initMagneticButtons() {
   if (isMobile) return;
@@ -649,7 +599,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 10. EASTER EGGS
+// 9. EASTER EGGS
 // ============================================================
 
 // --- Fireworks (Press K) ---
@@ -658,7 +608,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let active = false;
-  let particles = [];
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -710,7 +659,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }
 
   let fireworks = [];
-  let animFrame;
 
   function animateFireworks() {
     if (!active && fireworks.length === 0) {
@@ -729,7 +677,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     });
     fireworks = fireworks.filter(fw => fw.particles.length > 0);
 
-    animFrame = requestAnimationFrame(animateFireworks);
+    requestAnimationFrame(animateFireworks);
   }
 
   let fireworkInterval;
@@ -740,7 +688,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       active = true;
       canvas.classList.add('active');
       
-      // Launch fireworks for 3 seconds
       fireworkInterval = setInterval(() => {
         fireworks.push(new Firework(
           Math.random() * canvas.width,
@@ -758,7 +705,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   });
 })();
 
-// --- Matrix Rain (Click ⌘ button) ---
+// --- Matrix Rain (Click command button) ---
 (function initMatrixRain() {
   const canvas = document.getElementById('matrixCanvas');
   const btn = document.getElementById('matrixBtn');
@@ -785,8 +732,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }
   initDrops();
 
-  let animFrame;
-
   function drawMatrix() {
     if (!active) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -805,7 +750,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       const x = i * fontSize;
       const y = drops[i] * fontSize;
 
-      // Bright lead character
       if (Math.random() > 0.5) {
         ctx.fillStyle = '#7bb5ff';
       } else {
@@ -820,7 +764,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       drops[i]++;
     }
 
-    animFrame = requestAnimationFrame(drawMatrix);
+    requestAnimationFrame(drawMatrix);
   }
 
   btn.addEventListener('click', () => {
@@ -838,7 +782,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 
 // ============================================================
-// 11. SMOOTH SCROLL LINK FOR HERO CTA
+// 10. SMOOTH SCROLL LINKS
 // ============================================================
 (function initSmoothLinks() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -849,30 +793,5 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
         target.scrollIntoView({ behavior: 'smooth' });
       }
     });
-  });
-})();
-
-
-// ============================================================
-// 12. SCROLL-BASED PARTICLE DENSITY HINT (Space voyage feeling)
-// ============================================================
-(function initScrollParticleHint() {
-  if (prefersReducedMotion) return;
-
-  // Add subtle background glow that changes based on scroll position
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        // Shift body background slightly based on scroll
-        const r = Math.round(1 + scrolled * 4);
-        const g = Math.round(1 + scrolled * 3);
-        const b = Math.round(8 + scrolled * 20);
-        document.body.style.background = `rgb(${r}, ${g}, ${b})`;
-        ticking = false;
-      });
-      ticking = true;
-    }
   });
 })();

@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>✦</text></svg>">
+<!-- Favicon — monochrome diamond SVG -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%234f8ffa' stroke-width='2'><path d='M16 2L28 14L16 30L4 14Z'/></svg>">
 
 <!-- Styles -->
 <link rel="stylesheet" href="style.css">
@@ -53,6 +53,9 @@
 </head>
 <body>
 
+<!-- Full-Page Three.js Canvas (behind everything) -->
+<canvas id="bgCanvas"></canvas>
+
 <!-- Custom Cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
@@ -71,14 +74,11 @@
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
-  <canvas id="heroCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-name-container">
       <h1 class="hero-name" id="heroName">MIN THEP</h1>
     </div>
-    <p class="hero-subtitle" id="heroSubtitle">
-      <span class="glitch-text" data-text="Software Engineer & Creative Developer">Software Engineer & Creative Developer</span>
-    </p>
+    <p class="hero-subtitle" id="heroSubtitle">Software Engineer & Creative Developer</p>
     <div class="hero-cta">
       <a href="#projects" class="hero-btn">View My Work</a>
     </div>
@@ -101,7 +101,7 @@
         <div class="about-card glass-card">
           <p class="about-line about-line-1">"I build things that make people go <span class="text-accent">WOW</span>."</p>
           <p class="about-line about-line-2">Software Engineer at heart. Creative Developer by passion.</p>
-          <p class="about-line about-line-3">FPT University · Vietnam · Available for work</p>
+          <p class="about-line about-line-3">FPT University &middot; Vietnam &middot; Available for work</p>
         </div>
       </div>
       <div class="about-details" data-reveal="up">
@@ -129,7 +129,7 @@
           <div class="detail-row">
             <span class="detail-key">location</span>
             <span class="detail-sep">:</span>
-            <span class="detail-val">"Vietnam 🇻🇳"</span>
+            <span class="detail-val">"Vietnam"</span>
           </div>
           <div class="detail-row">
             <span class="detail-key">status</span>
@@ -166,7 +166,20 @@
     <div class="orbital-container" data-reveal="up">
       <div class="orbital-system" id="orbitalSystem">
         <div class="orbital-core">
-          <span class="core-icon">⚡</span>
+          <span class="core-icon">
+            <!-- Circuit/Node SVG icon — monochrome -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="3" x2="12" y2="9"/>
+              <line x1="12" y1="15" x2="12" y2="21"/>
+              <line x1="3" y1="12" x2="9" y2="12"/>
+              <line x1="15" y1="12" x2="21" y2="12"/>
+              <circle cx="12" cy="3" r="1.5"/>
+              <circle cx="12" cy="21" r="1.5"/>
+              <circle cx="3" cy="12" r="1.5"/>
+              <circle cx="21" cy="12" r="1.5"/>
+            </svg>
+          </span>
           <span class="core-label">Core</span>
         </div>
         <!-- Orbit 1: Frontend -->
@@ -215,13 +228,27 @@
     </h2>
     <div class="projects-grid" data-reveal="up">
 
+      <!-- Project 1: Minthep Portfolio -->
       <div class="project-card" data-tilt>
         <div class="card-inner">
           <div class="card-front">
             <div class="card-header">
-              <span class="card-icon">✦</span>
+              <span class="card-icon">
+                <!-- Diamond/gem SVG -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 3L18 3L22 9L12 21L2 9Z"/>
+                  <path d="M2 9L22 9"/>
+                  <path d="M12 21L9 9L6 3"/>
+                  <path d="M12 21L15 9L18 3"/>
+                  <path d="M12 3L12 9"/>
+                </svg>
+              </span>
               <div class="card-stars">
-                <span class="star-icon">★</span>
+                <span class="star-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                </span>
                 <span class="star-count">93</span>
               </div>
             </div>
@@ -230,11 +257,11 @@
             <div class="card-tech">
               <span>HTML</span><span>CSS</span><span>JS</span>
             </div>
-            <div class="card-flip-hint">Click to see more →</div>
+            <div class="card-flip-hint">Click to see more</div>
           </div>
           <div class="card-back">
             <h3 class="card-back-title">Minthep Portfolio</h3>
-            <p class="card-back-desc">A personal brand portfolio that went viral in the developer community, gathering 93 stars on GitHub. Built with pure HTML, CSS, and JavaScript — proving you don't need frameworks to create something memorable.</p>
+            <p class="card-back-desc">A personal brand portfolio that went viral in the developer community, gathering 93 stars on GitHub. Built with pure HTML, CSS, and JavaScript.</p>
             <div class="card-back-tech">
               <span>HTML</span><span>CSS</span><span>JavaScript</span>
             </div>
@@ -244,18 +271,32 @@
                 View Source
               </a>
             </div>
-            <div class="card-flip-hint">Click to flip back ←</div>
+            <div class="card-flip-hint">Click to flip back</div>
           </div>
         </div>
       </div>
 
+      <!-- Project 2: GenKiKoi Fish Care -->
       <div class="project-card" data-tilt>
         <div class="card-inner">
           <div class="card-front">
             <div class="card-header">
-              <span class="card-icon">🐟</span>
+              <span class="card-icon">
+                <!-- Fish outline SVG -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12C2 12 5 6 12 6C19 6 22 12 22 12C22 12 19 18 12 18C5 18 2 12 2 12Z"/>
+                  <path d="M20 7L23 4"/>
+                  <path d="M20 17L23 20"/>
+                  <circle cx="8" cy="11.5" r="1"/>
+                  <path d="M12 6C12 6 13 8 13 12C13 16 12 18 12 18"/>
+                </svg>
+              </span>
               <div class="card-stars">
-                <span class="star-icon">★</span>
+                <span class="star-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                </span>
                 <span class="star-count">9</span>
               </div>
             </div>
@@ -264,11 +305,11 @@
             <div class="card-tech">
               <span>TypeScript</span><span>React</span><span>Node.js</span>
             </div>
-            <div class="card-flip-hint">Click to see more →</div>
+            <div class="card-flip-hint">Click to see more</div>
           </div>
           <div class="card-back">
             <h3 class="card-back-title">GenKiKoi Fish Care</h3>
-            <p class="card-back-desc">A full-stack veterinary platform designed specifically for Koi fish care. Features appointment booking, health tracking, and comprehensive fish care management. Built with TypeScript, React, and Node.js.</p>
+            <p class="card-back-desc">A full-stack veterinary platform for Koi fish care. Features appointment booking, health tracking, and comprehensive management. Built with TypeScript, React, and Node.js.</p>
             <div class="card-back-tech">
               <span>TypeScript</span><span>React</span><span>Node.js</span>
             </div>
@@ -278,18 +319,31 @@
                 View Source
               </a>
             </div>
-            <div class="card-flip-hint">Click to flip back ←</div>
+            <div class="card-flip-hint">Click to flip back</div>
           </div>
         </div>
       </div>
 
+      <!-- Project 3: Wedding Bolt -->
       <div class="project-card" data-tilt>
         <div class="card-inner">
           <div class="card-front">
             <div class="card-header">
-              <span class="card-icon">💒</span>
+              <span class="card-icon">
+                <!-- Chapel/heart arch SVG -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21V11L12 3L21 11V21H3Z"/>
+                  <path d="M9 21V15C9 13.34 10.34 12 12 12C13.66 12 15 13.34 15 15V21"/>
+                  <path d="M12 3V7"/>
+                  <path d="M9 8.5C9 7.12 10.12 6 11.5 6H12.5C13.88 6 15 7.12 15 8.5"/>
+                </svg>
+              </span>
               <div class="card-stars">
-                <span class="star-icon">★</span>
+                <span class="star-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                </span>
                 <span class="star-count">7</span>
               </div>
             </div>
@@ -298,11 +352,11 @@
             <div class="card-tech">
               <span>HTML</span><span>CSS</span><span>JS</span>
             </div>
-            <div class="card-flip-hint">Click to see more →</div>
+            <div class="card-flip-hint">Click to see more</div>
           </div>
           <div class="card-back">
             <h3 class="card-back-title">Wedding Bolt</h3>
-            <p class="card-back-desc">Beautiful and elegant digital wedding invitations. Features smooth animations, RSVP functionality, and a modern design that makes every couple's special day even more memorable.</p>
+            <p class="card-back-desc">Beautiful digital wedding invitations with smooth animations, RSVP functionality, and a modern design that makes every couple's special day more memorable.</p>
             <div class="card-back-tech">
               <span>HTML</span><span>CSS</span><span>JavaScript</span>
             </div>
@@ -312,18 +366,32 @@
                 View Source
               </a>
             </div>
-            <div class="card-flip-hint">Click to flip back ←</div>
+            <div class="card-flip-hint">Click to flip back</div>
           </div>
         </div>
       </div>
 
+      <!-- Project 4: Korean Magic Page -->
       <div class="project-card" data-tilt>
         <div class="card-inner">
           <div class="card-front">
             <div class="card-header">
-              <span class="card-icon">🇰🇷</span>
+              <span class="card-icon">
+                <!-- Book/sparkle SVG -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  <path d="M14 7l1.5 3l1.5-3"/>
+                  <path d="M10 7v6"/>
+                  <circle cx="15.5" cy="14" r="0.5"/>
+                </svg>
+              </span>
               <div class="card-stars">
-                <span class="star-icon">★</span>
+                <span class="star-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                </span>
                 <span class="star-count">5</span>
               </div>
             </div>
@@ -332,11 +400,11 @@
             <div class="card-tech">
               <span>TypeScript</span><span>React</span>
             </div>
-            <div class="card-flip-hint">Click to see more →</div>
+            <div class="card-flip-hint">Click to see more</div>
           </div>
           <div class="card-back">
             <h3 class="card-back-title">Korean Magic Page</h3>
-            <p class="card-back-desc">An interactive platform for learning Korean language. Features gamified lessons, progress tracking, and an engaging UI that makes language learning feel like play rather than study.</p>
+            <p class="card-back-desc">An interactive platform for learning Korean. Features gamified lessons, progress tracking, and an engaging UI that makes language learning feel like play.</p>
             <div class="card-back-tech">
               <span>TypeScript</span><span>React</span>
             </div>
@@ -346,7 +414,7 @@
                 View Source
               </a>
             </div>
-            <div class="card-flip-hint">Click to flip back ←</div>
+            <div class="card-flip-hint">Click to flip back</div>
           </div>
         </div>
       </div>
@@ -392,13 +460,17 @@
 <footer class="footer">
   <div class="footer-inner">
     <p class="footer-text">
-      © 2026 Min Thep. Crafted with obsessive attention to detail.
+      &copy; 2026 Min Thep. Crafted with obsessive attention to detail.
     </p>
     <div class="footer-links">
       <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
         Created with Perplexity Computer
       </a>
-      <button class="easter-egg-btn" id="matrixBtn" aria-label="Easter egg">⌘</button>
+      <button class="easter-egg-btn" id="matrixBtn" aria-label="Easter egg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </footer>
