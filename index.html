@@ -21,9 +21,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Min Thep — Software Engineer & Creative Developer</title>
-<meta name="description" content="Portfolio of Min Thep (thepKz) — Software Engineer & Creative Developer based in Vietnam. Building engaging web experiences with React, TypeScript, Node.js and more.">
+<meta name="description" content="Portfolio of Min Thep (Mai Tan Thep) — Software Engineer & Creative Developer from Vietnam. Building things that make people go WOW.">
 <meta property="og:title" content="Min Thep — Software Engineer & Creative Developer">
-<meta property="og:description" content="Portfolio of Min Thep (thepKz) — Software Engineer & Creative Developer based in Vietnam.">
+<meta property="og:description" content="Building things that make people go WOW.">
 <meta property="og:type" content="website">
 
 <!-- Fonts -->
@@ -31,11 +31,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- GSAP -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>✦</text></svg>">
 
-<!-- Three.js -->
+<!-- Styles -->
+<link rel="stylesheet" href="style.css">
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<!-- Three.js Import Map -->
 <script type="importmap">
 {
   "imports": {
@@ -44,66 +50,37 @@
   }
 }
 </script>
-
-<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <!-- Navigation -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
-      <span class="logo-bracket">&lt;</span>MT<span class="logo-bracket">/&gt;</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#experience" class="nav-link">Journey</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-pill">
+    <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+    <a href="#about" class="nav-link" data-section="about">About</a>
+    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+    <a href="#projects" class="nav-link" data-section="projects">Work</a>
+    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+    <div class="nav-indicator"></div>
   </div>
 </nav>
 
-<!-- Mobile Nav Overlay -->
-<div class="mobile-nav-overlay" id="mobileNav">
-  <div class="mobile-nav-content">
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="#skills" class="mobile-nav-link">Skills</a>
-    <a href="#projects" class="mobile-nav-link">Projects</a>
-    <a href="#experience" class="mobile-nav-link">Journey</a>
-    <a href="#contact" class="mobile-nav-link">Contact</a>
-  </div>
-</div>
-
-<!-- Canvas for Three.js -->
-<canvas id="three-canvas"></canvas>
-
-<!-- Cursor follower -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- ====== HERO SECTION ====== -->
-<section class="section hero" id="hero">
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas"></canvas>
   <div class="hero-content">
-    <div class="hero-badge animate-in">
-      <span class="badge-dot"></span>
-      Available for opportunities
+    <div class="hero-name-container">
+      <h1 class="hero-name" id="heroName">MIN THEP</h1>
     </div>
-    <h1 class="hero-title animate-in">
-      <span class="hero-line">MIN</span>
-      <span class="hero-line hero-line-accent">THEP</span>
-    </h1>
-    <p class="hero-subtitle animate-in">Software Engineer & Creative Developer</p>
-    <p class="hero-desc animate-in">Building immersive digital experiences with code and creativity. Currently studying Software Engineering at FPT University, Vietnam.</p>
-    <div class="hero-cta animate-in">
-      <a href="#projects" class="btn btn-primary">
-        <span>View My Work</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    <p class="hero-subtitle" id="heroSubtitle">
+      <span class="glitch-text" data-text="Software Engineer & Creative Developer">Software Engineer & Creative Developer</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="hero-btn">View My Work</a>
     </div>
   </div>
   <div class="scroll-indicator" id="scrollIndicator">
@@ -112,441 +89,328 @@
   </div>
 </section>
 
-<!-- ====== ABOUT SECTION ====== -->
+<!-- About Section -->
 <section class="section about" id="about">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">01 — About</span>
-      <h2 class="section-title">Crafting Digital<br><span class="text-gradient">Experiences</span></h2>
-    </div>
+  <div class="section-inner">
+    <h2 class="section-title" data-reveal="left">
+      <span class="section-number">01</span>
+      About
+    </h2>
     <div class="about-grid">
-      <div class="about-text glass-card">
-        <p class="about-quote">"I love building websites that focus on entertainment and personal interests, always aiming to create fun and engaging experiences to share with everyone."</p>
-        <p>I'm <strong>Min Thep</strong> (Mai Tan Thep), a software engineer and creative developer from Vietnam. Currently in my final year at FPT University studying Software Engineering.</p>
-        <p>My ultimate goal is to start a technology business in South Korea, then bring innovative solutions back to Vietnam. I'm passionate about creating web experiences that make people say "wow".</p>
-        <div class="about-details">
-          <div class="about-detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Vietnam (GMT+7)</span>
+      <div class="about-text" data-reveal="up">
+        <div class="about-card glass-card">
+          <p class="about-line about-line-1">"I build things that make people go <span class="text-accent">WOW</span>."</p>
+          <p class="about-line about-line-2">Software Engineer at heart. Creative Developer by passion.</p>
+          <p class="about-line about-line-3">FPT University · Vietnam · Available for work</p>
+        </div>
+      </div>
+      <div class="about-details" data-reveal="up">
+        <div class="detail-block glass-card">
+          <div class="detail-row">
+            <span class="detail-key">name</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val">"Mai Tan Thep"</span>
           </div>
-          <div class="about-detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
-            <span>FPT University (2022–2025)</span>
+          <div class="detail-row">
+            <span class="detail-key">alias</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val">"Min Thep"</span>
           </div>
-          <div class="about-detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            <span>Software Engineer</span>
+          <div class="detail-row">
+            <span class="detail-key">role</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val">"Software Engineer"</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">education</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val">"FPT University (SE, 2022-2025)"</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">location</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val">"Vietnam 🇻🇳"</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">status</span>
+            <span class="detail-sep">:</span>
+            <span class="detail-val status-available">"Available for work"</span>
           </div>
         </div>
       </div>
-      <div class="about-stats">
-        <div class="stat-card glass-card">
-          <span class="stat-number" data-target="40">0</span>
-          <span class="stat-label">Repositories</span>
-        </div>
-        <div class="stat-card glass-card">
-          <span class="stat-number" data-target="853" data-suffix="+">0</span>
-          <span class="stat-label">Contributions</span>
-        </div>
-        <div class="stat-card glass-card">
-          <span class="stat-number" data-target="40">0</span>
-          <span class="stat-label">Followers</span>
-        </div>
-        <div class="stat-card glass-card">
-          <span class="stat-number" data-target="93">0</span>
-          <span class="stat-label">Portfolio Stars</span>
-        </div>
+    </div>
+    <div class="stats-row" data-reveal="up">
+      <div class="stat-item">
+        <span class="stat-number" data-count="40">0</span>
+        <span class="stat-label">Repositories</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="853" data-suffix="+">0</span>
+        <span class="stat-label">Contributions</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="93">0</span>
+        <span class="stat-label">Portfolio Stars</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== SKILLS SECTION ====== -->
+<!-- Skills Section -->
 <section class="section skills" id="skills">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">02 — Skills</span>
-      <h2 class="section-title">Tech<br><span class="text-gradient">Arsenal</span></h2>
-    </div>
-    <div class="skills-grid">
-      <!-- Frontend -->
-      <div class="skill-category glass-card">
-        <div class="skill-category-header">
-          <div class="skill-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
-          </div>
-          <h3>Frontend</h3>
+  <div class="section-inner">
+    <h2 class="section-title" data-reveal="right">
+      <span class="section-number">02</span>
+      Skills
+    </h2>
+    <div class="orbital-container" data-reveal="up">
+      <div class="orbital-system" id="orbitalSystem">
+        <div class="orbital-core">
+          <span class="core-icon">⚡</span>
+          <span class="core-label">Core</span>
         </div>
-        <div class="skill-tags">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">HTML5</span>
-          <span class="skill-tag">CSS3</span>
-          <span class="skill-tag">Vite</span>
-          <span class="skill-tag">Tailwind CSS</span>
+        <!-- Orbit 1: Frontend -->
+        <div class="orbit orbit-1" data-category="Frontend">
+          <div class="orbit-ring"></div>
+          <div class="orbit-tag" style="--angle: 0deg">React</div>
+          <div class="orbit-tag" style="--angle: 60deg">TypeScript</div>
+          <div class="orbit-tag" style="--angle: 120deg">JavaScript</div>
+          <div class="orbit-tag" style="--angle: 180deg">Vite</div>
+          <div class="orbit-tag" style="--angle: 240deg">Tailwind CSS</div>
         </div>
-      </div>
-      <!-- Backend -->
-      <div class="skill-category glass-card">
-        <div class="skill-category-header">
-          <div class="skill-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
-          <h3>Backend</h3>
+        <!-- Orbit 2: Backend -->
+        <div class="orbit orbit-2" data-category="Backend">
+          <div class="orbit-ring"></div>
+          <div class="orbit-tag" style="--angle: 30deg">Node.js</div>
+          <div class="orbit-tag" style="--angle: 120deg">Java</div>
+          <div class="orbit-tag" style="--angle: 210deg">MongoDB</div>
+          <div class="orbit-tag" style="--angle: 300deg">SQL Server</div>
         </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">MongoDB</span>
-          <span class="skill-tag">SQL Server</span>
-          <span class="skill-tag">RESTful API</span>
-          <span class="skill-tag">Servlet/JSP</span>
+        <!-- Orbit 3: Tools -->
+        <div class="orbit orbit-3" data-category="Tools">
+          <div class="orbit-ring"></div>
+          <div class="orbit-tag" style="--angle: 15deg">Git</div>
+          <div class="orbit-tag" style="--angle: 87deg">GitHub Actions</div>
+          <div class="orbit-tag" style="--angle: 159deg">Docker</div>
+          <div class="orbit-tag" style="--angle: 231deg">Figma</div>
+          <div class="orbit-tag" style="--angle: 303deg">Vercel</div>
         </div>
-      </div>
-      <!-- Tools -->
-      <div class="skill-category glass-card">
-        <div class="skill-category-header">
-          <div class="skill-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h3>Tools & DevOps</h3>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">Vercel</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">CI/CD</span>
-        </div>
-      </div>
-      <!-- Other -->
-      <div class="skill-category glass-card">
-        <div class="skill-category-header">
-          <div class="skill-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Other</h3>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Korean Language</span>
-          <span class="skill-tag">Agile/Scrum</span>
-          <span class="skill-tag">UI/UX Design</span>
-          <span class="skill-tag">API Design</span>
+        <!-- Category labels -->
+        <div class="orbit-labels">
+          <span class="orbit-label orbit-label-1">Frontend</span>
+          <span class="orbit-label orbit-label-2">Backend</span>
+          <span class="orbit-label orbit-label-3">Tools</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== PROJECTS SECTION ====== -->
+<!-- Projects Section -->
 <section class="section projects" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">03 — Projects</span>
-      <h2 class="section-title">Featured<br><span class="text-gradient">Work</span></h2>
-    </div>
-    <div class="projects-grid">
+  <div class="section-inner">
+    <h2 class="section-title" data-reveal="left">
+      <span class="section-number">03</span>
+      Selected Work
+    </h2>
+    <div class="projects-grid" data-reveal="up">
 
-      <!-- Project 1 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <div class="project-card" data-tilt>
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-header">
+              <span class="card-icon">✦</span>
+              <div class="card-stars">
+                <span class="star-icon">★</span>
+                <span class="star-count">93</span>
+              </div>
+            </div>
+            <h3 class="card-title">Minthep Portfolio</h3>
+            <p class="card-desc">Personal brand portfolio that went viral</p>
+            <div class="card-tech">
+              <span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+            <div class="card-flip-hint">Click to see more →</div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/minthep-portfolio" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+          <div class="card-back">
+            <h3 class="card-back-title">Minthep Portfolio</h3>
+            <p class="card-back-desc">A personal brand portfolio that went viral in the developer community, gathering 93 stars on GitHub. Built with pure HTML, CSS, and JavaScript — proving you don't need frameworks to create something memorable.</p>
+            <div class="card-back-tech">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="card-back-links">
+              <a href="https://github.com/thepKz/minthep-portfolio" target="_blank" rel="noopener noreferrer" class="card-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                View Source
+              </a>
+            </div>
+            <div class="card-flip-hint">Click to flip back ←</div>
           </div>
         </div>
-        <h3 class="project-title">Minthep Portfolio</h3>
-        <p class="project-desc">Previous portfolio that gained massive traction with 93 stars on GitHub. Clean design showcasing personal brand and development skills.</p>
-        <div class="project-tech">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>93 stars</span>
-        </div>
-      </article>
+      </div>
 
-      <!-- Project 2 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <div class="project-card" data-tilt>
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-header">
+              <span class="card-icon">🐟</span>
+              <div class="card-stars">
+                <span class="star-icon">★</span>
+                <span class="star-count">9</span>
+              </div>
+            </div>
+            <h3 class="card-title">GenKiKoi Fish Care</h3>
+            <p class="card-desc">Veterinary platform for Koi fish</p>
+            <div class="card-tech">
+              <span>TypeScript</span><span>React</span><span>Node.js</span>
+            </div>
+            <div class="card-flip-hint">Click to see more →</div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/genkikoi-fishcare-webapp" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+          <div class="card-back">
+            <h3 class="card-back-title">GenKiKoi Fish Care</h3>
+            <p class="card-back-desc">A full-stack veterinary platform designed specifically for Koi fish care. Features appointment booking, health tracking, and comprehensive fish care management. Built with TypeScript, React, and Node.js.</p>
+            <div class="card-back-tech">
+              <span>TypeScript</span><span>React</span><span>Node.js</span>
+            </div>
+            <div class="card-back-links">
+              <a href="https://github.com/thepKz/genkikoi-fishcare-webapp" target="_blank" rel="noopener noreferrer" class="card-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                View Source
+              </a>
+            </div>
+            <div class="card-flip-hint">Click to flip back ←</div>
           </div>
         </div>
-        <h3 class="project-title">GenKiKoi Fish Care</h3>
-        <p class="project-desc">Veterinary service management platform for Koi fish care. Role: Back-end Developer, Tester, API Designer. Full-stack web application.</p>
-        <div class="project-tech">
-          <span>TypeScript</span><span>React</span><span>Node.js</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>9 stars</span>
-        </div>
-      </article>
+      </div>
 
-      <!-- Project 3 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <div class="project-card" data-tilt>
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-header">
+              <span class="card-icon">💒</span>
+              <div class="card-stars">
+                <span class="star-icon">★</span>
+                <span class="star-count">7</span>
+              </div>
+            </div>
+            <h3 class="card-title">Wedding Bolt</h3>
+            <p class="card-desc">Elegant digital wedding invitations</p>
+            <div class="card-tech">
+              <span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+            <div class="card-flip-hint">Click to see more →</div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/wedding-bolt" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+          <div class="card-back">
+            <h3 class="card-back-title">Wedding Bolt</h3>
+            <p class="card-back-desc">Beautiful and elegant digital wedding invitations. Features smooth animations, RSVP functionality, and a modern design that makes every couple's special day even more memorable.</p>
+            <div class="card-back-tech">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="card-back-links">
+              <a href="https://github.com/thepKz/wedding-bolt" target="_blank" rel="noopener noreferrer" class="card-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                View Source
+              </a>
+            </div>
+            <div class="card-flip-hint">Click to flip back ←</div>
           </div>
         </div>
-        <h3 class="project-title">Wedding Bolt</h3>
-        <p class="project-desc">Beautiful wedding card web application. Create and share elegant digital wedding invitations with stunning animations and designs.</p>
-        <div class="project-tech">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>7 stars</span>
-        </div>
-      </article>
+      </div>
 
-      <!-- Project 4 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <div class="project-card" data-tilt>
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-header">
+              <span class="card-icon">🇰🇷</span>
+              <div class="card-stars">
+                <span class="star-icon">★</span>
+                <span class="star-count">5</span>
+              </div>
+            </div>
+            <h3 class="card-title">Korean Magic Page</h3>
+            <p class="card-desc">Interactive Korean learning platform</p>
+            <div class="card-tech">
+              <span>TypeScript</span><span>React</span>
+            </div>
+            <div class="card-flip-hint">Click to see more →</div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/korean-magic-page" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <h3 class="project-title">Korean Magic Page</h3>
-        <p class="project-desc">Interactive Korean language learning platform. Making language learning fun and accessible with engaging exercises and content.</p>
-        <div class="project-tech">
-          <span>TypeScript</span><span>React</span><span>Vite</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>5 stars</span>
-        </div>
-      </article>
-
-      <!-- Project 5 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/vuvu-store" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+          <div class="card-back">
+            <h3 class="card-back-title">Korean Magic Page</h3>
+            <p class="card-back-desc">An interactive platform for learning Korean language. Features gamified lessons, progress tracking, and an engaging UI that makes language learning feel like play rather than study.</p>
+            <div class="card-back-tech">
+              <span>TypeScript</span><span>React</span>
+            </div>
+            <div class="card-back-links">
+              <a href="https://github.com/thepKz/korean-magic-page" target="_blank" rel="noopener noreferrer" class="card-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                View Source
+              </a>
+            </div>
+            <div class="card-flip-hint">Click to flip back ←</div>
           </div>
         </div>
-        <h3 class="project-title">Vuvu Store</h3>
-        <p class="project-desc">E-commerce store based on Popmart, built with React. Modern shopping experience with clean UI and smooth interactions.</p>
-        <div class="project-tech">
-          <span>JavaScript</span><span>React</span><span>CSS</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>4 stars</span>
-        </div>
-      </article>
-
-      <!-- Project 6 -->
-      <article class="project-card glass-card" data-tilt>
-        <div class="project-header">
-          <div class="project-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/thepKz/grok-ai-chat" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-        </div>
-        <h3 class="project-title">Grok AI Chat</h3>
-        <p class="project-desc">Grok AI ChatBot — GenZ Vietnam version. Fun and engaging AI chat interface with Vietnamese cultural flair.</p>
-        <div class="project-tech">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <div class="project-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span>4 stars</span>
-        </div>
-      </article>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- ====== EXPERIENCE SECTION ====== -->
-<section class="section experience" id="experience">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">04 — Journey</span>
-      <h2 class="section-title">Education &<br><span class="text-gradient">Experience</span></h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item glass-card">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2022 — 2025</div>
-        <h3 class="timeline-title">FPT University</h3>
-        <p class="timeline-role">Software Engineering</p>
-        <p class="timeline-desc">Pursuing a degree in Software Engineering. Building full-stack applications, learning modern development practices, and contributing to team projects.</p>
-        <div class="timeline-tags">
-          <span>Software Engineering</span>
-          <span>Full-Stack Development</span>
-          <span>Team Projects</span>
-        </div>
-      </div>
-      <div class="timeline-item glass-card">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2023 — Present</div>
-        <h3 class="timeline-title">Freelance Software Engineer</h3>
-        <p class="timeline-role">Full-Stack Web Development</p>
-        <p class="timeline-desc">Designing and building web applications for clients. Specializing in React, TypeScript, and Node.js ecosystems with a focus on user experience and performance.</p>
-        <div class="timeline-tags">
-          <span>React</span>
-          <span>TypeScript</span>
-          <span>Node.js</span>
-          <span>Client Work</span>
-        </div>
-      </div>
-      <div class="timeline-item glass-card">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2019 — 2022</div>
-        <h3 class="timeline-title">Le Quy Don High School for the Gifted</h3>
-        <p class="timeline-role">Chemistry Specialist — Da Nang</p>
-        <p class="timeline-desc">Graduated from a prestigious gifted high school in Da Nang. Specialized in Chemistry while developing early interests in technology and programming.</p>
-        <div class="timeline-tags">
-          <span>Chemistry</span>
-          <span>Da Nang</span>
-          <span>Gifted Education</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Certifications -->
-    <div class="certs-section">
-      <h3 class="certs-title">Certifications</h3>
-      <div class="certs-grid">
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">Java Developer</span>
-            <span class="cert-issuer">HackerRank</span>
-          </div>
-        </div>
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">Agile Software Development</span>
-            <span class="cert-issuer">LinkedIn</span>
-          </div>
-        </div>
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">Python</span>
-            <span class="cert-issuer">Microsoft</span>
-          </div>
-        </div>
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">Web Design Specialization</span>
-            <span class="cert-issuer">University of Michigan</span>
-          </div>
-        </div>
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">OOP in Java</span>
-            <span class="cert-issuer">UC San Diego</span>
-          </div>
-        </div>
-        <div class="cert-item glass-card">
-          <div class="cert-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
-          </div>
-          <div>
-            <span class="cert-name">Computer Communications</span>
-            <span class="cert-issuer">University of Colorado</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== CONTACT SECTION ====== -->
+<!-- Contact Section -->
 <section class="section contact" id="contact">
-  <div class="container">
-    <div class="section-header section-header-center">
-      <span class="section-tag">05 — Contact</span>
-      <h2 class="section-title">Let's Build<br><span class="text-gradient">Together</span></h2>
-      <p class="section-subtitle">Have a project in mind or want to collaborate? I'm always open to discussing new opportunities and creative ideas.</p>
-    </div>
-    <div class="contact-content">
-      <a href="mailto:minthepx@gmail.com" class="contact-email glass-card">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span>minthepx@gmail.com</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
+  <div class="section-inner">
+    <h2 class="section-title" data-reveal="right">
+      <span class="section-number">04</span>
+      Get in Touch
+    </h2>
+    <div class="contact-content" data-reveal="up">
+      <a href="mailto:minthepx@gmail.com" class="contact-email">minthepx@gmail.com</a>
       <div class="social-links">
-        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="GitHub">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           <span>GitHub</span>
         </a>
-        <a href="https://linkedin.com/in/thepmaitan26" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="LinkedIn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://linkedin.com/in/thepmaitan26" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           <span>LinkedIn</span>
         </a>
-        <a href="https://facebook.com/thepp.tan" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="Facebook">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <a href="https://facebook.com/thepp.tan" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           <span>Facebook</span>
         </a>
-        <a href="https://youtube.com/@minthep2611" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="YouTube">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <a href="https://youtube.com/@minthep2611" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="YouTube">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
           <span>YouTube</span>
         </a>
       </div>
     </div>
   </div>
+  <!-- Aurora background -->
+  <div class="aurora-bg" aria-hidden="true"></div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="container footer-inner">
-    <p>&copy; 2026 Min Thep. Crafted with passion.</p>
-    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
-      Created with Perplexity Computer
-    </a>
+  <div class="footer-inner">
+    <p class="footer-text">
+      © 2026 Min Thep. Crafted with obsessive attention to detail.
+    </p>
+    <div class="footer-links">
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
+        Created with Perplexity Computer
+      </a>
+      <button class="easter-egg-btn" id="matrixBtn" aria-label="Easter egg">⌘</button>
+    </div>
   </div>
 </footer>
 
-<script type="module" src="./main.js"></script>
+<!-- Matrix Rain Canvas (Easter Egg) -->
+<canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+
+<!-- Fireworks Canvas (Easter Egg) -->
+<canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+
+<!-- Main Script -->
+<script type="module" src="main.js"></script>
+
 </body>
 </html>
