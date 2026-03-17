@@ -1,600 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minthep.OS - Creative Developer Interface</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Min Thep — Software Engineer & Creative Developer</title>
+<meta name="description" content="Portfolio of Min Thep (thepKz) — Software Engineer & Creative Developer based in Vietnam. Building engaging web experiences with React, TypeScript, Node.js and more.">
+<meta property="og:title" content="Min Thep — Software Engineer & Creative Developer">
+<meta property="og:description" content="Portfolio of Min Thep (thepKz) — Software Engineer & Creative Developer based in Vietnam.">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
+<!-- Three.js -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-effects">
-        <canvas id="particle-bg" class="bg-canvas"></canvas>
-        <canvas id="matrix-bg" class="bg-canvas"></canvas>
-        <canvas id="neural-bg" class="bg-canvas"></canvas>
-        <canvas id="wave-bg" class="bg-canvas"></canvas>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>MT<span class="logo-bracket">/&gt;</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Journey</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <div class="mobile-nav-content">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#experience" class="mobile-nav-link">Journey</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+</div>
+
+<!-- Canvas for Three.js -->
+<canvas id="three-canvas"></canvas>
+
+<!-- Cursor follower -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ====== HERO SECTION ====== -->
+<section class="section hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge animate-in">
+      <span class="badge-dot"></span>
+      Available for opportunities
+    </div>
+    <h1 class="hero-title animate-in">
+      <span class="hero-line">MIN</span>
+      <span class="hero-line hero-line-accent">THEP</span>
+    </h1>
+    <p class="hero-subtitle animate-in">Software Engineer & Creative Developer</p>
+    <p class="hero-desc animate-in">Building immersive digital experiences with code and creativity. Currently studying Software Engineering at FPT University, Vietnam.</p>
+    <div class="hero-cta animate-in">
+      <a href="#projects" class="btn btn-primary">
+        <span>View My Work</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span class="scroll-text">Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== ABOUT SECTION ====== -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">01 — About</span>
+      <h2 class="section-title">Crafting Digital<br><span class="text-gradient">Experiences</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text glass-card">
+        <p class="about-quote">"I love building websites that focus on entertainment and personal interests, always aiming to create fun and engaging experiences to share with everyone."</p>
+        <p>I'm <strong>Min Thep</strong> (Mai Tan Thep), a software engineer and creative developer from Vietnam. Currently in my final year at FPT University studying Software Engineering.</p>
+        <p>My ultimate goal is to start a technology business in South Korea, then bring innovative solutions back to Vietnam. I'm passionate about creating web experiences that make people say "wow".</p>
+        <div class="about-details">
+          <div class="about-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Vietnam (GMT+7)</span>
+          </div>
+          <div class="about-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg>
+            <span>FPT University (2022–2025)</span>
+          </div>
+          <div class="about-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Software Engineer</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card glass-card">
+          <span class="stat-number" data-target="40">0</span>
+          <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-number" data-target="853" data-suffix="+">0</span>
+          <span class="stat-label">Contributions</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-number" data-target="40">0</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-number" data-target="93">0</span>
+          <span class="stat-label">Portfolio Stars</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SKILLS SECTION ====== -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">02 — Skills</span>
+      <h2 class="section-title">Tech<br><span class="text-gradient">Arsenal</span></h2>
+    </div>
+    <div class="skills-grid">
+      <!-- Frontend -->
+      <div class="skill-category glass-card">
+        <div class="skill-category-header">
+          <div class="skill-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
+          </div>
+          <h3>Frontend</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Vite</span>
+          <span class="skill-tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <!-- Backend -->
+      <div class="skill-category glass-card">
+        <div class="skill-category-header">
+          <div class="skill-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>Backend</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">RESTful API</span>
+          <span class="skill-tag">Servlet/JSP</span>
+        </div>
+      </div>
+      <!-- Tools -->
+      <div class="skill-category glass-card">
+        <div class="skill-category-header">
+          <div class="skill-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Tools & DevOps</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Vercel</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">CI/CD</span>
+        </div>
+      </div>
+      <!-- Other -->
+      <div class="skill-category glass-card">
+        <div class="skill-category-header">
+          <div class="skill-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Other</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Korean Language</span>
+          <span class="skill-tag">Agile/Scrum</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">API Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PROJECTS SECTION ====== -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">03 — Projects</span>
+      <h2 class="section-title">Featured<br><span class="text-gradient">Work</span></h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/minthep-portfolio" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">Minthep Portfolio</h3>
+        <p class="project-desc">Previous portfolio that gained massive traction with 93 stars on GitHub. Clean design showcasing personal brand and development skills.</p>
+        <div class="project-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>93 stars</span>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/genkikoi-fishcare-webapp" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">GenKiKoi Fish Care</h3>
+        <p class="project-desc">Veterinary service management platform for Koi fish care. Role: Back-end Developer, Tester, API Designer. Full-stack web application.</p>
+        <div class="project-tech">
+          <span>TypeScript</span><span>React</span><span>Node.js</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>9 stars</span>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/wedding-bolt" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">Wedding Bolt</h3>
+        <p class="project-desc">Beautiful wedding card web application. Create and share elegant digital wedding invitations with stunning animations and designs.</p>
+        <div class="project-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>7 stars</span>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/korean-magic-page" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">Korean Magic Page</h3>
+        <p class="project-desc">Interactive Korean language learning platform. Making language learning fun and accessible with engaging exercises and content.</p>
+        <div class="project-tech">
+          <span>TypeScript</span><span>React</span><span>Vite</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>5 stars</span>
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/vuvu-store" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">Vuvu Store</h3>
+        <p class="project-desc">E-commerce store based on Popmart, built with React. Modern shopping experience with clean UI and smooth interactions.</p>
+        <div class="project-tech">
+          <span>JavaScript</span><span>React</span><span>CSS</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>4 stars</span>
+        </div>
+      </article>
+
+      <!-- Project 6 -->
+      <article class="project-card glass-card" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thepKz/grok-ai-chat" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <h3 class="project-title">Grok AI Chat</h3>
+        <p class="project-desc">Grok AI ChatBot — GenZ Vietnam version. Fun and engaging AI chat interface with Vietnamese cultural flair.</p>
+        <div class="project-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="project-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>4 stars</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== EXPERIENCE SECTION ====== -->
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">04 — Journey</span>
+      <h2 class="section-title">Education &<br><span class="text-gradient">Experience</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item glass-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2022 — 2025</div>
+        <h3 class="timeline-title">FPT University</h3>
+        <p class="timeline-role">Software Engineering</p>
+        <p class="timeline-desc">Pursuing a degree in Software Engineering. Building full-stack applications, learning modern development practices, and contributing to team projects.</p>
+        <div class="timeline-tags">
+          <span>Software Engineering</span>
+          <span>Full-Stack Development</span>
+          <span>Team Projects</span>
+        </div>
+      </div>
+      <div class="timeline-item glass-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023 — Present</div>
+        <h3 class="timeline-title">Freelance Software Engineer</h3>
+        <p class="timeline-role">Full-Stack Web Development</p>
+        <p class="timeline-desc">Designing and building web applications for clients. Specializing in React, TypeScript, and Node.js ecosystems with a focus on user experience and performance.</p>
+        <div class="timeline-tags">
+          <span>React</span>
+          <span>TypeScript</span>
+          <span>Node.js</span>
+          <span>Client Work</span>
+        </div>
+      </div>
+      <div class="timeline-item glass-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2019 — 2022</div>
+        <h3 class="timeline-title">Le Quy Don High School for the Gifted</h3>
+        <p class="timeline-role">Chemistry Specialist — Da Nang</p>
+        <p class="timeline-desc">Graduated from a prestigious gifted high school in Da Nang. Specialized in Chemistry while developing early interests in technology and programming.</p>
+        <div class="timeline-tags">
+          <span>Chemistry</span>
+          <span>Da Nang</span>
+          <span>Gifted Education</span>
+        </div>
+      </div>
     </div>
 
-    <!-- OS Interface -->
-    <div class="os-interface">
-        <!-- Taskbar -->
-        <div class="taskbar">
-            <div class="taskbar-left">
-                <div class="start-menu">
-                    <div class="logo">
-                        <span class="logo-icon">◆</span>
-                        <span class="logo-text">Minthep.OS</span>
-                    </div>
-                </div>
-                <div class="running-apps">
-                    <div class="app-icon active" data-app="terminal">
-                        <span>⬛</span>
-                        <span class="app-name">Terminal</span>
-                    </div>
-                    <div class="app-icon" data-app="projects">
-                        <span>📁</span>
-                        <span class="app-name">Projects</span>
-                    </div>
-                    <div class="app-icon" data-app="about">
-                        <span>👤</span>
-                        <span class="app-name">About</span>
-                    </div>
-                    <div class="app-icon" data-app="contact">
-                        <span>📧</span>
-                        <span class="app-name">Contact</span>
-                    </div>
-                </div>
-            </div>
-            <div class="taskbar-right">
-                <div class="system-tray">
-                    <div class="tray-item" id="theme-toggle">
-                        <span class="theme-icon">🌙</span>
-                    </div>
-                    <div class="tray-item" id="audio-toggle">
-                        <span class="audio-icon">🔊</span>
-                    </div>
-                    <div class="tray-item">
-                        <span class="time" id="current-time">00:00</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Certifications -->
+    <div class="certs-section">
+      <h3 class="certs-title">Certifications</h3>
+      <div class="certs-grid">
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">Java Developer</span>
+            <span class="cert-issuer">HackerRank</span>
+          </div>
         </div>
-
-        <!-- Desktop -->
-        <div class="desktop">
-            <!-- Context Menu -->
-            <div class="context-menu" id="context-menu">
-                <div class="context-item" data-action="terminal">
-                    <span class="context-icon"></span>
-                    <span class="context-text">Open Terminal</span>
-                </div>
-                <div class="context-item" data-action="projects">
-                    <span class="context-icon"></span>
-                    <span class="context-text">View Projects</span>
-                </div>
-                <div class="context-item" data-action="about">
-                    <span class="context-icon"></span>
-                    <span class="context-text">About Me</span>
-                </div>
-                <div class="context-divider"></div>
-                <div class="context-item" data-action="background">
-                    <span class="context-icon"></span>
-                    <span class="context-text">Change Background</span>
-                </div>
-                <div class="context-item" data-action="theme">
-                    <span class="context-icon">🌙</span>
-                    <span class="context-text">Toggle Theme</span>
-                </div>
-                <div class="context-divider"></div>
-                <div class="context-item" data-action="refresh">
-                    <span class="context-icon">🔄</span>
-                    <span class="context-text">Refresh Desktop</span>
-                </div>
-            </div>
-
-            <!-- Terminal Window -->
-            <div class="window terminal-window active" id="terminal-app">
-                <div class="window-header">
-                    <div class="window-controls">
-                        <span class="control close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <div class="window-title">
-                        <span class="title-icon"></span>
-                        <span>CYBER TERMINAL v2.0 - Minthep@creative-dev</span>
-                    </div>
-                </div>
-                <div class="window-content">
-                    <div class="terminal">
-                        <div class="terminal-header-info">
-                            <div class="system-info">
-                                <span class="info-item">CPU: 69.9%</span>
-                                <span class="info-item">RAM: 32GB</span>
-                                <span class="info-item">NET: 10Gbps</span>
-                                <span class="info-item">STATUS: <span class="status-online">ONLINE</span></span>
-                            </div>
-                        </div>
-                        <div class="terminal-output" id="terminal-output">
-                            <div class="terminal-line">
-                                <span class="prompt">minthep@creative-dev:~$</span>
-                                <span class="command">whoami</span>
-                            </div>
-                            <div class="terminal-line output">
-                                <span class="typing-text" data-text="I'm Minthep - Creative Developer & Designer">I'm Minthep - Creative Developer & Designer</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="prompt">minthep@creative-dev:~$</span>
-                                <span class="command">cat skills.json</span>
-                            </div>
-                            <div class="terminal-line output">
-                                <pre class="json-output">{
-  "frontend": ["React", "Vue.js", "TypeScript", "Next.js"],
-  "design": ["Figma", "Adobe Creative Suite", "Blender"],
-  "backend": ["Node.js", "Python", "PostgreSQL"],
-  "tools": ["Git", "Docker", "AWS", "Vercel"]
-}</pre>
-                            </div>
-                            <div class="terminal-line input-line">
-                                <span class="prompt">minthep@creative-dev:~$</span>
-                                <input type="text" class="terminal-input" placeholder="Type 'help' for commands..." autocomplete="off">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projects Window -->
-            <div class="window projects-window" id="projects-app">
-                <div class="window-header">
-                    <div class="window-controls">
-                        <span class="control close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <div class="window-title">
-                        <span class="title-icon"></span>
-                        <span>Projects.exe - Portfolio Showcase</span>
-                    </div>
-                </div>
-                <div class="window-content">
-                    <div class="projects-grid">
-                        <div class="project-card" data-project="ecommerce">
-                            <div class="project-preview">
-                                <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="E-commerce Platform">
-                                <div class="project-overlay">
-                                    <div class="project-info">
-                                        <h3>NeuroCommerce</h3>
-                                        <p>AI-powered e-commerce platform</p>
-                                        <div class="tech-stack">
-                                            <span class="tech">React</span>
-                                            <span class="tech">Node.js</span>
-                                            <span class="tech">AI/ML</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card" data-project="dashboard">
-                            <div class="project-preview">
-                                <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Analytics Dashboard">
-                                <div class="project-overlay">
-                                    <div class="project-info">
-                                        <h3>CyberDash</h3>
-                                        <p>Real-time analytics dashboard</p>
-                                        <div class="tech-stack">
-                                            <span class="tech">Vue.js</span>
-                                            <span class="tech">D3.js</span>
-                                            <span class="tech">WebSocket</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card" data-project="mobile">
-                            <div class="project-preview">
-                                <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mobile App">
-                                <div class="project-overlay">
-                                    <div class="project-info">
-                                        <h3>NeonWallet</h3>
-                                        <p>Cryptocurrency mobile wallet</p>
-                                        <div class="tech-stack">
-                                            <span class="tech">React Native</span>
-                                            <span class="tech">Blockchain</span>
-                                            <span class="tech">Web3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-glow"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card" data-project="ai">
-                            <div class="project-preview">
-                                <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI Platform">
-                                <div class="project-overlay">
-                                    <div class="project-info">
-                                        <h3>MindForge AI</h3>
-                                        <p>Creative AI assistant platform</p>
-                                        <div class="tech-stack">
-                                            <span class="tech">Python</span>
-                                            <span class="tech">TensorFlow</span>
-                                            <span class="tech">FastAPI</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-glow"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Window -->
-            <div class="window about-window" id="about-app">
-                <div class="window-header">
-                    <div class="window-controls">
-                        <span class="control close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <div class="window-title">
-                        <span class="title-icon"></span>
-                        <span>About.exe - Personal Profile</span>
-                    </div>
-                </div>
-                <div class="window-content">
-                    <div class="about-content">
-                        <!-- Hero Section -->
-                        <div class="about-hero">
-                            <div class="hero-background">
-                                <canvas id="hero-particles" class="hero-canvas"></canvas>
-                            </div>
-                            <div class="hero-content">
-                                <div class="avatar-section">
-                                    <div class="avatar-container">
-                                        <div class="avatar-frame">
-                                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Minthep">
-                                            <div class="avatar-glow"></div>
-                                        </div>
-                                        <div class="status-indicator">
-                                            <div class="status-dot"></div>
-                                            <span class="status-text">Available for work</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hero-info">
-                                    <h1 class="hero-name glitch-text" data-text="MINTHEP">MINTHEP</h1>
-                                    <p class="hero-title">Developer</p>
-                                    <p class="hero-description">
-                                        Passionate about creating digital experiences that blend creativity with technology. 
-                                        With over 5 years of experience, I specialize in building beautiful, functional interfaces 
-                                        and bringing innovative ideas to life through code.
-                                    </p>
-                                    <div class="hero-stats">
-                                        <div class="stat-item">
-                                            <span class="stat-number">5+</span>
-                                            <span class="stat-label">Years</span>
-                                        </div>
-                                        <div class="stat-item">
-                                            <span class="stat-number">50+</span>
-                                            <span class="stat-label">Projects</span>
-                                        </div>
-                                        <div class="stat-item">
-                                            <span class="stat-number">100%</span>
-                                            <span class="stat-label">Success</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Skills Matrix -->
-                        <div class="skills-matrix">
-                            <h2 class="section-title">
-                                <span class="title-icon">⚡</span>
-                                <span class="title-text">Skills Matrix</span>
-                            </h2>
-                            <div class="skills-grid">
-                                <div class="skill-category">
-                                    <div class="category-header">
-                                        <h3 class="category-title">Frontend</h3>
-                                        <div class="category-level">Expert</div>
-                                    </div>
-                                    <div class="skill-progress">
-                                        <div class="progress-bar" data-skill="95">
-                                            <div class="progress-fill"></div>
-                                            <span class="progress-text">95%</span>
-                                        </div>
-                                    </div>
-                                    <div class="skill-tags">
-                                        <span class="skill-tag">React</span>
-                                        <span class="skill-tag">Vue.js</span>
-                                        <span class="skill-tag">TypeScript</span>
-                                        <span class="skill-tag">Next.js</span>
-                                        <span class="skill-tag">Tailwind CSS</span>
-                                        <span class="skill-tag">WebGL</span>
-                                    </div>
-                                </div>
-
-                                <div class="skill-category">
-                                    <div class="category-header">
-                                        <h3 class="category-title">Design</h3>
-                                        <div class="category-level">Advanced</div>
-                                    </div>
-                                    <div class="skill-progress">
-                                        <div class="progress-bar" data-skill="90">
-                                            <div class="progress-fill"></div>
-                                            <span class="progress-text">90%</span>
-                                        </div>
-                                    </div>
-                                    <div class="skill-tags">
-                                        <span class="skill-tag">Figma</span>
-                                        <span class="skill-tag">Adobe XD</span>
-                                        <span class="skill-tag">Photoshop</span>
-                                        <span class="skill-tag">Illustrator</span>
-                                        <span class="skill-tag">Blender</span>
-                                        <span class="skill-tag">After Effects</span>
-                                    </div>
-                                </div>
-
-                                <div class="skill-category">
-                                    <div class="category-header">
-                                        <h3 class="category-title">Backend</h3>
-                                        <div class="category-level">Proficient</div>
-                                    </div>
-                                    <div class="skill-progress">
-                                        <div class="progress-bar" data-skill="85">
-                                            <div class="progress-fill"></div>
-                                            <span class="progress-text">85%</span>
-                                        </div>
-                                    </div>
-                                    <div class="skill-tags">
-                                        <span class="skill-tag">Node.js</span>
-                                        <span class="skill-tag">Python</span>
-                                        <span class="skill-tag">PostgreSQL</span>
-                                        <span class="skill-tag">MongoDB</span>
-                                        <span class="skill-tag">GraphQL</span>
-                                        <span class="skill-tag">AWS</span>
-                                    </div>
-                                </div>
-
-                                <div class="skill-category">
-                                    <div class="category-header">
-                                        <h3 class="category-title">Creative Tech</h3>
-                                        <div class="category-level">Expert</div>
-                                    </div>
-                                    <div class="skill-progress">
-                                        <div class="progress-bar" data-skill="92">
-                                            <div class="progress-fill"></div>
-                                            <span class="progress-text">92%</span>
-                                        </div>
-                                    </div>
-                                    <div class="skill-tags">
-                                        <span class="skill-tag">Three.js</span>
-                                        <span class="skill-tag">GSAP</span>
-                                        <span class="skill-tag">Canvas API</span>
-                                        <span class="skill-tag">WebGL</span>
-                                        <span class="skill-tag">Shaders</span>
-                                        <span class="skill-tag">AI/ML</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Experience Timeline -->
-                        <div class="experience-section">
-                            <h2 class="section-title">
-                                <span class="title-icon">🚀</span>
-                                <span class="title-text">Experience Journey</span>
-                            </h2>
-                            <div class="experience-timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="marker-dot"></div>
-                                        <div class="marker-year">2024</div>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <div class="job-header">
-                                            <h3 class="job-title">Senior Creative Developer</h3>
-                                            <span class="company">Tech Innovation Labs</span>
-                                            <span class="duration">Present</span>
-                                        </div>
-                                        <p class="job-description">
-                                            Leading cutting-edge web development projects, specializing in AI-powered interfaces 
-                                            and immersive digital experiences. Managing a team of 8 developers.
-                                        </p>
-                                        <div class="job-achievements">
-                                            <div class="achievement">🏆 Led award-winning AI design tool</div>
-                                            <div class="achievement">📈 40% productivity increase</div>
-                                            <div class="achievement">👥 Mentored 5 developers</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="marker-dot"></div>
-                                        <div class="marker-year">2022</div>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <div class="job-header">
-                                            <h3 class="job-title">Full Stack Developer</h3>
-                                            <span class="company">Digital Creative Agency</span>
-                                            <span class="duration">2 years</span>
-                                        </div>
-                                        <p class="job-description">
-                                            Developed high-performance web applications for Fortune 500 companies. 
-                                            Specialized in creating interactive experiences and real-time data visualizations.
-                                        </p>
-                                        <div class="job-achievements">
-                                            <div class="achievement">👥 1M+ users platform</div>
-                                            <div class="achievement">⚡ 60% faster load times</div>
-                                            <div class="achievement">📊 Real-time analytics</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="timeline-item">
-                                    <div class="timeline-marker">
-                                        <div class="marker-dot"></div>
-                                        <div class="marker-year">2020</div>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <div class="job-header">
-                                            <h3 class="job-title">Frontend Developer</h3>
-                                            <span class="company">StartupTech Solutions</span>
-                                            <span class="duration">2 years</span>
-                                        </div>
-                                        <p class="job-description">
-                                            Built responsive web applications and mobile-first designs. 
-                                            Collaborated with UX/UI designers to create pixel-perfect implementations.
-                                        </p>
-                                        <div class="job-achievements">
-                                            <div class="achievement">⭐ 4.8★ mobile app</div>
-                                            <div class="achievement">🧩 Component library</div>
-                                            <div class="achievement">♿ WCAG 2.1 AA</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Philosophy Section -->
-                        <div class="philosophy-section">
-                            <h2 class="section-title">
-                                <span class="title-icon">💭</span>
-                                <span class="title-text">Development Philosophy</span>
-                            </h2>
-                            <div class="philosophy-grid">
-                                <div class="philosophy-card">
-                                    <div class="card-icon">🎨</div>
-                                    <h3 class="card-title">Code as Art</h3>
-                                    <p class="card-description">
-                                        I believe that clean, elegant code is a form of digital art. 
-                                        Every line should serve a purpose and contribute to the overall beauty of the solution.
-                                    </p>
-                                </div>
-                                <div class="philosophy-card">
-                                    <div class="card-icon">👤</div>
-                                    <h3 class="card-title">User-Centric Design</h3>
-                                    <p class="card-description">
-                                        Technology should enhance human experience, not complicate it. 
-                                        I design with empathy and focus on creating intuitive, accessible interfaces.
-                                    </p>
-                                </div>
-                                <div class="philosophy-card">
-                                    <div class="card-icon">📚</div>
-                                    <h3 class="card-title">Continuous Learning</h3>
-                                    <p class="card-description">
-                                        The tech landscape evolves rapidly. I stay ahead by constantly learning 
-                                        new technologies and experimenting with emerging trends.
-                                    </p>
-                                </div>
-                                <div class="philosophy-card">
-                                    <div class="card-icon">⚡</div>
-                                    <h3 class="card-title">Performance First</h3>
-                                    <p class="card-description">
-                                        Beautiful designs mean nothing if they don't perform. 
-                                        I optimize for speed, accessibility, and scalability from day one.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Window -->
-            <div class="window contact-window" id="contact-app">
-                <div class="window-header">
-                    <div class="window-controls">
-                        <span class="control close"></span>
-                        <span class="control minimize"></span>
-                        <span class="control maximize"></span>
-                    </div>
-                    <div class="window-title">
-                        <span class="title-icon">📧</span>
-                        <span>Contact.cmd - Send Message</span>
-                    </div>
-                </div>
-                <div class="window-content">
-                    <div class="contact-content">
-                        <div class="contact-terminal">
-                            <!-- Matrix Background -->
-                            <div class="contact-matrix-bg">
-                                <canvas id="contact-matrix" class="matrix-canvas"></canvas>
-                            </div>
-                            
-                            <div class="terminal-header">
-                                <span class="prompt">minthep@creative-dev:~$</span>
-                                <span class="command">sendmail --interactive</span>
-                            </div>
-                            <form class="contact-form" id="contact-form">
-                                <div class="form-group">
-                                    <label class="form-label">From:</label>
-                                    <input type="email" class="form-input" placeholder="your.email@domain.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Subject:</label>
-                                    <input type="text" class="form-input" placeholder="Project Collaboration" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Message:</label>
-                                    <textarea class="form-input form-textarea" placeholder="Hi Minthep, I'd like to discuss..." rows="6" required></textarea>
-                                </div>
-                                <button type="submit" class="send-button">
-                                    <span class="button-text">Send Message</span>
-                                    <span class="button-icon">→</span>
-                                </button>
-                            </form>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <h3>Connect with me</h3>
-                            <div class="social-links">
-                                <a href="https://github.com/thepkz" class="social-link" data-platform="github">
-                                    <span class="social-icon">GH</span>
-                                    <span class="social-text">GitHub</span>
-                                </a>
-                                <a href="https://www.linkedin.com/in/thepmaitan26/" class="social-link" data-platform="linkedin">
-                                    <span class="social-icon">LI</span>
-                                    <span class="social-text">LinkedIn</span>
-                                </a>
-                                <a href="https://www.facebook.com/thepp.tan/" class="social-link" data-platform="facebook">
-                                    <span class="social-icon">FB</span>
-                                    <span class="social-text">Facebook</span>
-                                </a>
-                            </div>
-                            
-                            <div class="contact-details">
-                                <div class="contact-item">
-                                    <span class="contact-icon">@</span>
-                                    <span class="contact-text">minthepx@gmail.com</span>
-                                </div>
-                                <div class="contact-item">
-                                    <span class="contact-icon">◉</span>
-                                    <span class="contact-text">Available Worldwide</span>
-                                </div>
-                                <div class="contact-item">
-                                    <span class="contact-icon">⧖</span>
-                                    <span class="contact-text">GMT+7 Timezone</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">Agile Software Development</span>
+            <span class="cert-issuer">LinkedIn</span>
+          </div>
         </div>
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">Python</span>
+            <span class="cert-issuer">Microsoft</span>
+          </div>
+        </div>
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">Web Design Specialization</span>
+            <span class="cert-issuer">University of Michigan</span>
+          </div>
+        </div>
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">OOP in Java</span>
+            <span class="cert-issuer">UC San Diego</span>
+          </div>
+        </div>
+        <div class="cert-item glass-card">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-3-3-4 1 2.3-3.8A8 8 0 1 1 18.7 14.2L21 18l-4-1-3 3-2-5z"/></svg>
+          </div>
+          <div>
+            <span class="cert-name">Computer Communications</span>
+            <span class="cert-issuer">University of Colorado</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script type="module" src="main.js"></script>
+<!-- ====== CONTACT SECTION ====== -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header section-header-center">
+      <span class="section-tag">05 — Contact</span>
+      <h2 class="section-title">Let's Build<br><span class="text-gradient">Together</span></h2>
+      <p class="section-subtitle">Have a project in mind or want to collaborate? I'm always open to discussing new opportunities and creative ideas.</p>
+    </div>
+    <div class="contact-content">
+      <a href="mailto:minthepx@gmail.com" class="contact-email glass-card">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>minthepx@gmail.com</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <div class="social-links">
+        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/thepmaitan26" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://facebook.com/thepp.tan" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Facebook</span>
+        </a>
+        <a href="https://youtube.com/@minthep2611" target="_blank" rel="noopener noreferrer" class="social-link glass-card" aria-label="YouTube">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span>YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 Min Thep. Crafted with passion.</p>
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
+      Created with Perplexity Computer
+    </a>
+  </div>
+</footer>
+
+<script type="module" src="./main.js"></script>
 </body>
 </html>
