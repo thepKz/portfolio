@@ -22,26 +22,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Min Thep — Software Engineer & Creative Developer</title>
 <meta name="description" content="Portfolio of Min Thep (Mai Tan Thep) — Software Engineer & Creative Developer from Vietnam. Building things that make people go WOW.">
-<meta property="og:title" content="Min Thep — Software Engineer & Creative Developer">
-<meta property="og:description" content="Building things that make people go WOW.">
-<meta property="og:type" content="website">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Favicon — monochrome diamond SVG -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%234f8ffa' stroke-width='2'><path d='M16 2L28 14L16 30L4 14Z'/></svg>">
-
-<!-- Styles -->
 <link rel="stylesheet" href="style.css">
 
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-
-<!-- Three.js Import Map -->
 <script type="importmap">
 {
   "imports": {
@@ -52,437 +39,473 @@
 </script>
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
 
-<!-- Full-Page Three.js Canvas (behind everything) -->
-<canvas id="bgCanvas"></canvas>
+  <!-- Background Layer 1: Three.js Particle Nebula -->
+  <canvas id="nebulaCanvas"></canvas>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+  <!-- Background Layer 2: Matrix Rain -->
+  <canvas id="matrixCanvas"></canvas>
 
-<!-- Navigation -->
-<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-pill">
-    <a href="#hero" class="nav-link active" data-section="hero">Home</a>
-    <a href="#about" class="nav-link" data-section="about">About</a>
-    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-    <a href="#projects" class="nav-link" data-section="projects">Work</a>
-    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-    <div class="nav-indicator"></div>
-  </div>
-</nav>
-
-<!-- Hero Section -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <div class="hero-name-container">
-      <h1 class="hero-name" id="heroName">MIN THEP</h1>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" aria-label="Min Thep Logo">
+        <circle cx="20" cy="20" r="18" opacity="0.3"/>
+        <path d="M10 28V12l5 8 5-8v16" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M25 12v16" stroke-linecap="round"/>
+        <circle cx="25" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link magnetic-btn" data-text="About">About</a>
+      <a href="#skills" class="nav-link magnetic-btn" data-text="Skills">Skills</a>
+      <a href="#projects" class="nav-link magnetic-btn" data-text="Projects">Projects</a>
+      <a href="#contact" class="nav-link magnetic-btn" data-text="Contact">Contact</a>
     </div>
-    <p class="hero-subtitle" id="heroSubtitle">Software Engineer & Creative Developer</p>
-    <div class="hero-cta">
-      <a href="#projects" class="hero-btn">View My Work</a>
-    </div>
-  </div>
-  <div class="scroll-indicator" id="scrollIndicator">
-    <span class="scroll-text">Scroll to explore</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+    <a href="mailto:minthepx@gmail.com" class="nav-cta magnetic-btn">Let's Talk</a>
+  </nav>
 
-<!-- About Section -->
-<section class="section about" id="about">
-  <div class="section-inner">
-    <h2 class="section-title" data-reveal="left">
-      <span class="section-number">01</span>
-      About
-    </h2>
-    <div class="about-grid">
-      <div class="about-text" data-reveal="up">
-        <div class="about-card glass-card">
-          <p class="about-line about-line-1">"I build things that make people go <span class="text-accent">WOW</span>."</p>
-          <p class="about-line about-line-2">Software Engineer at heart. Creative Developer by passion.</p>
-          <p class="about-line about-line-3">FPT University &middot; Vietnam &middot; Available for work</p>
+  <!-- Hero Section — Long Scroll Cinematic -->
+  <section id="hero" class="hero">
+    <div class="hero-pin-wrapper">
+      <!-- Phase 1: Name reveal -->
+      <div class="hero-name-container">
+        <h1 class="hero-name" id="heroName">
+          <span class="hero-name-line">MIN</span>
+          <span class="hero-name-line">THEP</span>
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle"></p>
+        <div class="hero-scroll-indicator" id="scrollIndicator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Scroll to explore</span>
         </div>
       </div>
-      <div class="about-details" data-reveal="up">
-        <div class="detail-block glass-card">
-          <div class="detail-row">
-            <span class="detail-key">name</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val">"Mai Tan Thep"</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">alias</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val">"Min Thep"</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">role</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val">"Software Engineer"</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">education</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val">"FPT University (SE, 2022-2025)"</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">location</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val">"Vietnam"</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-key">status</span>
-            <span class="detail-sep">:</span>
-            <span class="detail-val status-available">"Available for work"</span>
-          </div>
-        </div>
+      <!-- Phase 2: Manifesto -->
+      <div class="hero-manifesto" id="heroManifesto">
+        <p class="manifesto-text">
+          <span class="manifesto-word">I</span>
+          <span class="manifesto-word">build</span>
+          <span class="manifesto-word">things</span>
+          <span class="manifesto-word">that</span>
+          <span class="manifesto-word">make</span>
+          <span class="manifesto-word">people</span>
+          <span class="manifesto-word">go</span>
+          <span class="manifesto-word manifesto-wow">WOW</span>
+        </p>
       </div>
     </div>
-    <div class="stats-row" data-reveal="up">
-      <div class="stat-item">
-        <span class="stat-number" data-count="40">0</span>
-        <span class="stat-label">Repositories</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="853" data-suffix="+">0</span>
-        <span class="stat-label">Contributions</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="93">0</span>
-        <span class="stat-label">Portfolio Stars</span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Skills Section -->
-<section class="section skills" id="skills">
-  <div class="section-inner">
-    <h2 class="section-title" data-reveal="right">
-      <span class="section-number">02</span>
-      Skills
-    </h2>
-    <div class="orbital-container" data-reveal="up">
-      <div class="orbital-system" id="orbitalSystem">
-        <div class="orbital-core">
-          <span class="core-icon">
-            <!-- Circuit/Node SVG icon — monochrome -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <line x1="12" y1="3" x2="12" y2="9"/>
-              <line x1="12" y1="15" x2="12" y2="21"/>
-              <line x1="3" y1="12" x2="9" y2="12"/>
-              <line x1="15" y1="12" x2="21" y2="12"/>
-              <circle cx="12" cy="3" r="1.5"/>
-              <circle cx="12" cy="21" r="1.5"/>
-              <circle cx="3" cy="12" r="1.5"/>
-              <circle cx="21" cy="12" r="1.5"/>
-            </svg>
-          </span>
-          <span class="core-label">Core</span>
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-number">01</span>
+        About Me
+      </h2>
+      <div class="about-grid">
+        <div class="about-text glass-card">
+          <p class="about-intro">Hi, I'm <strong>Min Thep</strong> — a Software Engineer & Creative Developer based in Vietnam.</p>
+          <p>Currently studying Software Engineering at <strong>FPT University</strong> (2022-2025). I'm passionate about building web experiences that blend technical precision with creative design. From viral portfolios to veterinary platforms, I love turning ideas into polished digital products.</p>
+          <p>When I'm not coding, you'll find me exploring new tech, contributing to open source, or crafting the next project that makes people go WOW.</p>
+          <div class="about-status">
+            <span class="status-dot"></span>
+            Available for work
+          </div>
         </div>
-        <!-- Orbit 1: Frontend -->
-        <div class="orbit orbit-1" data-category="Frontend">
-          <div class="orbit-ring"></div>
-          <div class="orbit-tag" style="--angle: 0deg">React</div>
-          <div class="orbit-tag" style="--angle: 60deg">TypeScript</div>
-          <div class="orbit-tag" style="--angle: 120deg">JavaScript</div>
-          <div class="orbit-tag" style="--angle: 180deg">Vite</div>
-          <div class="orbit-tag" style="--angle: 240deg">Tailwind CSS</div>
-        </div>
-        <!-- Orbit 2: Backend -->
-        <div class="orbit orbit-2" data-category="Backend">
-          <div class="orbit-ring"></div>
-          <div class="orbit-tag" style="--angle: 30deg">Node.js</div>
-          <div class="orbit-tag" style="--angle: 120deg">Java</div>
-          <div class="orbit-tag" style="--angle: 210deg">MongoDB</div>
-          <div class="orbit-tag" style="--angle: 300deg">SQL Server</div>
-        </div>
-        <!-- Orbit 3: Tools -->
-        <div class="orbit orbit-3" data-category="Tools">
-          <div class="orbit-ring"></div>
-          <div class="orbit-tag" style="--angle: 15deg">Git</div>
-          <div class="orbit-tag" style="--angle: 87deg">GitHub Actions</div>
-          <div class="orbit-tag" style="--angle: 159deg">Docker</div>
-          <div class="orbit-tag" style="--angle: 231deg">Figma</div>
-          <div class="orbit-tag" style="--angle: 303deg">Vercel</div>
-        </div>
-        <!-- Category labels -->
-        <div class="orbit-labels">
-          <span class="orbit-label orbit-label-1">Frontend</span>
-          <span class="orbit-label orbit-label-2">Backend</span>
-          <span class="orbit-label orbit-label-3">Tools</span>
+        <div class="about-stats">
+          <div class="stat-card glass-card">
+            <span class="stat-number" data-target="40">0</span>
+            <span class="stat-label">Repositories</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-number" data-target="853">0</span>
+            <span class="stat-label">Contributions</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-number" data-target="40">0</span>
+            <span class="stat-label">Followers</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-number" data-target="93">0</span>
+            <span class="stat-label">Portfolio Stars</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Projects Section -->
-<section class="section projects" id="projects">
-  <div class="section-inner">
-    <h2 class="section-title" data-reveal="left">
-      <span class="section-number">03</span>
-      Selected Work
-    </h2>
-    <div class="projects-grid" data-reveal="up">
+  <!-- Skills Section — Orbital -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-number">02</span>
+        Skills & Tools
+      </h2>
+      <div class="orbital-container" id="orbitalContainer">
+        <div class="orbital-center">
+          <span class="orbital-label">Core</span>
+        </div>
+        <!-- Orbit 1 — Languages -->
+        <div class="orbit orbit-1" data-speed="40">
+          <div class="orbit-item" data-label="JavaScript">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8m-3-3l3 3 3-3"/></svg>
+          </div>
+          <div class="orbit-item" data-label="TypeScript">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 17V11h4m-4 3h4"/></svg>
+          </div>
+          <div class="orbit-item" data-label="HTML">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 3l2 17 6 2 6-2 2-17H4z"/><path d="M8 8h8l-.5 5H9l.25 3 2.75 1 2.75-1"/></svg>
+          </div>
+          <div class="orbit-item" data-label="CSS">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 3l2 17 6 2 6-2 2-17H4z"/><path d="M8 8h8l-.25 3H8.5l.25 3h6.5l-.5 4-2.75 1-2.75-1"/></svg>
+          </div>
+        </div>
+        <!-- Orbit 2 — Frameworks -->
+        <div class="orbit orbit-2" data-speed="55">
+          <div class="orbit-item" data-label="React">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Node.js">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/><path d="M12 7v10"/><path d="M7 9.5l5 3 5-3"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Next.js">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 8l8 11M16 8v8"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Tailwind">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9c1.5-4 4-5 6-5 3 0 4.5 2 4 5-1 3-3 3-5 2s-3-1-4 2c-.5 2 1 4 4 4 2 0 3.5-1 5-4"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Express">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 12l4-4m-4 4l4 4m12-8l-4 4 4 4"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Three.js">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+        </div>
+        <!-- Orbit 3 — Tools -->
+        <div class="orbit orbit-3" data-speed="70">
+          <div class="orbit-item" data-label="Git">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M6 8v4c0 2 2 4 4 4h4"/><path d="M18 8v8"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Docker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="4" height="4"/><rect x="7" y="10" width="4" height="4"/><rect x="12" y="10" width="4" height="4"/><rect x="7" y="5" width="4" height="4"/><rect x="12" y="5" width="4" height="4"/><path d="M17 10c3 0 5 1 5 4-1 3-4 4-7 4H3c-1-3 0-6 2-8"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Figma">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="6" height="6" rx="3"/><rect x="12" y="2" width="6" height="6" rx="3"/><rect x="6" y="8" width="6" height="6" rx="3"/><circle cx="15" cy="11" r="3"/><path d="M6 14v4a3 3 0 006 0v-4"/></svg>
+          </div>
+          <div class="orbit-item" data-label="MongoDB">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c-2 4-6 6-6 12a6 6 0 0012 0c0-6-4-8-6-12z"/><path d="M12 2v20"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Firebase">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l3-15 3 6 2-4 8 13H4z"/></svg>
+          </div>
+          <div class="orbit-item" data-label="VS Code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 2l4 2v16l-4 2-10-8L4 17V7l3 3L17 2z"/><path d="M17 2v20"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Linux">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="5"/><path d="M9 7h.01M15 7h.01"/><path d="M10 10c.5.5 1 1 2 1s1.5-.5 2-1"/><path d="M7 13c-2 2-3 5-2 7h3m12-7c2 2 3 5 2 7h-3"/><path d="M9 20h6"/></svg>
+          </div>
+          <div class="orbit-item" data-label="Vercel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l10 18H2L12 3z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- Project 1: Minthep Portfolio -->
-      <div class="project-card" data-tilt>
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-header">
-              <span class="card-icon">
-                <!-- Diamond/gem SVG -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 3L18 3L22 9L12 21L2 9Z"/>
-                  <path d="M2 9L22 9"/>
-                  <path d="M12 21L9 9L6 3"/>
-                  <path d="M12 21L15 9L18 3"/>
-                  <path d="M12 3L12 9"/>
-                </svg>
-              </span>
-              <div class="card-stars">
-                <span class="star-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </span>
-                <span class="star-count">93</span>
+  <!-- Projects Section — 8 Cards -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-number">03</span>
+        Projects
+      </h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>93</span>
+                </div>
+              </div>
+              <h3 class="project-name">Minthep Portfolio</h3>
+              <p class="project-desc">Personal brand portfolio that went viral</p>
+              <div class="project-tech">
+                <span>HTML</span><span>CSS</span><span>JS</span>
               </div>
             </div>
-            <h3 class="card-title">Minthep Portfolio</h3>
-            <p class="card-desc">Personal brand portfolio that went viral</p>
-            <div class="card-tech">
-              <span>HTML</span><span>CSS</span><span>JS</span>
-            </div>
-            <div class="card-flip-hint">Click to see more</div>
-          </div>
-          <div class="card-back">
-            <h3 class="card-back-title">Minthep Portfolio</h3>
-            <p class="card-back-desc">A personal brand portfolio that went viral in the developer community, gathering 93 stars on GitHub. Built with pure HTML, CSS, and JavaScript.</p>
-            <div class="card-back-tech">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="card-back-links">
-              <a href="https://github.com/thepKz/minthep-portfolio" target="_blank" rel="noopener noreferrer" class="card-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                View Source
-              </a>
-            </div>
-            <div class="card-flip-hint">Click to flip back</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2: GenKiKoi Fish Care -->
-      <div class="project-card" data-tilt>
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-header">
-              <span class="card-icon">
-                <!-- Fish outline SVG -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12C2 12 5 6 12 6C19 6 22 12 22 12C22 12 19 18 12 18C5 18 2 12 2 12Z"/>
-                  <path d="M20 7L23 4"/>
-                  <path d="M20 17L23 20"/>
-                  <circle cx="8" cy="11.5" r="1"/>
-                  <path d="M12 6C12 6 13 8 13 12C13 16 12 18 12 18"/>
-                </svg>
-              </span>
-              <div class="card-stars">
-                <span class="star-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </span>
-                <span class="star-count">9</span>
+            <div class="project-card-back glass-card">
+              <p>A creative developer portfolio featuring cosmic particle effects, cinematic scroll animations, and interactive elements that captured 93 stars on GitHub.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/minthep-portfolio" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
               </div>
             </div>
-            <h3 class="card-title">GenKiKoi Fish Care</h3>
-            <p class="card-desc">Veterinary platform for Koi fish</p>
-            <div class="card-tech">
-              <span>TypeScript</span><span>React</span><span>Node.js</span>
-            </div>
-            <div class="card-flip-hint">Click to see more</div>
-          </div>
-          <div class="card-back">
-            <h3 class="card-back-title">GenKiKoi Fish Care</h3>
-            <p class="card-back-desc">A full-stack veterinary platform for Koi fish care. Features appointment booking, health tracking, and comprehensive management. Built with TypeScript, React, and Node.js.</p>
-            <div class="card-back-tech">
-              <span>TypeScript</span><span>React</span><span>Node.js</span>
-            </div>
-            <div class="card-back-links">
-              <a href="https://github.com/thepKz/genkikoi-fishcare-webapp" target="_blank" rel="noopener noreferrer" class="card-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                View Source
-              </a>
-            </div>
-            <div class="card-flip-hint">Click to flip back</div>
           </div>
         </div>
-      </div>
 
-      <!-- Project 3: Wedding Bolt -->
-      <div class="project-card" data-tilt>
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-header">
-              <span class="card-icon">
-                <!-- Chapel/heart arch SVG -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 21V11L12 3L21 11V21H3Z"/>
-                  <path d="M9 21V15C9 13.34 10.34 12 12 12C13.66 12 15 13.34 15 15V21"/>
-                  <path d="M12 3V7"/>
-                  <path d="M9 8.5C9 7.12 10.12 6 11.5 6H12.5C13.88 6 15 7.12 15 8.5"/>
-                </svg>
-              </span>
-              <div class="card-stars">
-                <span class="star-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </span>
-                <span class="star-count">7</span>
+        <!-- Project 2 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>9</span>
+                </div>
+              </div>
+              <h3 class="project-name">GenKiKoi Fish Care</h3>
+              <p class="project-desc">Veterinary platform for Koi fish</p>
+              <div class="project-tech">
+                <span>TypeScript</span><span>React</span><span>Node.js</span>
               </div>
             </div>
-            <h3 class="card-title">Wedding Bolt</h3>
-            <p class="card-desc">Elegant digital wedding invitations</p>
-            <div class="card-tech">
-              <span>HTML</span><span>CSS</span><span>JS</span>
-            </div>
-            <div class="card-flip-hint">Click to see more</div>
-          </div>
-          <div class="card-back">
-            <h3 class="card-back-title">Wedding Bolt</h3>
-            <p class="card-back-desc">Beautiful digital wedding invitations with smooth animations, RSVP functionality, and a modern design that makes every couple's special day more memorable.</p>
-            <div class="card-back-tech">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="card-back-links">
-              <a href="https://github.com/thepKz/wedding-bolt" target="_blank" rel="noopener noreferrer" class="card-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                View Source
-              </a>
-            </div>
-            <div class="card-flip-hint">Click to flip back</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4: Korean Magic Page -->
-      <div class="project-card" data-tilt>
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-header">
-              <span class="card-icon">
-                <!-- Book/sparkle SVG -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                  <path d="M14 7l1.5 3l1.5-3"/>
-                  <path d="M10 7v6"/>
-                  <circle cx="15.5" cy="14" r="0.5"/>
-                </svg>
-              </span>
-              <div class="card-stars">
-                <span class="star-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                </span>
-                <span class="star-count">5</span>
+            <div class="project-card-back glass-card">
+              <p>A full-stack veterinary management platform for Koi fish care, featuring appointment scheduling, health records, and treatment tracking.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/genkikoi-fishcare-webapp" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
               </div>
             </div>
-            <h3 class="card-title">Korean Magic Page</h3>
-            <p class="card-desc">Interactive Korean learning platform</p>
-            <div class="card-tech">
-              <span>TypeScript</span><span>React</span>
-            </div>
-            <div class="card-flip-hint">Click to see more</div>
           </div>
-          <div class="card-back">
-            <h3 class="card-back-title">Korean Magic Page</h3>
-            <p class="card-back-desc">An interactive platform for learning Korean. Features gamified lessons, progress tracking, and an engaging UI that makes language learning feel like play.</p>
-            <div class="card-back-tech">
-              <span>TypeScript</span><span>React</span>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>7</span>
+                </div>
+              </div>
+              <h3 class="project-name">Wedding Bolt</h3>
+              <p class="project-desc">Elegant digital wedding invitations</p>
+              <div class="project-tech">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
             </div>
-            <div class="card-back-links">
-              <a href="https://github.com/thepKz/korean-magic-page" target="_blank" rel="noopener noreferrer" class="card-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                View Source
-              </a>
+            <div class="project-card-back glass-card">
+              <p>Beautiful digital wedding invitation platform with customizable templates, RSVP functionality, and elegant animations for the special day.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/wedding-bolt" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
             </div>
-            <div class="card-flip-hint">Click to flip back</div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>5</span>
+                </div>
+              </div>
+              <h3 class="project-name">Korean Magic Page</h3>
+              <p class="project-desc">Interactive Korean learning platform</p>
+              <div class="project-tech">
+                <span>TypeScript</span><span>React</span>
+              </div>
+            </div>
+            <div class="project-card-back glass-card">
+              <p>An interactive platform for learning Korean with gamified exercises, vocabulary practice, and progress tracking features.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/korean-magic-page" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h4"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>4</span>
+                </div>
+              </div>
+              <h3 class="project-name">Grok AI Chat</h3>
+              <p class="project-desc">AI ChatBot with GenZ Vietnamese version</p>
+              <div class="project-tech">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+            </div>
+            <div class="project-card-back glass-card">
+              <p>An AI chatbot interface inspired by Grok, featuring a fun GenZ Vietnamese language mode with slang responses and cultural references.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/grok-ai-chat" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 8v11a2 2 0 002 2h14a2 2 0 002-2V8l-3-6H6z"/><path d="M3 8h18"/><path d="M16 12a4 4 0 01-8 0"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>4</span>
+                </div>
+              </div>
+              <h3 class="project-name">VuVu Store</h3>
+              <p class="project-desc">E-commerce store inspired by Popmart</p>
+              <div class="project-tech">
+                <span>React</span><span>JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card-back glass-card">
+              <p>A vibrant e-commerce platform inspired by Popmart, featuring collectible toy browsing, cart management, and a sleek shopping experience.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/vuvu-store" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/><path d="M8 16h8"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>4</span>
+                </div>
+              </div>
+              <h3 class="project-name">Bầu Cua Tết</h3>
+              <p class="project-desc">Traditional Vietnamese dice game for Tết</p>
+              <div class="project-tech">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+            </div>
+            <div class="project-card-back glass-card">
+              <p>A digital recreation of the beloved Vietnamese Lunar New Year dice game, with festive Tết-themed visuals and animations.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/bau-cua-tom-ca-ver-tet" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="project-card" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-card-front glass-card">
+              <div class="project-header">
+                <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+                  <span>2</span>
+                </div>
+              </div>
+              <h3 class="project-name">Free Map Routing</h3>
+              <p class="project-desc">Alternative map routing for Vietnam</p>
+              <div class="project-tech">
+                <span>React</span><span>JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card-back glass-card">
+              <p>An alternative routing solution for Vietnam where Google Maps API is restricted, using open-source map services for navigation.</p>
+              <div class="project-links">
+                <a href="https://github.com/thepKz/free-map-routing" target="_blank" rel="noopener noreferrer" class="project-link magnetic-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section class="section contact" id="contact">
-  <div class="section-inner">
-    <h2 class="section-title" data-reveal="right">
-      <span class="section-number">04</span>
-      Get in Touch
-    </h2>
-    <div class="contact-content" data-reveal="up">
-      <a href="mailto:minthepx@gmail.com" class="contact-email">minthepx@gmail.com</a>
-      <div class="social-links">
-        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="GitHub">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          <span>GitHub</span>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-number">04</span>
+        Get In Touch
+      </h2>
+      <div class="contact-content">
+        <p class="contact-headline">Let's build something <span class="text-gradient">extraordinary</span> together.</p>
+        <a href="mailto:minthepx@gmail.com" class="contact-cta magnetic-btn">
+          <span>Say Hello</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="https://linkedin.com/in/thepmaitan26" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="LinkedIn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <span>LinkedIn</span>
-        </a>
-        <a href="https://facebook.com/thepp.tan" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="Facebook">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          <span>Facebook</span>
-        </a>
-        <a href="https://youtube.com/@minthep2611" target="_blank" rel="noopener noreferrer" class="social-btn magnetic" aria-label="YouTube">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
-          <span>YouTube</span>
-        </a>
+        <div class="contact-socials">
+          <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/thepmaitan26" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://facebook.com/thepp.tan" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://youtube.com/@minthep2611" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Aurora background -->
-  <div class="aurora-bg" aria-hidden="true"></div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-inner">
-    <p class="footer-text">
-      &copy; 2026 Min Thep. Crafted with obsessive attention to detail.
-    </p>
-    <div class="footer-links">
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Min Thep. Built with passion & code.</p>
       <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
         Created with Perplexity Computer
       </a>
-      <button class="easter-egg-btn" id="matrixBtn" aria-label="Easter egg">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-        </svg>
-      </button>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Matrix Rain Canvas (Easter Egg) -->
-<canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
-<!-- Fireworks Canvas (Easter Egg) -->
-<canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
-
-<!-- Main Script -->
-<script type="module" src="main.js"></script>
-
+  <script type="module" src="main.js"></script>
 </body>
 </html>
