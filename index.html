@@ -49,6 +49,13 @@
   <!-- Background Layer 2: Matrix Rain -->
   <canvas id="matrixCanvas"></canvas>
 
+  <!-- Background Layer 3: Aurora / Volumetric Fog -->
+  <div class="aurora-layer" id="auroraLayer">
+    <div class="aurora-band aurora-band-1"></div>
+    <div class="aurora-band aurora-band-2"></div>
+    <div class="aurora-band aurora-band-3"></div>
+  </div>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <a href="#hero" class="nav-logo">
@@ -225,9 +232,9 @@
         <span class="section-number">03</span>
         Projects
       </h2>
-      <div class="projects-grid">
+      <div class="projects-canvas">
         <!-- Project 1 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="01">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -256,7 +263,7 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="02">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -285,7 +292,7 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="03">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -314,7 +321,7 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="04">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -343,7 +350,7 @@
         </div>
 
         <!-- Project 5 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="05">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -372,7 +379,7 @@
         </div>
 
         <!-- Project 6 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="06">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -401,7 +408,7 @@
         </div>
 
         <!-- Project 7 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="07">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">
@@ -430,7 +437,7 @@
         </div>
 
         <!-- Project 8 -->
-        <div class="project-card" data-tilt>
+        <div class="project-card" data-tilt data-index="08">
           <div class="project-card-inner">
             <div class="project-card-front glass-card">
               <div class="project-header">

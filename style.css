@@ -80,6 +80,76 @@ a {
   pointer-events: none;
 }
 
+/* --- Aurora / Volumetric Fog Layer --- */
+.aurora-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.aurora-band {
+  position: absolute;
+  width: 200%;
+  height: 40%;
+  filter: blur(80px);
+  opacity: 0.3;
+  mix-blend-mode: screen;
+}
+
+.aurora-band-1 {
+  top: -10%;
+  left: -50%;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(79, 143, 250, 0.15) 0%,
+    rgba(167, 139, 250, 0.08) 40%,
+    transparent 70%);
+  animation: auroraFlow1 25s ease-in-out infinite;
+}
+
+.aurora-band-2 {
+  top: 30%;
+  left: -30%;
+  background: radial-gradient(ellipse at 60% 50%,
+    rgba(125, 211, 252, 0.12) 0%,
+    rgba(79, 143, 250, 0.06) 45%,
+    transparent 70%);
+  animation: auroraFlow2 30s ease-in-out infinite;
+}
+
+.aurora-band-3 {
+  bottom: -15%;
+  left: -40%;
+  background: radial-gradient(ellipse at 40% 50%,
+    rgba(167, 139, 250, 0.1) 0%,
+    rgba(123, 181, 255, 0.05) 50%,
+    transparent 75%);
+  animation: auroraFlow3 35s ease-in-out infinite;
+}
+
+@keyframes auroraFlow1 {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.3; }
+  25% { transform: translateX(8%) translateY(5%) rotate(2deg); opacity: 0.45; }
+  50% { transform: translateX(15%) translateY(-3%) rotate(-1deg); opacity: 0.25; }
+  75% { transform: translateX(5%) translateY(8%) rotate(3deg); opacity: 0.4; }
+}
+
+@keyframes auroraFlow2 {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.25; }
+  33% { transform: translateX(-10%) translateY(6%) rotate(-2deg); opacity: 0.4; }
+  66% { transform: translateX(12%) translateY(-4%) rotate(1.5deg); opacity: 0.2; }
+}
+
+@keyframes auroraFlow3 {
+  0%, 100% { transform: translateX(0) translateY(0) scaleX(1); opacity: 0.2; }
+  50% { transform: translateX(10%) translateY(-8%) scaleX(1.1); opacity: 0.35; }
+}
+
 /* --- Custom Cursor --- */
 .cursor {
   position: fixed;
@@ -345,7 +415,7 @@ a {
 .section {
   position: relative;
   padding: 8rem 0;
-  background: rgba(var(--void-rgb), 0.75);
+  background: rgba(var(--void-rgb), 0.6);
 }
 
 .section-title {
@@ -629,17 +699,106 @@ a {
   animation: none;
 }
 
-/* --- Projects Grid --- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+/* --- Projects: Artistic Scattered Canvas --- */
+.projects-canvas {
+  position: relative;
+  width: 100%;
+  min-height: 1050px;
 }
 
 .project-card {
-  perspective: 1000px;
-  height: 320px;
+  position: absolute;
+  perspective: 1200px;
   cursor: pointer;
+  transition: z-index 0s;
+}
+
+/* Artistic scattered positions — like an artist's mood board */
+/* Each card has unique size, rotation, position */
+.project-card:nth-child(1) {
+  width: 340px;
+  height: 280px;
+  top: 0;
+  left: 3%;
+  --card-rotate: -2.5deg;
+  z-index: 8;
+}
+
+.project-card:nth-child(2) {
+  width: 310px;
+  height: 270px;
+  top: 20px;
+  right: 5%;
+  --card-rotate: 2deg;
+  z-index: 7;
+}
+
+.project-card:nth-child(3) {
+  width: 290px;
+  height: 255px;
+  top: 240px;
+  left: 22%;
+  --card-rotate: -1.5deg;
+  z-index: 6;
+}
+
+.project-card:nth-child(4) {
+  width: 320px;
+  height: 265px;
+  top: 200px;
+  right: 0%;
+  --card-rotate: 3.5deg;
+  z-index: 5;
+}
+
+.project-card:nth-child(5) {
+  width: 300px;
+  height: 255px;
+  top: 480px;
+  left: 0%;
+  --card-rotate: 2deg;
+  z-index: 4;
+}
+
+.project-card:nth-child(6) {
+  width: 310px;
+  height: 260px;
+  top: 510px;
+  left: 32%;
+  --card-rotate: -2.5deg;
+  z-index: 3;
+}
+
+.project-card:nth-child(7) {
+  width: 280px;
+  height: 250px;
+  top: 460px;
+  right: 0%;
+  --card-rotate: 3deg;
+  z-index: 2;
+}
+
+.project-card:nth-child(8) {
+  width: 310px;
+  height: 265px;
+  top: 740px;
+  left: 20%;
+  --card-rotate: -1.8deg;
+  z-index: 1;
+}
+
+/* Connector lines between cards — artist's thread */
+.projects-canvas::before {
+  content: '';
+  position: absolute;
+  top: 150px;
+  left: 20%;
+  width: 60%;
+  height: 900px;
+  border: 1px solid rgba(79, 143, 250, 0.04);
+  border-radius: 50%;
+  transform: rotate(-8deg);
+  pointer-events: none;
 }
 
 .project-card-inner {
@@ -648,11 +807,19 @@ a {
   height: 100%;
   transition: transform 0.7s var(--ease-out-expo);
   transform-style: preserve-3d;
-  transform: rotateY(0deg);
+  transform: rotate(var(--card-rotate, 0deg));
+}
+
+.project-card:hover .project-card-inner {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.project-card:hover {
+  z-index: 100 !important;
 }
 
 .project-card.flipped .project-card-inner {
-  transform: rotateY(180deg);
+  transform: rotate(0deg) rotateY(180deg);
 }
 
 .project-card-front,
@@ -662,20 +829,32 @@ a {
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  padding: 2rem;
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
 }
+
+/* Unique accent borders per card */
+.project-card:nth-child(1) .project-card-front { border-top: 2px solid rgba(79, 143, 250, 0.4); }
+.project-card:nth-child(2) .project-card-front { border-left: 2px solid rgba(167, 139, 250, 0.4); }
+.project-card:nth-child(3) .project-card-front { border-bottom: 2px solid rgba(123, 181, 255, 0.3); }
+.project-card:nth-child(4) .project-card-front { border-right: 2px solid rgba(125, 211, 252, 0.3); }
+.project-card:nth-child(5) .project-card-front { border-top: 2px solid rgba(167, 139, 250, 0.35); }
+.project-card:nth-child(6) .project-card-front { border-left: 2px solid rgba(79, 143, 250, 0.35); }
+.project-card:nth-child(7) .project-card-front { border-bottom: 2px solid rgba(125, 211, 252, 0.35); }
+.project-card:nth-child(8) .project-card-front { border-right: 2px solid rgba(123, 181, 255, 0.35); }
 
 .project-card-back {
   transform: rotateY(180deg);
   justify-content: center;
   align-items: center;
   text-align: center;
+  border-radius: 20px;
 }
 
 .project-card-back p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--white-muted);
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -685,12 +864,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .project-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   color: var(--primary);
   opacity: 0.7;
 }
@@ -700,7 +879,7 @@ a {
   align-items: center;
   gap: 0.35rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--white-muted);
 }
 
@@ -710,14 +889,14 @@ a {
 
 .project-name {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: var(--white);
 }
 
 .project-desc {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--white-dim);
   line-height: 1.5;
   flex: 1;
@@ -726,15 +905,15 @@ a {
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-top: auto;
 }
 
 .project-tech span {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.05em;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   background: rgba(79, 143, 250, 0.08);
   border: 1px solid rgba(79, 143, 250, 0.15);
   border-radius: 100px;
@@ -751,8 +930,8 @@ a {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  padding: 0.7rem 1.5rem;
+  font-size: 0.75rem;
+  padding: 0.6rem 1.3rem;
   border: 1px solid rgba(79, 143, 250, 0.3);
   border-radius: 100px;
   color: var(--primary);
@@ -762,6 +941,21 @@ a {
 .project-link:hover {
   background: rgba(79, 143, 250, 0.1);
   border-color: var(--primary);
+}
+
+/* Floating index numbers — artistic touch */
+.project-card::before {
+  content: attr(data-index);
+  position: absolute;
+  top: -16px;
+  left: -8px;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(79, 143, 250, 0.06);
+  line-height: 1;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* --- Contact Section --- */
@@ -968,13 +1162,30 @@ a {
     height: 16px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  /* Projects: stack on mobile */
+  .projects-canvas {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .project-card {
-    height: 280px;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    height: 280px !important;
+    --card-rotate: 0deg !important;
+  }
+
+  .project-card::before {
+    display: none;
+  }
+
+  .projects-canvas::before {
+    display: none;
   }
 
   .container {

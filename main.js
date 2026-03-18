@@ -18,8 +18,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-// Particle count
-const PARTICLE_COUNT = 1500;
+// Particle count — denser for surreal depth
+const PARTICLE_COUNT = 2500;
 
 // Custom shader material
 const vertexShader = `
@@ -148,6 +148,9 @@ const colorPalette = [
   new THREE.Color('#7bb5ff'),
   new THREE.Color('#a78bfa'),
   new THREE.Color('#7dd3fc'),
+  new THREE.Color('#6366f1'),
+  new THREE.Color('#818cf8'),
+  new THREE.Color('#38bdf8'),
 ];
 
 for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -162,7 +165,7 @@ for (let i = 0; i < PARTICLE_COUNT; i++) {
   positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.4; // Flatten Y
   positions[i3 + 2] = r * Math.cos(phi);
 
-  sizes[i] = Math.random() * 3 + 0.5;
+  sizes[i] = Math.random() * 4 + 0.3;
   phases[i] = Math.random();
 
   const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
@@ -209,9 +212,10 @@ function animateNebula() {
   camera.position.y = mouse.y * 0.3;
   camera.lookAt(0, 0, 0);
 
-  // Slow rotation
-  particles.rotation.y += 0.001;
-  particles.rotation.x = Math.sin(nebulaTime * 0.5) * 0.05;
+  // Slow rotation — more dreamlike
+  particles.rotation.y += 0.0015;
+  particles.rotation.x = Math.sin(nebulaTime * 0.3) * 0.08;
+  particles.rotation.z = Math.cos(nebulaTime * 0.2) * 0.03;
 
   renderer.render(scene, camera);
 }
@@ -244,25 +248,36 @@ for (let i = 0; i < drops.length; i++) {
 }
 
 function drawMatrix() {
-  // Very subtle trail effect
-  ctx.fillStyle = 'rgba(1, 1, 8, 0.04)';
+  // Very subtle trail effect — dreamier fade
+  ctx.fillStyle = 'rgba(1, 1, 8, 0.035)';
   ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+  const monoFont = getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim() || 'monospace';
 
   for (let i = 0; i < drops.length; i++) {
     const text = chars.charAt(Math.floor(Math.random() * chars.length));
     const x = i * fontSize;
     const y = drops[i] * fontSize;
+    const rng = Math.random();
 
-    // Lead character slightly brighter
-    if (Math.random() > 0.95) {
-      ctx.fillStyle = 'rgba(79, 143, 250, 0.45)';
-      ctx.font = `bold ${fontSize}px ${getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim() || 'monospace'}`;
+    // Occasional bright "star" flash — surreal sparkle
+    if (rng > 0.985) {
+      ctx.fillStyle = 'rgba(167, 139, 250, 0.6)';
+      ctx.font = `bold ${fontSize}px ${monoFont}`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(167, 139, 250, 0.4)';
+    } else if (rng > 0.95) {
+      ctx.fillStyle = 'rgba(79, 143, 250, 0.4)';
+      ctx.font = `bold ${fontSize}px ${monoFont}`;
+      ctx.shadowBlur = 0;
     } else {
-      ctx.fillStyle = 'rgba(79, 143, 250, 0.25)';
-      ctx.font = `${fontSize}px ${getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim() || 'monospace'}`;
+      ctx.fillStyle = 'rgba(79, 143, 250, 0.18)';
+      ctx.font = `${fontSize}px ${monoFont}`;
+      ctx.shadowBlur = 0;
     }
 
     ctx.fillText(text, x, y);
+    ctx.shadowBlur = 0;
 
     // Reset when off screen
     if (y > matrixCanvas.height && Math.random() > 0.975) {
@@ -394,17 +409,30 @@ document.querySelectorAll('.section-title, .about-text, .about-stats, .contact-h
   });
 });
 
-// Project cards: separate reveal that doesn't conflict with 3D
+// Project cards: scattered artistic reveal — each card floats in from a random direction
+const cardDirections = [
+  { x: -60, y: 40, rotation: -5 },
+  { x: 60, y: 30, rotation: 4 },
+  { x: -40, y: 50, rotation: -3 },
+  { x: 50, y: 35, rotation: 6 },
+  { x: -50, y: 45, rotation: -4 },
+  { x: 45, y: 40, rotation: 3 },
+  { x: -55, y: 35, rotation: -6 },
+  { x: 55, y: 50, rotation: 5 },
+];
+
 document.querySelectorAll('.project-card').forEach((el, i) => {
+  const dir = cardDirections[i] || { x: 0, y: 40, rotation: 0 };
   gsap.from(el, {
     opacity: 0,
-    y: 40,
-    duration: 0.8,
-    delay: i * 0.1,
+    x: dir.x,
+    y: dir.y,
+    rotation: dir.rotation,
+    duration: 1.2,
     ease: 'power3.out',
     scrollTrigger: {
       trigger: el,
-      start: 'top 85%',
+      start: 'top 90%',
       once: true,
     },
   });
