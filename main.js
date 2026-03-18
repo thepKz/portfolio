@@ -497,7 +497,7 @@ function updateCursor() {
 updateCursor();
 
 // Cursor hover state
-document.querySelectorAll('a, button, .magnetic-btn, .project-card, .orbit-item').forEach((el) => {
+document.querySelectorAll('a, button, .magnetic-btn, .project-card, .skill-star').forEach((el) => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });

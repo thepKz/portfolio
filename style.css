@@ -539,107 +539,210 @@ a {
   color: var(--white-dim);
 }
 
-/* --- Skills Orbital --- */
-.orbital-container {
+/* --- Skills Constellation Galaxy Map --- */
+.constellation-map {
   position: relative;
   width: 100%;
-  max-width: 700px;
-  aspect-ratio: 1;
+  height: 500px;
   margin: 0 auto;
 }
 
-.orbital-center {
+.constellation-lines {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79, 143, 250, 0.15), transparent);
-  border: 1px solid rgba(79, 143, 250, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
 }
 
-.orbital-label {
+.constellation-lines line {
+  animation: lineFlicker 8s ease-in-out infinite;
+}
+
+.constellation-lines line:nth-child(odd) {
+  animation-delay: -3s;
+}
+
+@keyframes lineFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.skill-cluster {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.cluster-label {
+  position: absolute;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--white-dim);
+  pointer-events: none;
 }
 
-.orbit {
+[data-cluster="languages"] .cluster-label {
+  top: 6%;
+  left: 5%;
+  color: rgba(79, 143, 250, 0.5);
+}
+
+[data-cluster="frameworks"] .cluster-label {
+  top: 0%;
+  left: 38%;
+  color: rgba(167, 139, 250, 0.5);
+}
+
+[data-cluster="tools"] .cluster-label {
+  top: 2%;
+  right: 6%;
+  color: rgba(125, 211, 252, 0.5);
+}
+
+/* Nebula glow behind each cluster */
+.skill-cluster::before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
   border-radius: 50%;
-  border: 1px solid rgba(79, 143, 250, 0.06);
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  animation: clusterPulse 8s ease-in-out infinite;
 }
 
-.orbit-1 {
-  width: 55%;
-  height: 55%;
-  transform: translate(-50%, -50%);
-  animation: orbitRotate 40s linear infinite;
+[data-cluster="languages"]::before {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  left: 5%;
+  background: var(--primary);
 }
 
-.orbit-2 {
-  width: 75%;
-  height: 75%;
-  transform: translate(-50%, -50%);
-  animation: orbitRotate 55s linear infinite reverse;
+[data-cluster="frameworks"]::before {
+  width: 400px;
+  height: 350px;
+  top: 10%;
+  left: 30%;
+  background: var(--accent);
+  animation-delay: -3s;
 }
 
-.orbit-3 {
-  width: 95%;
-  height: 95%;
-  transform: translate(-50%, -50%);
-  animation: orbitRotate 70s linear infinite;
+[data-cluster="tools"]::before {
+  width: 380px;
+  height: 320px;
+  top: 10%;
+  right: 2%;
+  background: var(--ice);
+  animation-delay: -5s;
 }
 
-@keyframes orbitRotate {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes clusterPulse {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.08); }
 }
 
-.orbit-item {
+/* Each skill = a "star" at an absolute coordinate */
+.skill-star {
   position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  left: var(--x);
+  top: var(--y);
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s var(--ease-out-expo);
+  border-radius: 50%;
+  background: rgba(8, 12, 30, 0.7);
+  border: 1px solid rgba(79, 143, 250, 0.2);
   cursor: pointer;
+  transition: all 0.4s var(--ease-out-expo);
+  z-index: 3;
+  animation: starFloat 6s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(4px);
 }
 
-.orbit-item svg {
-  width: 20px;
-  height: 20px;
-  color: var(--white-muted);
-  transition: color 0.3s ease;
+/* Stagger the float animation */
+.skill-star:nth-child(2) { animation-delay: -1s; }
+.skill-star:nth-child(3) { animation-delay: -2s; }
+.skill-star:nth-child(4) { animation-delay: -3s; }
+.skill-star:nth-child(5) { animation-delay: -4s; }
+.skill-star:nth-child(6) { animation-delay: -5s; }
+.skill-star:nth-child(7) { animation-delay: -0.5s; }
+.skill-star:nth-child(8) { animation-delay: -2.5s; }
+.skill-star:nth-child(9) { animation-delay: -4.5s; }
+
+@keyframes starFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-6px); }
 }
 
-.orbit-item:hover {
-  background: rgba(79, 143, 250, 0.12);
+/* Glow ring behind each star */
+.skill-star::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 143, 250, 0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.skill-star:hover::before {
+  opacity: 1;
+}
+
+.skill-star svg {
+  width: 22px;
+  height: 22px;
+  color: var(--white);
+  transition: color 0.3s ease, filter 0.3s ease;
+  opacity: 0.85;
+}
+
+.skill-star:hover {
   border-color: var(--primary);
-  transform: scale(1.3);
+  background: rgba(79, 143, 250, 0.1);
+  box-shadow: 0 0 20px rgba(79, 143, 250, 0.15), 0 0 40px rgba(79, 143, 250, 0.05);
   z-index: 10;
 }
 
-.orbit-item:hover svg {
+.skill-star:hover svg {
   color: var(--primary);
+  filter: drop-shadow(0 0 6px rgba(79, 143, 250, 0.4));
 }
 
-.orbit-item::after {
+/* Cluster-specific hover colors */
+[data-cluster="frameworks"] .skill-star:hover {
+  border-color: var(--accent);
+  background: rgba(167, 139, 250, 0.1);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.15), 0 0 40px rgba(167, 139, 250, 0.05);
+}
+
+[data-cluster="frameworks"] .skill-star:hover svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));
+}
+
+[data-cluster="tools"] .skill-star:hover {
+  border-color: var(--ice);
+  background: rgba(125, 211, 252, 0.1);
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.15), 0 0 40px rgba(125, 211, 252, 0.05);
+}
+
+[data-cluster="tools"] .skill-star:hover svg {
+  color: var(--ice);
+  filter: drop-shadow(0 0 6px rgba(125, 211, 252, 0.4));
+}
+
+/* Skill label — always visible */
+.skill-star::after {
   content: attr(data-label);
   position: absolute;
   bottom: -24px;
@@ -647,56 +750,16 @@ a {
   transform: translateX(-50%);
   font-family: var(--font-mono);
   font-size: 0.6rem;
+  letter-spacing: 0.05em;
   color: var(--white-dim);
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 1;
+  transition: opacity 0.3s ease, color 0.3s ease;
   pointer-events: none;
 }
 
-.orbit-item:hover::after {
-  opacity: 1;
-}
-
-/* Position orbit items around the circle */
-.orbit-1 .orbit-item:nth-child(1) { top: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-1 .orbit-item:nth-child(2) { bottom: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-1 .orbit-item:nth-child(3) { left: -22px; top: 50%; transform: translateY(-50%); }
-.orbit-1 .orbit-item:nth-child(4) { right: -22px; top: 50%; transform: translateY(-50%); }
-
-.orbit-2 .orbit-item:nth-child(1) { top: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-2 .orbit-item:nth-child(2) { bottom: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-2 .orbit-item:nth-child(3) { left: -22px; top: 50%; transform: translateY(-50%); }
-.orbit-2 .orbit-item:nth-child(4) { right: -22px; top: 50%; transform: translateY(-50%); }
-.orbit-2 .orbit-item:nth-child(5) { top: 10%; left: -12px; }
-.orbit-2 .orbit-item:nth-child(6) { bottom: 10%; right: -12px; }
-
-.orbit-3 .orbit-item:nth-child(1) { top: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-3 .orbit-item:nth-child(2) { bottom: -22px; left: 50%; transform: translateX(-50%); }
-.orbit-3 .orbit-item:nth-child(3) { left: -22px; top: 50%; transform: translateY(-50%); }
-.orbit-3 .orbit-item:nth-child(4) { right: -22px; top: 50%; transform: translateY(-50%); }
-.orbit-3 .orbit-item:nth-child(5) { top: 8%; left: 2%; }
-.orbit-3 .orbit-item:nth-child(6) { top: 8%; right: 2%; }
-.orbit-3 .orbit-item:nth-child(7) { bottom: 8%; left: 2%; }
-.orbit-3 .orbit-item:nth-child(8) { bottom: 8%; right: 2%; }
-
-/* Counter-rotate items to keep them upright */
-.orbit-1 .orbit-item { animation: counterRotate 40s linear infinite; }
-.orbit-2 .orbit-item { animation: counterRotate 55s linear infinite reverse; }
-.orbit-3 .orbit-item { animation: counterRotate 70s linear infinite; }
-
-@keyframes counterRotate {
-  to { transform: rotate(-360deg); }
-}
-
-/* Override the positioned items' transforms */
-.orbit-1 .orbit-item:nth-child(1),
-.orbit-1 .orbit-item:nth-child(2),
-.orbit-2 .orbit-item:nth-child(1),
-.orbit-2 .orbit-item:nth-child(2),
-.orbit-3 .orbit-item:nth-child(1),
-.orbit-3 .orbit-item:nth-child(2) {
-  animation: none;
+.skill-star:hover::after {
+  color: var(--white);
 }
 
 /* --- Projects: Artistic Scattered Canvas --- */
@@ -1094,8 +1157,16 @@ a {
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
-  .orbital-container {
-    max-width: 550px;
+  .constellation-map {
+    height: 450px;
+  }
+  .skill-star {
+    width: 44px;
+    height: 44px;
+  }
+  .skill-star svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -1148,18 +1219,69 @@ a {
     font-size: 2rem;
   }
 
-  .orbital-container {
-    max-width: 340px;
+  /* Constellation: switch to flowing grid on mobile */
+  .constellation-map {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
   }
 
-  .orbit-item {
-    width: 36px;
-    height: 36px;
+  .constellation-lines {
+    display: none;
   }
 
-  .orbit-item svg {
-    width: 16px;
-    height: 16px;
+  .skill-cluster {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    background: rgba(8, 12, 30, 0.4);
+    border: 1px solid var(--glass-border);
+  }
+
+  .skill-cluster::before {
+    display: none;
+  }
+
+  .cluster-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .skill-star {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 48px;
+    height: 48px;
+    transform: none;
+    animation: none;
+    margin-bottom: 20px;
+  }
+
+  .skill-star::after {
+    font-size: 0.5rem;
+    bottom: -18px;
+  }
+
+  .skill-star svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @keyframes starFloat {
+    0%, 100% { transform: none; }
   }
 
   /* Projects: stack on mobile */
@@ -1206,8 +1328,19 @@ a {
     font-size: 1.6rem;
   }
 
-  .orbital-container {
-    max-width: 280px;
+  .skill-star {
+    width: 42px;
+    height: 42px;
+  }
+
+  .skill-star svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .skill-cluster {
+    padding: 1.2rem 0.75rem;
+    gap: 0.8rem;
   }
 }
 
