@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "DM Sans", system-ui, sans-serif;
+    --font-serif: "Newsreader", Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --background: 40 20% 97%;
+    --foreground: 0 0% 7%;
+
+    --muted: 40 10% 94%;
+    --muted-foreground: 0 0% 38%;
+
+    --accent: 18 28% 24%;
+    --accent-foreground: 40 20% 97%;
+
+    --border: 40 8% 88%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
