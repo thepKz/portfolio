@@ -39,24 +39,31 @@ type CapabilitiesSectionProps = {
   skills: PortfolioJson["skills"]
 }
 
-const accentTiles: Record<string, ReactNode> = {
-  languages: <BracketsCurly className="h-5 w-5" weight="bold" aria-hidden />,
-  frameworks: <TreeStructure className="h-5 w-5" weight="bold" aria-hidden />,
-  tools: <CloudArrowUp className="h-5 w-5" weight="bold" aria-hidden />,
-  japanese: <Translate className="h-5 w-5" weight="bold" aria-hidden />,
+const rowIcon: Record<string, ReactNode> = {
+  languages: <BracketsCurly className="h-4 w-4" weight="bold" aria-hidden />,
+  frameworks: <TreeStructure className="h-4 w-4" weight="bold" aria-hidden />,
+  tools: <CloudArrowUp className="h-4 w-4" weight="bold" aria-hidden />,
 }
 
-function clusterBlurb(
-  id: string,
-  description: string | undefined,
-): string {
+function clusterBlurb(id: string, description: string | undefined): string {
   if (description?.trim()) return description
   return DEFAULT_CLUSTER_COPY[id] ?? ""
 }
 
+const tagPastels = [
+  { bg: "#E1F3FE", fg: "#1F6C9F" },
+  { bg: "#EDF3EC", fg: "#346538" },
+  { bg: "#FBF3DB", fg: "#956400" },
+  { bg: "#FDEBEC", fg: "#9F2F2D" },
+] as const
+
+function pastelForIndex(i: number) {
+  return tagPastels[i % tagPastels.length]
+}
+
 export function CapabilitiesSection({ skills }: CapabilitiesSectionProps) {
   const rootRef = useRef<HTMLElement>(null)
-  const inView = useInView(rootRef, { once: true, amount: 0.15 })
+  const inView = useInView(rootRef, { once: true, amount: 0.12 })
 
   const clusters = skills.clusters
   const featured = clusters[0]
@@ -74,150 +81,153 @@ export function CapabilitiesSection({ skills }: CapabilitiesSectionProps) {
       ref={rootRef}
       className="relative z-10 scroll-mt-28 border-t border-border bg-[hsl(40_20%_97%_/_0.88)] py-24 md:py-32"
     >
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
+      <div className="mx-auto max-w-[44rem] px-5 md:px-8">
+        <motion.header
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease }}
-          className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10"
+          transition={{ duration: 0.6, ease }}
+          className="mb-16 md:mb-20"
         >
-          <div className="max-w-2xl">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-              {skills.sectionNumber} — {skills.sectionTitle}
-            </p>
-            <h2 className="mt-3 font-serif text-[clamp(1.65rem,3.2vw,2.45rem)] font-medium leading-[1.12] tracking-[-0.03em] text-foreground">
-              {headline}
-            </h2>
-          </div>
-          <p className="max-w-[280px] font-mono text-[11px] leading-relaxed text-muted-foreground md:text-right">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+            {skills.sectionNumber} — {skills.sectionTitle}
+          </p>
+          <h2 className="mt-4 font-serif text-[clamp(1.5rem,2.8vw,2.1rem)] font-medium leading-[1.18] tracking-[-0.03em] text-foreground">
+            {headline}
+          </h2>
+          <p className="mt-5 max-w-[52ch] font-mono text-[11px] leading-[1.65] text-muted-foreground">
             {aside}
           </p>
-        </motion.div>
+        </motion.header>
 
-        <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-12 md:grid-rows-[auto_auto]">
-          <motion.article
-            className="relative bg-background p-8 md:col-span-7 md:row-span-2 md:p-12"
-            initial={{ opacity: 0, y: 18 }}
+        <div className="border-t border-[#EAEAEA]">
+          {/* Languages */}
+          <motion.section
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.05, ease }}
+            transition={{ duration: 0.55, delay: 0.05, ease }}
+            className="border-b border-[#EAEAEA] py-10 md:py-12"
           >
-            <div className="relative flex flex-col gap-8">
-              <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex items-center gap-2 border border-border bg-muted/15 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
-                  {accentTiles.languages}
-                  {featured?.label ?? "Languages"}
-                </span>
-                <span className="font-mono text-[10px] tabular-nums text-muted-foreground">01</span>
-              </div>
-              <ul className="flex flex-wrap gap-2">
-                {(featured?.items ?? []).map((item, i) => (
-                  <motion.li
-                    key={item}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.45, delay: 0.12 + i * 0.04, ease }}
-                  >
-                    <span className="inline-block border border-border bg-background px-3 py-2 font-mono text-[11px] text-foreground transition-colors duration-300 hover:border-foreground">
-                      {item}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
-              <p className="max-w-[52ch] text-sm leading-relaxed text-muted-foreground">
-                {clusterBlurb(featured?.id ?? "languages", featured?.description)}
-              </p>
-            </div>
-          </motion.article>
-
-          <motion.article
-            className="bg-background p-8 md:col-span-5 md:p-10"
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.12, ease }}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                {accentTiles.frameworks}
-                {secondary?.label ?? "Frameworks"}
+            <div className="mb-6 flex items-center gap-3">
+              <span className="text-[hsl(var(--accent))]">{rowIcon.languages}</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
+                {featured?.label ?? "Languages"}
               </span>
-              <span className="font-mono text-[10px] text-muted-foreground">02</span>
             </div>
-            <ul className="mt-6 space-y-3">
-              {(secondary?.items ?? []).map((item, i) => (
+            <ul className="mb-6 flex flex-wrap gap-2">
+              {(featured?.items ?? []).map((item, i) => (
                 <motion.li
                   key={item}
-                  className="group flex items-center justify-between gap-4 border-b border-border pb-3 last:border-0 last:pb-0"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.45, delay: 0.18 + i * 0.05, ease }}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.08 + i * 0.035, ease }}
                 >
-                  <span className="min-w-0 font-serif text-lg tracking-tight text-foreground transition-colors group-hover:text-[hsl(var(--accent))]">
+                  <span
+                    className="inline-block rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.04em]"
+                    style={{
+                      backgroundColor: pastelForIndex(i).bg,
+                      color: pastelForIndex(i).fg,
+                    }}
+                  >
                     {item}
                   </span>
-                  <span className="h-px w-8 shrink-0 bg-border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-12 group-hover:bg-[hsl(var(--accent))]" />
                 </motion.li>
               ))}
             </ul>
-            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-              {clusterBlurb(secondary?.id ?? "frameworks", secondary?.description)}
+            <p className="max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
+              {clusterBlurb(featured?.id ?? "languages", featured?.description)}
             </p>
-          </motion.article>
+          </motion.section>
 
-          <motion.article
-            className="bg-muted/25 p-8 md:col-span-5 md:p-10"
-            initial={{ opacity: 0, y: 18 }}
+          {/* Frameworks */}
+          <motion.section
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.18, ease }}
+            transition={{ duration: 0.55, delay: 0.1, ease }}
+            className="border-b border-[#EAEAEA] py-10 md:py-12"
           >
-            <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                {accentTiles.tools}
-                {tools?.label ?? "Tools"}
+            <div className="mb-6 flex items-center gap-3">
+              <span className="text-[hsl(var(--accent))]">{rowIcon.frameworks}</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
+                {secondary?.label ?? "Frameworks"}
               </span>
-              <span className="font-mono text-[10px] text-muted-foreground">03</span>
             </div>
-            <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {(tools?.items ?? []).map((item, i) => (
-                <motion.span
+            <ul className="mb-6 divide-y divide-[#EAEAEA] border-t border-b border-[#EAEAEA]">
+              {(secondary?.items ?? []).map((item, i) => (
+                <motion.li
                   key={item}
-                  className="border border-border bg-background px-2.5 py-2 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground transition-colors duration-300 hover:border-foreground hover:text-foreground"
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.22 + i * 0.03, ease }}
+                  className="py-3.5 font-serif text-[1.05rem] tracking-tight text-foreground md:text-lg"
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.12 + i * 0.04, ease }}
                 >
                   {item}
-                </motion.span>
+                </motion.li>
               ))}
+            </ul>
+            <p className="max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
+              {clusterBlurb(secondary?.id ?? "frameworks", secondary?.description)}
+            </p>
+          </motion.section>
+
+          {/* Tools */}
+          <motion.section
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.14, ease }}
+            className="border-b border-[#EAEAEA] py-10 md:py-12"
+          >
+            <div className="mb-6 flex items-center gap-3">
+              <span className="text-[hsl(var(--accent))]">{rowIcon.tools}</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
+                {tools?.label ?? "Tools"}
+              </span>
             </div>
-            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            <ul className="mb-6 flex flex-wrap gap-2">
+              {(tools?.items ?? []).map((item, i) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.35, delay: 0.14 + i * 0.025, ease }}
+                >
+                  <kbd className="inline-block rounded-[6px] border border-[#EAEAEA] bg-[#F9F9F8] px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-foreground">
+                    {item}
+                  </kbd>
+                </motion.li>
+              ))}
+            </ul>
+            <p className="max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
               {clusterBlurb(tools?.id ?? "tools", tools?.description)}
             </p>
-          </motion.article>
+          </motion.section>
 
-          <motion.aside
-            className="flex flex-col justify-between border-t border-border bg-[hsl(40,18%,96%)] p-8 md:col-span-12 md:flex-row md:items-start md:gap-14 md:border-t-0 md:p-10"
-            initial={{ opacity: 0, y: 14 }}
+          {/* Japanese */}
+          <motion.footer
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.24, ease }}
+            transition={{ duration: 0.55, delay: 0.18, ease }}
+            className="pt-10 md:pt-12"
           >
-            <div className="flex items-start gap-4">
-              <div className="mt-0.5 text-[hsl(var(--accent))]">{accentTiles.japanese}</div>
-              <div>
+            <div className="flex items-start gap-3">
+              <Translate className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--accent))]" weight="bold" aria-hidden />
+              <div className="min-w-0 flex-1">
                 <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-muted-foreground">
                   {jp.eyebrow}
                 </p>
-                <p className="mt-2 max-w-lg font-serif text-xl leading-snug tracking-[-0.02em] text-foreground md:text-[1.35rem]">
+                <p className="mt-3 font-serif text-lg leading-snug tracking-[-0.02em] text-foreground md:text-xl">
                   {jp.title}
                 </p>
                 {showJpBody ? (
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{jp.body}</p>
+                  <p className="mt-3 max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
+                    {jp.body}
+                  </p>
                 ) : null}
+                <p className="mt-6 max-w-[52ch] border-l border-[#EAEAEA] pl-4 font-mono text-[11px] leading-relaxed text-muted-foreground">
+                  {jp.note}
+                </p>
               </div>
             </div>
-            <p className="mt-8 max-w-xs font-mono text-[11px] leading-relaxed text-muted-foreground md:mt-1 md:text-right">
-              {jp.note}
-            </p>
-          </motion.aside>
+          </motion.footer>
         </div>
       </div>
     </section>
