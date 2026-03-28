@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import portfolioData from "./data/portfolio.json"
 import type { PortfolioJson } from "./types/portfolio"
 import { cn } from "@/lib/utils"
-import { Github, Linkedin, Facebook, Youtube } from "lucide-react"
+import { Github, Facebook, Youtube } from "lucide-react"
 import { ArrowUpRight } from "@phosphor-icons/react"
 import { SiteHeader } from "@/components/site-header"
 import { HeroSection } from "@/components/hero-section"
@@ -39,16 +39,17 @@ function Contact() {
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <motion.p
-          className="mb-8 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground"
+          className="mb-8 font-mono text-[10px] uppercase tracking-[0.28em]"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, ease }}
         >
-          {contact.sectionNumber} — {contact.sectionTitle}
+          <span className="font-semibold tabular-nums text-[hsl(var(--accent))]">{contact.sectionNumber}</span>
+          <span className="text-muted-foreground"> — {contact.sectionTitle}</span>
         </motion.p>
         <motion.h2
-          className="max-w-3xl font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-medium leading-[1.15] tracking-tight text-foreground text-balance"
+          className="max-w-3xl font-serif text-[clamp(1.85rem,4.2vw,2.85rem)] font-semibold leading-[1.12] tracking-tight text-foreground text-balance"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -63,25 +64,28 @@ function Contact() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.65, delay: 0.12, ease }}
         >
-          <a
-            href={`mailto:${contact.email}`}
-            className="group inline-flex w-max items-center gap-3 border-b border-foreground pb-1 font-mono text-sm text-foreground transition-colors hover:border-[hsl(var(--accent))] hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
-          >
-            {contact.email}
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              weight="regular"
-              aria-hidden
-            />
-          </a>
+          <div className="flex flex-col gap-6">
+            <a
+              href={`mailto:${contact.email}`}
+              className="group inline-flex w-max items-center gap-3 rounded-md border-2 border-[hsl(var(--accent))] bg-[hsl(var(--accent))] px-5 py-3 font-mono text-sm font-medium text-[hsl(var(--accent-foreground))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-90 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--foreground))]"
+            >
+              {contact.email}
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                weight="regular"
+                aria-hidden
+              />
+            </a>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+              {data.identity.location}
+            </p>
+          </div>
           <div className="flex flex-wrap gap-3">
             {contact.social.map((s, i) => {
               const iconClass = "h-4 w-4"
               const icon =
                 s.platform === "GitHub" ? (
                   <Github className={iconClass} strokeWidth={1.5} />
-                ) : s.platform === "LinkedIn" ? (
-                  <Linkedin className={iconClass} strokeWidth={1.5} />
                 ) : s.platform === "Facebook" ? (
                   <Facebook className={iconClass} strokeWidth={1.5} />
                 ) : s.platform === "YouTube" ? (
@@ -99,7 +103,7 @@ function Contact() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: 0.08 + i * 0.05, ease }}
                   className={cn(
-                    "flex h-11 w-11 items-center justify-center border border-border bg-[hsl(40_20%_97%_/_0.85)] text-muted-foreground transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-foreground hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))] active:scale-[0.97]",
+                    "flex h-11 w-11 items-center justify-center border border-border bg-[hsl(40_20%_97%_/_0.85)] text-muted-foreground transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[hsl(var(--accent))] hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))] active:scale-[0.97]",
                   )}
                 >
                   {icon}

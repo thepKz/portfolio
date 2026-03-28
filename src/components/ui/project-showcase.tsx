@@ -50,13 +50,14 @@ export function ProjectShowcase({
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <motion.p
-          className="mb-12 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground"
+          className="mb-12 font-mono text-[10px] uppercase tracking-[0.28em]"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.55, ease }}
         >
-          {sectionNumber} — {sectionTitle}
+          <span className="font-semibold tabular-nums text-[hsl(var(--accent))]">{sectionNumber}</span>
+          <span className="text-muted-foreground"> — {sectionTitle}</span>
         </motion.p>
 
         <div className="relative">
@@ -91,14 +92,14 @@ export function ProjectShowcase({
             {items.map((project, index) => (
               <a
                 key={project.index}
-                href={project.links.github}
+                href={project.links.live ?? project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block"
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
               >
-                <div className="relative border-t border-border py-7 transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-muted/25">
+                <div className="relative border-t border-border py-7 transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-[hsl(var(--accent))]/25 group-hover:bg-muted/25">
                   <motion.div
                     className="pointer-events-none absolute inset-0 -mx-3 bg-muted/40"
                     initial={false}
@@ -111,23 +112,23 @@ export function ProjectShowcase({
                   <div className="relative flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-10">
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-baseline gap-3">
-                        <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
+                        <span className="font-mono text-[10px] font-semibold tabular-nums text-[hsl(var(--accent))]">
                           {project.index}
                         </span>
-                        <h3 className="font-serif text-2xl tracking-tight text-foreground md:text-[1.65rem]">
+                        <h3 className="font-serif text-2xl font-medium tracking-tight text-foreground md:text-[1.65rem]">
                           <span className="relative">
                             {project.name}
                             <span
-                              className="absolute bottom-0 left-0 h-px bg-foreground transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                              className="absolute bottom-0 left-0 h-[2px] bg-[hsl(var(--accent))] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                               style={{ width: hovered === index ? "100%" : "0%" }}
                             />
                           </span>
                         </h3>
                         <ArrowUpRight
-                          className={`h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          className={`h-4 w-4 shrink-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                             hovered === index
-                              ? "translate-x-0 translate-y-0 opacity-100"
-                              : "-translate-x-2 translate-y-2 opacity-0"
+                              ? "translate-x-0 translate-y-0 text-[hsl(var(--accent))] opacity-100"
+                              : "-translate-x-2 translate-y-2 text-muted-foreground opacity-0"
                           }`}
                           weight="regular"
                           aria-hidden
@@ -142,11 +143,17 @@ export function ProjectShowcase({
                       </p>
                     </div>
                     <div className="flex shrink-0 items-center gap-6 md:flex-col md:items-end">
-                      <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
-                        {project.githubStars}★
-                      </span>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                        Repository
+                      {project.githubStars > 0 ? (
+                        <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+                          {project.githubStars}★
+                        </span>
+                      ) : null}
+                      <span
+                        className={`font-mono text-[9px] uppercase tracking-[0.2em] ${
+                          hovered === index ? "text-[hsl(var(--accent))]" : "text-muted-foreground"
+                        }`}
+                      >
+                        {project.links.live ? "Live" : "Repository"}
                       </span>
                     </div>
                   </div>

@@ -13,7 +13,8 @@ type HeroSectionProps = {
 
 export function HeroSection({ hero, identity }: HeroSectionProps) {
   const reduce = useReducedMotion()
-  const [first, second] = hero.nameLines
+  const first = hero.nameLines[0] ?? ""
+  const secondLine = hero.nameLines[1]
   const yOff = reduce ? 0 : 48
   const ySm = reduce ? 0 : 12
 
@@ -32,22 +33,22 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
 
       <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-between px-5 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
         <motion.div
-          className="flex flex-col items-end gap-2 text-right md:max-w-md md:self-end"
+          className="flex flex-col items-end gap-2 border-l-2 border-[hsl(var(--accent))] pl-4 text-right md:max-w-md md:self-end"
           initial={{ opacity: 0, y: reduce ? 0 : 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.75, delay: reduce ? 0 : 0.15, ease }}
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/90 drop-shadow-sm">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-white drop-shadow-sm">
             {identity.role}
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/75 drop-shadow-sm">
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/80 drop-shadow-sm">
             {identity.location}
           </p>
         </motion.div>
 
         <div className="mt-auto space-y-10 md:flex md:items-end md:justify-between md:space-y-0">
           <div className="max-w-[18ch] space-y-2">
-            <h1 className="font-serif font-semibold leading-[0.88] tracking-[-0.045em] text-white drop-shadow-[0_2px_40px_rgba(0,0,0,0.35)]">
+            <h1 className="font-serif font-semibold leading-[0.88] tracking-[-0.045em] text-white drop-shadow-[0_2px_48px_rgba(0,0,0,0.42)]">
               <motion.span
                 className="block text-[clamp(3.2rem,12vw,7.5rem)]"
                 initial={{ opacity: 0, y: yOff }}
@@ -56,14 +57,16 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
               >
                 {first}
               </motion.span>
-              <motion.span
-                className="block text-[clamp(3.2rem,12vw,7.5rem)]"
-                initial={{ opacity: 0, y: yOff }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduce ? 0.2 : 0.95, delay: reduce ? 0 : 0.2, ease }}
-              >
-                {second}
-              </motion.span>
+              {secondLine ? (
+                <motion.span
+                  className="block text-[clamp(3.2rem,12vw,7.5rem)]"
+                  initial={{ opacity: 0, y: yOff }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: reduce ? 0.2 : 0.95, delay: reduce ? 0 : 0.2, ease }}
+                >
+                  {secondLine}
+                </motion.span>
+              ) : null}
             </h1>
             <motion.p
               className="max-w-[36ch]"
@@ -71,7 +74,7 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduce ? 0.2 : 0.7, delay: reduce ? 0 : 0.42, ease }}
             >
-              <span className="inline-block rounded-[4px] bg-black/55 px-2.5 py-2 font-mono text-[12px] font-medium leading-relaxed tracking-[0.08em] text-white ring-1 ring-white/15 [text-shadow:0_1px_2px_rgba(0,0,0,0.9)]">
+              <span className="inline-block rounded-[6px] bg-black/55 px-3 py-2 font-mono text-[12px] font-semibold leading-relaxed tracking-[0.08em] text-white ring-1 ring-[hsl(var(--accent))]/35 [text-shadow:0_1px_2px_rgba(0,0,0,0.9)]">
                 {hero.subtitle}
               </span>
             </motion.p>
@@ -83,13 +86,13 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduce ? 0.2 : 0.8, delay: reduce ? 0 : 0.5, ease }}
           >
-            <p className="max-w-xs font-serif text-lg leading-snug tracking-tight text-[hsl(var(--foreground))] text-balance md:text-right">
+            <p className="max-w-xs font-serif text-lg font-medium leading-snug tracking-tight text-[hsl(var(--foreground))] text-balance md:text-right">
               {hero.manifestoWords.map((w, i) => (
                 <span key={`${w}-${i}`}>
                   {i > 0 ? " " : ""}
                   {w === hero.manifestoHighlight ? (
                     <motion.span
-                      className="font-semibold text-[hsl(var(--accent))]"
+                      className="font-semibold underline decoration-[hsl(var(--accent))] decoration-2 underline-offset-[5px] text-[hsl(var(--accent))]"
                       initial={{ opacity: reduce ? 1 : 0 }}
                       animate={{ opacity: 1 }}
                       transition={{
@@ -108,11 +111,11 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
             </p>
             <motion.a
               href="#about"
-              className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.26em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
+              className="group inline-flex items-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.26em] text-[hsl(var(--foreground))] transition-colors hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
               whileHover={{ x: 2 }}
               transition={{ type: "spring", stiffness: 400, damping: 28 }}
             >
-              <span className="h-px w-10 bg-current transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-14" />
+              <span className="h-px w-10 bg-current opacity-70 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-14 group-hover:opacity-100" />
               {hero.scrollHint}
             </motion.a>
           </motion.div>

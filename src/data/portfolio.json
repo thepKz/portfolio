@@ -1,37 +1,42 @@
 {
   "meta": {
     "htmlLang": "en",
-    "title": "Min Thep — Software Engineer & Creative Developer",
-    "description": "Portfolio of Min Thep (Mai Tan Thep) — Software Engineer & Creative Developer from Vietnam. Minthep: IT craft and Japanese study in one place."
+    "title": "Minthep — Software Engineer",
+    "description": "Minthep — Software Engineer from Ho Chi Minh City. Full-stack web, mobile, and cloud tooling; English, Japanese, and Korean."
   },
   "identity": {
-    "displayName": "Min Thep",
+    "displayName": "Minthep",
     "fullName": "Mai Tan Thep",
-    "role": "Software Engineer & Creative Developer",
-    "location": "Vietnam"
+    "role": "Software Engineer",
+    "location": "Ho Chi Minh, Viet Nam"
   },
   "hero": {
-    "nameLines": ["MIN", "THEP"],
-    "subtitle": "Software Engineer & Creative Developer",
+    "nameLines": ["MINTHEP"],
+    "subtitle": "Software Engineer",
     "scrollHint": "Scroll to explore",
-    "manifestoWords": ["I", "build", "things", "that", "make", "people", "go", "WOW"],
-    "manifestoHighlight": "WOW"
+    "manifestoWords": ["Ship", "clear", "systems", "learn", "languages", "write", "in", "public"],
+    "manifestoHighlight": "Ship"
   },
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "About",
     "paragraphs": [
-      "Hi, I'm Mai Tan Thep (Min Thep) — a Software Engineer & Creative Developer based in Vietnam.",
-      "Software Engineering at FPT University (2022–2025). I build web products that stay fast and readable: portfolios that travel, platforms for real users, and experiments on GitHub.",
-      "Minthep is my study web: IT depth on one side, Japanese on the other — vocabulary, reading, and the same discipline I use when shipping code. Reach me at maitanthepmrthep@gmail.com for collaboration."
+      "Software Engineering at FPT University (SEP 2022–present, semester 9/9). GPA 8.1/10. Before that, Le Quy Don High School for the Gifted — Chemistry major (2019–2022).",
+      "I keep building full-stack products: REST APIs, React and Next.js fronts, mobile with Flutter, and pipelines with Docker and GitHub Actions. I also write on StudyBlog — software topics and Japanese learning — which has picked up 75,000+ views since 2023.",
+      "I care about clear requirements, steady delivery, and working across cultures. I am working toward Korean Bridge Engineer roles while growing in enterprise software and Korean business context."
     ],
     "education": {
       "institution": "FPT University",
-      "program": "Software Engineering",
-      "years": "2022-2025"
+      "program": "Software Engineering (SE)",
+      "years": "2022–present"
+    },
+    "priorEducation": {
+      "institution": "Le Quy Don High School for the Gifted",
+      "program": "Chemistry major",
+      "years": "2019–2022"
     },
     "availability": {
-      "label": "Available for work",
+      "label": "Open to opportunities",
       "status": "open"
     },
     "stats": [
@@ -39,128 +44,160 @@
       { "key": "contributions", "label": "Contributions", "value": 853, "suffix": "+" },
       { "key": "followers", "label": "Followers", "value": 40, "suffix": "+" },
       { "key": "portfolioStars", "label": "Portfolio stars", "value": 93, "suffix": "+" }
+    ],
+    "certifications": [
+      "Career Essentials in Generative AI — Microsoft & LinkedIn (Jan 2026)",
+      "Agile Software Development: Scrum for Developers — LinkedIn (Jan 2026)",
+      "Java Database Connectivity Specialization — LearnQuest / Coursera (May 2024)",
+      "Java (Basic) — HackerRank (Jan 2024)",
+      "Python (Basic) — Microsoft (Jul 2025)",
+      "Web Design for Everybody Specialization — University of Michigan / Coursera (Mar 2024)"
     ]
   },
   "skills": {
     "sectionNumber": "02",
-    "sectionTitle": "Capabilities",
-    "headline": "Stack built in coursework and shipped repos — same calendar as Japanese study.",
-    "aside": "Mai Tan Thep · FPT Software Engineering (2022–2025). Listed tools match real GitHub work, not filler keywords.",
+    "sectionTitle": "Technical skills",
+    "headline": "Languages, frameworks, data stores, delivery — mapped the way I actually use them on repos and coursework.",
+    "aside": "Minthep · FPT University Software Engineering · GitHub: thepKz",
     "clusters": [
       {
         "id": "languages",
         "label": "Languages",
-        "description": "Typed JS where it pays off, semantic HTML, and CSS that stays legible when layouts change.",
-        "items": ["JavaScript", "TypeScript", "HTML", "CSS", "SQL"]
+        "presentation": "tags",
+        "items": [
+          "TypeScript",
+          "JavaScript",
+          "Java",
+          "Python",
+          "HTML/CSS",
+          "Golang"
+        ]
       },
       {
         "id": "frameworks",
-        "label": "Frameworks",
-        "description": "React-first interfaces, Node for services and APIs, Tailwind for speed, Three.js when the brief needs depth.",
-        "items": ["React", "Node.js", "Next.js", "Tailwind CSS", "Express", "Three.js"]
+        "label": "Frameworks & libraries",
+        "presentation": "list",
+        "items": [
+          "React.js",
+          "Next.js",
+          "Node.js",
+          "Express.js",
+          "Spring Boot",
+          "ASP.NET",
+          "Flutter",
+          "Redux Toolkit",
+          "Tailwind CSS",
+          "Ant Design"
+        ]
       },
       {
-        "id": "tools",
-        "label": "Tools",
-        "description": "Design handoff in Figma, persistence with MongoDB and Firebase, ship with Docker, GitHub, and Vercel.",
-        "items": ["Git", "GitHub", "Docker", "Figma", "MongoDB", "Firebase", "VS Code", "Linux", "Vercel", "Postman"]
+        "id": "databases",
+        "label": "Databases & cloud",
+        "presentation": "kbd",
+        "items": [
+          "MongoDB",
+          "MySQL",
+          "SQL Server",
+          "Firebase",
+          "Redis",
+          "Cloudinary CDN"
+        ]
+      },
+      {
+        "id": "devops",
+        "label": "DevOps & tools",
+        "presentation": "kbd",
+        "items": [
+          "Docker",
+          "GitHub Actions",
+          "Vercel",
+          "Netlify",
+          "Render",
+          "Postman",
+          "Swagger/OpenAPI"
+        ]
+      },
+      {
+        "id": "projectManagement",
+        "label": "Project management",
+        "presentation": "kbd",
+        "items": ["Jira", "Confluence", "Lark", "Agile/Scrum", "Cursor AI"]
       }
     ],
     "japanese": {
-      "eyebrow": "Japanese study track",
-      "title": "Parallel track with engineering",
-      "body": "Vocabulary lists, kanji reps, and reading blocks sit on the same weekly grid as coursework and shipping.",
-      "note": "Same boring consistency: grammar patterns and pull requests both need daily reps."
+      "eyebrow": "Human languages",
+      "title": "English (B2) · Japanese (N4) · Korean (TOPIK II)",
+      "body": "",
+      "note": ""
     }
   },
   "projects": {
     "sectionNumber": "03",
-    "sectionTitle": "Selected work",
+    "sectionTitle": "Projects",
     "items": [
       {
         "index": "01",
-        "name": "Minthep Portfolio",
-        "shortDescription": "Study web: IT craft and Japanese, in one site",
-        "longDescription": "Personal portfolio and study surface — shader hero, editorial layout, capabilities bento, and project list. Built as a place to show engineering work alongside Japanese study discipline. Earned 93+ stars on GitHub.",
-        "tech": ["HTML", "CSS", "JS"],
-        "githubStars": 93,
-        "links": { "github": "https://github.com/thepKz/minthep-portfolio" }
+        "name": "Transparent Charity Platform",
+        "shortDescription": "Microservices charity stack with web, mobile, and payments",
+        "longDescription": "Team lead, full-stack, team of four. Architected eight-plus Spring Boot services (API gateway, identity, and more) with Spring Cloud Eureka. Next.js (TypeScript) frontend and GitHub Actions CI/CD. PayOS donations with webhooks. Flutter app (iOS/Android) with real-time chat and campaign management.",
+        "tech": [
+          "Next.js",
+          "TypeScript",
+          "Spring Boot",
+          "Flutter",
+          "MySQL",
+          "Docker"
+        ],
+        "githubStars": 0,
+        "links": {
+          "github": "https://github.com/thepKz"
+        }
       },
       {
         "index": "02",
-        "name": "GenKiKoi Fish Care",
-        "shortDescription": "Veterinary platform for Koi fish",
-        "longDescription": "A full-stack veterinary management platform for Koi fish care, featuring appointment scheduling, health records, and treatment tracking.",
+        "name": "StudyBlog",
+        "shortDescription": "Personal knowledge base — 75,000+ views since 2023",
+        "longDescription": "Solo full-stack developer. Built and maintained a public writing surface for software engineering notes and Japanese learning (including speaking). Five published articles helping readers with tech and language study.",
         "tech": ["TypeScript", "React", "Node.js"],
-        "githubStars": 9,
-        "links": { "github": "https://github.com/thepKz/genkikoi-fishcare-webapp" }
+        "githubStars": 0,
+        "links": {
+          "github": "https://github.com/thepKz"
+        }
       },
       {
         "index": "03",
-        "name": "Wedding Bolt",
-        "shortDescription": "Elegant digital wedding invitations",
-        "longDescription": "Beautiful digital wedding invitation platform with customizable templates, RSVP functionality, and elegant animations for the special day.",
-        "tech": ["HTML", "CSS", "JS"],
-        "githubStars": 7,
-        "links": { "github": "https://github.com/thepKz/wedding-bolt" }
+        "name": "GenKiKoi Fish Care",
+        "shortDescription": "Full-stack veterinary platform for Koi — delivered in two months",
+        "longDescription": "Team lead for a four-person team (SEP–NOV 2024). Led delivery of a veterinary platform: Express and MongoDB REST API with five-plus modules (consultation, aquarium inspection, disease treatment and management), React and TypeScript frontend, GitHub Actions pipeline.",
+        "tech": ["Node.js", "React", "TypeScript", "MongoDB", "Express"],
+        "githubStars": 9,
+        "links": {
+          "github": "https://github.com/thepKz/genkikoi-fishcare-webapp"
+        }
       },
       {
         "index": "04",
-        "name": "Korean Magic Page",
-        "shortDescription": "Interactive Korean learning platform",
-        "longDescription": "An interactive platform for learning Korean with gamified exercises, vocabulary practice, and progress tracking features.",
-        "tech": ["TypeScript", "React"],
-        "githubStars": 5,
-        "links": { "github": "https://github.com/thepKz/korean-magic-page" }
-      },
-      {
-        "index": "05",
-        "name": "Grok AI Chat",
-        "shortDescription": "AI ChatBot with GenZ Vietnamese version",
-        "longDescription": "An AI chatbot interface inspired by Grok, featuring a fun GenZ Vietnamese language mode with slang responses and cultural references.",
-        "tech": ["HTML", "CSS", "JS"],
-        "githubStars": 4,
-        "links": { "github": "https://github.com/thepKz/grok-ai-chat" }
-      },
-      {
-        "index": "06",
-        "name": "VuVu Store",
-        "shortDescription": "E-commerce store inspired by Popmart",
-        "longDescription": "A vibrant e-commerce platform inspired by Popmart, featuring collectible toy browsing, cart management, and a sleek shopping experience.",
-        "tech": ["React", "JavaScript"],
-        "githubStars": 4,
-        "links": { "github": "https://github.com/thepKz/vuvu-store" }
-      },
-      {
-        "index": "07",
-        "name": "Bầu Cua Tết",
-        "shortDescription": "Traditional Vietnamese dice game for Tết",
-        "longDescription": "A digital recreation of the beloved Vietnamese Lunar New Year dice game, with festive Tết-themed visuals and animations.",
-        "tech": ["HTML", "CSS", "JS"],
-        "githubStars": 4,
-        "links": { "github": "https://github.com/thepKz/bau-cua-tom-ca-ver-tet" }
-      },
-      {
-        "index": "08",
-        "name": "Free Map Routing",
-        "shortDescription": "Alternative map routing for Vietnam",
-        "longDescription": "An alternative routing solution for Vietnam where Google Maps API is restricted, using open-source map services for navigation.",
-        "tech": ["React", "JavaScript"],
-        "githubStars": 2,
-        "links": { "github": "https://github.com/thepKz/free-map-routing" }
+        "name": "Minthep.com",
+        "shortDescription": "Portfolio and study site — engineering craft in the open",
+        "longDescription": "Personal site combining portfolio presentation with a calm editorial layout. Open source on GitHub with a growing star count from the community.",
+        "tech": ["TypeScript", "React", "Vite", "Tailwind CSS"],
+        "githubStars": 93,
+        "links": {
+          "github": "https://github.com/thepKz/minthep-portfolio",
+          "live": "https://minthep.com"
+        }
       }
     ]
   },
   "contact": {
     "sectionNumber": "04",
     "sectionTitle": "Contact",
-    "headline": "If the project needs both taste and technical care, we should talk.",
+    "headline": "For collaboration, technical questions, or a clear project brief — email or call works best.",
     "email": "maitanthepmrthep@gmail.com",
     "ctaLabel": "Email",
     "navCtaLabel": "Let's Talk",
     "social": [
       { "platform": "GitHub", "url": "https://github.com/thepKz", "ariaLabel": "GitHub" },
-      { "platform": "LinkedIn", "url": "https://linkedin.com/in/thepmaitan26", "ariaLabel": "LinkedIn" },
       { "platform": "Facebook", "url": "https://facebook.com/thepp.tan", "ariaLabel": "Facebook" },
       { "platform": "YouTube", "url": "https://youtube.com/@minthep2611", "ariaLabel": "YouTube" }
     ]
@@ -168,13 +205,13 @@
   "navigation": {
     "anchors": [
       { "label": "About", "href": "#about" },
-      { "label": "Capabilities", "href": "#skills" },
+      { "label": "Technical skills", "href": "#skills" },
       { "label": "Projects", "href": "#projects" },
       { "label": "Contact", "href": "#contact" }
     ],
     "logoHref": "#hero"
   },
   "footer": {
-    "copyright": "© 2026 Min Thep"
+    "copyright": "© 2026 Minthep"
   }
 }

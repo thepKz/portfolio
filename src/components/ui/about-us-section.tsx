@@ -54,25 +54,28 @@ export function AboutUsSection({
       n: "01",
       icon: <Code className="h-4 w-4" weight="bold" aria-hidden />,
       title: "Engineering",
-      description: "TypeScript, React, Node — readable UI and shippable backends.",
+      description:
+        "Full-stack delivery: React and Next.js, Node and Express, Spring Boot, Flutter when the product needs mobile.",
     },
     {
       n: "02",
       icon: <Browser className="h-4 w-4" weight="bold" aria-hidden />,
       title: "Surfaces",
-      description: "Typography and motion stay quiet so the product reads first.",
+      description:
+        "Interfaces stay readable under load: Tailwind and Ant Design where they fit, APIs documented with OpenAPI.",
     },
     {
       n: "03",
       icon: <BookOpen className="h-4 w-4" weight="bold" aria-hidden />,
-      title: "Study web",
-      description: "Minthep pairs IT practice with Japanese: drills, reading, repetition.",
+      title: "Writing",
+      description:
+        "StudyBlog — long-form notes on software engineering and Japanese study; 75,000+ views since 2023.",
     },
     {
       n: "04",
       icon: <Stack className="h-4 w-4" weight="bold" aria-hidden />,
-      title: "Stack",
-      description: "Git, Docker, Figma, deploy pipelines — reliable glue.",
+      title: "Delivery",
+      description: "Docker, GitHub Actions, Vercel and Netlify — ship often, trace issues quickly.",
     },
   ]
 
@@ -107,11 +110,12 @@ export function AboutUsSection({
         {/* Editorial masthead */}
         <motion.header variants={itemVariants} className="grid gap-10 lg:grid-cols-12 lg:gap-6 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-              {about.sectionNumber} / {about.sectionTitle}
+            <p className="font-mono text-[10px] uppercase tracking-[0.32em]">
+              <span className="font-semibold tabular-nums text-[hsl(var(--accent))]">{about.sectionNumber}</span>
+              <span className="text-muted-foreground"> / {about.sectionTitle}</span>
             </p>
-            <h2 className="mt-4 font-serif text-[clamp(2.35rem,6.5vw,3.85rem)] font-medium leading-[1.05] tracking-[-0.038em] text-foreground">
-              {identity.fullName}
+            <h2 className="mt-4 font-serif text-[clamp(2.35rem,6.5vw,3.85rem)] font-semibold leading-[1.05] tracking-[-0.038em] text-foreground">
+              {identity.displayName}
             </h2>
             <p className="mt-5 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.06em] text-muted-foreground">
               {about.education.program}
@@ -120,11 +124,20 @@ export function AboutUsSection({
               <span className="text-border"> · </span>
               <span className="tabular-nums">{about.education.years}</span>
             </p>
+            {about.priorEducation ? (
+              <p className="mt-2 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.06em] text-muted-foreground/90">
+                {about.priorEducation.program}
+                <span className="text-border"> · </span>
+                {about.priorEducation.institution}
+                <span className="text-border"> · </span>
+                <span className="tabular-nums">{about.priorEducation.years}</span>
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-col gap-6 border-border lg:col-span-4 lg:border-l lg:pl-10">
             <a
               href={`mailto:${contactEmail}`}
-              className="group inline-flex w-max max-w-full items-center gap-2 font-mono text-[11px] tracking-[0.04em] text-foreground underline decoration-border underline-offset-[5px] transition-colors hover:decoration-foreground"
+              className="group inline-flex w-max max-w-full items-center gap-2 font-mono text-[11px] font-medium tracking-[0.04em] text-foreground underline decoration-[hsl(var(--accent))]/40 underline-offset-[6px] transition-colors hover:text-[hsl(var(--accent))] hover:decoration-[hsl(var(--accent))]"
             >
               <span className="truncate">{contactEmail}</span>
               <ArrowUpRight
@@ -157,7 +170,7 @@ export function AboutUsSection({
             {about.paragraphs.map((p) => (
               <p
                 key={p.slice(0, 32)}
-                className="text-[15px] leading-[1.72] text-muted-foreground md:text-base md:leading-[1.75]"
+                className="text-justify text-[15px] leading-[1.72] text-muted-foreground md:text-base md:leading-[1.75]"
               >
                 {p}
               </p>
@@ -167,20 +180,41 @@ export function AboutUsSection({
             variants={itemVariants}
             className="lg:col-span-4 lg:col-start-9 lg:border-l lg:border-border lg:pl-10"
           >
-            <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
               Role
             </p>
-            <p className="mt-3 font-serif text-xl leading-snug tracking-[-0.02em] text-foreground">
+            <p className="mt-3 font-serif text-xl font-medium leading-snug tracking-[-0.02em] text-foreground">
               {identity.role}
             </p>
-            <p className="mt-8 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+            <p className="mt-8 font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
               Site
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Minthep — one surface for shipping code and logging Japanese study.
+              Minthep.com — portfolio and public study notes; English, Japanese, and Korean in daily use.
             </p>
           </motion.aside>
         </div>
+
+        {about.certifications && about.certifications.length > 0 ? (
+          <motion.div
+            variants={itemVariants}
+            className="my-16 border-t border-border pt-12 md:my-20 md:pt-14"
+          >
+            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+              Certifications
+            </p>
+            <ul className="mt-5 max-w-3xl space-y-3">
+              {about.certifications.map((line) => (
+                <li
+                  key={line}
+                  className="border-b border-[#EAEAEA] pb-3 text-[15px] leading-relaxed text-muted-foreground last:border-b-0 last:pb-0"
+                >
+                  {line}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ) : null}
 
         <div className="my-20 h-px w-full bg-border md:my-24" aria-hidden />
 
@@ -212,14 +246,14 @@ export function AboutUsSection({
           </motion.figure>
 
           <motion.div variants={itemVariants} className="lg:col-span-7">
-            <p className="mb-8 font-mono text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+            <p className="mb-8 font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
               Focus register
             </p>
             <ul className="divide-y divide-border border-t border-border">
               {focusRows.map((row) => (
                 <li key={row.n}>
                   <div className="group flex gap-5 py-7 md:gap-8 md:py-8">
-                    <span className="w-8 shrink-0 pt-0.5 font-mono text-[10px] tabular-nums tracking-[0.14em] text-muted-foreground md:w-10">
+                    <span className="w-8 shrink-0 pt-0.5 font-mono text-[10px] font-semibold tabular-nums tracking-[0.14em] text-[hsl(var(--accent))] md:w-10">
                       {row.n}
                     </span>
                     <div className="min-w-0 flex-1">
@@ -314,7 +348,7 @@ function StatCell({
         },
       }}
     >
-      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">{label}</p>
+      <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-[hsl(var(--accent))]">{label}</p>
       <p className="mt-3 flex items-baseline gap-0.5 font-serif text-[clamp(1.85rem,4vw,2.65rem)] tabular-nums tracking-[-0.03em] text-foreground">
         <motion.span>{display}</motion.span>
         <span className="text-lg text-[hsl(var(--accent))] md:text-xl">{suffix}</span>

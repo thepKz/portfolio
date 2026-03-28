@@ -18,8 +18,12 @@ export type PortfolioJson = {
     sectionTitle: string
     paragraphs: string[]
     education: { institution: string; program: string; years: string }
+    /** Optional prior school (e.g. high school) shown under main education. */
+    priorEducation?: { institution: string; program: string; years: string }
     availability: { label: string; status: string }
     stats: { key: string; label: string; value: number; suffix: string }[]
+    /** One line per certificate; rendered in About when present. */
+    certifications?: string[]
   }
   skills: {
     sectionNumber: string
@@ -34,6 +38,8 @@ export type PortfolioJson = {
       items: string[]
       /** Cluster blurb under tags/list. */
       description?: string
+      /** How items render: pastel tags, divided list, or kbd chips. */
+      presentation?: "tags" | "list" | "kbd"
     }[]
     /** Bottom strip — Japanese / language study (aligned with CV narrative). */
     japanese?: {
@@ -53,7 +59,7 @@ export type PortfolioJson = {
       longDescription: string
       tech: string[]
       githubStars: number
-      links: { github: string }
+      links: { github: string; live?: string }
     }[]
   }
   contact: {
@@ -61,6 +67,8 @@ export type PortfolioJson = {
     sectionTitle: string
     headline: string
     email: string
+    /** E.164 or local digits; shown as tel: links. */
+    phones?: string[]
     ctaLabel: string
     navCtaLabel: string
     social: { platform: string; url: string; ariaLabel: string }[]

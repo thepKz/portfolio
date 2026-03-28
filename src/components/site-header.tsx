@@ -50,7 +50,7 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8">
         <a
           href={navigation.logoHref}
-          className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
+          className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
         >
           {identity.displayName.replace(" ", "\u00a0")}
         </a>
@@ -59,7 +59,7 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
             <a
               key={a.href}
               href={a.href}
-              className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
+              className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
             >
               {a.label}
             </a>
@@ -67,7 +67,7 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
         </nav>
         <a
           href={`mailto:${contact.email}`}
-          className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
+          className="group inline-flex items-center gap-2 rounded-md bg-[hsl(var(--accent))] px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[hsl(var(--accent-foreground))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-90 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--foreground))]"
         >
           {contact.navCtaLabel}
           <ArrowUpRight
