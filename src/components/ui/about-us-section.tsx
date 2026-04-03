@@ -2,12 +2,17 @@
 
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
-import { Code, Browser, BookOpen, Stack, ArrowUpRight } from "@phosphor-icons/react"
+import {
+  ArrowUpRight,
+  BookOpen,
+  Browser,
+  Code,
+  Stack,
+} from "@phosphor-icons/react"
 import { motion, useInView, useSpring, useTransform, type Variants } from "framer-motion"
 
 import type { PortfolioJson } from "@/types/portfolio"
 import { cn } from "@/lib/utils"
-import { FallingPattern } from "@/components/ui/falling-pattern"
 
 type AboutUsSectionProps = {
   identity: PortfolioJson["identity"]
@@ -31,12 +36,12 @@ export function AboutUsSection({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.04 },
+      transition: { staggerChildren: 0.07, delayChildren: 0.04 },
     },
   }
 
   const itemVariants: Variants = {
-    hidden: { y: 10, opacity: 0 },
+    hidden: { y: 12, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -85,59 +90,47 @@ export function AboutUsSection({
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 w-full overflow-hidden border-t border-border bg-[hsl(40_20%_97%_/_0.88)] px-4 py-28 text-foreground md:px-10 md:py-36"
+      className="relative z-10 w-full scroll-mt-28 border-b-2 border-[#0a0a0a] bg-[#F4F4F0] px-4 py-24 text-[#0a0a0a] md:px-10 md:py-32"
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.26] [mask-image:radial-gradient(ellipse_80%_65%_at_30%_35%,black,transparent_75%)]"
-        aria-hidden
-      >
-        <FallingPattern
-          className="h-full min-h-[520px]"
-          color="hsl(var(--foreground) / 0.045)"
-          backgroundColor="hsl(40 20% 97% / 0.2)"
-          blurIntensity="0.85em"
-          duration={185}
-          density={1.15}
-        />
-      </div>
-
       <motion.div
-        className="relative z-10 mx-auto max-w-[1200px]"
+        className="relative z-10 mx-auto max-w-[1400px]"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        {/* Editorial masthead */}
-        <motion.header variants={itemVariants} className="grid gap-10 lg:grid-cols-12 lg:gap-6 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em]">
-              <span className="font-semibold tabular-nums text-[hsl(var(--accent))]">{about.sectionNumber}</span>
-              <span className="text-muted-foreground"> / {about.sectionTitle}</span>
+        <motion.header
+          variants={itemVariants}
+          className="grid gap-0 border-2 border-[#0a0a0a] md:grid-cols-12"
+        >
+          <div className="border-b-2 border-[#0a0a0a] p-6 md:col-span-8 md:border-b-0 md:border-r-2 md:p-10 lg:p-12">
+            <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-[#E61919]">
+              <span className="font-semibold tabular-nums">[{about.sectionNumber}]</span>
+              <span className="text-[#3d3d3d]"> {about.sectionTitle.toUpperCase()}</span>
             </p>
-            <h2 className="mt-4 font-serif text-[clamp(2.35rem,6.5vw,3.85rem)] font-semibold leading-[1.05] tracking-[-0.038em] text-foreground">
+            <h2 className="mt-5 font-display text-[clamp(2rem,5.5vw,3.5rem)] uppercase leading-[0.92] tracking-[-0.035em]">
               {identity.displayName}
             </h2>
-            <p className="mt-5 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.06em] text-muted-foreground">
+            <p className="mt-5 max-w-xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-[#3d3d3d]">
               {about.education.program}
-              <span className="text-border"> · </span>
+              <span className="text-[#c4c4c0]"> · </span>
               {about.education.institution}
-              <span className="text-border"> · </span>
+              <span className="text-[#c4c4c0]"> · </span>
               <span className="tabular-nums">{about.education.years}</span>
             </p>
             {about.priorEducation ? (
-              <p className="mt-2 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.06em] text-muted-foreground/90">
+              <p className="mt-3 max-w-xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-[#5a5a5a]">
                 {about.priorEducation.program}
-                <span className="text-border"> · </span>
+                <span className="text-[#c4c4c0]"> · </span>
                 {about.priorEducation.institution}
-                <span className="text-border"> · </span>
+                <span className="text-[#c4c4c0]"> · </span>
                 <span className="tabular-nums">{about.priorEducation.years}</span>
               </p>
             ) : null}
           </div>
-          <div className="flex flex-col gap-6 border-border lg:col-span-4 lg:border-l lg:pl-10">
+          <div className="flex flex-col justify-between gap-8 bg-[#eae8e3] p-6 md:col-span-4 md:p-10">
             <a
               href={`mailto:${contactEmail}`}
-              className="group inline-flex w-max max-w-full items-center gap-2 font-mono text-[11px] font-medium tracking-[0.04em] text-foreground underline decoration-[hsl(var(--accent))]/40 underline-offset-[6px] transition-colors hover:text-[hsl(var(--accent))] hover:decoration-[hsl(var(--accent))]"
+              className="group inline-flex w-max max-w-full items-center gap-2 border-b-2 border-[#0a0a0a] pb-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0a0a0a] transition-colors hover:border-[#E61919] hover:text-[#E61919]"
             >
               <span className="truncate">{contactEmail}</span>
               <ArrowUpRight
@@ -146,69 +139,55 @@ export function AboutUsSection({
                 aria-hidden
               />
             </a>
-            <div
-              className="inline-flex w-max items-center gap-2 border border-[#EAEAEA] px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em]"
-              style={{ backgroundColor: "#EDF3EC", color: "#346538" }}
-            >
-              <span className="h-1 w-1 bg-[#346538]" aria-hidden />
-              {about.availability.label}
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#3d3d3d]">Status</p>
+              <div className="mt-2 inline-flex items-center gap-2 border-2 border-[#0a0a0a] bg-[#F4F4F0] px-3 py-2 font-mono text-[9px] font-semibold uppercase tracking-[0.18em]">
+                <span className="h-2 w-2 bg-[#E61919]" aria-hidden />
+                {about.availability.label}
+              </div>
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              {identity.location}
-            </p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#3d3d3d]">{identity.location}</p>
           </div>
         </motion.header>
 
-        <div className="my-16 h-px w-full bg-border md:my-20" aria-hidden />
-
-        {/* Prose + margin column */}
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-16 grid gap-0 border-2 border-[#0a0a0a] md:grid-cols-12">
           <motion.div
             variants={itemVariants}
-            className="space-y-5 lg:col-span-7 lg:col-start-1"
+            className="space-y-5 border-b-2 border-[#0a0a0a] p-6 md:col-span-7 md:border-b-0 md:border-r-2 md:p-10 lg:p-12"
           >
             {about.paragraphs.map((p) => (
               <p
                 key={p.slice(0, 32)}
-                className="text-justify text-[15px] leading-[1.72] text-muted-foreground md:text-base md:leading-[1.75]"
+                className="max-w-[65ch] text-base leading-relaxed text-[#2a2a2a] md:text-[15px] md:leading-[1.72]"
               >
                 {p}
               </p>
             ))}
           </motion.div>
-          <motion.aside
-            variants={itemVariants}
-            className="lg:col-span-4 lg:col-start-9 lg:border-l lg:border-border lg:pl-10"
-          >
-            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
-              Role
+          <motion.aside variants={itemVariants} className="bg-[#eae8e3] p-6 md:col-span-5 md:p-10">
+            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.24em] text-[#E61919]">
+              &lt; ROLE / &gt;
             </p>
-            <p className="mt-3 font-serif text-xl font-medium leading-snug tracking-[-0.02em] text-foreground">
+            <p className="mt-4 font-display text-xl uppercase leading-tight tracking-[-0.02em] md:text-2xl">
               {identity.role}
             </p>
-            <p className="mt-8 font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
-              Site
+            <p className="mt-10 font-mono text-[9px] font-semibold uppercase tracking-[0.24em] text-[#E61919]">
+              &lt; SITE / &gt;
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm leading-relaxed text-[#2a2a2a] md:text-[15px]">
               Minthep.com — portfolio and public study notes; English, Japanese, and Korean in daily use.
             </p>
           </motion.aside>
         </div>
 
         {about.certifications && about.certifications.length > 0 ? (
-          <motion.div
-            variants={itemVariants}
-            className="my-16 border-t border-border pt-12 md:my-20 md:pt-14"
-          >
-            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
-              Certifications
+          <motion.div variants={itemVariants} className="mt-16 border-2 border-[#0a0a0a] p-6 md:p-10">
+            <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.24em] text-[#E61919]">
+              [ CERTIFICATIONS ]
             </p>
-            <ul className="mt-5 max-w-3xl space-y-3">
+            <ul className="mt-6 divide-y-2 divide-[#0a0a0a] border-t-2 border-b-2 border-[#0a0a0a]">
               {about.certifications.map((line) => (
-                <li
-                  key={line}
-                  className="border-b border-[#EAEAEA] pb-3 text-[15px] leading-relaxed text-muted-foreground last:border-b-0 last:pb-0"
-                >
+                <li key={line} className="py-4 text-[15px] leading-relaxed text-[#2a2a2a] md:py-5">
                   {line}
                 </li>
               ))}
@@ -216,56 +195,45 @@ export function AboutUsSection({
           </motion.div>
         ) : null}
 
-        <div className="my-20 h-px w-full bg-border md:my-24" aria-hidden />
-
-        {/* Asymmetric: image + focus register */}
-        <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-12">
-          <motion.figure
-            variants={itemVariants}
-            className="lg:col-span-5 lg:sticky lg:top-32"
-          >
-            <div className="border border-[#EAEAEA] bg-[#F9F9F8] p-2">
-              <motion.div
-                className="overflow-hidden border border-[#EAEAEA] bg-background"
-                initial={{ opacity: 0.9, scale: 1.02 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <motion.img
+        <div className="mt-16 grid gap-0 border-2 border-[#0a0a0a] md:grid-cols-12">
+          <motion.figure variants={itemVariants} className="border-b-2 border-[#0a0a0a] md:col-span-5 md:border-b-0 md:border-r-2">
+            <div className="border-[12px] border-[#eae8e3] bg-[#0a0a0a] p-px">
+              <div className="border-2 border-[#0a0a0a] bg-[#F4F4F0]">
+                <img
                   src={portraitSrc}
                   alt=""
-                  className="aspect-[3/4] w-full object-cover saturate-[0.88] contrast-[0.97]"
-                  initial={{ scale: 1.07 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="aspect-[3/4] w-full object-cover grayscale contrast-[1.02]"
                 />
-              </motion.div>
+              </div>
             </div>
+            <p className="border-t-2 border-[#0a0a0a] bg-[#eae8e3] px-4 py-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#3d3d3d]">
+              FIG. 01 · SUBJECT REF · NOT FOR DISTRIBUTION
+            </p>
           </motion.figure>
 
-          <motion.div variants={itemVariants} className="lg:col-span-7">
-            <p className="mb-8 font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
-              Focus register
-            </p>
-            <ul className="divide-y divide-border border-t border-border">
+          <motion.div variants={itemVariants} className="md:col-span-7">
+            <div className="border-b-2 border-[#0a0a0a] bg-[#eae8e3] px-6 py-4 md:px-10">
+              <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.24em] text-[#E61919]">
+                /// FOCUS REGISTER
+              </p>
+            </div>
+            <ul>
               {focusRows.map((row) => (
-                <li key={row.n}>
-                  <div className="group flex gap-5 py-7 md:gap-8 md:py-8">
-                    <span className="w-8 shrink-0 pt-0.5 font-mono text-[10px] font-semibold tabular-nums tracking-[0.14em] text-[hsl(var(--accent))] md:w-10">
+                <li key={row.n} className="border-b-2 border-[#0a0a0a] last:border-b-0">
+                  <div className="group flex gap-5 px-6 py-8 md:gap-8 md:px-10 md:py-9">
+                    <span className="w-10 shrink-0 pt-0.5 font-mono text-[10px] font-bold tabular-nums tracking-[0.14em] text-[#E61919]">
                       {row.n}
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <span className="text-muted-foreground transition-colors duration-300 group-hover:text-[hsl(var(--accent))]">
+                        <span className="text-[#5a5a5a] transition-colors duration-300 group-hover:text-[#E61919]">
                           {row.icon}
                         </span>
-                        <h3 className="font-serif text-xl tracking-[-0.02em] text-foreground md:text-[1.35rem]">
+                        <h3 className="font-display text-lg uppercase tracking-[-0.02em] md:text-xl">
                           {row.title}
                         </h3>
                       </div>
-                      <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                      <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#3d3d3d] md:text-[15px]">
                         {row.description}
                       </p>
                     </div>
@@ -276,19 +244,14 @@ export function AboutUsSection({
           </motion.div>
         </div>
 
-        {/* Typographic metrics strip */}
         <motion.div
           ref={statsRef}
-          className={cn(
-            "mt-20 border-t border-b border-border md:mt-28",
-            "transition-shadow duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            "hover:shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
-          )}
+          className="mt-16 border-2 border-[#0a0a0a]"
           initial="hidden"
           animate={isStatsInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <div className="flex flex-col md:flex-row">
+          <div className="grid grid-cols-1 md:grid-cols-4">
             {about.stats.map((s, index) => (
               <StatCell
                 key={s.key}
@@ -298,8 +261,8 @@ export function AboutUsSection({
                 suffix={s.suffix}
                 delay={index * 0.05}
                 className={cn(
-                  "flex-1 px-5 py-9 md:px-8 md:py-10",
-                  index > 0 && "border-t border-border md:border-t-0 md:border-l",
+                  "px-6 py-8 md:px-8 md:py-10",
+                  index > 0 && "border-t-2 border-[#0a0a0a] md:border-t-0 md:border-l-2",
                 )}
               />
             ))}
@@ -348,10 +311,10 @@ function StatCell({
         },
       }}
     >
-      <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-[hsl(var(--accent))]">{label}</p>
-      <p className="mt-3 flex items-baseline gap-0.5 font-serif text-[clamp(1.85rem,4vw,2.65rem)] tabular-nums tracking-[-0.03em] text-foreground">
+      <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-[#E61919]">{label}</p>
+      <p className="mt-3 flex items-baseline gap-0.5 font-mono text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tabular-nums tracking-[-0.02em]">
         <motion.span>{display}</motion.span>
-        <span className="text-lg text-[hsl(var(--accent))] md:text-xl">{suffix}</span>
+        <span className="text-base text-[#E61919] md:text-lg">{suffix}</span>
       </p>
     </motion.div>
   )
