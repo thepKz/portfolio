@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, useReducedMotion } from "framer-motion"
-import { ShaderAnimation } from "@/components/ui/shader-lines"
 import type { PortfolioJson } from "@/types/portfolio"
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -15,110 +14,114 @@ export function HeroSection({ hero, identity }: HeroSectionProps) {
   const reduce = useReducedMotion()
   const first = hero.nameLines[0] ?? ""
   const secondLine = hero.nameLines[1]
-  const yOff = reduce ? 0 : 48
-  const ySm = reduce ? 0 : 12
+  const yOff = reduce ? 0 : 20
 
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-[100dvh] overflow-hidden bg-transparent"
+      className="relative z-10 min-h-[100dvh] border-b-2 border-[#0a0a0a] bg-[#F4F4F0] text-[#0a0a0a]"
     >
-      <div className="absolute inset-0">
-        <ShaderAnimation />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-black/25 via-[hsl(40,20%,97%)]/20 to-[hsl(40,20%,97%)]"
-          aria-hidden
-        />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        aria-hidden
+        style={{
+          backgroundImage: `repeating-linear-gradient(90deg, #0a0a0a 0, #0a0a0a 1px, transparent 1px, transparent 72px), repeating-linear-gradient(0deg, #0a0a0a 0, #0a0a0a 1px, transparent 1px, transparent 72px)`,
+        }}
+      />
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-between px-5 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
-        <motion.div
-          className="flex flex-col items-end gap-2 border-l-2 border-[hsl(var(--accent))] pl-4 text-right md:max-w-md md:self-end"
-          initial={{ opacity: 0, y: reduce ? 0 : 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduce ? 0.2 : 0.75, delay: reduce ? 0 : 0.15, ease }}
-        >
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-white drop-shadow-sm">
-            {identity.role}
-          </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/80 drop-shadow-sm">
-            {identity.location}
-          </p>
-        </motion.div>
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] grid-cols-1 md:grid-cols-12">
+        <div className="flex flex-col justify-between border-[#0a0a0a] px-4 py-24 md:col-span-7 md:border-r-2 md:px-10 md:py-28 lg:px-14">
+          <motion.div
+            className="space-y-1 border-l-4 border-[#E61919] pl-4"
+            initial={{ opacity: 0, y: reduce ? 0 : yOff }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduce ? 0.2 : 0.65, ease }}
+          >
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#0a0a0a]">
+              [ {identity.role} ]
+            </p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#3d3d3d]">
+              UNIT / {identity.location.replace(/,/g, " · ").toUpperCase()}
+            </p>
+          </motion.div>
 
-        <div className="mt-auto space-y-10 md:flex md:items-end md:justify-between md:space-y-0">
-          <div className="max-w-[18ch] space-y-2">
-            <h1 className="font-serif font-semibold leading-[0.88] tracking-[-0.045em] text-white drop-shadow-[0_2px_48px_rgba(0,0,0,0.42)]">
+          <div className="mt-16 md:mt-0">
+            <p className="font-mono text-[9px] uppercase tracking-[0.32em] text-[#E61919]">/// REV 2.6 · DOSSIER</p>
+            <h1 className="mt-4 font-display uppercase leading-[0.88] tracking-[-0.04em] text-[#0a0a0a]">
               <motion.span
-                className="block text-[clamp(3.2rem,12vw,7.5rem)]"
-                initial={{ opacity: 0, y: yOff }}
+                className="block text-[clamp(3rem,11vw,7.25rem)]"
+                initial={{ opacity: 0, y: reduce ? 0 : yOff }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduce ? 0.2 : 0.95, delay: reduce ? 0 : 0.08, ease }}
+                transition={{ duration: reduce ? 0.2 : 0.75, delay: reduce ? 0 : 0.06, ease }}
               >
                 {first}
               </motion.span>
               {secondLine ? (
                 <motion.span
-                  className="block text-[clamp(3.2rem,12vw,7.5rem)]"
-                  initial={{ opacity: 0, y: yOff }}
+                  className="block text-[clamp(3rem,11vw,7.25rem)]"
+                  initial={{ opacity: 0, y: reduce ? 0 : yOff }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: reduce ? 0.2 : 0.95, delay: reduce ? 0 : 0.2, ease }}
+                  transition={{ duration: reduce ? 0.2 : 0.75, delay: reduce ? 0 : 0.14, ease }}
                 >
                   {secondLine}
                 </motion.span>
               ) : null}
             </h1>
             <motion.p
-              className="max-w-[36ch]"
-              initial={{ opacity: 0, y: ySm }}
+              className="mt-6 max-w-[42ch] font-mono text-[11px] font-medium uppercase leading-relaxed tracking-[0.12em] text-[#2a2a2a]"
+              initial={{ opacity: 0, y: reduce ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduce ? 0.2 : 0.7, delay: reduce ? 0 : 0.42, ease }}
+              transition={{ duration: reduce ? 0.2 : 0.6, delay: reduce ? 0 : 0.22, ease }}
             >
-              <span className="inline-block rounded-[6px] bg-black/55 px-3 py-2 font-mono text-[12px] font-semibold leading-relaxed tracking-[0.08em] text-white ring-1 ring-[hsl(var(--accent))]/35 [text-shadow:0_1px_2px_rgba(0,0,0,0.9)]">
-                {hero.subtitle}
-              </span>
+              {hero.subtitle}
             </motion.p>
           </div>
 
-          <motion.div
-            className="flex flex-col items-start gap-4 md:items-end md:text-right"
-            initial={{ opacity: 0, y: reduce ? 0 : 20 }}
+          <motion.a
+            href="#about"
+            className="group mt-16 inline-flex w-max items-center gap-3 border-2 border-[#0a0a0a] bg-[#0a0a0a] px-5 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#F4F4F0] transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-90 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E61919] md:mt-0"
+            initial={{ opacity: 0, y: reduce ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduce ? 0.2 : 0.8, delay: reduce ? 0 : 0.5, ease }}
+            transition={{ duration: reduce ? 0.2 : 0.55, delay: reduce ? 0 : 0.32, ease }}
           >
-            <p className="max-w-xs font-serif text-lg font-medium leading-snug tracking-tight text-[hsl(var(--foreground))] text-balance md:text-right">
-              {hero.manifestoWords.map((w, i) => (
-                <span key={`${w}-${i}`}>
-                  {i > 0 ? " " : ""}
-                  {w === hero.manifestoHighlight ? (
-                    <motion.span
-                      className="font-semibold underline decoration-[hsl(var(--accent))] decoration-2 underline-offset-[5px] text-[hsl(var(--accent))]"
-                      initial={{ opacity: reduce ? 1 : 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{
-                        duration: reduce ? 0 : 0.5,
-                        delay: reduce ? 0 : 0.85 + i * 0.04,
-                        ease,
-                      }}
-                    >
-                      {w}
-                    </motion.span>
-                  ) : (
-                    w
-                  )}
-                </span>
-              ))}
-            </p>
-            <motion.a
-              href="#about"
-              className="group inline-flex items-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.26em] text-[hsl(var(--foreground))] transition-colors hover:text-[hsl(var(--accent))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(var(--accent))]"
-              whileHover={{ x: 2 }}
-              transition={{ type: "spring", stiffness: 400, damping: 28 }}
-            >
-              <span className="h-px w-10 bg-current opacity-70 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-14 group-hover:opacity-100" />
-              {hero.scrollHint}
-            </motion.a>
+            <span className="h-px w-8 bg-[#F4F4F0]/80 transition-[width,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-12" />
+            {hero.scrollHint}
+          </motion.a>
+        </div>
+
+        <div className="flex flex-col justify-between border-t-2 border-[#0a0a0a] bg-[#eae8e3] px-4 py-10 md:col-span-5 md:border-t-0 md:px-8 md:py-28 lg:px-10">
+          <motion.div
+            className="hidden font-mono text-[9px] uppercase leading-relaxed tracking-[0.14em] text-[#3d3d3d] md:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: reduce ? 0.2 : 0.5, delay: reduce ? 0 : 0.2, ease }}
+          >
+            <p className="border-b border-[#0a0a0a] pb-2 text-[#0a0a0a]">&lt; OPERATING NOTES / &gt;</p>
+            <p className="mt-4 tabular-nums">COORD 10.8231°N · 106.6297°E</p>
+            <p className="mt-2">FIELD · FULL-STACK DELIVERY</p>
           </motion.div>
+
+          <motion.p
+            className="max-w-md font-sans text-base font-medium leading-snug tracking-tight text-[#111] text-balance md:text-right md:text-lg"
+            initial={{ opacity: 0, y: reduce ? 0 : 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduce ? 0.2 : 0.7, delay: reduce ? 0 : 0.28, ease }}
+          >
+            {hero.manifestoWords.map((w, i) => (
+              <span key={`${w}-${i}`}>
+                {i > 0 ? " " : ""}
+                {w === hero.manifestoHighlight ? (
+                  <span className="border-b-2 border-[#E61919] font-semibold text-[#0a0a0a]">{w}</span>
+                ) : (
+                  w
+                )}
+              </span>
+            ))}
+          </motion.p>
+
+          <div className="mt-10 hidden h-3 w-full md:block" aria-hidden>
+            <div className="h-full w-full bg-[repeating-linear-gradient(90deg,#E61919_0,#E61919_12px,#0a0a0a_12px,#0a0a0a_14px)]" />
+          </div>
         </div>
       </div>
     </section>
