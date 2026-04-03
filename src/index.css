@@ -4,22 +4,24 @@
 
 @layer base {
   :root {
-    --font-sans: "DM Sans", system-ui, sans-serif;
-    --font-serif: "Newsreader", Georgia, serif;
+    --font-sans: "Outfit", system-ui, sans-serif;
+    --font-display: "Archivo Black", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-    --background: 40 20% 97%;
-    --foreground: 0 0% 7%;
+    /* Swiss industrial print — matte documentation paper */
+    --background: 48 6% 94%;
+    --foreground: 0 0% 4%;
 
-    --muted: 40 10% 94%;
-    --muted-foreground: 0 0% 38%;
+    --muted: 48 5% 90%;
+    --muted-foreground: 0 0% 32%;
 
-    --accent: 18 40% 20%;
-    --accent-foreground: 40 20% 97%;
+    /* Single hazard accent */
+    --accent: 358 82% 51%;
+    --accent-foreground: 48 6% 96%;
 
-    --border: 40 8% 88%;
+    --border: 0 0% 78%;
 
-    --radius: 0.5rem;
+    --radius: 0;
   }
 
   * {
