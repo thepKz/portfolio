@@ -23,10 +23,7 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = prevScroll.current
     prevScroll.current = latest
-    if (latest < 48) {
-      setConcealed(false)
-      return
-    }
+    if (latest < 48) { setConcealed(false); return }
     if (latest > prev && latest > 96) setConcealed(true)
     else if (latest < prev) setConcealed(false)
   })
@@ -35,48 +32,66 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
     <>
       <motion.header
         initial={false}
-        animate={{
-          y: concealed ? -120 : 0,
-          opacity: concealed ? 0 : 1,
-        }}
+        animate={{ y: concealed ? -120 : 0, opacity: concealed ? 0 : 1 }}
         transition={spring}
         className={cn(
           "fixed left-1/2 top-5 z-40 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2",
-          "border-2 border-[#0a0a0a] bg-[#F4F4F0]/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-md",
+          "rounded-2xl",
         )}
-        style={{ pointerEvents: concealed ? "none" : "auto" }}
+        style={{
+          background: "rgba(8,10,15,0.7)",
+          backdropFilter: "blur(24px) saturate(180%)",
+          WebkitBackdropFilter: "blur(24px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(139,92,246,0.08)",
+          pointerEvents: concealed ? "none" : "auto",
+        }}
       >
-        <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-5">
+        <div className="flex items-center justify-between gap-4 px-5 py-3.5">
+          {/* Logo */}
           <a
             href={navigation.logoHref}
-            className="shrink-0 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] transition-colors hover:text-[#E61919] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E61919]"
+            className="shrink-0 text-sm font-bold tracking-[0.15em] uppercase font-mono transition-all duration-300 hover:text-violet-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400"
+            style={{ color: "rgba(255,255,255,0.9)" }}
           >
-            {identity.displayName.replace(" ", "\u00a0")}
+            <span className="text-gradient">{identity.displayName.split(" ")[0]}</span>
+            <span style={{ color: "rgba(255,255,255,0.5)" }}> {identity.displayName.split(" ").slice(1).join(" ")}</span>
           </a>
-          <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
             {navigation.anchors.map((a) => (
               <a
                 key={a.href}
                 href={a.href}
-                className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#3d3d3d] transition-colors hover:text-[#E61919] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E61919]"
+                className="px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-white/[0.06] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400"
+                style={{ color: "rgba(255,255,255,0.55)" }}
               >
                 {a.label}
               </a>
             ))}
           </nav>
+
           <div className="flex items-center gap-2">
+            {/* CTA button */}
             <a
               href={`mailto:${contact.email}`}
-              className="group hidden items-center gap-2 border-2 border-[#0a0a0a] bg-[#0a0a0a] px-3 py-2 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-[#F4F4F0] transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-90 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E61919] sm:inline-flex"
+              className="group hidden items-center gap-2 px-4 py-2 text-sm font-semibold text-white rounded-xl transition-all duration-300 hover:opacity-90 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400 sm:inline-flex"
+              style={{
+                background: "linear-gradient(135deg, rgba(139,92,246,0.6) 0%, rgba(99,60,210,0.7) 100%)",
+                border: "1px solid rgba(139,92,246,0.3)",
+                boxShadow: "0 0 20px rgba(139,92,246,0.2)",
+              }}
             >
               {contact.navCtaLabel}
-              <span className="flex h-6 w-6 items-center justify-center border border-[#F4F4F0]/25 bg-[#F4F4F0]/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
-                <ArrowUpRight className="h-3.5 w-3.5" weight="bold" aria-hidden />
-              </span>
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" weight="bold" aria-hidden />
             </a>
+
+            {/* Mobile menu toggle */}
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center border-2 border-[#0a0a0a] text-[#0a0a0a] transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#eae8e3] active:scale-[0.97] md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 hover:bg-white/[0.08] active:scale-[0.97] md:hidden"
+              style={{ color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.1)" }}
               aria-expanded={menuOpen}
               aria-controls="site-nav-overlay"
               onClick={() => setMenuOpen((o) => !o)}
@@ -88,53 +103,66 @@ export function SiteHeader({ navigation, contact, identity }: SiteHeaderProps) {
         </div>
       </motion.header>
 
+      {/* Mobile overlay */}
       <AnimatePresence>
-        {menuOpen ? (
+        {menuOpen && (
           <motion.div
             id="site-nav-overlay"
-            className="fixed inset-0 z-30 bg-[#0a0a0a]/92 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-30 md:hidden"
+            style={{
+              background: "rgba(8,10,15,0.96)",
+              backdropFilter: "blur(32px)",
+              WebkitBackdropFilter: "blur(32px)",
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           >
+            {/* Mobile gradient orb */}
+            <div
+              className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%)" }}
+            />
+
             <nav
-              className="flex min-h-[100dvh] flex-col justify-center gap-6 px-8 pt-24"
+              className="flex min-h-[100dvh] flex-col justify-center gap-3 px-8 pt-24"
               aria-label="Mobile primary"
             >
               {navigation.anchors.map((a, i) => (
                 <motion.a
                   key={a.href}
                   href={a.href}
-                  className="font-display text-3xl uppercase tracking-[-0.02em] text-[#F4F4F0]"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20,
-                    delay: 0.06 + i * 0.05,
-                  }}
+                  className="font-display text-4xl font-black uppercase tracking-[-0.02em] text-white/90 hover:text-gradient transition-all"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.06 + i * 0.05 }}
                   onClick={() => setMenuOpen(false)}
                 >
+                  <span className="text-violet-500/40 text-2xl font-mono mr-3">0{i + 1}</span>
                   {a.label}
                 </motion.a>
               ))}
               <motion.a
                 href={`mailto:${contact.email}`}
-                className="mt-6 inline-flex w-max items-center gap-2 border-2 border-[#E61919] px-4 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F4F4F0]"
+                className="mt-8 inline-flex w-max items-center gap-3 px-6 py-4 text-base font-semibold text-white rounded-2xl"
+                style={{
+                  background: "linear-gradient(135deg, rgba(139,92,246,0.6) 0%, rgba(249,115,22,0.5) 100%)",
+                  border: "1px solid rgba(139,92,246,0.3)",
+                  boxShadow: "0 0 30px rgba(139,92,246,0.25)",
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.35 }}
                 onClick={() => setMenuOpen(false)}
               >
                 {contact.navCtaLabel}
-                <ArrowUpRight className="h-4 w-4 text-[#E61919]" weight="bold" aria-hidden />
+                <ArrowUpRight className="h-4 w-4" weight="bold" aria-hidden />
               </motion.a>
             </nav>
           </motion.div>
-        ) : null}
+        )}
       </AnimatePresence>
     </>
   )
