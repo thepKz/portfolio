@@ -1,182 +1,178 @@
-# Nội dung portfolio — Min Thep
+# Raw Portfolio Data — Mai Tan THep
 
-File này lưu toàn bộ **copy, liên kết và dữ liệu** đang hiển thị trên site hiện tại, để bạn thiết kế lại hoặc chuyển sang stack khác mà không mất thông tin.
+## Identity
 
----
+- Full name: Mai Tan THep
+- Role headline: SOFTWARE Engineer
+- Display/brand name: thepKz
+- Website: [minthep.com](https://minthep.com)
+- Location: Ha Noi, Viet Nam
 
-## Meta & SEO (từ `index.html`)
+## Contact
 
-| Trường | Giá trị |
-|--------|---------|
-| **Tiêu đề trang** | Min Thep — Software Engineer & Creative Developer |
-| **Mô tả** | Portfolio of Min Thep (Mai Tan Thep) — Software Engineer & Creative Developer from Vietnam. Building things that make people go WOW. |
-| **Ngôn ngữ HTML** | `en` |
+- Phone 1: [0888500703](tel:0888500703)
+- Phone 2: [0775507070](tel:0775507070)
+- Email: [maitanthepmrthep@gmail.com](mailto:maitanthepmrthep@gmail.com)
+- GitHub: [thepKz](https://github.com/thepKz)
+- LinkedIn: [thepmaitan26](https://www.linkedin.com/in/thepmaitan26/edit/forms/position/new/?profileFormEntryPoint=NULL_STATE_CARD)
 
-**Ghi chú:** Trang có meta `generator` / `author` trỏ tới Perplexity Computer (template khởi tạo). Khi redesign có thể thay bằng thông tin của bạn.
+## About Me
 
----
+Passionate about business analysis and problem-solving, eager to continuously learn new knowledge, and aiming to develop as a Business Analyst and Project Manager in a professional environment.
 
-## Danh tính
-
-- **Tên hiển thị:** Min Thep  
-- **Tên đầy đủ (trong meta):** Mai Tan Thep  
-- **Chức danh / tagline:** Software Engineer & Creative Developer  
-- **Vị trí:** Việt Nam  
-
----
-
-## Hero
-
-- **Tên lớn (2 dòng):** MIN / THEP  
-- **Phụ đề (typing):** Software Engineer & Creative Developer  
-- **Gợi ý cuộn:** Scroll to explore  
-- **Manifesto (từng từ):** I build things that make people go **WOW**
-
----
-
-## About (01 — About me)
-
-### Đoạn văn
-
-1. Hi, I'm **Min Thep** — a Software Engineer & Creative Developer based in Vietnam.  
-2. Currently studying Software Engineering at **FPT University** (2022–2025). I'm passionate about building web experiences that blend technical precision with creative design. From viral portfolios to veterinary platforms, I love turning ideas into polished digital products.  
-3. When I'm not coding, you'll find me exploring new tech, contributing to open source, or crafting the next project that makes people go WOW.
-
-### Trạng thái
-
-- **Availability:** Available for work (có dot “online” xanh)
-
-### Số liệu thống kê (hiển thị trên card, có animation đếm)
-
-| Nhãn | Giá trị hiển thị |
-|------|------------------|
-| Repositories | 40+ |
-| Contributions | 853+ |
-| Followers | 40+ |
-| Portfolio Stars | 93+ |
-
----
-
-## Skills & tools (02)
+## Technical Skills
 
 ### Languages
 
-JavaScript, TypeScript, HTML, CSS
+- TypeScript
+- JavaScript
+- Java
+- Python
+- HTML/CSS
+- Golang
 
-### Frameworks & thư viện
+### Frameworks & Libraries
 
-React, Node.js, Next.js, Tailwind, Express, Three.js
+- React.js
+- Next.js
+- Node.js
+- Express.js
+- Spring Boot
+- AspNet
+- Flutter
+- Redux
+- TailwindCSS
 
-### Tools & nền tảng
+### Databases & Cloud
 
-Git, Docker, Figma, MongoDB, Firebase, VS Code, Linux, Vercel
+- MongoDB
+- MySQL
+- SQL Server
+- Firebase
+- Redis
+- Cloudinary CDN
 
----
+### DevOps & Tools
 
-## Projects (03)
+- Docker
+- GitHub Actions
+- Vercel
+- Netlify
+- Render
+- Postman
+- Swagger/OpenAPI
+- Cursor AI
 
-Mỗi dự án: tên, mô tả ngắn, tech tags, mô tả dài (mặt sau card), sao GitHub (nếu có), link GitHub.
+### Project Management
 
-### 01 — Minthep Portfolio
+- Jira
+- Confluence
+- Lark
+- Slack
 
-- **Mô tả ngắn:** Personal brand portfolio that went viral  
-- **Tech:** HTML, CSS, JS  
-- **GitHub stars (UI):** 93  
-- **Mô tả dài:** A creative developer portfolio featuring cosmic particle effects, cinematic scroll animations, and interactive elements that captured 93 stars on GitHub.  
-- **Link:** https://github.com/thepKz/minthep-portfolio  
+## Languages
 
-### 02 — GenKiKoi Fish Care
+- English (Level B2)
+- Korean (Topik II)
 
-- **Mô tả ngắn:** Veterinary platform for Koi fish  
-- **Tech:** TypeScript, React, Node.js  
-- **GitHub stars:** 9  
-- **Mô tả dài:** A full-stack veterinary management platform for Koi fish care, featuring appointment scheduling, health records, and treatment tracking.  
-- **Link:** https://github.com/thepKz/genkikoi-fishcare-webapp  
+## Education
 
-### 03 — Wedding Bolt
+### FPT University
 
-- **Mô tả ngắn:** Elegant digital wedding invitations  
-- **Tech:** HTML, CSS, JS  
-- **GitHub stars:** 7  
-- **Mô tả dài:** Beautiful digital wedding invitation platform with customizable templates, RSVP functionality, and elegant animations for the special day.  
-- **Link:** https://github.com/thepKz/wedding-bolt  
+- Program: Software Engineering (SE)
+- GPA: 8.1/10
+- Rating: Very Good
+- Duration: SEP 2022 - MAY 2026
 
-### 04 — Korean Magic Page
+## Projects
 
-- **Mô tả ngắn:** Interactive Korean learning platform  
-- **Tech:** TypeScript, React  
-- **GitHub stars:** 5  
-- **Mô tả dài:** An interactive platform for learning Korean with gamified exercises, vocabulary practice, and progress tracking features.  
-- **Link:** https://github.com/thepKz/korean-magic-page  
+### Genkikoi
 
-### 05 — Grok AI Chat
+- Duration: SEP 2024 - NOV 2024
+- Role: Team Lead | Full-Stack Developer
+- Team size: 4
+- Tech: Node.js · React · TypeScript · MongoDB · Express
+- GitHub: [Github](http://github.com/thepKz/GenKiKoi)
+- Web Preview: [Web Preview](http://staginggenkikoi.netlify.app)
+- Description:
+  - Led 4-person team to deliver full-stack veterinary platform within 3-month deadline.
+  - Architected RESTful API (Express + MongoDB) with 5+ modules: consultation, aquarium inspection, disease treatment & management.
+  - Built React/TypeScript frontend + CI/CD pipeline via GitHub Actions.
 
-- **Mô tả ngắn:** AI ChatBot with GenZ Vietnamese version  
-- **Tech:** HTML, CSS, JS  
-- **GitHub stars:** 4  
-- **Mô tả dài:** An AI chatbot interface inspired by Grok, featuring a fun GenZ Vietnamese language mode with slang responses and cultural references.  
-- **Link:** https://github.com/thepKz/grok-ai-chat  
+### StudyBlog
 
-### 06 — VuVu Store
+- Duration: JUN 2022 - PRESENT
+- Role: Solo Developer | Full-Stack Developer
+- Team size: 01
+- GitHub: [Github](http://github.com/thepKz/minthep-portfolio)
+- Web Preview: [Web Preview](https://thepkz.github.io/minthep-portfolio/blog/myblog.html)
+- Description:
+  - Built and maintained personal knowledge-sharing platform accumulating 85,000+ views since 2023.
+  - Published 5 articles covering Software Engineering Subjects and Japanese Learning (Including speaking) to help the community better support software technology.
 
-- **Mô tả ngắn:** E-commerce store inspired by Popmart  
-- **Tech:** React, JavaScript  
-- **GitHub stars:** 4  
-- **Mô tả dài:** A vibrant e-commerce platform inspired by Popmart, featuring collectible toy browsing, cart management, and a sleek shopping experience.  
-- **Link:** https://github.com/thepKz/vuvu-store  
+### Transparent Charity Platform
 
-### 07 — Bầu Cua Tết
+- Duration: Jan 2026 – Present
+- Role: Team Lead | Full-Stack Developer
+- Team size: 4
+- Tech: Next.js · TypeScript · Java Spring Boot · Flutter · MySQL · Docker
+- GitHub: [Github](http://github.com/TrustFundMe)
+- Description:
+  - Architected full Microservices system (8+ services: API Gateway, Identity...) using Spring Boot + Spring Cloud Eureka.
+  - Built Next.js (TypeScript) frontend with CI/CD pipeline via GitHub Actions.
+  - Integrated VietQR + Casso payment gateway enabling real-time donation transactions with webhook support.
+  - Developed Flutter mobile app (iOS/Android) with real-time chat and campaign management features.
 
-- **Mô tả ngắn:** Traditional Vietnamese dice game for Tết  
-- **Tech:** HTML, CSS, JS  
-- **GitHub stars:** 4  
-- **Mô tả dài:** A digital recreation of the beloved Vietnamese Lunar New Year dice game, with festive Tết-themed visuals and animations.  
-- **Link:** https://github.com/thepKz/bau-cua-tom-ca-ver-tet  
+### Black Hole Magic (Pubzi Gaming Platform)
 
-### 08 — Free Map Routing
+* **Duration:** Jun 2026
+* **Role:** Full-Stack Developer
+* **Team size:** 1
+* **Tech:** Next.js 15 · TypeScript · Bootstrap 5 · GSAP · jQuery · Swiper.js · Turbopack
 
-- **Mô tả ngắn:** Alternative map routing for Vietnam  
-- **Tech:** React, JavaScript  
-- **GitHub stars:** 2  
-- **Mô tả dài:** An alternative routing solution for Vietnam where Google Maps API is restricted, using open-source map services for navigation.  
-- **Link:** https://github.com/thepKz/free-map-routing  
+#### Description
 
----
+* Migrated a large-scale eSports & Gaming website from a legacy HTML template to a modern Next.js 15 App Router architecture.
+* Refactored and converted 50+ UI modules into reusable React/TypeScript components while preserving existing visual behavior and animations.
+* Implemented 13 production-ready routes including Home, Game, Match, Team, News, Gallery, Pricing, Contact, and FAQ pages.
+* Integrated GSAP ScrollTrigger, SplitText, WOW.js, and Swiper.js into a React-based environment while resolving SSR and hydration challenges.
+* Developed a custom client-side initialization layer for jQuery plugins to ensure compatibility with Next.js rendering lifecycle.
+* Optimized image delivery using Next.js Image Optimization and leveraged App Router for automatic route-based code splitting and lazy loading.
+* Organized project architecture with reusable component libraries, custom hooks, and animation utilities to improve maintainability and scalability.
+* Successfully completed TypeScript migration and eliminated build-time type errors, resulting in a fully deployable production build.
 
-## Contact (04 — Get in touch)
+### More Projects
 
-- **Headline:** Let's build something **extraordinary** together. (chữ *extraordinary* có gradient trong UI)  
-- **CTA chính:** Say Hello → `mailto:minthepx@gmail.com`  
-- **Email (nav + contact):** minthepx@gmail.com  
-- **CTA nav:** Let's Talk → cùng email  
+- Link: [More Projects...](https://github.com/thepKz)
 
-### Mạng xã hội
+## Job Experiences
 
-| Nền tảng | URL |
-|----------|-----|
-| GitHub | https://github.com/thepKz |
-| LinkedIn | https://linkedin.com/in/thepmaitan26 |
-| Facebook | https://facebook.com/thepp.tan |
-| YouTube | https://youtube.com/@minthep2611 |
+### FPT Software
 
----
+- Duration: Jan 2026 – Mar 2026
+- Position: Fresher | Korean Bridge Engineer | Full-time
+- Description:
+  - Independently analyzed and documented business requirements, converting client feedback into actionable development tasks.
+  - Coordinated daily Scrum meetings and sprint planning sessions, ensuring alignment between both sides.
+  - Managed task tracking and progress reporting via Jira and Confluence.
 
-## Điều hướng (nav anchor)
+### FPT Software
 
-- About → `#about`  
-- Skills → `#skills`  
-- Projects → `#projects`  
-- Contact → `#contact`  
-- Logo → `#hero`  
+- Duration: Dec 2024 – Jul 2025
+- Position: Intern | Korean Bridge Engineer | Full-time
+- Description:
+  - Supported senior Bridge Engineers in translating technical documents and requirement specifications.
+  - Participated in Agile/Scrum workflow, tracking tasks via Jira and reporting to project manager.
+  - Gained practical experience working in Korean corporate culture and enterprise software environment.
 
----
+## Certifications
 
-## Footer
+- Career Essentials in Generative AI — Microsoft & LinkedIn (Jan 2026)
+- Agile Software Development: Scrum for Developers — LinkedIn (Jan 2026)
+- Java Database Connectivity Specialization — LearnQuest / Coursera (May 2024)
+- Java (Basic) — HackerRank (Jan 2024)
+- Python (Basic) — Microsoft (Jul 2025)
+- Web Design for Everybody Specialization — University of Michigan / Coursera (Mar 2024)
 
-- **Text:** © 2026 Min Thep. Built with passion & code.
 
----
 
-## Nguồn dữ liệu
-
-Nội dung trên được trích từ `index.html` và phụ đề hero từ `main.js` (chuỗi typing). Cập nhật file này khi bạn đổi copy trên site.
