@@ -10,8 +10,7 @@
 
 ## Contact
 
-- Phone 1: [0888500703](tel:0888500703)
-- Phone 2: [0775507070](tel:0775507070)
+
 - Email: [maitanthepmrthep@gmail.com](mailto:maitanthepmrthep@gmail.com)
 - GitHub: [thepKz](https://github.com/thepKz)
 - LinkedIn: [thepmaitan26](https://www.linkedin.com/in/thepmaitan26/edit/forms/position/new/?profileFormEntryPoint=NULL_STATE_CARD)

@@ -1,0 +1,82 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+Theme Name:   Shooote - Photography HTML Template
+Version:        1.0.0
+Author: wpoceans
+-------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+1. General
+   1.1 Theme Reset Style
+   1.2 Global Elements
+
+2. header
+   2.1 navigation 
+
+3. Home Page Section
+   3.1 Hero Static Section
+   3.2 About Section
+   3.3 Portfolio Section
+   3.4 Service Section
+   3.5 Why Choose Section
+   3.6 Testimonial Section
+   3.7 Faq Section
+   3.8 Contact Section
+   3.9 Cta Section
+
+4. Footer
+
+5. Portfolio Single Page
+
+6. Service Single Page
+
+7. Blog Page
+
+8. Blog Single Page
+
+9. 404 Error Page
+
+
+----------------------------------------------------------------*/
+
+/*---------------------------------------------------------------
+1. General
+----------------------------------------------------------------*/
+
+// helpers
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+
+// base
+@import "base/base";
+
+
+// components
+@import "components/section-title";
+@import "components/buttons";
+@import "components/form";
+@import "components/social-links";
+@import "components/page-title";
+@import "components/preloader";
+@import "components/pagination";
+
+// layout
+@import "layout/header";
+@import "layout/hero-slider";
+@import "layout/footer";
+
+// components
+@import "components/sticky-header";
+
+
+// page
+@import "page/home-default";
+@import "page/_Portfolio-single";
+@import "page/_service-single";
+@import "page/_blog";
+@import "page/_blog-single";
+@import "page/_error-404";

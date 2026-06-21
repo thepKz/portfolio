@@ -1,0 +1,261 @@
+/*======================================
+5. Portfolio Single Page
+=======================================*/
+.wpo-portfolio-single-section {
+
+	.portfolio-single-content {
+		.post {
+			padding-bottom: 44px;
+
+			@media(max-width:767px) {
+				padding-bottom: 20px;
+			}
+
+			&.approach {
+				.portfolio-item {
+					padding-top: 30px;
+
+					@media(max-width:767px) {
+						padding-top: 20px;
+					}
+				}
+			}
+		}
+
+		.portfolio-image-top {
+			padding-top: 50px;
+
+			@media(max-width:767px) {
+				padding-top: 25px;
+			}
+		}
+
+		.portfolio-content {
+			max-width: 1075px;
+			margin: 0 auto;
+
+			.portfolio-top {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 1px solid $border-color;
+				padding-bottom: 45px;
+				margin-top: 65px;
+
+				@media(max-width:767px) {
+					display: block;
+					padding-bottom: 30px;
+					margin-top: 40px;
+				}
+
+				.portfolio-title {
+					h2 {
+						margin: 0;
+						font-family: $font-style-2;
+						font-weight: 300;
+						font-size: 64px;
+						line-height: 114%;
+						text-transform: uppercase;
+						max-width: 525px;
+
+						@media(max-width:1199px) {
+							font-size: 55px;
+							line-height: 110%;
+						}
+
+						@media(max-width:991px) {
+							font-size: 45px;
+						}
+
+						@media(max-width:575px) {
+							font-size: 35px;
+						}
+
+						@media(max-width:425px) {
+							font-size: 30px;
+						}
+					}
+				}
+
+				.portfolio-info {
+					max-width: 415px;
+					width: 100%;
+
+					@media(max-width:991px) {
+						max-width: 280px;
+					}
+
+					@media(max-width:767px) {
+						padding-top: 20px;
+					}
+
+					.Portfolio-info-item {
+						display: flex;
+						justify-content: space-between;
+
+						@media(max-width:991px) {}
+					}
+
+					ul {
+						li {
+							margin-bottom: 20px;
+
+							&:last-child {
+								margin-bottom: 0;
+							}
+
+							span {
+								color: $mid-gray;
+								font-weight: 500;
+								font-size: 12px;
+								line-height: 120%;
+								letter-spacing: 1.28px;
+								text-transform: uppercase;
+							}
+
+							h3 {
+								margin: 0;
+								padding-top: 3px;
+								font-family: $font-style-2;
+								font-weight: 500;
+								font-style: italic;
+								font-size: 16px;
+								line-height: 130%;
+								color: $black;
+							}
+						}
+					}
+
+					.Portfolio-info-item ul+ul {
+						margin-left: 40px;
+
+						@media(max-width:1199px) {
+							margin-left: 20px;
+						}
+					}
+				}
+			}
+
+			.portfolio-item {
+				display: flex;
+				justify-content: space-between;
+				padding-top: 75px;
+
+				@media(max-width:767px) {
+					padding-top: 40px;
+				}
+
+				@media(max-width:575px) {
+					flex-direction: column;
+					gap: 15px;
+					justify-content: center;
+					text-align: center;
+				}
+
+				.portfolio-left {
+					span {
+						font-family: $font-style-2;
+						font-weight: 500;
+						font-style: italic;
+						font-size: 16px;
+						line-height: 130%;
+						color: $black;
+					}
+				}
+
+				.portfolio-right {
+					max-width: 635px;
+					width: 100%;
+
+					@media(max-width:991px) {
+						max-width: 450px;
+					}
+
+					@media(max-width:767px) {
+						max-width: 320px;
+					}
+
+					@media(max-width:575px) {
+						margin: 0 auto;
+						max-width: unset;
+					}
+
+					p {
+						margin: 0;
+						font-weight: 500;
+						font-size: 28px;
+						line-height: 124%;
+						letter-spacing: -0.32px;
+						color: $text-color;
+						margin-bottom: 30px;
+
+						@media(max-width:991px) {
+							font-size: 22px;
+							line-height: 118%;
+							margin-bottom: 20px;
+						}
+
+						@media(max-width:767px) {
+							font-size: 19px;
+						}
+
+						@media(max-width:425px) {
+							font-size: 16px;
+							margin-bottom: 10px;
+						}
+					}
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					.shape {
+						padding-bottom: 45px;
+
+						@media(max-width:767px) {
+							padding-bottom: 25px;
+						}
+					}
+				}
+
+				.text {
+
+					p {
+						margin: 0;
+						font-family: $font-style-2;
+						font-weight: 500;
+						font-style: italic;
+						font-size: 24px;
+						line-height: 114%;
+						color: $text-color;
+						padding-bottom: 10px;
+
+						@media(max-width:767px) {
+							font-size: 20px;
+						}
+					}
+
+					span {
+						font-weight: 500;
+						font-size: 12px;
+						line-height: 120%;
+						letter-spacing: 1.28px;
+						text-transform: uppercase;
+						color: $mid-gray;
+					}
+				}
+			}
+
+		}
+
+		.image-item {
+			display: flex;
+			gap: 25px;
+
+			@media(max-width:425px) {
+				flex-direction: column;
+				gap: 15px;
+			}
+		}
+	}
+}

@@ -1,0 +1,86 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
+import portfolio from "../../api/portfolio";
+
+
+const PortfolioSection: React.FC = () => {
+
+   const ClickHandler = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <section className="wpo-portfolio-section" id="portfolio">
+      <div className="container">
+
+        <div className="portfolio-wrap">
+
+          {/* TITLE */}
+          <div className="wpo-section-title">
+            <h2 className="poort-text poort-in-right">
+              Works <span>({portfolio.length})</span>
+            </h2>
+          </div>
+
+          {/* GRID */}
+          <div className="row">
+
+            {portfolio.map((item, index) => (
+
+              <div key={item.id} className={item.col}>
+
+                <Fade direction="up" delay={index * 100} triggerOnce>
+
+                  <div className="portfolio-card">
+
+                    {/* IMAGE */}
+                    <div className="portfolio-image left-to-right-light">
+                      <img src={item.image} alt={item.title} />
+                    </div>
+
+                    {/* CATEGORY */}
+                    <div className="portfolio-tag">
+                      <span>{item.category}</span>
+                    </div>
+
+                    {/* CONTENT */}
+                    <div
+                      className={
+                        item.col.includes("col-lg-4")
+                          ? "portfolio-text"
+                          : "portfolio-content"
+                      }
+                    >
+
+                      <h3>
+                        <Link
+                          onClick={ClickHandler}
+                          to={`/portfolio-single/${item.slug}`}
+                        >
+                          {item.title}
+                        </Link>
+                      </h3>
+
+                      <p>{item.des1}</p>
+
+                    </div>
+
+                  </div>
+
+                </Fade>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default PortfolioSection;

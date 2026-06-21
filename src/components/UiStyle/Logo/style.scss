@@ -1,0 +1,12 @@
+.logo {
+  display: block;
+  max-width: 170px;
+  @media (max-width: 767px) {
+    text-align: center;
+    margin: auto;
+  }
+
+  a {
+    display: inline-block;
+  }
+}

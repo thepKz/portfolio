@@ -1,0 +1,51 @@
+
+                                Shooote/
+                                    |——template
+                                    |  |——docs/
+                                    |  |  |——sass/     
+                                    |  |  |——general
+                                    |  |  |——js
+                                    |  |——app/
+                                    |  |  |——components/                    --all basic component here
+                                    |  |  |    |—— about/
+                                    |  |  |    |—— BlogSection/
+                                    |  |  |    |—— BlogSingle/
+                                    |  |  |    |—— ContactArea/
+                                    |  |  |    |—— ContactForm/
+                                    |  |  |    |—— ServiceSection/
+                                    |  |  |    |—— ServiceSectionS2/
+                                    |  |  |    |—— Footer/
+                                    |  |  |    |—— header/
+                                    |  |  |    |—— header2/
+                                    |  |  |    |—— hero/
+                                    |  |  |    |—— MobileMenu/
+                                    |  |  |    |—— MobileMenu2/
+                                    |  |  |    |—— ProjectSection/
+                                    |  |  |    |—— scrollbar/
+                                    |  |  |    |—— SectionTitle/
+                                    |  |  |    |—— ServiceSection/
+                                    |  |  |    |—— ServiceSingle/
+                                    |  |  |    |—— splittextAnimation/
+                                    |  |  |    |—— PortfolioSingle/
+                                    |  |  |    |—— Testimonial/
+                                    |  |  |    |—— useImageRevealAnimation/
+                                    |  |  |    |—— WhyChooseUsSection/
+                                    |  |  |-main-component/
+                                    |  |  |    |——__router/                 --all route file
+                                    |  |  |    |——App/                      --main app js
+                                    |  |  |    |——BlogDetails/                    --BlogDetails
+                                    |  |  |    |——BlogPage/                    --BlogPage
+                                    |  |  |    |——HomePage/                    --Home Page
+                                    |  |  |    |——PortfolioSinglePage/                    --PortfolioSinglePage
+                                    |  |  |    |——router/                    --router
+                                    |  |  |    |——ServicePage/                    --ServicePage
+                                    |  |  |    |——ServiceSinglePage/                    --ServiceSinglePage
+                                    |  |  |——images/                        --all static images 
+                                    |  |  |——tests/                         --test file
+                                    |  |  |——utils/                         --all statick data and common js
+                                    |  |  |——app.js
+                                    |  |  |——styles.js
+                                    |  |  |——index.html
+                                    |  |  |——.env                       
+                                    |  |——package.json
+                                    |  |——package-lock.json

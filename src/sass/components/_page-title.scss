@@ -1,0 +1,47 @@
+.wpo-page-title {
+	min-height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media(max-width: 991px) {
+		min-height: 250px;
+	}
+
+	@media(max-width: 767px) {
+		min-height: 200px;
+	}
+
+	@media(max-width: 575px) {
+		min-height: 150px;
+	}
+
+	.wpo-breadcumb-wrap {
+		text-align: start;
+		max-width: 640px;
+		margin: 0 auto;
+
+		h2 {
+
+			margin: 0;
+			font-family: $font-style-2;
+			font-weight: 300;
+			font-size: 64px;
+			line-height: 114%;
+			text-transform: uppercase;
+
+			@media(max-width: 991px) {
+				font-size: 50px;
+				line-height: 110%;
+			}
+
+			@media(max-width: 767px) {
+				font-size: 40px;
+			}
+
+			@media(max-width: 575px) {
+				font-size: 30px;
+			}
+		}
+	}
+}

@@ -1,0 +1,250 @@
+@font-face {
+  font-family: "flaticon";
+  src: url("./flaticon.woff2?da7a82cff604fd63ae68b8c4403f4517") format("woff2"), url("./flaticon.woff?da7a82cff604fd63ae68b8c4403f4517") format("woff"), url("./flaticon.eot?da7a82cff604fd63ae68b8c4403f4517#iefix") format("embedded-opentype"), url("./flaticon.ttf?da7a82cff604fd63ae68b8c4403f4517") format("truetype"), url("./flaticon.svg?da7a82cff604fd63ae68b8c4403f4517#flaticon") format("svg");
+}
+i[class^="-"]:before, i[class*=" -"]:before {
+  font-family: flaticon !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.-email:before {
+  content: "\f101";
+}
+
+.-phone:before {
+  content: "\f102";
+}
+
+.-facebook-app-symbol:before {
+  content: "\f103";
+}
+
+.-twitter:before {
+  content: "\f104";
+}
+
+.-linkedin:before {
+  content: "\f105";
+}
+
+.-vimeo:before {
+  content: "\f106";
+}
+
+.-clock:before {
+  content: "\f107";
+}
+
+.-mail:before {
+  content: "\f108";
+}
+
+.-phone-1:before {
+  content: "\f109";
+}
+
+.-magnifying-glass:before {
+  content: "\f10a";
+}
+
+.-bag:before {
+  content: "\f10b";
+}
+
+.-arrow:before {
+  content: "\f10c";
+}
+
+.-right-arrow:before {
+  content: "\f10d";
+}
+
+.-phone-call:before {
+  content: "\f10e";
+}
+
+.-tap:before {
+  content: "\f10f";
+}
+
+.-handshake:before {
+  content: "\f110";
+}
+
+.-gift:before {
+  content: "\f111";
+}
+
+.-fund:before {
+  content: "\f112";
+}
+
+.-first-aid-kit:before {
+  content: "\f113";
+}
+
+.-charity:before {
+  content: "\f114";
+}
+
+.-cardiogram:before {
+  content: "\f115";
+}
+
+.-gift-box:before {
+  content: "\f116";
+}
+
+.-play:before {
+  content: "\f117";
+}
+
+.-arrow-up:before {
+  content: "\f118";
+}
+
+.-shield:before {
+  content: "\f119";
+}
+
+.-order:before {
+  content: "\f11a";
+}
+
+.-return-box:before {
+  content: "\f11b";
+}
+
+.-delivery-truck:before {
+  content: "\f11c";
+}
+
+.-camera:before {
+  content: "\f11d";
+}
+
+.-youtube:before {
+  content: "\f11e";
+}
+
+.-pinterest:before {
+  content: "\f11f";
+}
+
+.-next:before {
+  content: "\f120";
+}
+
+.-shopping-cart:before {
+  content: "\f121";
+}
+
+.-tablet:before {
+  content: "\f122";
+}
+
+.-right-arrow-1:before {
+  content: "\f123";
+}
+
+.-left-arrow:before {
+  content: "\f124";
+}
+
+.-graduation-cap:before {
+  content: "\f125";
+}
+
+.-checklist:before {
+  content: "\f126";
+}
+
+.-medal:before {
+  content: "\f127";
+}
+
+.-check:before {
+  content: "\f128";
+}
+
+.-share:before {
+  content: "\f129";
+}
+
+.-double-quotes:before {
+  content: "\f12a";
+}
+
+.-star:before {
+  content: "\f12b";
+}
+
+.-heart:before {
+  content: "\f12c";
+}
+
+.-user:before {
+  content: "\f12d";
+}
+
+.-chat:before {
+  content: "\f12e";
+}
+
+.-menu:before {
+  content: "\f12f";
+}
+
+.-maps-and-flags:before {
+  content: "\f130";
+}
+
+.-pawprint:before {
+  content: "\f131";
+}
+
+.-dog:before {
+  content: "\f132";
+}
+
+.-cat-bath:before {
+  content: "\f133";
+}
+
+.-donation:before {
+  content: "\f134";
+}
+
+.-global-distribution:before {
+  content: "\f135";
+}
+
+.-time-left:before {
+  content: "\f136";
+}
+
+.-right-arrow-2:before {
+  content: "\f137";
+}
+
+.-calendar:before {
+  content: "\f138";
+}
+
+.-home-address:before {
+  content: "\f139";
+}
+
+.-mail-1:before {
+  content: "\f13a";
+}
+
+.-edit:before {
+  content: "\f13b";
+}/*# sourceMappingURL=flaticon.css.map */

@@ -1,0 +1,261 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.woff2?da7a82cff604fd63ae68b8c4403f4517") format("woff2"),
+url("./flaticon.woff?da7a82cff604fd63ae68b8c4403f4517") format("woff"),
+url("./flaticon.eot?da7a82cff604fd63ae68b8c4403f4517#iefix") format("embedded-opentype"),
+url("./flaticon.ttf?da7a82cff604fd63ae68b8c4403f4517") format("truetype"),
+url("./flaticon.svg?da7a82cff604fd63ae68b8c4403f4517#flaticon") format("svg");
+}
+
+i[class^="-"]:before, i[class*=" -"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "email": "\f101",
+    "phone": "\f102",
+    "facebook-app-symbol": "\f103",
+    "twitter": "\f104",
+    "linkedin": "\f105",
+    "vimeo": "\f106",
+    "clock": "\f107",
+    "mail": "\f108",
+    "phone-1": "\f109",
+    "magnifying-glass": "\f10a",
+    "bag": "\f10b",
+    "arrow": "\f10c",
+    "right-arrow": "\f10d",
+    "phone-call": "\f10e",
+    "tap": "\f10f",
+    "handshake": "\f110",
+    "gift": "\f111",
+    "fund": "\f112",
+    "first-aid-kit": "\f113",
+    "charity": "\f114",
+    "cardiogram": "\f115",
+    "gift-box": "\f116",
+    "play": "\f117",
+    "arrow-up": "\f118",
+    "shield": "\f119",
+    "order": "\f11a",
+    "return-box": "\f11b",
+    "delivery-truck": "\f11c",
+    "camera": "\f11d",
+    "youtube": "\f11e",
+    "pinterest": "\f11f",
+    "next": "\f120",
+    "shopping-cart": "\f121",
+    "tablet": "\f122",
+    "right-arrow-1": "\f123",
+    "left-arrow": "\f124",
+    "graduation-cap": "\f125",
+    "checklist": "\f126",
+    "medal": "\f127",
+    "check": "\f128",
+    "share": "\f129",
+    "double-quotes": "\f12a",
+    "star": "\f12b",
+    "heart": "\f12c",
+    "user": "\f12d",
+    "chat": "\f12e",
+    "menu": "\f12f",
+    "maps-and-flags": "\f130",
+    "pawprint": "\f131",
+    "dog": "\f132",
+    "cat-bath": "\f133",
+    "donation": "\f134",
+    "global-distribution": "\f135",
+    "time-left": "\f136",
+    "right-arrow-2": "\f137",
+    "calendar": "\f138",
+    "home-address": "\f139",
+    "mail-1": "\f13a",
+    "edit": "\f13b",
+);
+
+.-email:before {
+    content: map-get($flaticon-map, "email");
+}
+.-phone:before {
+    content: map-get($flaticon-map, "phone");
+}
+.-facebook-app-symbol:before {
+    content: map-get($flaticon-map, "facebook-app-symbol");
+}
+.-twitter:before {
+    content: map-get($flaticon-map, "twitter");
+}
+.-linkedin:before {
+    content: map-get($flaticon-map, "linkedin");
+}
+.-vimeo:before {
+    content: map-get($flaticon-map, "vimeo");
+}
+.-clock:before {
+    content: map-get($flaticon-map, "clock");
+}
+.-mail:before {
+    content: map-get($flaticon-map, "mail");
+}
+.-phone-1:before {
+    content: map-get($flaticon-map, "phone-1");
+}
+.-magnifying-glass:before {
+    content: map-get($flaticon-map, "magnifying-glass");
+}
+.-bag:before {
+    content: map-get($flaticon-map, "bag");
+}
+.-arrow:before {
+    content: map-get($flaticon-map, "arrow");
+}
+.-right-arrow:before {
+    content: map-get($flaticon-map, "right-arrow");
+}
+.-phone-call:before {
+    content: map-get($flaticon-map, "phone-call");
+}
+.-tap:before {
+    content: map-get($flaticon-map, "tap");
+}
+.-handshake:before {
+    content: map-get($flaticon-map, "handshake");
+}
+.-gift:before {
+    content: map-get($flaticon-map, "gift");
+}
+.-fund:before {
+    content: map-get($flaticon-map, "fund");
+}
+.-first-aid-kit:before {
+    content: map-get($flaticon-map, "first-aid-kit");
+}
+.-charity:before {
+    content: map-get($flaticon-map, "charity");
+}
+.-cardiogram:before {
+    content: map-get($flaticon-map, "cardiogram");
+}
+.-gift-box:before {
+    content: map-get($flaticon-map, "gift-box");
+}
+.-play:before {
+    content: map-get($flaticon-map, "play");
+}
+.-arrow-up:before {
+    content: map-get($flaticon-map, "arrow-up");
+}
+.-shield:before {
+    content: map-get($flaticon-map, "shield");
+}
+.-order:before {
+    content: map-get($flaticon-map, "order");
+}
+.-return-box:before {
+    content: map-get($flaticon-map, "return-box");
+}
+.-delivery-truck:before {
+    content: map-get($flaticon-map, "delivery-truck");
+}
+.-camera:before {
+    content: map-get($flaticon-map, "camera");
+}
+.-youtube:before {
+    content: map-get($flaticon-map, "youtube");
+}
+.-pinterest:before {
+    content: map-get($flaticon-map, "pinterest");
+}
+.-next:before {
+    content: map-get($flaticon-map, "next");
+}
+.-shopping-cart:before {
+    content: map-get($flaticon-map, "shopping-cart");
+}
+.-tablet:before {
+    content: map-get($flaticon-map, "tablet");
+}
+.-right-arrow-1:before {
+    content: map-get($flaticon-map, "right-arrow-1");
+}
+.-left-arrow:before {
+    content: map-get($flaticon-map, "left-arrow");
+}
+.-graduation-cap:before {
+    content: map-get($flaticon-map, "graduation-cap");
+}
+.-checklist:before {
+    content: map-get($flaticon-map, "checklist");
+}
+.-medal:before {
+    content: map-get($flaticon-map, "medal");
+}
+.-check:before {
+    content: map-get($flaticon-map, "check");
+}
+.-share:before {
+    content: map-get($flaticon-map, "share");
+}
+.-double-quotes:before {
+    content: map-get($flaticon-map, "double-quotes");
+}
+.-star:before {
+    content: map-get($flaticon-map, "star");
+}
+.-heart:before {
+    content: map-get($flaticon-map, "heart");
+}
+.-user:before {
+    content: map-get($flaticon-map, "user");
+}
+.-chat:before {
+    content: map-get($flaticon-map, "chat");
+}
+.-menu:before {
+    content: map-get($flaticon-map, "menu");
+}
+.-maps-and-flags:before {
+    content: map-get($flaticon-map, "maps-and-flags");
+}
+.-pawprint:before {
+    content: map-get($flaticon-map, "pawprint");
+}
+.-dog:before {
+    content: map-get($flaticon-map, "dog");
+}
+.-cat-bath:before {
+    content: map-get($flaticon-map, "cat-bath");
+}
+.-donation:before {
+    content: map-get($flaticon-map, "donation");
+}
+.-global-distribution:before {
+    content: map-get($flaticon-map, "global-distribution");
+}
+.-time-left:before {
+    content: map-get($flaticon-map, "time-left");
+}
+.-right-arrow-2:before {
+    content: map-get($flaticon-map, "right-arrow-2");
+}
+.-calendar:before {
+    content: map-get($flaticon-map, "calendar");
+}
+.-home-address:before {
+    content: map-get($flaticon-map, "home-address");
+}
+.-mail-1:before {
+    content: map-get($flaticon-map, "mail-1");
+}
+.-edit:before {
+    content: map-get($flaticon-map, "edit");
+}

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Webfont</title>
+    <link rel="stylesheet" type="text/css" href="flaticon.css"/>
+    <meta charset="UTF-8">
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        body {
+            font-family: Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #777777;
+        }
+
+        a {
+            color: #52D999;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        [class^="-"]:before, [class*=" -"]:before, [class^="-"]:after, [class*=" -"]:after {
+            font-family: ;
+            font-size: 32px;
+            line-height: 1.25;
+            font-style: normal;
+            margin-left: 20px;
+            color: #424242;
+        }
+
+        .wrapper {
+            max-width: 600px;
+            margin: auto;
+            padding: 0 1em;
+        }
+
+        .title {
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        header {
+            text-align: center;
+            padding: 24px;
+        }
+
+        header .logo {
+            height: auto;
+            border: none;
+            display: inline-block;
+        }
+
+        header strong {
+            font-size: 24px;
+            line-height: 1.25;
+            font-weight: 500;
+            vertical-align: middle;
+        }
+
+        .demo {
+            margin: 2em auto;
+            line-height: 1.25;
+        }
+
+        .demo ul li {
+            margin-bottom: 12px;
+        }
+
+        .demo ul li code {
+            background-color: #121212;
+            border-radius: 3px;
+            padding: 12px;
+            display: inline-block;
+            color: #fff;
+            font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+            font-weight: lighter;
+            margin-top: 12px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .demo ul li code .red {
+            color: #EB644C;
+        }
+
+        .demo ul li code .green {
+            color: #52D999;
+        }
+
+        .demo ul li code .yellow {
+            color: #FFF4D9;
+        }
+
+        .demo ul li code .blue {
+            color: #648EEF;
+        }
+
+        .demo ul li code .purple {
+            color: #6569BD;
+        }
+
+        .demo ul li code .dots {
+            margin-top: 0.5em;
+            display: block;
+        }
+
+        #glyphs {
+            border-bottom: 1px solid #E5E5E5;
+            padding: 2em 0;
+            text-align: center;
+        }
+
+        .glyph {
+            display: inline-block;
+            width: 9em;
+            margin: 1em;
+            text-align: center;
+            vertical-align: top;
+            background: #FFF;
+        }
+
+        .glyph . {
+            padding: 10px;
+            display: block;
+            font-family: "";
+            font-size: 64px;
+            line-height: 1;
+        }
+
+        .glyph .:before {
+            font-size: 64px;
+            color: #777777;
+            margin-left: 0;
+        }
+
+        .class-name {
+            font-size: 0.65em;
+            background-color: #E5E5E5;
+            color: #9C9C9C;
+            border-radius: 4px 4px 0 0;
+            padding: 0.5em;
+            font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        }
+
+        .author-name {
+            font-size: 0.6em;
+            background-color: #EFF3F6;
+            border-top: 0;
+            border-radius: 0 0 4px 4px;
+            padding: 0.5em;
+        }
+
+        .author-name a {
+            color: #121212;
+        }
+
+        .class-name:last-child {
+            font-size: 10px;
+            line-height: 1.75;
+            color: #888;
+        }
+
+        .class-name:last-child a {
+            font-size: 10px;
+            line-height: 1.75;
+            color: #555;
+        }
+
+        .glyph > input {
+            display: block;
+            width: 100px;
+            margin: 5px auto;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.75;
+            cursor: text;
+        }
+
+        .glyph > input.icon-input {
+            font-family: "";
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .attribution .title {
+            margin-top: 2em;
+        }
+
+        .attribution textarea {
+            background-color: #F8FAFB;
+            color: #121212;
+            padding: 1em;
+            border: none;
+            box-shadow: none;
+            border: 1px solid #E5E5E5;
+            border-radius: 4px;
+            resize: none;
+            width: 100%;
+            height: 150px;
+            font-size: 13px;
+            line-height: 1.6;
+            font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+            -webkit-appearance: none;
+        }
+
+        .attribution textarea:hover {
+            border-color: #CFD9E0;
+        }
+
+        .attribution textarea:focus {
+            border-color: #52D999;
+        }
+
+        .iconsuse {
+            margin: 2em auto;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .iconsuse:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .iconsuse .image {
+            float: left;
+            width: 25%;
+            padding: 0 1em;
+        }
+
+        .iconsuse .image p {
+            margin-bottom: 1em;
+        }
+
+        .iconsuse .image span {
+            display: block;
+            font-size: 0.65em;
+            background-color: #222;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            color: #FFFF99;
+            margin-top: 1em;
+            font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        }
+
+        .:before {
+            color: #777777;
+        }
+
+        #footer {
+            text-align: center;
+            background-color: #121212;
+            color: #9C9C9C;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        #footer a {
+            font-weight: normal;
+        }
+
+        @media (max-width: 960px) {
+            .iconsuse .image {
+                width: 50%;
+            }
+        }
+
+        .preview {
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .preview .inner {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #F7F7F7;
+            -webkit-border-radius: 3px 3px 0 0;
+            -moz-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .preview .inner  {
+            line-height: 85px;
+            font-size: 40px;
+            color: #424242;
+        }
+
+        .label {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 10px;
+            font-family: Monaco, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: #ddd;
+            -webkit-border-radius: 0 0 3px 3px;
+            -moz-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://www..com/" target="_blank" class="logo">
+            <img src="https://www..com/media/dist/min/img/logos/-by-positive-hor.svg" alt="logo">
+        </a>
+    </header>
+    <section class="demo wrapper">
+
+        <p class="title">Webfont Instructions</p>
+
+        <ul>
+            <li>
+                <span class="num">1. </span>Copy the "Fonts" files and CSS files to your website CSS folder.
+            </li>
+            <li>
+                <span class="num">2. </span>Add the CSS link to your website source code on header.
+                <code class="big">
+                    &lt;<span class="red">head</span>&gt;
+                    <br/><span class="dots">...</span>
+                    <br/>&lt;<span class="red">link</span> <span class="green">rel</span>=<span
+                        class="yellow">"stylesheet"</span> <span class="green">type</span>=<span
+                        class="yellow">"text/css"</span> <span class="green">href</span>=<span class="yellow">"your_website_domain/css_root/_collection_name.css"</span>&gt;
+                    <br/><span class="dots">...</span>
+                    <br/>&lt;/<span class="red">head</span>&gt;
+                </code>
+            </li>
+
+            <li>
+                <p>
+                    <span class="num">3. </span>Use the icon class on <code>"<span class="blue">display</span>:<span
+                        class="purple"> inline</span>"</code> elements:
+                    <br/>
+                    Use example: <code>&lt;<span class="red">i</span> <span class="green">class</span>=<span class="yellow">&quot;-airplane49&quot;</span>&gt;&lt;/<span
+                        class="red">i</span>&gt;</code> or <code>&lt;<span class="red">span</span> <span
+                        class="green">class</span>=<span class="yellow">&quot;-airplane49&quot;</span>&gt;&lt;/<span
+                        class="red">span</span>&gt;</code>
+            </li>
+        </ul>
+
+    </section>
+    <section id="glyphs">
+            <div class="glyph">
+                <i class=" -email"></i>
+                <div class="class-name">.-email</div>
+                <div class="author-name">Author: #author-link--email# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -phone"></i>
+                <div class="class-name">.-phone</div>
+                <div class="author-name">Author: #author-link--phone# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -facebook-app-symbol"></i>
+                <div class="class-name">.-facebook-app-symbol</div>
+                <div class="author-name">Author: #author-link--facebook-app-symbol# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -twitter"></i>
+                <div class="class-name">.-twitter</div>
+                <div class="author-name">Author: #author-link--twitter# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -linkedin"></i>
+                <div class="class-name">.-linkedin</div>
+                <div class="author-name">Author: #author-link--linkedin# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -vimeo"></i>
+                <div class="class-name">.-vimeo</div>
+                <div class="author-name">Author: #author-link--vimeo# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -clock"></i>
+                <div class="class-name">.-clock</div>
+                <div class="author-name">Author: #author-link--clock# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -mail"></i>
+                <div class="class-name">.-mail</div>
+                <div class="author-name">Author: #author-link--mail# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -phone-1"></i>
+                <div class="class-name">.-phone-1</div>
+                <div class="author-name">Author: #author-link--phone-1# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -magnifying-glass"></i>
+                <div class="class-name">.-magnifying-glass</div>
+                <div class="author-name">Author: #author-link--magnifying-glass# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -bag"></i>
+                <div class="class-name">.-bag</div>
+                <div class="author-name">Author: #author-link--bag# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -arrow"></i>
+                <div class="class-name">.-arrow</div>
+                <div class="author-name">Author: #author-link--arrow# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -right-arrow"></i>
+                <div class="class-name">.-right-arrow</div>
+                <div class="author-name">Author: #author-link--right-arrow# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -phone-call"></i>
+                <div class="class-name">.-phone-call</div>
+                <div class="author-name">Author: #author-link--phone-call# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -tap"></i>
+                <div class="class-name">.-tap</div>
+                <div class="author-name">Author: #author-link--tap# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -handshake"></i>
+                <div class="class-name">.-handshake</div>
+                <div class="author-name">Author: #author-link--handshake# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -gift"></i>
+                <div class="class-name">.-gift</div>
+                <div class="author-name">Author: #author-link--gift# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -fund"></i>
+                <div class="class-name">.-fund</div>
+                <div class="author-name">Author: #author-link--fund# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -first-aid-kit"></i>
+                <div class="class-name">.-first-aid-kit</div>
+                <div class="author-name">Author: #author-link--first-aid-kit# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -charity"></i>
+                <div class="class-name">.-charity</div>
+                <div class="author-name">Author: #author-link--charity# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -cardiogram"></i>
+                <div class="class-name">.-cardiogram</div>
+                <div class="author-name">Author: #author-link--cardiogram# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -gift-box"></i>
+                <div class="class-name">.-gift-box</div>
+                <div class="author-name">Author: #author-link--gift-box# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -play"></i>
+                <div class="class-name">.-play</div>
+                <div class="author-name">Author: #author-link--play# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -arrow-up"></i>
+                <div class="class-name">.-arrow-up</div>
+                <div class="author-name">Author: #author-link--arrow-up# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -shield"></i>
+                <div class="class-name">.-shield</div>
+                <div class="author-name">Author: #author-link--shield# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -order"></i>
+                <div class="class-name">.-order</div>
+                <div class="author-name">Author: #author-link--order# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -return-box"></i>
+                <div class="class-name">.-return-box</div>
+                <div class="author-name">Author: #author-link--return-box# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -delivery-truck"></i>
+                <div class="class-name">.-delivery-truck</div>
+                <div class="author-name">Author: #author-link--delivery-truck# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -camera"></i>
+                <div class="class-name">.-camera</div>
+                <div class="author-name">Author: #author-link--camera# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -youtube"></i>
+                <div class="class-name">.-youtube</div>
+                <div class="author-name">Author: #author-link--youtube# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -pinterest"></i>
+                <div class="class-name">.-pinterest</div>
+                <div class="author-name">Author: #author-link--pinterest# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -next"></i>
+                <div class="class-name">.-next</div>
+                <div class="author-name">Author: #author-link--next# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -shopping-cart"></i>
+                <div class="class-name">.-shopping-cart</div>
+                <div class="author-name">Author: #author-link--shopping-cart# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -tablet"></i>
+                <div class="class-name">.-tablet</div>
+                <div class="author-name">Author: #author-link--tablet# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -right-arrow-1"></i>
+                <div class="class-name">.-right-arrow-1</div>
+                <div class="author-name">Author: #author-link--right-arrow-1# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -left-arrow"></i>
+                <div class="class-name">.-left-arrow</div>
+                <div class="author-name">Author: #author-link--left-arrow# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -graduation-cap"></i>
+                <div class="class-name">.-graduation-cap</div>
+                <div class="author-name">Author: #author-link--graduation-cap# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -checklist"></i>
+                <div class="class-name">.-checklist</div>
+                <div class="author-name">Author: #author-link--checklist# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -medal"></i>
+                <div class="class-name">.-medal</div>
+                <div class="author-name">Author: #author-link--medal# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -check"></i>
+                <div class="class-name">.-check</div>
+                <div class="author-name">Author: #author-link--check# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -share"></i>
+                <div class="class-name">.-share</div>
+                <div class="author-name">Author: #author-link--share# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -double-quotes"></i>
+                <div class="class-name">.-double-quotes</div>
+                <div class="author-name">Author: #author-link--double-quotes# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -star"></i>
+                <div class="class-name">.-star</div>
+                <div class="author-name">Author: #author-link--star# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -heart"></i>
+                <div class="class-name">.-heart</div>
+                <div class="author-name">Author: #author-link--heart# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -user"></i>
+                <div class="class-name">.-user</div>
+                <div class="author-name">Author: #author-link--user# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -chat"></i>
+                <div class="class-name">.-chat</div>
+                <div class="author-name">Author: #author-link--chat# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -menu"></i>
+                <div class="class-name">.-menu</div>
+                <div class="author-name">Author: #author-link--menu# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -maps-and-flags"></i>
+                <div class="class-name">.-maps-and-flags</div>
+                <div class="author-name">Author: #author-link--maps-and-flags# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -pawprint"></i>
+                <div class="class-name">.-pawprint</div>
+                <div class="author-name">Author: #author-link--pawprint# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -dog"></i>
+                <div class="class-name">.-dog</div>
+                <div class="author-name">Author: #author-link--dog# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -cat-bath"></i>
+                <div class="class-name">.-cat-bath</div>
+                <div class="author-name">Author: #author-link--cat-bath# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -donation"></i>
+                <div class="class-name">.-donation</div>
+                <div class="author-name">Author: #author-link--donation# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -global-distribution"></i>
+                <div class="class-name">.-global-distribution</div>
+                <div class="author-name">Author: #author-link--global-distribution# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -time-left"></i>
+                <div class="class-name">.-time-left</div>
+                <div class="author-name">Author: #author-link--time-left# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -right-arrow-2"></i>
+                <div class="class-name">.-right-arrow-2</div>
+                <div class="author-name">Author: #author-link--right-arrow-2# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -calendar"></i>
+                <div class="class-name">.-calendar</div>
+                <div class="author-name">Author: #author-link--calendar# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -home-address"></i>
+                <div class="class-name">.-home-address</div>
+                <div class="author-name">Author: #author-link--home-address# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -mail-1"></i>
+                <div class="class-name">.-mail-1</div>
+                <div class="author-name">Author: #author-link--mail-1# </div>
+            </div>
+
+            <div class="glyph">
+                <i class=" -edit"></i>
+                <div class="class-name">.-edit</div>
+                <div class="author-name">Author: #author-link--edit# </div>
+            </div>
+
+    </section>
+
+    <section class="attribution wrapper"   style="text-align:center;">
+
+        <div class="title">License and attribution:</div><div class="attrDiv">Font generated by <a href="https://www..com">.com</a>. <div>#allAuthorLinksCC# #allAuthorLinksBasic# </div>
+        </div>
+        <div class="title">Copy the Attribution License:</div>
+
+        <textarea onclick="this.focus();this.select();">Font generated by &lt;a href=&quot;https://www..com&quot;&gt;.com&lt;/a&gt;. #allAuthorLinksCC# #allAuthorLinksBasic#
+        </textarea>
+
+    </section>
+
+    <section class="iconsuse">
+
+        <div class="title">Examples:</div>
+            <div class="image">
+                <p>
+                    <i class=" -email"></i>
+                    <span>&lt;i class=&quot;-email&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -phone"></i>
+                    <span>&lt;i class=&quot;-phone&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -facebook-app-symbol"></i>
+                    <span>&lt;i class=&quot;-facebook-app-symbol&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -twitter"></i>
+                    <span>&lt;i class=&quot;-twitter&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -linkedin"></i>
+                    <span>&lt;i class=&quot;-linkedin&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -vimeo"></i>
+                    <span>&lt;i class=&quot;-vimeo&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -clock"></i>
+                    <span>&lt;i class=&quot;-clock&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -mail"></i>
+                    <span>&lt;i class=&quot;-mail&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -phone-1"></i>
+                    <span>&lt;i class=&quot;-phone-1&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -magnifying-glass"></i>
+                    <span>&lt;i class=&quot;-magnifying-glass&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -bag"></i>
+                    <span>&lt;i class=&quot;-bag&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -arrow"></i>
+                    <span>&lt;i class=&quot;-arrow&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -right-arrow"></i>
+                    <span>&lt;i class=&quot;-right-arrow&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -phone-call"></i>
+                    <span>&lt;i class=&quot;-phone-call&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -tap"></i>
+                    <span>&lt;i class=&quot;-tap&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -handshake"></i>
+                    <span>&lt;i class=&quot;-handshake&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -gift"></i>
+                    <span>&lt;i class=&quot;-gift&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -fund"></i>
+                    <span>&lt;i class=&quot;-fund&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -first-aid-kit"></i>
+                    <span>&lt;i class=&quot;-first-aid-kit&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -charity"></i>
+                    <span>&lt;i class=&quot;-charity&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -cardiogram"></i>
+                    <span>&lt;i class=&quot;-cardiogram&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -gift-box"></i>
+                    <span>&lt;i class=&quot;-gift-box&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -play"></i>
+                    <span>&lt;i class=&quot;-play&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -arrow-up"></i>
+                    <span>&lt;i class=&quot;-arrow-up&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -shield"></i>
+                    <span>&lt;i class=&quot;-shield&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -order"></i>
+                    <span>&lt;i class=&quot;-order&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -return-box"></i>
+                    <span>&lt;i class=&quot;-return-box&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -delivery-truck"></i>
+                    <span>&lt;i class=&quot;-delivery-truck&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -camera"></i>
+                    <span>&lt;i class=&quot;-camera&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -youtube"></i>
+                    <span>&lt;i class=&quot;-youtube&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -pinterest"></i>
+                    <span>&lt;i class=&quot;-pinterest&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -next"></i>
+                    <span>&lt;i class=&quot;-next&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -shopping-cart"></i>
+                    <span>&lt;i class=&quot;-shopping-cart&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -tablet"></i>
+                    <span>&lt;i class=&quot;-tablet&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -right-arrow-1"></i>
+                    <span>&lt;i class=&quot;-right-arrow-1&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -left-arrow"></i>
+                    <span>&lt;i class=&quot;-left-arrow&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -graduation-cap"></i>
+                    <span>&lt;i class=&quot;-graduation-cap&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -checklist"></i>
+                    <span>&lt;i class=&quot;-checklist&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -medal"></i>
+                    <span>&lt;i class=&quot;-medal&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -check"></i>
+                    <span>&lt;i class=&quot;-check&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -share"></i>
+                    <span>&lt;i class=&quot;-share&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -double-quotes"></i>
+                    <span>&lt;i class=&quot;-double-quotes&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -star"></i>
+                    <span>&lt;i class=&quot;-star&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -heart"></i>
+                    <span>&lt;i class=&quot;-heart&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -user"></i>
+                    <span>&lt;i class=&quot;-user&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -chat"></i>
+                    <span>&lt;i class=&quot;-chat&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -menu"></i>
+                    <span>&lt;i class=&quot;-menu&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -maps-and-flags"></i>
+                    <span>&lt;i class=&quot;-maps-and-flags&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -pawprint"></i>
+                    <span>&lt;i class=&quot;-pawprint&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -dog"></i>
+                    <span>&lt;i class=&quot;-dog&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -cat-bath"></i>
+                    <span>&lt;i class=&quot;-cat-bath&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -donation"></i>
+                    <span>&lt;i class=&quot;-donation&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -global-distribution"></i>
+                    <span>&lt;i class=&quot;-global-distribution&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -time-left"></i>
+                    <span>&lt;i class=&quot;-time-left&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -right-arrow-2"></i>
+                    <span>&lt;i class=&quot;-right-arrow-2&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -calendar"></i>
+                    <span>&lt;i class=&quot;-calendar&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -home-address"></i>
+                    <span>&lt;i class=&quot;-home-address&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -mail-1"></i>
+                    <span>&lt;i class=&quot;-mail-1&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+            <div class="image">
+                <p>
+                    <i class=" -edit"></i>
+                    <span>&lt;i class=&quot;-edit&quot;&gt;&lt;/i&gt;</span>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="footer">
+        <div>Generated by <a href="https://www..com">.com</a>
+        </div>
+    </div>
+
+</body>
+</html>

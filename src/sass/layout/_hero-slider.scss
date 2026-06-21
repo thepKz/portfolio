@@ -1,0 +1,179 @@
+/*--------------------------------------------------------------
+3. Home Page Section
+--------------------------------------------------------------*/
+/* 3.1 Hero Static Section */
+.wpo-hero-static {
+    position: relative;
+    padding: 120px 0;
+
+    @media(max-width:991px) {
+        padding: 75px 0;
+    }
+
+    @media(max-width:575px) {
+        padding: 60px 0;
+    }
+
+    @media(max-width:425px) {
+        padding: 60px 0;
+        padding-top: 45px;
+    }
+
+    .wpo-hero-wrap {
+        max-width: 1400px;
+        margin: 0 auto;
+
+        @media(max-width:1399px) {
+            max-width: 1150px;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+
+
+            h1 {
+                margin: 0;
+                font-size: 692px;
+                line-height: 120%;
+                line-height: 82%;
+                letter-spacing: -0.32px;
+                font-weight: 400;
+
+                @media(max-width:1600px) {
+                    font-size: 600px;
+                }
+
+                @media(max-width:1399px) {
+                    font-size: 500px;
+                }
+
+                @media(max-width:1199px) {
+                    font-size: 460px;
+                }
+
+                @media(max-width:991px) {
+                    font-size: 350px;
+                }
+
+                @media(max-width:767px) {
+                    font-size: 270px;
+                }
+
+                @media(max-width:575px) {
+                    font-size: 200px;
+                }
+
+                @media(max-width:425px) {
+                    font-size: 150px;
+                }
+            }
+
+            .line-s1 {
+                position: absolute;
+                top: -30px;
+                left: -20px;
+
+                @media(max-width:1500px) {
+                    left: 0;
+                }
+
+                @media(max-width:991px) {
+                    display: none;
+                }
+            }
+
+            .line-s2 {
+                position: absolute;
+                top: -30px;
+                right: -20px;
+
+                @media(max-width:1500px) {
+                    right: 0;
+                }
+
+                @media(max-width:991px) {
+                    display: none;
+                }
+            }
+
+            .line-s3 {
+                position: absolute;
+                bottom: 60px;
+                left: -20px;
+
+                @media(max-width:1500px) {
+                    left: 0;
+                }
+
+                @media(max-width:991px) {
+                    display: none;
+                }
+            }
+
+            .line-s4 {
+                position: absolute;
+                bottom: 60px;
+                right: -20px;
+
+                @media(max-width:1500px) {
+                    right: 0;
+                }
+
+                @media(max-width:991px) {
+                    display: none;
+                }
+            }
+        }
+
+        .hero-image {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            img {
+                @media(max-width:1600px) {
+                    width: 100%;
+                    max-width: 550px;
+                }
+
+                @media(max-width:1399px) {
+                    max-width: 430px;
+                }
+
+                @media(max-width:1199px) {
+                    max-width: 380px;
+                }
+
+                @media(max-width:991px) {
+                    max-width: 320px;
+                }
+
+                @media(max-width:767px) {
+                    max-width: 280px;
+                }
+
+                @media(max-width:575px) {
+                    max-width: 230px;
+                }
+
+                @media(max-width:425px) {
+                    max-width: 170px;
+                }
+            }
+        }
+    }
+
+    .shape {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 11;
+
+        @media(max-width:767px) {
+            bottom: -6px;
+        }
+    }
+}

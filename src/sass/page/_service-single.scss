@@ -1,0 +1,315 @@
+/*======================================
+6. Service Single Page
+=======================================*/
+.wpo-service-single-section {
+	padding-top: 110px;
+
+	@media(max-width:991px) {
+		padding-top: 80px;
+	}
+
+	@media(max-width:767px) {
+		padding-top: 40px;
+	}
+
+	.service-image {
+		min-height: 100%;
+
+		.image {
+			position: sticky;
+			top: 20px;
+		}
+	}
+
+	.service-single-content {
+		padding-left: 40px;
+
+		@media(max-width:1399px) {
+			padding-left: 0;
+		}
+
+		.service-top {
+			padding-bottom: 45px;
+			margin-top: 65px;
+
+			@media(max-width:767px) {
+				padding-bottom: 30px;
+				margin-top: 40px;
+			}
+
+			p {
+				margin: 0;
+				color: $text-color;
+				font-weight: 500;
+				font-size: 28px;
+				line-height: 124%;
+				letter-spacing: -0.32px;
+				padding-top: 56px;
+
+				@media(max-width:1199px) {
+					font-size: 24px;
+				}
+
+				@media(max-width:767px) {
+					font-size: 20px;
+					padding-top: 40px;
+				}
+			}
+
+			.service-title {
+				h2 {
+					margin: 0;
+					font-family: $font-style-2;
+					font-weight: 300;
+					font-size: 64px;
+					line-height: 114%;
+					text-transform: uppercase;
+					max-width: 525px;
+					padding-bottom: 40px;
+
+					@media(max-width:1199px) {
+						font-size: 55px;
+						line-height: 110%;
+					}
+
+					@media(max-width:991px) {
+						font-size: 45px;
+					}
+
+					@media(max-width:767px) {
+						padding-bottom: 30px;
+					}
+
+					@media(max-width:575px) {
+						font-size: 35px;
+					}
+
+					@media(max-width:425px) {
+						font-size: 30px;
+					}
+				}
+			}
+
+			.service-info {
+				max-width: 415px;
+				width: 100%;
+
+				@media(max-width:575px) {
+					max-width: unset;
+				}
+
+				.service-info-item {
+					display: flex;
+					justify-content: space-between;
+
+					@media(max-width:425px) {
+						display: block;
+					}
+				}
+
+				ul {
+					li {
+						margin-bottom: 20px;
+
+						@media(max-width:425px) {
+							margin-bottom: 10px;
+						}
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+						span {
+							color: $mid-gray;
+							font-weight: 500;
+							font-size: 12px;
+							line-height: 120%;
+							letter-spacing: 1.28px;
+							text-transform: uppercase;
+						}
+
+						h3 {
+							margin: 0;
+							padding-top: 3px;
+							font-family: $font-style-2;
+							font-weight: 500;
+							font-style: italic;
+							font-size: 16px;
+							line-height: 130%;
+							color: $black;
+						}
+					}
+
+					&:last-child {
+
+						@media(max-width:425px) {
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+
+		.service-item {
+			.service-content {
+				padding-bottom: 25px;
+
+				@media(max-width:767px) {
+					padding-bottom: 15px;
+				}
+
+				h3 {
+					margin: 0;
+					color: $text-color;
+					font-family: $font-style-2;
+					font-weight: 400;
+					font-style: italic;
+					font-size: 36px;
+					line-height: 114%;
+					padding-bottom: 15px;
+
+					@media(max-width:991px) {
+						font-size: 30px;
+						line-height: 110%;
+						padding-bottom: 10px;
+					}
+
+					@media(max-width:575px) {
+						font-size: 25px;
+					}
+				}
+
+				p {
+					margin: 0;
+					color: $text-color;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 150%;
+					letter-spacing: -0.32px;
+					padding-bottom: 20px;
+				}
+
+				ul {
+					padding-bottom: 20px;
+
+					li {
+						color: $text-color;
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 150%;
+						letter-spacing: -0.32px;
+						padding-left: 15px;
+						position: relative;
+
+						&::before {
+							position: absolute;
+							content: '';
+							top: 10px;
+							left: 0;
+							width: 5px;
+							height: 5px;
+							border-radius: 50%;
+							background-color: $theme-primary-color;
+						}
+					}
+				}
+			}
+
+			.service-card {
+				padding-top: 15px;
+				padding-bottom: 40px;
+
+				@include media-query(767px) {
+					padding-top: 0;
+				}
+
+				.service-list {
+					padding: 45px;
+					background-color: $theme-primary-color;
+
+					@include media-query(767px) {
+						padding: 25px;
+					}
+
+					.shape {
+						padding-bottom: 40px;
+
+						@include media-query(767px) {
+							padding-bottom: 25px;
+						}
+					}
+
+					.service-card-text {
+						h3 {
+							margin: 0;
+							font-family: $font-style-2;
+							font-weight: 400;
+							font-style: italic;
+							font-size: 24px;
+							line-height: 114%;
+							color: $white-gray;
+
+							@include media-query(767px) {
+								font-size: 20px;
+								line-height: 110%;
+							}
+						}
+
+						span {
+							font-weight: 500;
+							font-size: 12px;
+							line-height: 120%;
+							letter-spacing: 8%;
+							text-transform: uppercase;
+							color: $light;
+							display: block;
+							padding-top: 25px;
+						}
+					}
+				}
+			}
+
+			.service-buttom {
+				.service-buttom-text {
+					h4 {
+						margin: 0;
+						font-weight: 500;
+						font-family: $font-style-2;
+						font-style: italic;
+						font-size: 24px;
+						line-height: 114%;
+						color: $text-color;
+						padding-bottom: 25px;
+						max-width: 400px;
+
+						@include media-query(767px) {
+							font-size: 20px;
+							line-height: 110%;
+							padding-bottom: 15px;
+						}
+
+						&:last-child {
+							font-weight: 400;
+							color: $mid-gray;
+							padding-bottom: 0;
+						}
+					}
+				}
+
+				.service-btn {
+					margin-top: 40px;
+
+					@include media-query(767px) {
+						margin-top: 30px;
+					}
+
+					.theme-btn {
+						@media(max-width:991px) {
+							justify-content: start;
+						}
+					}
+				}
+			}
+		}
+	}
+}

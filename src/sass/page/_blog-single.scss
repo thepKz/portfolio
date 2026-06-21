@@ -1,0 +1,192 @@
+/*======================================
+8. Blog Single Page
+ =======================================*/
+
+.wpo-blog-single-section {
+    .wpo-blog-wraper {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .blog-tag {
+        list-style: none;
+        overflow: hidden;
+
+        ul {
+            list-style: none;
+            padding-top: 22px;
+
+            @include media-query(575px) {
+                padding-top: 15px;
+            }
+
+            li {
+                color: $mid-gray;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 120%;
+                letter-spacing: 1.28px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .format-standard-image {
+        margin-bottom: 30px;
+
+        .image-top {
+            margin-bottom: 35px;
+
+            @include media-query(575px) {
+                margin-bottom: 20px;
+            }
+
+            .image {
+                position: relative;
+
+                .social-icon {
+                    position: absolute;
+                    bottom: 30px;
+                    left: 30px;
+
+                    @include media-query(575px) {
+                        bottom: 10px;
+                        left: 10px;
+                    }
+
+                    ul {
+                        display: flex;
+                        gap: 15px;
+
+                        li {
+                            color: $white-gray;
+                            font-size: 20px;
+
+                            @include media-query(575px) {
+                                font-size: 15px;
+                            }
+
+                            a {
+                                color: $white-gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 20px;
+        letter-spacing: -0.32px;
+        color: $text-color;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+
+        @include media-query(575px) {
+            font-size: 14px;
+            line-height: 140%;
+        }
+    }
+
+    .post {
+        margin-bottom: 35px;
+
+        @include media-query(575px) {
+            margin-bottom: 20px;
+        }
+    }
+
+    h2 {
+        margin: 0;
+        font-family: $font-style-2;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 36px;
+        line-height: 114%;
+        margin-bottom: 15px;
+        margin-top: 10px;
+
+        @include media-query(991px) {
+            font-size: 30px;
+        }
+
+        @include media-query(575px) {
+            font-size: 25px;
+        }
+    }
+
+    h3 {
+        margin: 0;
+        color: $white-gray;
+        font-family: $font-style-2;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 24px;
+        line-height: 114%;
+        padding-top: 40px;
+
+        @include media-query(575px) {
+            font-size: 20px;
+            line-height: 110%;
+            padding-top: 25px;
+        }
+    }
+
+    /*** blog-card ***/
+    .blog-card {
+        padding-top: 15px;
+        padding-bottom: 40px;
+
+        @include media-query(575px) {
+            padding-bottom: 20px;
+            padding-top: 10px;
+        }
+
+        .blog-item {
+            padding: 45px;
+            background-color: $theme-primary-color;
+
+            @include media-query(575px) {
+                padding: 25px;
+            }
+
+            .blog-card-text {
+                span {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 120%;
+                    letter-spacing: 8%;
+                    text-transform: uppercase;
+                    color: $light;
+                    display: block;
+                    padding-top: 25px;
+                }
+            }
+        }
+    }
+
+    /*** blog-image ***/
+    .image-wrap {
+        .image-item {
+            display: flex;
+            gap: 25px;
+
+            @include media-query(425px) {
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        h3 {
+            color: $text-color;
+            font-weight: 400;
+        }
+    }
+}
