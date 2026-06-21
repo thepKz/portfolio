@@ -7,6 +7,19 @@ html {
     scroll-behavior: unset;
 }
 
+/* Chừa khoảng cho sticky header khi nhảy tới section qua anchor (#about, #skills, ...) */
+section[id] {
+    scroll-margin-top: 130px;
+
+    @include media-query(991px) {
+        scroll-margin-top: 100px;
+    }
+
+    @include media-query(767px) {
+        scroll-margin-top: 85px;
+    }
+}
+
 body {
     font-family: $base-font;
     color: $body-color;

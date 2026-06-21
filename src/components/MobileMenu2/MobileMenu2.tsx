@@ -43,7 +43,7 @@ const MobileMenu2: React.FC = () => {
             duration: 1,
             scrollTo: {
               y: el,
-              offsetY: 80,
+              offsetY: 110,
             },
             ease: "power2.out",
           });

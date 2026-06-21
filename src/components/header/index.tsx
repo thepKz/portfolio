@@ -29,63 +29,101 @@ const Header: React.FC = () => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const placeholderRef = useRef<HTMLDivElement | null>(null);
   const isSticky = useRef(false);
+  const isHidden = useRef(false);
+  const lastScrollY = useRef(0);
   const currentTween = useRef<gsap.core.Tween | null>(null);
 
   const stickyThreshold = 600;
 
   /* =========================
-     STICKY HEADER LOGIC
+     STICKY + HIDE-ON-SCROLL-DOWN HEADER
+     - Cuộn xuống: ẩn header
+     - Cuộn lên: hiện lại
   ========================== */
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
 
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-
-      if (scrollTop > stickyThreshold && !isSticky.current) {
-        isSticky.current = true;
-
-        // create placeholder
-        if (!placeholderRef.current) {
-          const placeholder = document.createElement("div");
-          placeholder.style.height = header.offsetHeight + "px";
-          header.parentNode?.insertBefore(placeholder, header.nextSibling);
-          placeholderRef.current = placeholder;
-        }
-
-        header.classList.add("sticky");
-
-        currentTween.current?.kill();
-
-        currentTween.current = gsap.fromTo(
-          header,
-          { y: -header.offsetHeight },
-          { y: 0, duration: 0.4, ease: "power2.out" }
-        );
-
-      } else if (scrollTop <= stickyThreshold && isSticky.current) {
-        isSticky.current = false;
-
-        currentTween.current?.kill();
-
-        currentTween.current = gsap.to(header, {
-          y: -header.offsetHeight,
-          duration: 0.4,
-          ease: "power2.in",
-          onComplete: () => {
-            header.classList.remove("sticky");
-
-            placeholderRef.current?.remove();
-            placeholderRef.current = null;
-
-            gsap.set(header, { y: 0 });
-          },
-        });
-      }
+    const show = () => {
+      currentTween.current?.kill();
+      currentTween.current = gsap.to(header, {
+        y: 0,
+        duration: 0.35,
+        ease: "power2.out",
+      });
+      isHidden.current = false;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const hide = () => {
+      currentTween.current?.kill();
+      currentTween.current = gsap.to(header, {
+        y: -header.offsetHeight,
+        duration: 0.35,
+        ease: "power2.in",
+      });
+      isHidden.current = true;
+    };
+
+    const enterSticky = () => {
+      isSticky.current = true;
+
+      if (!placeholderRef.current) {
+        const placeholder = document.createElement("div");
+        placeholder.style.height = header.offsetHeight + "px";
+        header.parentNode?.insertBefore(placeholder, header.nextSibling);
+        placeholderRef.current = placeholder;
+      }
+
+      header.classList.add("sticky");
+      currentTween.current?.kill();
+      currentTween.current = gsap.fromTo(
+        header,
+        { y: -header.offsetHeight },
+        { y: 0, duration: 0.4, ease: "power2.out" }
+      );
+      isHidden.current = false;
+    };
+
+    const exitSticky = () => {
+      isSticky.current = false;
+      currentTween.current?.kill();
+      currentTween.current = gsap.to(header, {
+        y: -header.offsetHeight,
+        duration: 0.4,
+        ease: "power2.in",
+        onComplete: () => {
+          header.classList.remove("sticky");
+          placeholderRef.current?.remove();
+          placeholderRef.current = null;
+          gsap.set(header, { y: 0 });
+        },
+      });
+    };
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const goingDown = scrollTop > lastScrollY.current;
+      const delta = Math.abs(scrollTop - lastScrollY.current);
+
+      if (scrollTop > stickyThreshold) {
+        if (!isSticky.current) {
+          enterSticky();
+        } else if (delta > 6) {
+          // chỉ phản ứng khi cuộn đủ rõ để tránh giật
+          if (goingDown && !isHidden.current) {
+            hide();
+          } else if (!goingDown && isHidden.current) {
+            show();
+          }
+        }
+      } else if (scrollTop <= stickyThreshold && isSticky.current) {
+        exitSticky();
+      }
+
+      lastScrollY.current = scrollTop;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -106,7 +144,7 @@ const Header: React.FC = () => {
       duration: 1,
       scrollTo: {
         y: element,
-        offsetY: 80,
+        offsetY: 110,
       },
       ease: "power2.out",
     });
@@ -129,7 +167,7 @@ const Header: React.FC = () => {
               </div>
 
               {/* Logo */}
-              <div className="col-lg-3 col-md-6 col-5">
+              <div className="col-lg-2 col-md-6 col-5">
                 <div className="navbar-header">
                   <Link to="#home" className="navbar-brand">
                     <img src={logo} alt="logo" />
@@ -138,7 +176,7 @@ const Header: React.FC = () => {
               </div>
 
               {/* Info */}
-              <div className="col-lg-6 col-md-3 col-3">
+              <div className="col-lg-3 col-md-3 col-3">
                 <div className="header-right">
                   <div className="close-form">
                     <p>Kỹ sư phần mềm Full-Stack</p>
@@ -152,7 +190,7 @@ const Header: React.FC = () => {
 
               {/* Nav */}
               {/* Navigation */}
-              <div className="col-lg-3 col-md-1 col-1">
+              <div className="col-lg-7 col-md-1 col-1">
                 <div
                   id="navbar"
                   className="collapse navbar-collapse navigation-holder"

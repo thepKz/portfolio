@@ -4,20 +4,24 @@
 /* 3.1 Hero Static Section */
 .wpo-hero-static {
     position: relative;
-    overflow: hidden;
-    padding: 120px 0;
+    overflow: visible; // cho phép ảnh MacBook trồi lên đè header
+    padding: 200px 0;
+    padding-top: 250px;
+    
 
     @media(max-width:991px) {
-        padding: 75px 0;
+        padding: 95px 0;
+        padding-top: 150px;
     }
 
     @media(max-width:575px) {
         padding: 60px 0;
+        padding-top: 100px;
     }
 
     @media(max-width:425px) {
         padding: 60px 0;
-        padding-top: 45px;
+        padding-top: 130px;
     }
 
     .wpo-hero-wrap {
@@ -35,7 +39,7 @@
 
             h1 {
                 margin: 0;
-                font-size: clamp(76px, 29vw, 400px);
+                font-size: clamp(72px, 24vw, 360px);
                 line-height: 82%;
                 letter-spacing: -0.32px;
                 font-weight: 400;
@@ -112,6 +116,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 1001; // nổi lên trên header (sticky z-index 999)
 
             img {
                 @media(max-width:1600px) {

@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
                     duration: 1,
                     scrollTo: {
                         y: element,
-                        offsetY: 80,
+                        offsetY: 110,
                     },
                     ease: "power2.out",
                 });

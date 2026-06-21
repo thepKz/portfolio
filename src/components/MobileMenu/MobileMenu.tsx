@@ -27,7 +27,7 @@ const MobileMenu: React.FC = () => {
     if (!element) return;
 
     window.scrollTo({
-      top: (element as HTMLElement).offsetTop - 80,
+      top: (element as HTMLElement).offsetTop - 110,
       behavior: "smooth",
     });
 

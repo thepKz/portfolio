@@ -179,8 +179,15 @@
 .wpo-site-header #navbar {
 	ul {
 		list-style: none;
-		max-width: 210px;
 		justify-content: end;
+
+		@include widther(992px) {
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: center;
+			gap: 4px;
+			white-space: nowrap;
+		}
 	}
 }
 
@@ -399,9 +406,10 @@
 			}
 
 			>ul>li>a {
-				padding: 10px 17px;
+				padding: 10px 12px;
 				display: block;
 				position: relative;
+				white-space: nowrap;
 				color: $text-color;
 				font-family: $base-font;
 				font-weight: 400;

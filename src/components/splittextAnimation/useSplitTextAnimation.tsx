@@ -219,21 +219,22 @@ const useSplitTextAnimation = <T extends HTMLElement>(
           const split = new SplitText(el, { type: "words,chars" });
           splits.push(split);
 
-          // Initial state
+          // Initial state — darker base so text stays readable before reveal
           gsap.set(split.chars, {
             opacity: 1,
-            color: "#C1C4C8",
+            color: "#9B9FA4",
           });
 
-          // Scroll animation
+          // Scroll animation — start later (text well in view) and spread the
+          // reveal across a longer scroll distance so it doesn't finish instantly
           gsap.to(split.chars, {
             color: "#2B2E33",
             stagger: 0.015,
             ease: "none",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
-              end: "top 35%",
+              start: "top 70%",
+              end: "bottom 60%",
               scrub: true,
             },
           });

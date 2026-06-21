@@ -238,7 +238,7 @@
             color: $white-gray;
             font-weight: 400;
             font-size: 250px;
-            line-height: 82%;
+            line-height: 96%;
             letter-spacing: -0.32px;
             text-transform: uppercase;
 
@@ -280,6 +280,8 @@
                 font-weight: 300;
                 font-style: italic;
                 letter-spacing: 0%;
+                line-height: 100%;
+                display: block;
             }
         }
 
@@ -287,6 +289,8 @@
             color: $white-gray;
             padding-top: 0;
             text-align: center;
+            line-height: 96%;
+            margin-top: clamp(8px, 1.2vw, 20px);
         }
 
         .service-top {
@@ -295,6 +299,7 @@
             justify-content: space-between;
             max-width: 1250px;
             padding-left: 60px;
+            margin-top: clamp(14px, 2vw, 34px);
 
             @media(max-width:1199px) {
                 padding-left: 0;
@@ -308,6 +313,12 @@
             .service-item-left {
                 @media(max-width:575px) {
                     order: 2;
+                }
+            }
+
+            .service-item-right {
+                h3 + h3 {
+                    margin-top: clamp(8px, 1.2vw, 20px);
                 }
             }
 
