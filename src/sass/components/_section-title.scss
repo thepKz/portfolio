@@ -12,7 +12,7 @@
 		padding-top: 50px;
 		font-weight: 400;
 		font-size: 320px;
-		line-height: 82%;
+		line-height: 1.18; // chừa cho dấu tiếng Việt (Ỹ, Ệ, Ậ...) không dính khi 2 dòng (Ậ chạm É)
 		letter-spacing: -0.32px;
 		text-transform: uppercase;
 

@@ -63,7 +63,7 @@ const WhyChooseUsSection: React.FC = () => {
           <div className="why-choose-top">
             <div className="wpo-section-title">
               <h3 className="poort-text poort-in-right">
-                Vì sao chọn tôi cho dự án của bạn
+                Vì sao chọn tôi
               </h3>
             </div>
           </div>
