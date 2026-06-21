@@ -116,6 +116,7 @@ export interface CertificationItem {
   title: string;
   issuer: string;
   date: string;
+  skills?: string;
 }
 
 export const certifications: CertificationItem[] = [
@@ -139,15 +140,17 @@ export const certifications: CertificationItem[] = [
   },
   {
     id: 4,
-    title: "Java (Basic)",
-    issuer: "HackerRank",
-    date: "01/2024",
+    title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+    issuer: "Microsoft",
+    date: "01/2026",
+    skills: "Prompt Engineering, Responsible AI",
   },
   {
     id: 5,
-    title: "Python (Basic)",
-    issuer: "Microsoft",
-    date: "07/2025",
+    title: "What Is Generative AI?",
+    issuer: "LinkedIn",
+    date: "01/2026",
+    skills: "Generative AI, Generative AI Tools",
   },
   {
     id: 6,

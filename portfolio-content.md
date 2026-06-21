@@ -169,8 +169,8 @@ Passionate about business analysis and problem-solving, eager to continuously le
 - Career Essentials in Generative AI — Microsoft & LinkedIn (Jan 2026)
 - Agile Software Development: Scrum for Developers — LinkedIn (Jan 2026)
 - Java Database Connectivity Specialization — LearnQuest / Coursera (May 2024)
-- Java (Basic) — HackerRank (Jan 2024)
-- Python (Basic) — Microsoft (Jul 2025)
+- Career Essentials in Generative AI by Microsoft and LinkedIn — Microsoft (Jan 2026)
+- What Is Generative AI? — LinkedIn (Jan 2026)
 - Web Design for Everybody Specialization — University of Michigan / Coursera (Mar 2024)
 
 

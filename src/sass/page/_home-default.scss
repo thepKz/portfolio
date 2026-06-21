@@ -205,6 +205,34 @@
             }
         }
     }
+
+    .portfolio-detail-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: $text-color;
+        text-transform: uppercase;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 2px;
+        transition: gap 0.2s ease;
+
+        svg {
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        &:hover {
+            gap: 10px;
+
+            svg {
+                transform: translateX(3px);
+            }
+        }
+    }
 }
 
 /* 3.4 Service Section */
@@ -415,11 +443,12 @@
 
         .service-image {
             position: relative;
-            overflow: hidden;
 
             img {
                 transform: scale(1);
-                transition: all .3s ease-in-out;
+                transition: transform .4s ease-in-out;
+                display: block;
+                width: 100%;
             }
         }
 
@@ -476,10 +505,16 @@
 
             .service-image {
                 img {
-                    transform: scale(1.1);
+                    transform: scale(1.08);
                 }
             }
         }
+    }
+
+    @keyframes pendulum {
+        0%   { transform: rotate(6deg); }
+        50%  { transform: rotate(-6deg); }
+        100% { transform: rotate(6deg); }
     }
 
     .service-shape {
@@ -490,6 +525,11 @@
 
         @media(max-width:575px) {
             display: none;
+        }
+
+        .pendulum {
+            transform-origin: top center;
+            animation: pendulum 3.2s ease-in-out infinite;
         }
 
         img {
@@ -514,18 +554,53 @@
     &.style-2 {
         background: $white;
 
-        .service-card .service-content .service-text {
-            h3 a {
+        .service-card {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+
+            .service-content .service-text {
+                h3 {
+                    color: #2B2E33;
+                }
+
+                p {
+                    color: #6D7177;
+                }
+            }
+
+            .service-detail-btn {
                 color: #2B2E33;
             }
+        }
+    }
 
-            p {
+    .service-detail-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 14px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: $white-gray;
+        text-transform: uppercase;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 2px;
+        transition: gap 0.2s ease;
 
-                color:#6D7177 ;
-            }
+        svg {
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+    }
 
-        } 
+    .service-card:hover .service-detail-btn {
+        gap: 10px;
 
+        svg {
+            transform: translateX(3px);
+        }
     }
 }
 
@@ -546,9 +621,11 @@
 
     .wpo-section-title {
         margin-bottom: 140px;
+        padding-top: 30px;
 
         @media (max-width:991px) {
             margin-bottom: 30px;
+            padding-top: 20px;
         }
 
         h3 {
@@ -593,6 +670,15 @@
             justify-content: space-between;
             max-width: 700px;
             flex-wrap: wrap;
+            padding-bottom: 260px;
+
+            @media (max-width:1600px) {
+                padding-bottom: 220px;
+            }
+
+            @media (max-width:991px) {
+                padding-bottom: 60px;
+            }
 
             @media (max-width:1399px) {
                 max-width: 590px;
@@ -714,7 +800,7 @@
         transform: translateY(-50%);
 
         @media(max-width:1600px) {
-            top: 56%;
+            top: 65%;
         }
 
         @media(max-width:1199px) {
@@ -753,11 +839,11 @@
     }
 
     .marquee-text-s2 {
-        top: 55%;
+        top: 60%;
         left: -100px;
 
         @media(max-width:1600px) {
-            top: 55%;
+            top: 65%;
         }
 
         @media(max-width:1199px) {

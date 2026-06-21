@@ -972,7 +972,7 @@ img {
     font-size: 0.73333rem;
     position: absolute;
     right: 15px;
-    top: 58%;
+    top: 58%!important;
     transform: translateY(-50%);
   }
   .wpo-site-header #navbar > ul > li:hover > .sub-menu {
@@ -2615,7 +2615,7 @@ img {
 .wpo-why-choose-section .marquee-text,
 .wpo-why-choose-section .marquee-text-s2 {
   position: absolute;
-  top: 58%;
+  top: 65%;
   left: -20px;
   width: 110%;
   transform: translateY(-50%);
@@ -2623,13 +2623,13 @@ img {
 @media (max-width: 1600px) {
   .wpo-why-choose-section .marquee-text,
   .wpo-why-choose-section .marquee-text-s2 {
-    top: 56%;
+    top: 66%;
   }
 }
 @media (max-width: 1199px) {
   .wpo-why-choose-section .marquee-text,
   .wpo-why-choose-section .marquee-text-s2 {
-    top: 50%;
+    top: 60%;
   }
 }
 @media (max-width: 575px) {
@@ -2669,17 +2669,17 @@ img {
   }
 }
 .wpo-why-choose-section .marquee-text-s2 {
-  top: 55%;
+  top: 65%!important;
   left: -100px;
 }
 @media (max-width: 1600px) {
   .wpo-why-choose-section .marquee-text-s2 {
-    top: 55%;
+    top: 65%;
   }
 }
 @media (max-width: 1199px) {
   .wpo-why-choose-section .marquee-text-s2 {
-    top: 50%;
+    top: 60%;
     left: 0;
   }
 }

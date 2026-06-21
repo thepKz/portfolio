@@ -1,6 +1,6 @@
 import s1 from "../images/service/img-1.jpg";
 import s2 from "../images/service/img-2.jpg";
-import s3 from "../images/service/img-3.jpg";
+import s3 from "../images/service/img-3.png";
 import s4 from "../images/service/img-4.jpg";
 
 import ss1 from "../images/service-single/service-single-img-1.jpg";

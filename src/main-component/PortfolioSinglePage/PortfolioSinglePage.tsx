@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header2 from "../../components/header2";
 import Footer2 from "../../components/footer2/Footer2";
 import Scrollbar from "../../components/scrollbar/scrollbar";
@@ -10,6 +10,7 @@ import CTASection from "../../components/CTASection/CTASection";
 
 const PortfolioSinglePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
 
   const project = portfolio.find((item) => item.slug === slug);
 
@@ -27,6 +28,12 @@ const PortfolioSinglePage: React.FC = () => {
 
       <section className="wpo-portfolio-single-section">
         <div className="container">
+
+          <button className="service-back-btn" onClick={() => navigate(-1)}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15 8H1M6 3L1 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            Quay lại
+          </button>
+
           <div className="portfolio-single-wrap">
 
             <div className="portfolio-single-content">

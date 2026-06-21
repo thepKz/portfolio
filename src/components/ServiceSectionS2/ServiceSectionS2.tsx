@@ -25,7 +25,11 @@ const ServiceSectionS2: React.FC = () => {
 
                 <Fade direction="up" delay={index * 100} triggerOnce>
 
-                  <div className="service-card">
+                  <Link
+                    className="service-card"
+                    onClick={ClickHandler}
+                    to={`/service-single/${service.slug}`}
+                  >
 
                     <div className="service-image">
                       <img src={service.image} alt={service.title} />
@@ -35,22 +39,19 @@ const ServiceSectionS2: React.FC = () => {
 
                       <div className="service-text">
 
-                        <h3>
-                          <Link
-                            onClick={ClickHandler}
-                            to={`/service-single/${service.slug}`}
-                          >
-                            {service.title}
-                          </Link>
-                        </h3>
+                        <h3>{service.title}</h3>
 
                         <p>{service.description}</p>
+
+                        <span className="service-detail-btn">
+                          Xem chi tiết <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        </span>
 
                       </div>
 
                     </div>
 
-                  </div>
+                  </Link>
 
                 </Fade>
 
