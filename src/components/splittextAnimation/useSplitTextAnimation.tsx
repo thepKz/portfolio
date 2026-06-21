@@ -14,6 +14,7 @@ const useSplitTextAnimation = <T extends HTMLElement>(
 
     let splits: SplitText[] = [];
     let rafId: number | null = null;
+    let heroRafId: number | null = null;
 
     const hoverHandlers: {
       el: HTMLElement;
@@ -22,6 +23,12 @@ const useSplitTextAnimation = <T extends HTMLElement>(
     }[] = [];
 
     const btnHandlers: {
+      el: HTMLElement;
+      move: (e: MouseEvent) => void;
+      leave: () => void;
+    }[] = [];
+
+    const heroHandlers: {
       el: HTMLElement;
       move: (e: MouseEvent) => void;
       leave: () => void;
@@ -110,6 +117,96 @@ const useSplitTextAnimation = <T extends HTMLElement>(
         });
 
         /* =============================
+        HERO MOUSE PARALLAX
+        ============================== */
+
+        const hero = containerRef.current!.classList.contains("wpo-hero-static")
+          ? containerRef.current!
+          : containerRef.current!.querySelector<HTMLElement>(".wpo-hero-static");
+
+        const canUsePointerParallax =
+          window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (hero && canUsePointerParallax) {
+          const heroTitle = hero.querySelector<HTMLElement>(".hero-content h1");
+          const heroImage = hero.querySelector<HTMLElement>(".hero-image img");
+          const heroLines = Array.from(
+            hero.querySelectorAll<HTMLElement>(".line-s1, .line-s2, .line-s3, .line-s4")
+          );
+
+          if (heroTitle && heroImage) {
+            gsap.set([heroTitle, heroImage, ...heroLines], {
+              willChange: "transform",
+            });
+
+            const titleX = gsap.quickTo(heroTitle, "x", {
+              duration: 0.7,
+              ease: "power3.out",
+            });
+            const titleY = gsap.quickTo(heroTitle, "y", {
+              duration: 0.7,
+              ease: "power3.out",
+            });
+            const imageX = gsap.quickTo(heroImage, "x", {
+              duration: 0.85,
+              ease: "power3.out",
+            });
+            const imageY = gsap.quickTo(heroImage, "y", {
+              duration: 0.85,
+              ease: "power3.out",
+            });
+            const lineX = heroLines.length
+              ? gsap.quickTo(heroLines, "x", {
+                duration: 0.9,
+                ease: "power3.out",
+              })
+              : null;
+            const lineY = heroLines.length
+              ? gsap.quickTo(heroLines, "y", {
+                duration: 0.9,
+                ease: "power3.out",
+              })
+              : null;
+
+            const handleHeroMove = (e: MouseEvent) => {
+              if (heroRafId) cancelAnimationFrame(heroRafId);
+
+              heroRafId = requestAnimationFrame(() => {
+                const rect = hero.getBoundingClientRect();
+                const relX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+                const relY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+                titleX(relX * -28);
+                titleY(relY * -18);
+                imageX(relX * 14);
+                imageY(relY * 10);
+                lineX?.(relX * -8);
+                lineY?.(relY * -6);
+              });
+            };
+
+            const handleHeroLeave = () => {
+              titleX(0);
+              titleY(0);
+              imageX(0);
+              imageY(0);
+              lineX?.(0);
+              lineY?.(0);
+            };
+
+            hero.addEventListener("mousemove", handleHeroMove);
+            hero.addEventListener("mouseleave", handleHeroLeave);
+
+            heroHandlers.push({
+              el: hero,
+              move: handleHeroMove,
+              leave: handleHeroLeave,
+            });
+          }
+        }
+
+        /* =============================
           ABOUT COLOR TEXT ANIMATION
           ============================= */
 
@@ -119,7 +216,7 @@ const useSplitTextAnimation = <T extends HTMLElement>(
           );
 
         aboutTexts.forEach((el) => {
-          const split = new SplitText(el, { type: "chars" });
+          const split = new SplitText(el, { type: "words,chars" });
           splits.push(split);
 
           // Initial state
@@ -131,12 +228,12 @@ const useSplitTextAnimation = <T extends HTMLElement>(
           // Scroll animation
           gsap.to(split.chars, {
             color: "#2B2E33",
-            stagger: 0.03,
+            stagger: 0.015,
             ease: "none",
             scrollTrigger: {
               trigger: el,
-              start: "top 80%",
-              end: "bottom 20%",
+              start: "top 85%",
+              end: "top 35%",
               scrub: true,
             },
           });
@@ -238,6 +335,7 @@ const useSplitTextAnimation = <T extends HTMLElement>(
       splits.forEach((split) => split.revert());
       ctx.revert();
       if (rafId) cancelAnimationFrame(rafId);
+      if (heroRafId) cancelAnimationFrame(heroRafId);
 
       hoverHandlers.forEach(({ el, enter, leave }) => {
         el.removeEventListener("mouseenter", enter);
@@ -245,6 +343,11 @@ const useSplitTextAnimation = <T extends HTMLElement>(
       });
 
       btnHandlers.forEach(({ el, move, leave }) => {
+        el.removeEventListener("mousemove", move);
+        el.removeEventListener("mouseleave", leave);
+      });
+
+      heroHandlers.forEach(({ el, move, leave }) => {
         el.removeEventListener("mousemove", move);
         el.removeEventListener("mouseleave", leave);
       });

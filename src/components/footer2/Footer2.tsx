@@ -62,7 +62,7 @@ const Footer2: React.FC = () => {
                           onClick={handleNavClick("#about")}
                           className="menu-link"
                         >
-                          About
+                          Giới thiệu
                         </a>
                       </li>
 
@@ -71,7 +71,7 @@ const Footer2: React.FC = () => {
                           href="#service"
                           onClick={handleNavClick("#service")}
                         >
-                          Service
+                          Dịch vụ
                         </a>
                       </li>
 
@@ -82,9 +82,15 @@ const Footer2: React.FC = () => {
                     <ul>
 
                       <li>
-                        <Link to="/blog">
-                          Blog
-                        </Link>
+                        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer">
+                          GitHub
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="https://www.linkedin.com/in/thepmaitan26/" target="_blank" rel="noopener noreferrer">
+                          LinkedIn
+                        </a>
                       </li>
 
                       <li>
@@ -92,14 +98,8 @@ const Footer2: React.FC = () => {
                           href="#portfolio"
                           onClick={handleNavClick("#portfolio")}
                         >
-                          Portfolio
+                          Dự án
                         </a>
-                      </li>
-
-                      <li>
-                        <Link to="/404">
-                          Error 404
-                        </Link>
                       </li>
 
                     </ul>
@@ -107,8 +107,8 @@ const Footer2: React.FC = () => {
 
                   <div className="footer-item">
                     <p>
-                      © (2017 - {new Date().getFullYear()}){" "}
-                      <Link to="/">Shooote,</Link> All rights reserved
+                      © {new Date().getFullYear()}{" "}
+                      <Link to="/">thepKz,</Link> Bảo lưu mọi quyền
                     </p>
                   </div>
 
@@ -116,16 +116,16 @@ const Footer2: React.FC = () => {
 
                 {/* MIDDLE */}
                 <div className="footer-middle-text">
-                  <h2>Let’s Make</h2>
-                  <h2>Moments</h2>
+                  <h2>Cùng xây</h2>
+                  <h2>Sản phẩm</h2>
                 </div>
 
                 {/* RIGHT */}
                 <div className="footer-right">
 
                   <div className="footer-item">
-                    <h3>Currently Available</h3>
-                    <span>For Work</span>
+                    <h3>Đang nhận</h3>
+                    <span>Dự án mới</span>
                   </div>
 
                   <div className="link-widget">
@@ -148,7 +148,7 @@ const Footer2: React.FC = () => {
                           onClick={handleNavClick("#contact")}
                           className="menu-link"
                         >
-                          Hire
+                          Liên hệ
                         </a>
                       </h4>
 
@@ -158,7 +158,7 @@ const Footer2: React.FC = () => {
                           onClick={handleNavClick("#contact")}
                           className="menu-link"
                         >
-                          Me Now
+                          Ngay
                         </a>
                       </h4>
 

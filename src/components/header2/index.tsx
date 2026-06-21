@@ -19,10 +19,11 @@ interface MenuItem {
 }
 
 const menus: MenuItem[] = [
-  { id: 1, title: "About", link: "#about" },
-  { id: 2, title: "Service", link: "/service" },
-  { id: 3, title: "Work", link: "#portfolio" },
-  { id: 4, title: "Hire Me", link: "#contact" },
+  { id: 1, title: "Giới thiệu", link: "#about" },
+  { id: 2, title: "Kỹ năng", link: "#skills" },
+  { id: 3, title: "Dự án", link: "#portfolio" },
+  { id: 4, title: "Dịch vụ", link: "/service" },
+  { id: 5, title: "Liên hệ", link: "#contact" },
 ];
 
 const Header2: React.FC = () => {
@@ -177,8 +178,8 @@ const Header2: React.FC = () => {
               <div className="col-lg-6 col-md-3 col-3">
                 <div className="header-right">
                   <div className="close-form">
-                    <p>Designer & Photographer</p>
-                    <p>Based in San Francisco</p>
+                    <p>Kỹ sư phần mềm Full-Stack</p>
+                    <p>Ha Noi, Viet Nam</p>
                     <Link to={'/#contact'} className="icon">
                       <img src={arrow} alt="arrow" />
                     </Link>
@@ -209,7 +210,7 @@ const Header2: React.FC = () => {
                             href={item.link}
                             onClick={handleNavClick(item.link)}
                             className={`menu-link ${
-                              item.title === "Hire Me" ? "hire-me" : ""
+                              item.link === "#contact" ? "hire-me" : ""
                             }`}
                           >
                             {item.title}

@@ -23,7 +23,7 @@ const HeroStatic: React.FC = () => {
           <div className="hero-content">
 
             <h1 className="poort-text poort-in-up">
-              Shoot
+              Minthep
             </h1>
 
             <div className="line-s1">

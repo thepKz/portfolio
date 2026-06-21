@@ -5,6 +5,10 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Header from '../../components/header';
 import HeroStatic from '../../components/hero/hero';
 import AboutSection from '../../components/about/about';
+import SkillsSection from '../../components/SkillsSection/SkillsSection';
+import ExperienceSection from '../../components/ExperienceSection/ExperienceSection';
+import EducationSection from '../../components/EducationSection/EducationSection';
+import CertificationsSection from '../../components/CertificationsSection/CertificationsSection';
 import PortfolioSection from '../../components/PortfolioSection/PortfolioSection';
 import ServiceSection from '../../components/ServiceSection';
 import WhyChooseUsSection from '../../components/WhyChooseUsSection/WhyChooseUsSection';
@@ -50,9 +54,13 @@ const HomePage: React.FC = () => {
             <Header />
             <HeroStatic />
             <AboutSection />
+            <SkillsSection />
             <PortfolioSection />
+            <ExperienceSection />
+            <EducationSection />
             <ServiceSection />
             <WhyChooseUsSection />
+            <CertificationsSection />
             <TestimonialSection />
             <FaqSection />
             <ContactSection />

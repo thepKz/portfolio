@@ -27,7 +27,7 @@ const CTASection: React.FC = () => {
           {/* LEFT BIG TEXT */}
           <div className="cta-content">
 
-            <h1 className="poort-text poort-in-up">Start</h1>
+            <h1 className="poort-text poort-in-up">Bắt đầu</h1>
 
             <div className="line-s1">
               <img src={line1} alt="" />
@@ -54,13 +54,13 @@ const CTASection: React.FC = () => {
 
               <Fade direction="up" delay={200} triggerOnce>
                 <h2>
-                  Bring your ideas to life with professional photography.
+                  Biến ý tưởng của bạn thành sản phẩm phần mềm thật.
                 </h2>
               </Fade>
 
               <Fade direction="up" delay={300} triggerOnce>
                 <h2>
-                  Whether it’s portraits, events, or brand work, I’ll help capture it perfectly.
+                  Dù là web, microservices hay mobile, tôi sẽ giúp bạn xây dựng và ship trọn vẹn.
                 </h2>
               </Fade>
 
@@ -78,10 +78,10 @@ const CTASection: React.FC = () => {
 
                 <i className="link-text">
                   <span>
-                    <Link to="/service">Start</Link>
+                    <Link to="/service">Bắt đầu</Link>
                   </span>
                   <span>
-                    <Link to="/service">Your Project</Link>
+                    <Link to="/service">Dự án của bạn</Link>
                   </span>
                 </i>
 

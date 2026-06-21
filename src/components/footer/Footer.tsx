@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import arrow from "../../images/arrow.svg";
-import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -46,13 +45,13 @@ const Footer: React.FC = () => {
                     <ul>
                       <li>
                         <a href="#about" onClick={handleScroll("#about")} className="menu-link">
-                          About
+                          Giới thiệu
                         </a>
                       </li>
 
                       <li>
                         <a href="#service" onClick={handleScroll("#service")}>
-                          Service
+                          Dịch vụ
                         </a>
                       </li>
                     </ul>
@@ -61,29 +60,29 @@ const Footer: React.FC = () => {
                   <div className="footer-item">
                     <ul>
                       <li>
-                        <a href="/blog">
-                          Blog
+                        <a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer">
+                          GitHub
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="https://www.linkedin.com/in/thepmaitan26/" target="_blank" rel="noopener noreferrer">
+                          LinkedIn
                         </a>
                       </li>
 
                       <li>
                         <a href="#portfolio" onClick={handleScroll("#portfolio")}>
-                          Portfolio
+                          Dự án
                         </a>
-                      </li>
-
-                      <li>
-                        <Link to="/404">
-                          Error 404
-                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="footer-item">
                     <p>
-                      © (2017 - {new Date().getFullYear()}){" "}
-                      <a href="/">Shooote,</a> All rights reserved
+                      © {new Date().getFullYear()}{" "}
+                      <a href="/">thepKz,</a> Bảo lưu mọi quyền
                     </p>
                   </div>
 
@@ -91,16 +90,16 @@ const Footer: React.FC = () => {
 
                 {/* MIDDLE BIG TEXT */}
                 <div className="footer-middle-text">
-                  <h2>Let’s Make</h2>
-                  <h2>Moments</h2>
+                  <h2>Cùng xây</h2>
+                  <h2>Sản phẩm</h2>
                 </div>
 
                 {/* RIGHT */}
                 <div className="footer-right">
 
                   <div className="footer-item">
-                    <h3>Currently Available</h3>
-                    <span>For Work</span>
+                    <h3>Đang nhận</h3>
+                    <span>Dự án mới</span>
                   </div>
 
                   <div className="link-widget">
@@ -114,12 +113,12 @@ const Footer: React.FC = () => {
                     <div className="text">
                       <h4>
                         <a href="#contact" onClick={handleScroll("#contact")} className="menu-link">
-                          Hire
+                          Liên hệ
                         </a>
                       </h4>
                       <h4>
                         <a href="#contact" onClick={handleScroll("#contact")} className="menu-link">
-                          Me Now
+                          Ngay
                         </a>
                       </h4>
                     </div>

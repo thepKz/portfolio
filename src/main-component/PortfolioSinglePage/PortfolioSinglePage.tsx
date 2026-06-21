@@ -14,7 +14,7 @@ const PortfolioSinglePage: React.FC = () => {
   const project = portfolio.find((item) => item.slug === slug);
 
   if (!project) {
-    return <h2 style={{ textAlign: "center", padding: "120px" }}>Not Found</h2>;
+    return <h2 style={{ textAlign: "center", padding: "120px" }}>Không tìm thấy dự án</h2>;
   }
 
   useEffect(() => {
@@ -52,23 +52,23 @@ const PortfolioSinglePage: React.FC = () => {
 
                       <ul>
                         <li>
-                          <span>Client</span>
-                          <h3>Private Client</h3>
+                          <span>Vai trò</span>
+                          <h3>Full-Stack Developer</h3>
                         </li>
                         <li>
-                          <span>Year</span>
-                          <h3>2026</h3>
+                          <span>Năm</span>
+                          <h3>2024 – 2026</h3>
                         </li>
                       </ul>
 
                       <ul>
                         <li>
-                          <span>Category</span>
+                          <span>Lĩnh vực</span>
                           <h3>{project.category}</h3>
                         </li>
                         <li>
-                          <span>Timeline</span>
-                          <h3>4 weeks</h3>
+                          <span>Nguồn</span>
+                          <h3><a href="https://github.com/thepKz" target="_blank" rel="noopener noreferrer">GitHub</a></h3>
                         </li>
                       </ul>
 
@@ -81,13 +81,13 @@ const PortfolioSinglePage: React.FC = () => {
                 <div className="portfolio-item">
 
                   <div className="portfolio-left">
-                    <span>01  //  Project Info</span>
+                    <span>01  //  Tổng quan dự án</span>
                   </div>
 
                   <div className="portfolio-right">
                     <p>{project.description}</p>
                     <p>
-                      Every image was created to preserve not just how the day looked but how it felt.
+                      Dự án được xây dựng theo hướng sản phẩm thật, chú trọng kiến trúc rõ ràng và khả năng mở rộng.
                     </p>
                   </div>
 
@@ -116,15 +116,15 @@ const PortfolioSinglePage: React.FC = () => {
                 <div className="portfolio-item">
 
                   <div className="portfolio-left">
-                    <span>02  //  The Vision</span>
+                    <span>02  //  Mục tiêu</span>
                   </div>
 
                   <div className="portfolio-right">
                     <p>
-                      The goal was to document the ceremony in a natural, unobtrusive way—allowing genuine moments to unfold without interruption.
+                      Mục tiêu là giải quyết bài toán nghiệp vụ thực tế bằng giải pháp kỹ thuật gọn gàng, dễ bảo trì và sẵn sàng cho production.
                     </p>
                     <p>
-                      Every image was created to preserve not just how the day looked but how it felt.
+                      Mỗi quyết định kỹ thuật đều hướng tới trải nghiệm người dùng và hiệu năng hệ thống.
                     </p>
                   </div>
 
@@ -145,7 +145,7 @@ const PortfolioSinglePage: React.FC = () => {
                 <div className="portfolio-item">
 
                   <div className="portfolio-left">
-                    <span>03  //  Client Words</span>
+                    <span>03  //  Nhận xét</span>
                   </div>
 
                   <div className="portfolio-right">
@@ -158,10 +158,9 @@ const PortfolioSinglePage: React.FC = () => {
                     </div>
                     <div className="text">
                       <p>
-                        “Every photo feels like reliving the moment. Nothing felt staged,
-                        just real and beautiful.”
+                        “Sản phẩm được bàn giao đúng hạn, vận hành ổn định và đúng yêu cầu nghiệp vụ. Rất đáng tin cậy.”
                       </p>
-                      <span>- Mickel jone</span>
+                      <span>- Quản lý dự án</span>
                     </div>
 
                   </div>
@@ -176,15 +175,15 @@ const PortfolioSinglePage: React.FC = () => {
                 <div className="portfolio-item">
 
                   <div className="portfolio-left">
-                    <span>04  //  Creative Approach</span>
+                    <span>04  //  Cách tiếp cận</span>
                   </div>
 
                   <div className="portfolio-right">
                     <p>
-                      This project relied on natural light, calm pacing, and thoughtful composition. By staying present and unobtrusive, each frame became a reflection of real emotion rather than performance.
+                      Dự án áp dụng kiến trúc rõ ràng, component tái sử dụng và pipeline CI/CD tự động. Ưu tiên code sạch, dễ kiểm thử và khả năng mở rộng lâu dài.
                     </p>
                     <p>
-                      Each frame reflects real emotion rather than performance.
+                      Mỗi tính năng đều được xây dựng hướng tới giá trị thật cho người dùng cuối.
                     </p>
                   </div>
 

@@ -4,6 +4,7 @@
 /* 3.1 Hero Static Section */
 .wpo-hero-static {
     position: relative;
+    overflow: hidden;
     padding: 120px 0;
 
     @media(max-width:991px) {
@@ -34,38 +35,18 @@
 
             h1 {
                 margin: 0;
-                font-size: 692px;
-                line-height: 120%;
+                font-size: clamp(76px, 29vw, 400px);
                 line-height: 82%;
                 letter-spacing: -0.32px;
                 font-weight: 400;
-
-                @media(max-width:1600px) {
-                    font-size: 600px;
-                }
-
-                @media(max-width:1399px) {
-                    font-size: 500px;
-                }
-
-                @media(max-width:1199px) {
-                    font-size: 460px;
-                }
-
-                @media(max-width:991px) {
-                    font-size: 350px;
-                }
-
-                @media(max-width:767px) {
-                    font-size: 270px;
-                }
+                white-space: nowrap;
 
                 @media(max-width:575px) {
-                    font-size: 200px;
+                    font-size: clamp(68px, 29vw, 132px);
                 }
 
                 @media(max-width:425px) {
-                    font-size: 150px;
+                    font-size: clamp(58px, 29vw, 112px);
                 }
             }
 

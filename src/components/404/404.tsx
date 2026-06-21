@@ -24,7 +24,7 @@ const Error: React.FC = () => {
                                 <img src={erimg} alt="" />
                             </div>
                             <div className="error-message">
-                                <h3>we’re sorry page not found!</h3>
+                                <h3>Rất tiếc, không tìm thấy trang!</h3>
                                 <div className="theme-btn">
                                     <i className="icon">
                                         <Link onClick={ClickHandler} to="/">
@@ -32,8 +32,8 @@ const Error: React.FC = () => {
                                         </Link>
                                     </i>
                                     <i className="link-text">
-                                        <span><Link onClick={ClickHandler} to="/">Back</Link></span>
-                                        <span><Link onClick={ClickHandler} to="/">to home</Link></span>
+                                        <span><Link onClick={ClickHandler} to="/">Về</Link></span>
+                                        <span><Link onClick={ClickHandler} to="/">trang chủ</Link></span>
                                     </i>
                                 </div>
                             </div>

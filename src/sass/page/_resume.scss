@@ -1,0 +1,258 @@
+/*---------------------------------------------------------------
+   Resume Sections — Skills / Experience / Education / Certifications
+----------------------------------------------------------------*/
+
+.wpo-resume-section {
+	padding: 100px 0;
+
+	@include media-query(991px) {
+		padding: 70px 0;
+	}
+
+	@include media-query(767px) {
+		padding: 50px 0;
+	}
+
+	// section titles share the huge display look but smaller than hero
+	.wpo-section-title {
+		h2 {
+			font-size: 160px;
+
+			@media(max-width:1199px) {
+				font-size: 120px;
+			}
+
+			@media(max-width:991px) {
+				font-size: 90px;
+			}
+
+			@media(max-width:575px) {
+				font-size: 56px;
+			}
+		}
+	}
+}
+
+/* ---- Shared grid ---- */
+.resume-grid {
+	display: grid;
+	gap: 24px;
+
+	@include media-query(575px) {
+		gap: 16px;
+	}
+}
+
+.skills-grid {
+	grid-template-columns: repeat(3, 1fr);
+
+	@include media-query(991px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include media-query(575px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.certs-grid {
+	grid-template-columns: repeat(2, 1fr);
+
+	@include media-query(767px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ---- Skill card ---- */
+.skill-card {
+	background: $white;
+	border: 1px solid $border-color;
+	border-radius: 16px;
+	padding: 28px;
+	height: 100%;
+	transition: all .3s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 16px 40px rgba(43, 46, 51, .08);
+	}
+
+	h3 {
+		font-family: $base-font;
+		font-size: 18px;
+		font-weight: 600;
+		color: $heading-color;
+		margin: 0 0 18px;
+		text-transform: none;
+		letter-spacing: 0;
+	}
+
+	.skill-tags {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		li {
+			font-size: 14px;
+			color: $text-color;
+			background: $body-bg-color;
+			border: 1px solid $border-color;
+			border-radius: 999px;
+			padding: 7px 16px;
+			line-height: 1;
+		}
+	}
+}
+
+/* ---- Timeline (experience + education) ---- */
+.resume-timeline {
+	position: relative;
+	padding-left: 28px;
+	border-left: 2px solid $border-color;
+
+	@include media-query(575px) {
+		padding-left: 20px;
+	}
+
+	.timeline-item {
+		position: relative;
+		padding-bottom: 44px;
+
+		&:last-child {
+			padding-bottom: 0;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: -36px;
+			top: 6px;
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			background: $theme-primary-color;
+			border: 3px solid $white;
+			box-shadow: 0 0 0 2px $theme-primary-color;
+
+			@include media-query(575px) {
+				left: -28px;
+			}
+		}
+
+		.timeline-head {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-bottom: 6px;
+
+			h3 {
+				font-family: $base-font;
+				font-size: 22px;
+				font-weight: 700;
+				color: $heading-color;
+				margin: 0;
+				text-transform: none;
+				letter-spacing: 0;
+			}
+		}
+
+		.timeline-date {
+			font-size: 14px;
+			font-weight: 500;
+			color: $text-color-s2;
+			white-space: nowrap;
+		}
+
+		h4 {
+			font-family: $base-font;
+			font-size: 16px;
+			font-weight: 500;
+			color: $text-color-s2;
+			margin: 0 0 14px;
+			text-transform: none;
+			letter-spacing: 0;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				position: relative;
+				padding-left: 20px;
+				margin-bottom: 10px;
+				font-size: 16px;
+				line-height: 1.6;
+				color: $text-color;
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 11px;
+					width: 6px;
+					height: 6px;
+					border-radius: 50%;
+					background: $text-color-s2;
+				}
+			}
+		}
+
+		p {
+			font-size: 16px;
+			color: $text-color;
+			margin: 0;
+		}
+	}
+}
+
+/* ---- Certification card ---- */
+.cert-card {
+	background: $white;
+	border: 1px solid $border-color;
+	border-radius: 16px;
+	padding: 26px 28px;
+	height: 100%;
+	transition: all .3s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 16px 40px rgba(43, 46, 51, .08);
+	}
+
+	h3 {
+		font-family: $base-font;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.4;
+		color: $heading-color;
+		margin: 0 0 14px;
+		text-transform: none;
+		letter-spacing: 0;
+	}
+
+	.cert-meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 6px;
+
+		.cert-issuer {
+			font-size: 14px;
+			color: $text-color-s2;
+		}
+
+		.cert-date {
+			font-size: 14px;
+			font-weight: 500;
+			color: $theme-primary-color;
+		}
+	}
+}

@@ -19,7 +19,7 @@ const ServiceSinglePage: React.FC = () => {
   }, [slug]);
 
   if (!service) {
-    return <div className="text-center section-padding">Service not found</div>;
+    return <div className="text-center section-padding">Không tìm thấy dịch vụ</div>;
   }
 
   return (
@@ -66,23 +66,23 @@ const ServiceSinglePage: React.FC = () => {
 
                           <ul>
                             <li>
-                              <span>Category</span>
-                              <h3>Photography Service</h3>
+                              <span>Lĩnh vực</span>
+                              <h3>Phát triển phần mềm</h3>
                             </li>
                             <li>
-                              <span>Style</span>
-                              <h3>Natural · Emotional · Timeless</h3>
+                              <span>Phong cách</span>
+                              <h3>Sạch · Mở rộng · Đáng tin cậy</h3>
                             </li>
                           </ul>
 
                           <ul>
                             <li>
-                              <span>Coverage</span>
-                              <h3>Full Day / Half Day</h3>
+                              <span>Hình thức</span>
+                              <h3>Full-time / Theo dự án</h3>
                             </li>
                             <li>
-                              <span>Price</span>
-                              <h3>$500 - $100</h3>
+                              <span>Hợp tác</span>
+                              <h3>Remote / Onsite</h3>
                             </li>
                           </ul>
 
@@ -91,8 +91,8 @@ const ServiceSinglePage: React.FC = () => {
                       </div>
 
                       <p>
-                        Capturing real moments, genuine emotions, and timeless stories—
-                        so you can relive your special day for a lifetime.
+                        Biến yêu cầu nghiệp vụ thành sản phẩm phần mềm thật, chú trọng
+                        kiến trúc rõ ràng, hiệu năng và khả năng bảo trì lâu dài.
                       </p>
 
                     </div>
@@ -101,31 +101,31 @@ const ServiceSinglePage: React.FC = () => {
                     <div className="service-item">
 
                       <div className="service-content">
-                        <h3>What This Service Is About</h3>
+                        <h3>Dịch vụ này là gì</h3>
                         <p>
-                          This service focuses on storytelling through natural light,
-                          candid expressions, and thoughtful composition.
+                          Tôi xây dựng sản phẩm end-to-end: phân tích yêu cầu, thiết kế
+                          kiến trúc, phát triển và triển khai lên production.
                         </p>
                         <p>
-                          Every frame is designed to feel authentic, emotional, and timeless.
+                          Mỗi dòng code hướng tới sự rõ ràng, dễ kiểm thử và bền vững.
                         </p>
                       </div>
 
                       <div className="service-content">
-                        <h3>What’s Included</h3>
+                        <h3>Bao gồm những gì</h3>
                         <ul>
-                          <li>Full event coverage</li>
-                          <li>Professionally edited images</li>
-                          <li>Online gallery</li>
-                          <li>Print-ready photos</li>
+                          <li>Phân tích & thiết kế giải pháp</li>
+                          <li>Phát triển frontend + backend</li>
+                          <li>Pipeline CI/CD & triển khai</li>
+                          <li>Tài liệu & bàn giao mã nguồn</li>
                         </ul>
                       </div>
 
                       <div className="service-content">
-                        <h3>My Creative Approach</h3>
+                        <h3>Cách tôi làm việc</h3>
                         <p>
-                          I capture moments naturally without forcing poses,
-                          allowing real emotions to shine through.
+                          Làm việc theo Agile/Scrum, trao đổi minh bạch và bàn giao
+                          theo từng mốc rõ ràng để bạn luôn nắm được tiến độ.
                         </p>
                       </div>
 
@@ -145,10 +145,10 @@ const ServiceSinglePage: React.FC = () => {
 
                           <div className="service-card-text">
                             <h3>
-                              “From start to finish, the experience is simple,
-                              transparent, and stress-free.”
+                              “Từ đầu đến cuối, quá trình hợp tác đều minh bạch,
+                              rõ ràng và đúng cam kết.”
                             </h3>
-                            <span>- Shooote Studio</span>
+                            <span>- thepKz</span>
                           </div>
 
                         </div>
@@ -159,8 +159,8 @@ const ServiceSinglePage: React.FC = () => {
                       <div className="service-buttom">
 
                         <div className="service-buttom-text">
-                          <h4>Let’s Capture Your Story</h4>
-                          <h4>Your moments deserve to be remembered.</h4>
+                          <h4>Cùng xây dựng sản phẩm của bạn</h4>
+                          <h4>Hãy biến ý tưởng thành sản phẩm thật.</h4>
                         </div>
 
                         <div className="service-btn">
@@ -175,10 +175,10 @@ const ServiceSinglePage: React.FC = () => {
 
                             <i className="link-text">
                               <span>
-                                <Link to="/#contact">Contact</Link>
+                                <Link to="/#contact">Liên hệ</Link>
                               </span>
                               <span>
-                                <Link to="/#contact">Me</Link>
+                                <Link to="/#contact">Ngay</Link>
                               </span>
                             </i>
 

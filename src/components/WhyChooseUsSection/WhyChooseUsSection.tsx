@@ -28,27 +28,27 @@ const WhyChooseUsSection: React.FC = () => {
     {
       id: 1,
       icon: icon1,
-      title: "Vision & Focus",
-      highlight: "Creative",
+      title: "Sản phẩm thật",
+      highlight: "Ship",
     },
     {
       id: 2,
       icon: icon2,
-      title: "Photography Quality",
-      highlight: "Professional",
+      title: "Microservices",
+      highlight: "Kiến trúc",
       reverse: true,
     },
     {
       id: 3,
       icon: icon3,
-      title: "Colors & Editing",
-      highlight: "Natural",
+      title: "Dự án thực chiến",
+      highlight: "30+",
     },
     {
       id: 4,
       icon: icon4,
-      title: "Project Delivery",
-      highlight: "On-Time",
+      title: "Giao dự án",
+      highlight: "Đúng hạn",
     },
   ];
 
@@ -63,7 +63,7 @@ const WhyChooseUsSection: React.FC = () => {
           <div className="why-choose-top">
             <div className="wpo-section-title">
               <h3 className="poort-text poort-in-right">
-                Why My Photography Stands Out
+                Vì sao chọn tôi cho dự án của bạn
               </h3>
             </div>
           </div>
@@ -141,13 +141,13 @@ const WhyChooseUsSection: React.FC = () => {
         <div className="marquee_container s2">
           {[...Array(2)].map((_, i) => (
             <div className="marquee" key={i}>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
             </div>
           ))}
         </div>
@@ -158,13 +158,13 @@ const WhyChooseUsSection: React.FC = () => {
         <div className="marquee_container s3">
           {[...Array(2)].map((_, i) => (
             <div className="marquee" key={i}>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
-              <h2>Available worldwide</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
+              <h2>Nhận việc remote toàn cầu</h2>
             </div>
           ))}
         </div>

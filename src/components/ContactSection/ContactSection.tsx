@@ -8,10 +8,10 @@ import arrow from "../../images/arrow-2.svg";
 
 /* VALIDATION */
 const schema = z.object({
-    name: z.string().min(2, "Full name is required"),
-    email: z.string().email("Enter a valid email"),
-    phone: z.string().min(6, "Phone number is required"),
-    note: z.string().min(5, "Message must be at least 5 characters"),
+    name: z.string().min(2, "Vui lòng nhập họ tên"),
+    email: z.string().email("Email không hợp lệ"),
+    phone: z.string().min(6, "Vui lòng nhập số điện thoại"),
+    note: z.string().min(5, "Nội dung cần ít nhất 5 ký tự"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -33,7 +33,7 @@ const ContactSection: React.FC = () => {
         // simulate API
         await new Promise((res) => setTimeout(res, 1200));
 
-        alert("Thank you");
+        alert("Cảm ơn bạn! Tôi sẽ phản hồi sớm nhất.");
 
         reset();
     };
@@ -51,14 +51,14 @@ const ContactSection: React.FC = () => {
                             {/* TITLE */}
                             <div className="contact-title">
                                 <div className="title-top">
-                                    <h3>Light, Camera,</h3>
+                                    <h3>Cùng nhau,</h3>
                                 </div>
 
                                 <div className="title-item">
                                     <p>
-                                        <span>Turning real moments</span> into beautifully captured memories
+                                        <span>Biến ý tưởng của bạn</span> thành sản phẩm phần mềm thật
                                     </p>
-                                    <h3>Shooote</h3>
+                                    <h3>thepKz</h3>
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@ const ContactSection: React.FC = () => {
                                             <input
                                                 {...register("name")}
                                                 className="form-control"
-                                                placeholder="Full name *"
+                                                placeholder="Họ và tên *"
                                             />
                                             {errors.name && (
                                                 <p className="error">{errors.name.message}</p>
@@ -105,7 +105,7 @@ const ContactSection: React.FC = () => {
                                             <input
                                                 {...register("phone")}
                                                 className="form-control"
-                                                placeholder="Phone number *"
+                                                placeholder="Số điện thoại *"
                                             />
                                             {errors.phone && (
                                                 <p className="error">{errors.phone.message}</p>
@@ -119,7 +119,7 @@ const ContactSection: React.FC = () => {
                                             <textarea
                                                 {...register("note")}
                                                 className="form-control"
-                                                placeholder="Your comment *"
+                                                placeholder="Nội dung dự án của bạn *"
                                             />
                                             {errors.note && (
                                                 <p className="error">{errors.note.message}</p>
@@ -141,15 +141,15 @@ const ContactSection: React.FC = () => {
                                                 </i>
 
                                                 <i className="link-text">
-                                                    <span>{isSubmitting ? "Sending..." : "Send"}</span>
-                                                    <span>{isSubmitting ? "Please wait" : "my message"}</span>
+                                                    <span>{isSubmitting ? "Đang gửi..." : "Gửi"}</span>
+                                                    <span>{isSubmitting ? "Vui lòng chờ" : "liên hệ"}</span>
                                                 </i>
                                             </button>
 
                                             <div className="submit-side-text">
                                                 <p>
-                                                    Sending this form means you accept our Privacy Policy.
-                                                    We ensure your personal details are protected
+                                                    Khi gửi form này, bạn đồng ý với Chính sách bảo mật.
+                                                    Thông tin cá nhân của bạn luôn được bảo vệ.
                                                 </p>
                                             </div>
 

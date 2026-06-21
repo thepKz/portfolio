@@ -17,13 +17,9 @@ const AboutSection: React.FC = () => {
 
             <div className="about-text-color">
               <h2>
-                I help clients preserve moments
-                <br />
-                that matter, crafting photography
-                <br />
-                that connects, inspires, and tells
-                <br />
-                authentic, timeless stories.
+                Tôi là kỹ sư phần mềm full-stack, tự thiết kế, xây dựng và ship
+                sản phẩm thật — từ web, microservices tới mobile — với hơn 30+
+                dự án đã làm cùng khách hàng.
               </h2>
             </div>
 

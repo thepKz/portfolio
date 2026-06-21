@@ -298,9 +298,9 @@
 		p {
 			margin: 0;
 			color: $text-color;
-			font-family: $font-style-2;
+			font-family: $base-font;
 			font-weight: 500;
-			font-style: italic;
+			font-style: normal;
 			font-size: 16px;
 			line-height: 130%;
 
@@ -368,8 +368,8 @@
 .wpo-site-header #navbar ul li .hire-me {
 	text-decoration: underline;
 	font-weight: 500;
-	font-family: $font-style-2;
-	font-style: italic;
+	font-family: $base-font;
+	font-style: normal;
 	font-size: 16px;
 	line-height: 130%;
 }

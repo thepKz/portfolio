@@ -51,11 +51,11 @@ const ServiceSection: React.FC = () => {
           <div className="wpo-section-title">
 
             <h3>
-              <span>Capture</span>
+              <span>Kiến tạo</span>
             </h3>
 
             <h2 className="poort-text poort-in-right">
-              Storytelling
+              Sản phẩm
             </h2>
 
             <div className="service-top">
@@ -72,10 +72,10 @@ const ServiceSection: React.FC = () => {
 
                   <i className="link-text">
                     <span>
-                      <Link to="/service">Let’s</Link>
+                      <Link to="/service">Cùng</Link>
                     </span>
                     <span>
-                      <Link to="/service">Work Together</Link>
+                      <Link to="/service">Hợp tác</Link>
                     </span>
                   </i>
 
@@ -84,8 +84,8 @@ const ServiceSection: React.FC = () => {
               </div>
 
               <div className="service-item-right">
-                <h3><span className="text-item">With</span></h3>
-                <h3>Clients</h3>
+                <h3><span className="text-item">Với</span></h3>
+                <h3>Đối tác</h3>
               </div>
 
             </div>

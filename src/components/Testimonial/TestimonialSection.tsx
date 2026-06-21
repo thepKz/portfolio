@@ -32,25 +32,25 @@ const TestimonialSection: React.FC = () => {
     {
       id: 1,
       image: t1,
-      text: "Professional, creative, and easy to work with our brand visuals never looked better.",
-      name: "Parker T.",
-      role: "Verified Buyer",
+      text: "Thép chủ động, code sạch và bàn giao đúng hạn, làm việc cùng rất nhẹ đầu.",
+      name: "Minh Anh",
+      role: "Đồng đội dự án",
     },
     {
       id: 2,
       image: t2,
       highlight:
-        "Lumora captured every moment perfectly; the photos were beyond our expectations.",
-      name: "Mark T.",
-      role: "Brand Owner",
+        "Tư duy hệ thống tốt, dựng microservices và tích hợp thanh toán chỉ trong vài sprint, vượt mong đợi.",
+      name: "Quốc Bảo",
+      role: "Quản lý dự án",
       large: true,
     },
     {
       id: 3,
       image: t3,
-      text: "Every detail was captured flawlessly. Highly recommend for any event!",
-      name: "Daniel K",
-      role: "Event Manager",
+      text: "Nắm yêu cầu nhanh, làm đúng và giao đúng. Hợp tác qua nhiều dự án đều rất yên tâm!",
+      name: "Hoàng N.",
+      role: "Khách hàng",
     },
   ];
 
@@ -64,7 +64,7 @@ const TestimonialSection: React.FC = () => {
           {/* TITLE */}
           <div className="wpo-section-title">
             <img src={shape} alt="shape" />
-            <h2 className="poort-text poort-in-right">Quotes</h2>
+            <h2 className="poort-text poort-in-right">Nhận xét</h2>
           </div>
 
           {/* GRID */}

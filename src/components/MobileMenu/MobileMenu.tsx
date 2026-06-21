@@ -9,10 +9,12 @@ interface MenuItem {
 }
 
 const menus: MenuItem[] = [
-  { id: 1, title: "About", link: "#about" },
-  { id: 2, title: "Service", link: "#service" },
-  { id: 3, title: "Work", link: "#portfolio" },
-  { id: 4, title: "Hire Me", link: "#contact" },
+  { id: 1, title: "Giới thiệu", link: "#about" },
+  { id: 2, title: "Kỹ năng", link: "#skills" },
+  { id: 3, title: "Dự án", link: "#portfolio" },
+  { id: 4, title: "Kinh nghiệm", link: "#experience" },
+  { id: 5, title: "Dịch vụ", link: "#service" },
+  { id: 6, title: "Liên hệ", link: "#contact" },
 ];
 
 const MobileMenu: React.FC = () => {
@@ -55,7 +57,7 @@ const MobileMenu: React.FC = () => {
                 href={item.link}
                 onClick={handleScroll(item.link)}
                 className={`menu-link ${
-                  item.title === "Hire Me" ? "hire-me" : ""
+                  item.link === "#contact" ? "hire-me" : ""
                 }`}
               >
                 {item.title}

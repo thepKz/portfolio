@@ -19,39 +19,39 @@ const FaqSection: React.FC = () => {
   const faqs: FAQItem[] = [
     {
       id: 1,
-      question: "How do I book a photography session?",
+      question: "Làm sao để bắt đầu hợp tác với bạn?",
       answer:
-        "Simply use the contact form below to share your details, and I’ll get back to you shortly.",
+        "Bạn chỉ cần điền form liên hệ bên dưới để chia sẻ thông tin dự án, tôi sẽ phản hồi trong thời gian sớm nhất.",
     },
     {
       id: 2,
-      question: "What types of photography do you offer?",
+      question: "Bạn nhận làm những loại dự án nào?",
       answer:
-        "I offer event, portrait, commercial, and wedding photography tailored to your needs.",
+        "Tôi nhận phát triển web full-stack, backend/microservices, app mobile (Flutter) và hỗ trợ phân tích nghiệp vụ (BA).",
     },
     {
       id: 3,
-      question: "How far in advance should I book?",
+      question: "Bạn có làm việc remote không?",
       answer:
-        "It’s recommended to book at least 2–4 weeks in advance for availability.",
+        "Có. Tôi làm việc remote linh hoạt và quen với quy trình Agile/Scrum cho cả dự án trong và ngoài nước.",
     },
     {
       id: 4,
-      question: "Do you travel for photoshoots?",
+      question: "Stack công nghệ chính của bạn là gì?",
       answer:
-        "Yes, I’m available worldwide and happy to travel for your project.",
+        "React/Next.js, Node.js, Spring Boot, Flutter, cùng MongoDB/MySQL, Docker và CI/CD qua GitHub Actions.",
     },
     {
       id: 5,
-      question: "How long does it take to receive photos?",
+      question: "Một dự án thường mất bao lâu?",
       answer:
-        "Delivery usually takes 5–10 working days depending on project size.",
+        "Tùy quy mô và phạm vi, tôi sẽ ước lượng timeline cụ thể và chốt mốc bàn giao ngay khi nắm rõ yêu cầu.",
     },
     {
       id: 6,
-      question: "Can I request custom photography packages?",
+      question: "Bạn đã làm qua bao nhiêu dự án?",
       answer:
-        "Absolutely! Custom packages are available based on your requirements.",
+        "Tôi đã tham gia hơn 30+ dự án lớn nhỏ với khách hàng, từ web, backend tới mobile, cả vai trò solo lẫn dẫn dắt nhóm.",
     },
   ];
 
@@ -68,7 +68,7 @@ const FaqSection: React.FC = () => {
 
           {/* TITLE */}
           <div className="wpo-section-title">
-            <h2 className="poort-text poort-in-right">Helpdesk</h2>
+            <h2 className="poort-text poort-in-right">Hỏi đáp</h2>
           </div>
 
           <div className="wpo-faq-items">
@@ -76,8 +76,8 @@ const FaqSection: React.FC = () => {
             {/* TEXT */}
             <div className="faq-text">
               <p>
-                Have questions? I'm here for you, no matter where you are,
-                ready to provide support and answers anytime.
+                Có câu hỏi? Dù bạn ở đâu, tôi luôn sẵn sàng hỗ trợ
+                và giải đáp bất cứ lúc nào.
               </p>
             </div>
 

@@ -28,6 +28,18 @@
                 font-size: 94px;
                 font-style: italic;
                 letter-spacing: -0.32px;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                hyphens: auto;
+
+                // SplitText wraps words/chars in inline-block nodes;
+                // allow them to wrap so long Vietnamese lines don't overflow
+                .word,
+                .char {
+                    white-space: normal;
+                    word-break: break-word;
+                    overflow-wrap: break-word;
+                }
 
                 @media (max-width: 1399px) {
                     font-size: 80px;
@@ -1154,8 +1166,8 @@
             h3 {
                 margin: 0;
                 color: $text-color;
-                font-family: $font-style-2;
-                font-weight: 300;
+                font-family: $base-font;
+                font-weight: 500;
                 font-size: 60px;
                 line-height: 114%;
                 text-transform: uppercase;
@@ -1178,7 +1190,7 @@
                 margin: 0;
                 color: $text-color;
                 font-weight: 300;
-                font-style: Light;
+                font-style: normal;
                 font-size: 12px;
                 line-height: 114%;
                 text-transform: uppercase;
@@ -1483,9 +1495,9 @@
 
                 h2 {
                     margin: 0;
-                    font-family: $font-style-2;
+                    font-family: $base-font;
                     font-weight: 500;
-                    font-style: italic;
+                    font-style: normal;
                     font-size: 24px;
                     line-height: 114%;
                     color: $text-color;

@@ -85,11 +85,11 @@
 	.link-text {
 		span {
 			margin: 0;
-			font-family: $font-style-2;
+			font-family: $base-font;
 			text-transform: uppercase;
 			color: $theme-primary-color;
-			font-weight: 300;
-			font-style: italic;
+			font-weight: 500;
+			font-style: normal;
 			font-size: 18px;
 			line-height: 130%;
 			text-align: start;
