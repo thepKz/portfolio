@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header2 from "../../components/header2";
 import Footer2 from "../../components/footer2/Footer2";
@@ -17,10 +16,6 @@ const PortfolioSinglePage: React.FC = () => {
   if (!project) {
     return <h2 style={{ textAlign: "center", padding: "120px" }}>Không tìm thấy dự án</h2>;
   }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <>

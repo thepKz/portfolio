@@ -14,12 +14,22 @@ import AllRoute from "./main-component/router";
 import Lenis from "lenis";
 import ErrorBoundary from "./ErrorBoundary";
 
+declare global {
+  interface Window {
+    lenis?: Lenis;
+  }
+}
+
 const App: React.FC = () => {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
     });
+
+    // Expose globally so route changes can scroll-to-top through Lenis
+    // (a raw window.scrollTo fights Lenis and causes the visible jank).
+    window.lenis = lenis;
 
     let rafId: number;
 
@@ -33,6 +43,7 @@ const App: React.FC = () => {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete window.lenis;
     };
   }, []);
 

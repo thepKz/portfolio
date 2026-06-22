@@ -6,11 +6,6 @@ import services from "../../api/services";
 
 const ServiceSectionS2: React.FC = () => {
 
-  const ClickHandler = () => {
-    window.scrollTo(0, 0);
-  };
-
-
   return (
     <section className="wpo-service-section style-2" id="service">
 
@@ -27,7 +22,6 @@ const ServiceSectionS2: React.FC = () => {
 
                   <Link
                     className="service-card"
-                    onClick={ClickHandler}
                     to={`/service-single/${service.slug}`}
                   >
 

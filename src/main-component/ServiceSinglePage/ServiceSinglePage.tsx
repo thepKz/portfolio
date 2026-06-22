@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Header2 from "../../components/header2";
 import Footer2 from "../../components/footer2/Footer2";
@@ -14,10 +14,6 @@ const ServiceSinglePage: React.FC = () => {
   const navigate = useNavigate();
 
   const service = services.find((item) => item.slug === slug);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
 
   if (!service) {
     return <div className="text-center section-padding">Không tìm thấy dịch vụ</div>;

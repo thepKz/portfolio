@@ -10,10 +10,6 @@ import shape from "../../images/service/shape.png";
 
 const ServiceSection: React.FC = () => {
 
-  const ClickHandler = () => {
-    window.scrollTo(0, 0);
-  };
-
   const settings = {
     infinite: true,
     autoplay: true,
@@ -116,7 +112,6 @@ const ServiceSection: React.FC = () => {
 
                 <Link
                   className="service-card"
-                  onClick={ClickHandler}
                   to={`/service-single/${service.slug}`}
                 >
 

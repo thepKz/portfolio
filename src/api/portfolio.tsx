@@ -1,7 +1,7 @@
-import p1 from "../images/portfolio/image-1.jpg";
-import p2 from "../images/portfolio/image-2.jpg";
-import p3 from "../images/portfolio/image-3.jpg";
-import p4 from "../images/portfolio/image-4.jpg";
+import p1 from "../images/portfolio/image-1.png";
+import p2 from "../images/portfolio/image-2.png";
+import p3 from "../images/portfolio/image-3.png";
+import p4 from "../images/portfolio/image-4.png";
 
 import psw1 from "../images/portfolio-single/portfolio-sw1-img-1.jpg";
 import psw2 from "../images/portfolio-single/portfolio-sw1-img-2.jpg";
@@ -38,7 +38,7 @@ const portfolio: PortfolioItem[] = [
   {
     id: 1,
     title: "Genkikoi",
-    category: "Full-Stack · Team Lead",
+    category: "Full-Stack",
     des1: "Nền tảng thú y full-stack.",
     description: "Dẫn dắt nhóm 4 người hoàn thành nền tảng thú y full-stack trong 3 tháng. Thiết kế RESTful API (Express + MongoDB) với hơn 5 module: tư vấn, kiểm tra bể cá, điều trị và quản lý bệnh. Xây frontend React/TypeScript kèm pipeline CI/CD qua GitHub Actions.",
     image: p1,
@@ -52,7 +52,7 @@ const portfolio: PortfolioItem[] = [
   {
     id: 2,
     title: "TrustFundMe",
-    category: "Microservices · Team Lead",
+    category: "Microservices",
     des1: "Hệ thống thiện nguyện minh bạch.",
     description: "Thiết kế hệ thống Microservices đầy đủ (8+ service: API Gateway, Identity...) dùng Spring Boot + Spring Cloud Eureka. Frontend Next.js (TypeScript) kèm CI/CD qua GitHub Actions. Tích hợp cổng thanh toán VietQR + Casso cho giao dịch quyên góp real-time với webhook, kèm app Flutter (iOS/Android) có chat thời gian thực.",
     image: p2,
@@ -66,7 +66,7 @@ const portfolio: PortfolioItem[] = [
   {
     id: 3,
     title: "Black Hole Magic",
-    category: "Next.js 15 · GSAP",
+    category: "GSAP",
     des1: "Đây là một website cho công ty game với giao diện mượt mà và nghệ thuật đặt lên hàng đầu.",
     description: "Đây là một website cho công ty game, với quy mô lớn áp dụng các kĩ thuật khó như GSAP, THREE.JS và nhiều thứ khác...",
     image: p3,
@@ -79,10 +79,10 @@ const portfolio: PortfolioItem[] = [
   },
   {
     id: 4,
-    title: "StudyBlog",
+    title: "Jang Wonyoung Gallery",
     category: "Solo · Content",
-    des1: "Blog chia sẻ kiến thức 85k+ lượt xem.",
-    description: "Xây dựng và duy trì nền tảng chia sẻ kiến thức cá nhân đạt hơn 85.000 lượt xem từ 2023. Xuất bản các bài viết về môn học Kỹ thuật phần mềm và học tiếng Nhật (gồm cả luyện nói) nhằm hỗ trợ cộng đồng tiếp cận công nghệ phần mềm tốt hơn.",
+    des1: "Trang danh sách ảnh về Jang Wonyoung.",
+    description: "Với niềm đam mê thần tượng Hàn Quốc, tôi đã lập nên website với các hiệu ứng xịn xò cùng với những bức ảnh tuyệt đẹp của idol Hàn Quốc.",
     image: p4,
     singleimage: psm1,
     singleimage2: psg2,

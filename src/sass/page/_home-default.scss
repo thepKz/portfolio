@@ -175,12 +175,43 @@
             position: absolute;
             bottom: 50px;
             left: 50px;
+            right: 50px;
             z-index: 11;
 
             @media(max-width:991px) {
                 bottom: 15px;
                 left: 15px;
+                right: 15px;
             }
+
+            // Overlaid on the image — force light text so it stays
+            // readable over dark artwork (e.g. Blackhole Game).
+            h3,
+            h3 a,
+            p {
+                color: $white;
+                text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+            }
+
+            .portfolio-detail-btn {
+                color: $white;
+            }
+        }
+
+        // Gradient scrim at the bottom of overlay cards so light text
+        // keeps enough contrast regardless of the underlying image.
+        &:has(.portfolio-content) .portfolio-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.65) 0%,
+                rgba(0, 0, 0, 0.2) 35%,
+                rgba(0, 0, 0, 0) 60%
+            );
+            pointer-events: none;
+            z-index: 10;
         }
     }
 

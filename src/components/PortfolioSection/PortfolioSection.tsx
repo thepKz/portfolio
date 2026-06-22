@@ -6,10 +6,6 @@ import portfolio from "../../api/portfolio";
 
 const PortfolioSection: React.FC = () => {
 
-   const ClickHandler = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
     <section className="wpo-portfolio-section" id="portfolio">
       <div className="container">
@@ -54,10 +50,7 @@ const PortfolioSection: React.FC = () => {
                     >
 
                       <h3>
-                        <Link
-                          onClick={ClickHandler}
-                          to={`/portfolio-single/${item.slug}`}
-                        >
+                        <Link to={`/portfolio-single/${item.slug}`}>
                           {item.title}
                         </Link>
                       </h3>
@@ -66,7 +59,6 @@ const PortfolioSection: React.FC = () => {
 
                       <Link
                         className="portfolio-detail-btn"
-                        onClick={ClickHandler}
                         to={`/portfolio-single/${item.slug}`}
                       >
                         Xem dự án

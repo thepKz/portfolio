@@ -152,6 +152,12 @@ img {
     color: #333;
 }
 
+/* Suspense fallback during lazy route loads — an empty full-height
+   block so the page swap doesn't flash a white "Loading..." line. */
+.route-loading {
+    min-height: 100vh;
+}
+
 /*** contact form error handling ***/
 .contact-validation-active {
     .error-handling-messages {

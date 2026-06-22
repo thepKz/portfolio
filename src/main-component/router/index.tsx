@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 
 const HomePage = lazy(() => import("../HomePage/HomePage"));
 const ServicePage = lazy(() => import("../ServicePage/ServicePage"));
@@ -11,7 +12,8 @@ const NotFound = lazy(() => import("../../NotFound"));
 
 const AllRoute: React.FC = () => {
   return (
-    <Suspense fallback={<div className="loading">Loading...</div>}>
+    <Suspense fallback={<div className="route-loading" aria-hidden="true" />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="home" element={<HomePage />} />
